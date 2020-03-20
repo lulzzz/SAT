@@ -407,7 +407,7 @@
     <Content Include="Liquidacion\ControlAnticipos.aspx" />
     <Content Include="Liquidacion\ReporteControlAnticipos.aspx" />
     <Content Include="Operacion\GeneradorViajes.aspx" />
-    <Content Include="Reportes\ReportesClientes.aspx" />
+    <Content Include="RDL\ReportesClientes.aspx" />
     <Content Include="Ruta\RutaCruces.aspx" />
     <Content Include="Soporte\ReporteSoporteTecnico.aspx" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -2541,11 +2541,11 @@
     <Compile Include="RDLC\ReporteCompania.aspx.designer.cs">
       <DependentUpon>ReporteCompania.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\ReportesClientes.aspx.cs">
+    <Compile Include="RDL\ReportesClientes.aspx.cs">
       <DependentUpon>ReportesClientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reportes\ReportesClientes.aspx.designer.cs">
+    <Compile Include="RDL\ReportesClientes.aspx.designer.cs">
       <DependentUpon>ReportesClientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ruta\Caseta.aspx.cs">
