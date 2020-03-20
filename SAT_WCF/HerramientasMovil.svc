@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="SAT_WCF.HerramientasMovil" CodeBehind="HerramientasMovil.svc.cs" %>

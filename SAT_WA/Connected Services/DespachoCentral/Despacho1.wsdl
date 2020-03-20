@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.tectos.com.mx/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tectos.com.mx/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.tectos.com.mx/Imports">
+      <xsd:import schemaLocation="http://www.administratransportefacil.com/CENTRAL_WCF/Despacho.svc?xsd=xsd0" namespace="http://www.tectos.com.mx/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDespacho_ObtieneDatosPublicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneDatosPublicacion" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneDatosPublicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneDatosPublicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_PublicaUnidad_InputMessage">
+    <wsdl:part name="parameters" element="tns:PublicaUnidad" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_PublicaUnidad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PublicaUnidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtienePublicacionesCompania_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtienePublicacionesCompania" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtienePublicacionesCompania_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtienePublicacionesCompaniaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneReporteGeneralPublicaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneReporteGeneralPublicaciones" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneReporteGeneralPublicaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneReporteGeneralPublicacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneCiudadesPublicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneCiudadesPublicacion" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneCiudadesPublicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneCiudadesPublicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneDatosRespuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneDatosRespuesta" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneDatosRespuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneDatosRespuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_RespuestaPublicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:RespuestaPublicacion" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_RespuestaPublicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RespuestaPublicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneCiudadesEventoRespuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneCiudadesEventoRespuesta" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneCiudadesEventoRespuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneCiudadesEventoRespuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_AceptaRespuestaPublicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:AceptaRespuestaPublicacion" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_AceptaRespuestaPublicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AceptaRespuestaPublicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_RechazaRespuestaPublicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:RechazaRespuestaPublicacion" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_RechazaRespuestaPublicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RechazaRespuestaPublicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneRespuestasPublicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneRespuestasPublicacion" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneRespuestasPublicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneRespuestasPublicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_InsertaCiudadEventoRespuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaCiudadEventoRespuesta" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_InsertaCiudadEventoRespuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaCiudadEventoRespuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_VisualizarRespuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:VisualizarRespuesta" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_VisualizarRespuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VisualizarRespuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_DocumentaServicioUnidad_InputMessage">
+    <wsdl:part name="parameters" element="tns:DocumentaServicioUnidad" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_DocumentaServicioUnidad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DocumentaServicioUnidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneDatosServicioUnidad_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneDatosServicioUnidad" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneDatosServicioUnidad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneDatosServicioUnidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ActualizaServicioUnidad_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizaServicioUnidad" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ActualizaServicioUnidad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizaServicioUnidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_PublicaServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:PublicaServicio" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_PublicaServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PublicaServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_VisualizaServiciosPublicados_InputMessage">
+    <wsdl:part name="parameters" element="tns:VisualizaServiciosPublicados" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_VisualizaServiciosPublicados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VisualizaServiciosPublicadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_RespuestaServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:RespuestaServicio" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_RespuestaServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RespuestaServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_AceptaRespuestaServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:AceptaRespuestaServicio" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_AceptaRespuestaServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AceptaRespuestaServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_RechazaRespuestaServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:RechazaRespuestaServicio" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_RechazaRespuestaServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RechazaRespuestaServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneRespuestasServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneRespuestasServicio" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneRespuestasServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneRespuestasServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneParadasServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneParadasServicio" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneParadasServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneParadasServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneDatosServicioCentral_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneDatosServicioCentral" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneDatosServicioCentral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneDatosServicioCentralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ActualizaServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizaServicio" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ActualizaServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizaServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_PublicacionesCompania_InputMessage">
+    <wsdl:part name="parameters" element="tns:PublicacionesCompania" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_PublicacionesCompania_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PublicacionesCompaniaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtienePublicacionUnidad_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtienePublicacionUnidad" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtienePublicacionUnidad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtienePublicacionUnidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneDatosPublicacionServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneDatosPublicacionServicio" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtieneDatosPublicacionServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtieneDatosPublicacionServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtienePublicacionServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtienePublicacionServicio" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ObtienePublicacionServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtienePublicacionServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ServiciosCompania_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServiciosCompania" />
+  </wsdl:message>
+  <wsdl:message name="IDespacho_ServiciosCompania_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServiciosCompaniaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDespacho">
+    <wsdl:operation name="ObtieneDatosPublicacion">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneDatosPublicacion" message="tns:IDespacho_ObtieneDatosPublicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneDatosPublicacionResponse" message="tns:IDespacho_ObtieneDatosPublicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PublicaUnidad">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/PublicaUnidad" message="tns:IDespacho_PublicaUnidad_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/PublicaUnidadResponse" message="tns:IDespacho_PublicaUnidad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtienePublicacionesCompania">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtienePublicacionesCompania" message="tns:IDespacho_ObtienePublicacionesCompania_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtienePublicacionesCompaniaResponse" message="tns:IDespacho_ObtienePublicacionesCompania_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneReporteGeneralPublicaciones">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneReporteGeneralPublicaciones" message="tns:IDespacho_ObtieneReporteGeneralPublicaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneReporteGeneralPublicacionesResponse" message="tns:IDespacho_ObtieneReporteGeneralPublicaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneCiudadesPublicacion">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneCiudadesPublicacion" message="tns:IDespacho_ObtieneCiudadesPublicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneCiudadesPublicacionResponse" message="tns:IDespacho_ObtieneCiudadesPublicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneDatosRespuesta">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneDatosRespuesta" message="tns:IDespacho_ObtieneDatosRespuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneDatosRespuestaResponse" message="tns:IDespacho_ObtieneDatosRespuesta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RespuestaPublicacion">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/RespuestaPublicacion" message="tns:IDespacho_RespuestaPublicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/RespuestaPublicacionResponse" message="tns:IDespacho_RespuestaPublicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneCiudadesEventoRespuesta">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneCiudadesEventoRespuesta" message="tns:IDespacho_ObtieneCiudadesEventoRespuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneCiudadesEventoRespuestaResponse" message="tns:IDespacho_ObtieneCiudadesEventoRespuesta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AceptaRespuestaPublicacion">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/AceptaRespuestaPublicacion" message="tns:IDespacho_AceptaRespuestaPublicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/AceptaRespuestaPublicacionResponse" message="tns:IDespacho_AceptaRespuestaPublicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RechazaRespuestaPublicacion">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/RechazaRespuestaPublicacion" message="tns:IDespacho_RechazaRespuestaPublicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/RechazaRespuestaPublicacionResponse" message="tns:IDespacho_RechazaRespuestaPublicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneRespuestasPublicacion">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneRespuestasPublicacion" message="tns:IDespacho_ObtieneRespuestasPublicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneRespuestasPublicacionResponse" message="tns:IDespacho_ObtieneRespuestasPublicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaCiudadEventoRespuesta">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/InsertaCiudadEventoRespuesta" message="tns:IDespacho_InsertaCiudadEventoRespuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/InsertaCiudadEventoRespuestaResponse" message="tns:IDespacho_InsertaCiudadEventoRespuesta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VisualizarRespuesta">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/VisualizarRespuesta" message="tns:IDespacho_VisualizarRespuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/VisualizarRespuestaResponse" message="tns:IDespacho_VisualizarRespuesta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DocumentaServicioUnidad">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/DocumentaServicioUnidad" message="tns:IDespacho_DocumentaServicioUnidad_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/DocumentaServicioUnidadResponse" message="tns:IDespacho_DocumentaServicioUnidad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneDatosServicioUnidad">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneDatosServicioUnidad" message="tns:IDespacho_ObtieneDatosServicioUnidad_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneDatosServicioUnidadResponse" message="tns:IDespacho_ObtieneDatosServicioUnidad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaServicioUnidad">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ActualizaServicioUnidad" message="tns:IDespacho_ActualizaServicioUnidad_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ActualizaServicioUnidadResponse" message="tns:IDespacho_ActualizaServicioUnidad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PublicaServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/PublicaServicio" message="tns:IDespacho_PublicaServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/PublicaServicioResponse" message="tns:IDespacho_PublicaServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VisualizaServiciosPublicados">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/VisualizaServiciosPublicados" message="tns:IDespacho_VisualizaServiciosPublicados_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/VisualizaServiciosPublicadosResponse" message="tns:IDespacho_VisualizaServiciosPublicados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RespuestaServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/RespuestaServicio" message="tns:IDespacho_RespuestaServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/RespuestaServicioResponse" message="tns:IDespacho_RespuestaServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AceptaRespuestaServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/AceptaRespuestaServicio" message="tns:IDespacho_AceptaRespuestaServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/AceptaRespuestaServicioResponse" message="tns:IDespacho_AceptaRespuestaServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RechazaRespuestaServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/RechazaRespuestaServicio" message="tns:IDespacho_RechazaRespuestaServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/RechazaRespuestaServicioResponse" message="tns:IDespacho_RechazaRespuestaServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneRespuestasServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneRespuestasServicio" message="tns:IDespacho_ObtieneRespuestasServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneRespuestasServicioResponse" message="tns:IDespacho_ObtieneRespuestasServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneParadasServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneParadasServicio" message="tns:IDespacho_ObtieneParadasServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneParadasServicioResponse" message="tns:IDespacho_ObtieneParadasServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneDatosServicioCentral">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneDatosServicioCentral" message="tns:IDespacho_ObtieneDatosServicioCentral_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneDatosServicioCentralResponse" message="tns:IDespacho_ObtieneDatosServicioCentral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ActualizaServicio" message="tns:IDespacho_ActualizaServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ActualizaServicioResponse" message="tns:IDespacho_ActualizaServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PublicacionesCompania">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/PublicacionesCompania" message="tns:IDespacho_PublicacionesCompania_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/PublicacionesCompaniaResponse" message="tns:IDespacho_PublicacionesCompania_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtienePublicacionUnidad">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtienePublicacionUnidad" message="tns:IDespacho_ObtienePublicacionUnidad_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtienePublicacionUnidadResponse" message="tns:IDespacho_ObtienePublicacionUnidad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtieneDatosPublicacionServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneDatosPublicacionServicio" message="tns:IDespacho_ObtieneDatosPublicacionServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtieneDatosPublicacionServicioResponse" message="tns:IDespacho_ObtieneDatosPublicacionServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtienePublicacionServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtienePublicacionServicio" message="tns:IDespacho_ObtienePublicacionServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ObtienePublicacionServicioResponse" message="tns:IDespacho_ObtienePublicacionServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiciosCompania">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IDespacho/ServiciosCompania" message="tns:IDespacho_ServiciosCompania_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IDespacho/ServiciosCompaniaResponse" message="tns:IDespacho_ServiciosCompania_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

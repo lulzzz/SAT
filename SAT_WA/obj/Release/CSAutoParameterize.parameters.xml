@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="TECTOS_SAT_db-Web.config Connection String" description="TECTOS_SAT_db Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="server=TECTOS2014\TECTOS_SERVER_17; database=TECTOS_SAT_AZTLAN_db; uid=TECTOSAdmin; pwd=psswrd18TECTOS;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\alast\\Source\\repos\\tectos\\SAT\\SAT_WA\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='TECTOS_SAT_db']/@connectionString" />
+  </parameter>
+</parameters>

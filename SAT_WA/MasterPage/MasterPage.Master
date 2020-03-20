@@ -1,0 +1,512 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="SAT.MasterPage.MasterPage" %>
+
+<!DOCTYPE html>
+<%@ Register Src="~/UserControls/wucUsuarioAutenticado.ascx" TagName="wucUsuarioAutenticado" TagPrefix="tectos" %>
+<%@ Register Src="~/UserControls/wucCambioContrasena.ascx" TagName="wucCambioContrasena" TagPrefix="tectos" %>
+<%@ Register Src="~/UserControls/wucPerfilUsuario.ascx" TagName="wucPerfilUsuario" TagPrefix="tectos" %>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="../CSS/PaginaMaestra.css" rel="stylesheet" />
+    <link href="../CSS/MenuPrincipal.css" rel="stylesheet" />
+    <link href="../CSS/MenuUsuario.css" rel="stylesheet" />
+    <link href="../CSS/Forma.css" rel="stylesheet" />
+    <link href="../CSS/Controles.css" rel="stylesheet" />
+    <!-- Estilos de Scripts -->
+    <link href="../CSS/jquery-ui.css" rel="stylesheet" />
+    <link href="../CSS/jquery-ui.min.css" rel="stylesheet" />
+    <link href="../CSS/jquery-ui.structure.css" rel="stylesheet" />
+    <link href="../CSS/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="../CSS/jquery-ui.theme.css" rel="stylesheet" />
+    <link href="../CSS/jquery-ui.theme.min.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Open+Sans|Quicksand|Roboto" rel="stylesheet" />
+
+    <!-- Animaciones de entrada y salida de elementos -->
+    <link href="../CSS/animate.css" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Habilitación para uso de jquery en formas ligadas a esta master page -->
+    <script src='<%=ResolveUrl("~/Scripts/jquery-1.7.1.js") %>' type="text/javascript"></script>
+    <script src='<%=ResolveUrl("~/Scripts/jquery-1.7.1.min.js") %>' type="text/javascript"></script>
+    <!--<script src="../Scripts/jquery-1.7.1.js" type="text/javascript"></script>-->
+    <script src='<%=ResolveUrl("~/Scripts/jquery-ui.js") %>' type="text/javascript"></script>
+    <script src='<%=ResolveUrl("~/Scripts/jquery-ui.min.js") %>' type="text/javascript"></script>
+    <script src='<%=ResolveUrl("~/Scripts/jquery.blockUI.js") %>' type="text/javascript"></script>
+    <!-- Notificaciones emergentes -->
+    <script type="text/javascript" src='<%=ResolveUrl("~/Scripts/jquery.noty.packaged.js") %>'></script>
+    <script type="text/javascript" src='<%=ResolveUrl("~/Scripts/jquery.noty.packaged.min.js") %>'></script>
+    <link rel="shortcut icon" href="../Image/favicon.ico" />
+    <title>SEA-TRANS</title>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" autocomplete="off" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
+        <script>
+            Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(Loading);
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(Loaded);
+            function Loading() {
+                $.blockUI({ message: '<h2><img src="../Image/loading2.gif" /> Espere por favor...</h2>', fadeIn: 200 });
+            }
+            function Loaded() {
+                $.unblockUI({ fadeOut: 200 });
+            }
+        </script>
+        <div>
+            <header>
+                <h1>TECTOS - <b>administratransportefacil.com</b></h1>
+            </header>
+            <nav>
+                <ul id="menu_principal" style="width: 97%">
+                    <li>
+                        <asp:LinkButton ID="lnkOperacion" runat="server" CommandName="~/Operacion/PrincipalOperacion.aspx" OnClick="lnkDireccionaModulo_Click">Operación</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkDocumentacion" runat="server" CommandName="~/Documentacion/Servicio.aspx" OnClick="lnkDireccionaModulo_Click">Documentación</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkAsignacion" runat="server" CommandName="~/Operacion/Planeacion.aspx" OnClick="lnkDireccionaModulo_Click">Planeación</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkDespacho" runat="server" CommandName="~/Operacion/PrincipalOperacion.aspx" OnClick="lnkDireccionaModulo_Click">Despacho</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkDespachoServicio" runat="server" CommandName="~/Operacion/Despacho.aspx" OnClick="lnkDireccionaModulo_Click">Despacho Servicio</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkDespachoSimple" runat="server" CommandName="~/Operacion/DespachoSimplificado.aspx" OnClick="lnkDireccionaModulo_Click">Despacho por Unidad</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkGeneradorViajes" runat="server" CommandName="~/Operacion/GeneradorViajes.aspx" OnClick="lnkDireccionaModulo_Click">Generador Viajes</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="lnkAutorizaDepositos" runat="server" CommandName="~/EgresoServicio/AutorizacionDeposito.aspx" OnClick="lnkDireccionaModulo_Click">Autorización Depósito</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkRuta" runat="server" CommandName="~/Ruta/Ruta.aspx" OnClick="lnkDireccionaModulo_Click">Ruta</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkVisorDocumentacion" runat="server" CommandName="~/Operacion/PrincipalOperacion.aspx" OnClick="lnkDireccionaModulo_Click">Reportes</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteServicios" runat="server" CommandName="~/Documentacion/VisorDocumentacion.aspx" OnClick="lnkDireccionaModulo_Click">Servicios</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteMovimientos" runat="server" CommandName="~/Operacion/ReporteMovimientos.aspx" OnClick="lnkDireccionaModulo_Click">Movimientos</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteEventos" runat="server" CommandName="~/Operacion/ReporteEventos.aspx" OnClick="lnkDireccionaModulo_Click">Eventos</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteBitacoraEvento" runat="server" CommandName="~/Operacion/ReporteBitacoraEventos.aspx" OnClick="lnkDireccionaModulo_Click">Eventos Servicio</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteBalance" runat="server" CommandName="~/Operacion/ReporteBalanceUnidades.aspx" OnClick="lnkDireccionaModulo_Click">Balance Unidades</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkHistorialViajes" runat="server" CommandArgument="NuevaVentana" OnClick="lnkDireccionaModulo_Click">Historial Viajes</asp:LinkButton></li>
+                                    <!--<li><asp:LinkButton ID="lnkReporteIngresoUnidad" runat="server" CommandName="~/Operacion/ReporteIngresoUnidad.aspx" OnClick="lnkDireccionaModulo_Click">Ingreso Unidad</asp:LinkButton></li>-->
+                                    <!--<li><asp:LinkButton ID="lnkReporteIndicadores" runat="server" CommandName="~/FacturacionElectronica/ReporteIngresoServicioPeriodo.aspx" OnClick="lnkDireccionaModulo_Click">Indicadores</asp:LinkButton></li>-->
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteDevoluciones" runat="server" CommandName="~/Operacion/ReporteDevoluciones.aspx" OnClick="lnkDireccionaModulo_Click">Devoluciones</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkOtrosReportes" runat="server" CommandName="~/RDLC/ReporteCompania.aspx" OnClick="lnkDireccionaModulo_Click">Otros Reportes</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lnkEvidencias" runat="server" CommandName="~/ControlEvidencia/PrincipalEvidencias.aspx" OnClick="lnkDireccionaModulo_Click">Evidencias</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkHI" runat="server" CommandName="~/ControlEvidencia/HojaInstruccion.aspx" OnClick="lnkDireccionaModulo_Click">Hoja Instrucción</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkRecepcion" runat="server" CommandName="~/ControlEvidencia/RecepcionDocumento.aspx" OnClick="lnkDireccionaModulo_Click">Recepción Evidencias</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkEnvioPaquete" runat="server" CommandName="~/ControlEvidencia/ArmadoEnvioPaquetes.aspx" OnClick="lnkDireccionaModulo_Click">Envío Paquetes</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkRecepcionPaquete" runat="server" CommandName="~/ControlEvidencia/RecepcionPaquetes.aspx" OnClick="lnkDireccionaModulo_Click">Recepción Paquetes</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkReportesEvidencias" runat="server" CommandName="~/ControlEvidencia/PrincipalEvidencias.aspx" OnClick="lnkDireccionaModulo_Click">Reportes</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteEvidencias" runat="server" CommandName="~/ControlEvidencia/VisorDocumentos.aspx" OnClick="lnkDireccionaModulo_Click">Evidencias</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteHojas" runat="server" CommandName="~/ControlEvidencia/VisorHojaInstruccion.aspx" OnClick="lnkDireccionaModulo_Click">Hoja Instrucción</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lnkLiquidacionPrincipal" runat="server" CommandName="~/Liquidacion/PrincipalLiquidaciones.aspx" OnClick="lnkDireccionaModulo_Click">Liquidación</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkTarifasPago" runat="server" CommandName="~/Tarifas/TarifasPago.aspx" OnClick="lnkDireccionaModulo_Click">Tarifas Pago</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkLiquidacion" runat="server" CommandName="~/Liquidacion/PrincipalLiquidaciones.aspx" OnClick="lnkDireccionaModulo_Click">Liquidación</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkLiquidacionDetalle" runat="server" CommandName="~/Liquidacion/Liquidacion.aspx" OnClick="lnkDireccionaModulo_Click">Liq. a Detalle</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkLiquidacionSimplificada" runat="server" CommandName="~/Liquidacion/LiquidacionSimplificada.aspx" OnClick="lnkDireccionaModulo_Click">Liq. Simplificada</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="lnkCobroRecurrente" runat="server" CommandName="~/Liquidacion/CobroRecurrente.aspx" OnClick="lnkDireccionaModulo_Click">Cobro Recurrente</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkControlAnticipos" runat="server" CommandName="~/Liquidacion/ControlAnticipos.aspx" OnClick="lnkDireccionaModulo_Click">Control Anticipos</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkProgramacionAnticipos" runat="server" CommandName="~/Documentacion/AnticiposProgramados.aspx" OnClick="lnkDireccionaModulo_Click">Anticipos Prog.</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkReportesLiquidacion" runat="server" CommandName="~/Liquidacion/PrincipalLiquidaciones.aspx" OnClick="lnkDireccionaModulo_Click">Reportes</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteLiquidaciones" runat="server" Visible="false" CommandName="~/Liquidacion/ReporteLiquidacion.aspx" OnClick="lnkDireccionaModulo_Click">Liquidaciones</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteLiquidaciones12" runat="server" CommandName="~/Liquidacion/ReporteLiquidacion12.aspx" OnClick="lnkDireccionaModulo_Click">Liquidaciones 1.2</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lknReportePagoMovimientos" runat="server" CommandName="~/Liquidacion/ReportePagoMovimientos.aspx" OnClick="lnkDireccionaModulo_Click">Pago a Operadores</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteControlAnticipos" runat="server" CommandName="~/Liquidacion/ReporteControlAnticipos.aspx" OnClick="lnkDireccionaModulo_Click">Control Anticipos</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteDepositos" runat="server" CommandName="~/EgresoServicio/ReporteDepositos.aspx" OnClick="lnkDireccionaModulo_Click">Depósitos</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteValesDiesel" runat="server" CommandName="~/EgresoServicio/ReporteValesDeDiesel.aspx" OnClick="lnkDireccionaModulo_Click">Vales Diesel</asp:LinkButton></li>                                  
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lnkCobro" runat="server" CommandName="~/CuentasCobrar/PrincipalCobro.aspx" OnClick="lnkDireccionaModulo_Click">Gestión Cobro</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkProcesosRevision" runat="server" CommandName="~/CuentasCobrar/FacturacionProceso.aspx" OnClick="lnkDireccionaModulo_Click">Procesos Revisión</asp:LinkButton></li>
+                            <%--<li><asp:LinkButton ID="lnkFacturaGlobal" runat="server" CommandName="~/CuentasCobrar/FacturaGlobal.aspx" OnClick="lnkDireccionaModulo_Click">Facturación Global</asp:LinkButton></li>--%>
+                            <%--<li><asp:LinkButton ID="lnkFacturaOtros" runat="server" CommandName="~/FacturacionElectronica/FacturacionOtros.aspx" OnClick="lnkDireccionaModulo_Click">Facturación Otros</asp:LinkButton></li>--%>
+                            <%--<li><asp:LinkButton ID="lkbFacturacionElectronicaSimplificada" runat="server" CommandName="~/FacturacionElectronica/FacturacionElectronicaSimplificada.aspx" OnClick="lnkDireccionaModulo_Click">Facturación x Servicio</asp:LinkButton></li>--%>
+                            <li>
+                                <asp:LinkButton ID="lnkAplicacionCxC" runat="server" CommandName="~/CuentasCobrar/AplicacionPago.aspx" OnClick="lnkDireccionaModulo_Click">Aplicación Pagos</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkNotaCredito" runat="server" CommandName="~/CuentasCobrar/NotaCredito.aspx" OnClick="lnkDireccionaModulo_Click">Nota Credito</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkSustitucionCxC" runat="server" CommandName="~/CuentasCobrar/SustitucionCxC.aspx" OnClick="lnkDireccionaModulo_Click">Sustitución CxC</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkTarifaCobro" runat="server" CommandName="~/Tarifas/Tarifas.aspx" OnClick="lnkDireccionaModulo_Click">Tarifas Cobro</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkSerieFolioCFDI" runat="server" CommandName="~/FacturacionElectronica33/SerieFolioCFDI.aspx" OnClick="lnkDireccionaModulo_Click">Serie Folio CFDI.</asp:LinkButton></li>
+                            <%--<li><asp:LinkButton ID="lkbCancelacionTimbreFiscal" runat="server" CommandName="~/FacturacionElectronica/CancelacionTimbreFiscal.aspx" OnClick="lnkDireccionaModulo_Click">Cancelación Timbre F.</asp:LinkButton></li>--%>
+                            <li>
+                                <asp:LinkButton ID="lnkReportesCuentasCobro" runat="server" CommandName="~/CuentasCobrar/PrincipalCobro.aspx" OnClick="lnkDireccionaModulo_Click">Reportes</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkSaldosDetalleCobro" runat="server" CommandName="~/CuentasCobrar/ReporteSaldosDetalle.aspx" OnClick="lnkDireccionaModulo_Click">Saldos Detalle</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkSaldosGlobalesCobro" runat="server" CommandName="~/CuentasCobrar/ReporteSaldosGlobales.aspx" OnClick="lnkDireccionaModulo_Click">Saldos Globales</asp:LinkButton></li>
+                                    <%--<li><asp:LinkButton ID="lnkSaldosPeriodoCobro" runat="server" CommandName="~/CuentasCobrar/ReporteSaldosPeriodo.aspx" OnClick="lnkDireccionaModulo_Click">Saldos Periodo</asp:LinkButton></li>--%>
+                                    <%--<li><asp:LinkButton ID="lkbReporteComprobante" runat="server" CommandName="~/FacturacionElectronica/ReporteComprobante.aspx" OnClick="lnkDireccionaModulo_Click">Comprobante</asp:LinkButton></li>--%>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lnkPago" runat="server" CommandName="~/CuentasPagar/PrincipalCuentasPagar.aspx" OnClick="lnkDireccionaModulo_Click">Cuentas por Pagar</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkPagos" runat="server" CommandName="~/CuentasPagar/FacturadoRecepcionPagosV10.aspx" OnClick="lnkDireccionaModulo_Click">Recepción de Pagos</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkRecepcionFacturaProv" runat="server" CommandName="~/CuentasPagar/RecepcionFactura.aspx" OnClick="lnkDireccionaModulo_Click">Recepción Facturas</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkFacturasProvedor" runat="server" CommandName="~/CuentasPagar/Facturado.aspx" OnClick="lnkDireccionaModulo_Click">Facturas Proveedor</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkAplicacionFacturasProv" runat="server" CommandName="~/CuentasPagar/AplicacionFacturasProveedor.aspx" OnClick="lnkDireccionaModulo_Click">Aplicación Pagos</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkAplicacionAnticipos" runat="server" CommandName="~/CuentasPagar/AnticiposProveedor.aspx" OnClick="lnkDireccionaModulo_Click">Anticipos Proveedor</asp:LinkButton></li>
+                            <!--<li>
+                                <asp:LinkButton ID="lknNotasCreditoCxP" runat="server" CommandName="~/CuentasPagar/NotasCreditoCxP.aspx" OnClick="lnkDireccionaModulo_Click">Notas de Crédito CxP</asp:LinkButton></li>-->
+                            <li>
+                                <asp:LinkButton ID="lnkFacturasDiesel" runat="server" CommandName="~/EgresoServicio/DieselFactura.aspx" OnClick="lnkDireccionaModulo_Click">Facturas Diesel</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkFacturasIave" runat="server" CommandName="~/Ruta/RutaCruces.aspx" OnClick="lnkDireccionaModulo_Click">Facturas IAVE</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkImportadorCxP" runat="server" CommandName="~/CuentasPagar/ImportadorCxP.aspx" OnClick="lnkDireccionaModulo_Click">Importador CxP</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkReportesCxP" runat="server" CommandName="~/CuentasPagar/PrincipalCuentasPagar.aspx" OnClick="lnkDireccionaModulo_Click">Reportes</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkSaldosDetalleProv" runat="server" CommandName="~/CuentasPagar/ReporteSaldosDetalles.aspx" OnClick="lnkDireccionaModulo_Click">Saldos Detalle</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkSaldosGlobalesProv" runat="server" CommandName="~/CuentasPagar/ReporteSaldosGlobales.aspx" OnClick="lnkDireccionaModulo_Click">Saldos Globales</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkSaldosPeriodoProv" runat="server" CommandName="~/CuentasPagar/ReporteSaldosPeriodo.aspx" OnClick="lnkDireccionaModulo_Click">Saldos Periodo</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteIntegracionCXP" runat="server" CommandName="~/CuentasPagar/ReporteIntegracionCuentasPagar.aspx" OnClick="lnkDireccionaModulo_Click">Integración CxP</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lnkAdministrativo" runat="server" CommandName="~/Administrativo/PrincipalAdministrativo.aspx" OnClick="lnkDireccionaModulo_Click">Administrativo</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkDepositosPagos" runat="server" CommandName="~/EgresoServicio/DepositosPendientes.aspx" OnClick="lnkDireccionaModulo_Click">Depósitos y Pagos</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkFichasIngreso" runat="server" CommandName="~/Administrativo/FichaIngreso.aspx" OnClick="lnkDireccionaModulo_Click">Fichas Ingreso</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkCuentasBancos" runat="server" CommandName="~/Administrativo/CuentaBancos.aspx" OnClick="lnkDireccionaModulo_Click">Cuentas Bancos</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkTipoCambio" runat="server" CommandName="~/Administrativo/TipoCambio.aspx" OnClick="lnkDireccionaModulo_Click">Tipo de Cambio</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkBancos" runat="server" CommandName="~/Administrativo/Bancos.aspx" OnClick="lnkDireccionaModulo_Click">Bancos</asp:LinkButton></li>
+                            <!--<li><asp:LinkButton ID="lnkbNomina" runat="server" CommandName="~/Nomina/Nomina.aspx" OnClick="lnkDireccionaModulo_Click" Visible="false">Nómina</asp:LinkButton></li>-->
+                            <!--<li><asp:LinkButton ID="lnkNomina12" runat="server" CommandName="~/Nomina/Nomina12.aspx" OnClick="lnkDireccionaModulo_Click">Nómina 1.2</asp:LinkButton></li>-->
+                            <li>
+                                <asp:LinkButton ID="lnkReportesAdministrativo" runat="server" CommandName="~/Administrativo/PrincipalAdministrativo.aspx" OnClick="lnkDireccionaModulo_Click">Reportes</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteEgreso" runat="server" CommandName="~/EgresoServicio/ReporteEgreso.aspx" OnClick="lnkDireccionaModulo_Click">Egresos</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteEgresoRechazado" runat="server" CommandName="~/EgresoServicio/DepositosRechazados.aspx" OnClick="lnkDireccionaModulo_Click">Egresos Rechazados</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteFI" runat="server" CommandName="~/Administrativo/ReporteFichaIngreso.aspx" OnClick="lnkDireccionaModulo_Click">Fichas Ingreso</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteFIAplicacion" runat="server" CommandName="~/Administrativo/ReporteFichaIngresoAplicacion.aspx" OnClick="lnkDireccionaModulo_Click">Fichas Aplicadas</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteCuentasEI" runat="server" CommandName="~/Administrativo/ReporteEgresoIngreso.aspx" OnClick="lnkDireccionaModulo_Click">Cuentas</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lnkConfiguracion" runat="server" CommandName="~/General/PrincipalGlobal.aspx" OnClick="lnkDireccionaModulo_Click">Configuración</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkMUnidades" runat="server" CommandName="~/General/Unidad.aspx" OnClick="lnkDireccionaModulo_Click">Unidades</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkMOperadores" runat="server" CommandName="~/General/Operador.aspx" OnClick="lnkDireccionaModulo_Click">Empleados</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkMClientesProveedores" runat="server" CommandName="~/General/CompaniaEmisorReceptor.aspx" OnClick="lnkDireccionaModulo_Click">Clientes Proveedores</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkMUbicaciones" runat="server" CommandName="~/General/Ubicacion.aspx" OnClick="lnkDireccionaModulo_Click">Ubicaciones</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkMKilometraje" runat="server" CommandName="~/General/Kilometraje.aspx" OnClick="lnkDireccionaModulo_Click">Kilometraje</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkMKilometrajeimportador" runat="server" CommandName="~/General/ImportadorKilometraje.aspx" OnClick="lnkDireccionaModulo_Click">Importador Kilometraje</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lnkControlPatio" runat="server" CommandName="~/ControlPatio/PrincipalControlPatio.aspx" OnClick="lnkDireccionaModulo_Click">Control Patio</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkControlAcceso" runat="server" CommandName="~/ControlPatio/ControlAcceso.aspx" OnClick="lnkDireccionaModulo_Click">Control Acceso</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkOperacionPatio" runat="server" CommandName="~/ControlPatio/OperacionPatio.aspx" OnClick="lnkDireccionaModulo_Click">Operacion Patio</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkZonaPatio" runat="server" CommandName="~/ControlPatio/ZonaPatio.aspx" OnClick="lnkDireccionaModulo_Click">Zona Patio</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkReportesControlPatio" runat="server" CommandName="~/ControlPatio/PrincipalControlPatio.aspx" OnClick="lnkDireccionaModulo_Click">Reportes</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteCajon" runat="server" CommandName="~/ControlPatio/ReporteCajones.aspx" OnClick="lnkDireccionaModulo_Click">Cajones</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteAnden" runat="server" CommandName="~/ControlPatio/ReporteAndenesAhora.aspx" OnClick="lnkDireccionaModulo_Click">Andenes</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkUnidadesDentro" runat="server" CommandName="~/ControlPatio/UnidadesDentro.aspx" OnClick="lnkDireccionaModulo_Click">Unidades</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteHistorialCajones" runat="server" CommandName="~/ControlPatio/ReporteHistorialCajones.aspx" OnClick="lnkDireccionaModulo_Click">Historial Cajones</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="lnkUnidadPatio" runat="server" CommandName="~/ControlPatio/UnidadPatio.aspx" OnClick="lnkDireccionaModulo_Click">Unidad Patio</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkOperadorPatio" runat="server" CommandName="~/ControlPatio/OperadorPatio.aspx" OnClick="lnkDireccionaModulo_Click">Operador Patio</asp:LinkButton></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lnkAlmacen" runat="server" CommandName="~/Almacen/PrincipalAlmacen.aspx" OnClick="lnkDireccionaModulo_Click">Almacén</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkProductoAlmacen" runat="server" CommandName="~/Almacen/Producto.aspx" OnClick="lnkDireccionaModulo_Click">Producto</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkOrdenCompra" runat="server" CommandName="~/Almacen/OrdenCompra.aspx" OnClick="lnkDireccionaModulo_Click">Orden Compra</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkRequisicionServicio" runat="server" CommandName="~/Almacen/RequisicionServicio.aspx" OnClick="lnkDireccionaModulo_Click">Requisicion Servicio</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkReportesAlmacen" runat="server" CommandName="~/Almacen/PrincipalAlmacen.aspx" OnClick="lnkDireccionaModulo_Click">Reportes</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkRequisicionP" runat="server" CommandName="~/Almacen/RequisicionesPendientes.aspx" OnClick="lnkDireccionaModulo_Click">R. Pendientes</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkOrdenCompraPendiente" runat="server" CommandName="~/Almacen/OrdenesCompraPendientes.aspx" OnClick="lnkDireccionaModulo_Click">O.C. Pendientes</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkExistenciasAlmacen" runat="server" CommandName="~/Almacen/ExistenciasAlmacen.aspx" OnClick="lnkDireccionaModulo_Click">Existencias Almacén</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkTrazabilidadInventario" runat="server" CommandName="~/Almacen/ReporteTrazabilidadInventario.aspx" OnClick="lnkDireccionaModulo_Click">Trazabilidad Inventario</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lnkMantenimiento" runat="server" CommandName="~/Mantenimiento/PrincipalMantenimiento.aspx" OnClick="lnkDireccionaModulo_Click">Mantenimiento</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkOrdenTrabajo" runat="server" CommandName="~/Mantenimiento/OrdenTrabajo.aspx" OnClick="lnkDireccionaModulo_Click">Orden Trabajo</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkActividades" runat="server" CommandName="~/Mantenimiento/ActividadesTaller.aspx" OnClick="lnkDireccionaModulo_Click">Actividades Taller</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkActividad" runat="server" CommandName="~/Mantenimiento/Actividad.aspx" OnClick="lnkDireccionaModulo_Click">Actividad</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkLecturas" runat="server" CommandName="~/Mantenimiento/ImportacionLecturasDiesel.aspx" OnClick="lnkDireccionaModulo_Click">Lecturas Diesel</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkReportesMantenimiento" runat="server" CommandName="~/Mantenimiento/PrincipalMantenimiento.aspx" OnClick="lnkDireccionaModulo_Click">Reportes</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkVisorOrdenTrabajo" runat="server" CommandName="~/Mantenimiento/VisorOrdenTrabajo.aspx" OnClick="lnkDireccionaModulo_Click">Orden Trabajo</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lnkEcosistema" runat="server" CommandName="~/Operacion/PrincipalEcosistema.aspx" OnClick="lnkDireccionaModulo_Click">Ecosystema</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkPublicaciones" runat="server" CommandName="~/Operacion/Publicaciones.aspx" OnClick="lnkDireccionaModulo_Click">Publicaciones</asp:LinkButton></li>
+                        </ul>
+                    </li>
+                    <!--Facturacion Electrónica-->
+                    <li>
+                        <asp:LinkButton ID="lnkFacturacionElectronica33" runat="server" CommandName="~/FacturacionElectronica33/PrincipalFacturacionElectronica33.aspx" OnClick="lnkDireccionaModulo_Click">Facturacion v3.3</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkFacturacionOtrosV33" runat="server" CommandName="~/FacturacionElectronica33/FacturacionOtrosV33.aspx" OnClick="lnkDireccionaModulo_Click">Facturación de Otros</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkFacturaGlobalV33" runat="server" CommandName="~/FacturacionElectronica33/FacturaGlobalV33.aspx" OnClick="lnkDireccionaModulo_Click">Facturación Global</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkFacturacionSimplificadaV33" runat="server" CommandName="~/FacturacionElectronica33/FacturacionSimplificadaV33.aspx" OnClick="lnkDireccionaModulo_Click">Facturación x Servicio</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkNomina1233" runat="server" CommandName="~/Nomina/Nomina1233.aspx" OnClick="lnkDireccionaModulo_Click">Nomina</asp:LinkButton></li>
+                            <%--<li><asp:LinkButton ID="lnkCancelacionTF" runat="server" CommandName="~/FacturacionElectronica33/CancelacionTimbreFiscalV33.aspx" OnClick="lnkDireccionaModulo_Click">Cancelación Timbre F.</asp:LinkButton></li>--%>
+                            <li>
+                                <asp:LinkButton ID="lnkCancelacionCFDI" runat="server" CommandName="~/FacturacionElectronica33/CancelacionCFDI.aspx" OnClick="lnkDireccionaModulo_Click">Cancelación CFDI</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkCFDIRecepcionPagosV33" runat="server" CommandName="~/FacturacionElectronica33/ComprobanteRecepcionPagosV10.aspx" OnClick="lnkDireccionaModulo_Click">CFDI Recepción Pagos</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkReportesFE33" runat="server" CommandName="~/FacturacionElectronica33/ReporteComprobanteV33.aspx" OnClick="lnkDireccionaModulo_Click">Reportes</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteComprobanteV33" runat="server" CommandName="~/FacturacionElectronica33/ReporteComprobanteV33.aspx" OnClick="lnkDireccionaModulo_Click">Comprobantes</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteNomina12" runat="server" CommandName="~/Nomina/ReporteNomina12.aspx" OnClick="lnkDireccionaModulo_Click">Nómina 1.2</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteNominaEmpleado" runat="server" CommandName="~/Nomina/ReporteNominaempleado.aspx" OnClick="lnkDireccionaModulo_Click">Nómina Empleados</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkReporteComplementoPagos" runat="server" CommandName="~/FacturacionElectronica33/ReporteComplementoPagos.aspx" OnClick="lnkDireccionaModulo_Click">Complemento Pagos</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--Soporte-->
+                    <li>
+                        <asp:LinkButton ID="lnkSoporte" runat="server" CommandName="~/Soporte/SoporteTecnico.aspx" OnClick="lnkDireccionaModulo_Click">Soporte</asp:LinkButton>
+                        <ul>
+                            <li>
+                                <asp:LinkButton ID="lnkSoporteTecnico" runat="server" CommandName="~/Soporte/SoporteTecnico.aspx" OnClick="lnkDireccionaModulo_Click">Soporte Tecnico</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkEliminacionValeDiesel" runat="server" CommandName="~/Soporte/EliminacionValeDiesel.aspx" OnClick="lnkDireccionaModulo_Click">Eliminacion Vale Diesel</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkCambioOperador" runat="server" CommandName="~/Soporte/CambioOperador.aspx" OnClick="lnkDireccionaModulo_Click">Cambio de Operador</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkSustitucioncxP" runat="server" CommandName="~/Soporte/SustitucionFacturaCxP.aspx" OnClick="lnkDireccionaModulo_Click">Sustitucion CxP</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkDepositoTesoreria" runat="server" CommandName="~/Soporte/DepositoTesoreria.aspx" OnClick="lnkDireccionaModulo_Click">Deposito Tesoreria</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkCertificadoDigital" runat="server" CommandName="~/FacturacionElectronica/CertificadoDigital.aspx" OnClick="lnkDireccionaModulo_Click">Certificado D.</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkSeguridad" runat="server" CommandName="~/Seguridad/Usuario.aspx" OnClick="lnkDireccionaModulo_Click">Seguridad</asp:LinkButton>
+                                <ul>
+                                    <li>
+                                        <asp:LinkButton ID="lnkUsuario" runat="server" CommandName="~/Seguridad/Usuario.aspx" OnClick="lnkDireccionaModulo_Click">Usuario</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkPerfilSeguridad" runat="server" CommandName="~/Seguridad/PerfilSeguridad.aspx" OnClick="lnkDireccionaModulo_Click">Perfil S.</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkSeguridadPerfilUsuario" runat="server" CommandName="~/Seguridad/SeguridadPerfilUsuario.aspx" OnClick="lnkDireccionaModulo_Click">Seguridad Perfil</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkPerfilSeguridadUsuario" runat="server" CommandName="~/Seguridad/SeguridadPerfilUsuario.aspx" OnClick="lnkDireccionaModulo_Click">Seguridad Usuario</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="lnkReporteSoporte" runat="server" CommandName="~/Soporte/ReporteSoporteTecnico.aspx" OnClick="lnkDireccionaModulo_Click">Reportes</asp:LinkButton></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <nav id="mapa_sitio">
+                <a href="#">
+                    <asp:Image runat="server" ID="imgSiteMap" ImageUrl="~/Image/SiteMap.png" />
+                    SiteMap:
+                </a>
+                <asp:SiteMapPath ID="smpMapaSitio" runat="server" PathSeparator="»">
+                    <PathSeparatorStyle ForeColor="#333333" />
+                    <RootNodeTemplate>
+                        <asp:LinkButton ID="lkbTituloRoot" runat="server" CssClass="mapa_sitio_nodo_raiz" Text='<%# Eval("Title") %>' CommandName='<%# Eval("url", "{0}") %>' OnClick="lnkDireccionaModulo_Click" ToolTip='<%# Eval("description", "{0}") %>' CausesValidation="False" />
+                    </RootNodeTemplate>
+                    <NodeTemplate>
+                        <asp:LinkButton ID="lkbTitulo" runat="server" CssClass="mapa_sitio_nodo" Text='<%# Eval("Title") %>' ToolTip='<%# Eval("description", "{0}") %>' CommandName='<%# Eval("url", "{0}") %>' OnClick="lnkDireccionaModulo_Click" CausesValidation="False" />
+                    </NodeTemplate>
+                    <CurrentNodeTemplate>
+                        <asp:Label ID="lblTitulo" runat="server" CssClass="mapa_sitio_nodo_seleccionado" Text='<%# Eval("Title") %>' ToolTip='<%# Eval("description", "{0}") %>' />
+                    </CurrentNodeTemplate>
+                </asp:SiteMapPath>
+            </nav>
+            <asp:UpdatePanel ID="upUsuarioAutenticado" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <tectos:wucUsuarioAutenticado ID="UsuarioAutenticado" runat="server" OnClickCambiarContrasena="UsuarioAutenticado_ClickCambiarContrasena" OnClickCambiaPerfil="UsuarioAutenticado_ClickCambiaPerfil" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            <div id="ContenidoForma">
+                <asp:ContentPlaceHolder ID="content1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <footer style="height: 10%;">
+                <section class="footer_section_izquierda">
+                    <p>This application is managed by ARI TECTOS S.A. de C.V. | 2014 - 2019 TECTOS ©. All rights reserved</p>
+                    <nav>
+                        <ul class="footer_menu">
+                            <li><a href="#">Politica de Privacidad |</a></li>
+                            <li><a href="#">Condiciones de Uso |</a></li>
+                            <li><a href="#">Empieza a Usarnos |</a></li>
+                            <li><a href="#">Soporte Técnico |</a></li>
+                        </ul>
+                    </nav>
+                </section>
+                <section class="footer_section_derecha">
+                    <asp:Image runat="server" ID="imgIcono" ImageUrl="~/Image/TectosIcono.png" />
+                    <nav>
+                        <ul class="footer_menu">
+                            <li><a href="#">www.tectos.com.mx |</a></li>
+                            <li><a href="#">File Bugs |</a></li>
+                            <li><a href="#">Join us |</a></li>
+                        </ul>
+                    </nav>
+                </section>
+            </footer>
+        </div>
+        <div id="contenedorVentanaActualizaContrasena" class="modal">
+            <div id="ventanaActualizaContrasena" class="contenedor_ventana_confirmacion">
+                <asp:UpdatePanel ID="upucCambioContrasena" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <tectos:wucCambioContrasena ID="ucCambioContrasena" runat="server" OnClickCambiarContrasena="ucCambioContrasena_ClickCambiarContrasena" OnClickCancelar="ucCambioContrasena_ClickCancelar" Contenedor="#ventanaActualizaContrasena" />
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="UsuarioAutenticado" />
+                    </Triggers>
+                </asp:UpdatePanel>
+            </div>
+        </div>
+        <div id="contenedorVentanaActualizaPerfil" class="modal">
+            <div id="ventanaActualizaPerfil" class="contenedor_ventana_confirmacion_arriba">
+                <asp:UpdatePanel ID="upucPerfilUsuario" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <tectos:wucPerfilUsuario ID="ucPerfilUsuario" runat="server" OnClickCerrarVentana="ucPerfilUsuario_ClickCerrarVentana" />
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="UsuarioAutenticado" />
+                    </Triggers>
+                </asp:UpdatePanel>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

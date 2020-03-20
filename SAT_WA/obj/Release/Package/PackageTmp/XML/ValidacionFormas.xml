@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ValidacionForma endMessage=", debe mantener la sesión en una sola pestaña.">
+  <!--Definición de Formas por Esquema-->
+  <Operacion>
+    <Servicio title="Documentacion de Servicio"  description="Usted no esta en Documentacion de Servicio" />
+    <VisorDocumentacion title="Reporte de Servicios"  description="Usted no esta en el Reporte de Servicios." />
+    <AutorizacionDeposito title="Autorizacion Deposito"  description="Usted no esta en el " />
+    <Despacho title="Despacho"  description="Usted no esta en el Despacho del servicio" />
+    <DespachoSimplificado title="Despacho por Unidad"  description="Usted no esta en el Despacho Simplificado" />
+    <GeneradorViajes title="Generador de Viajes"  description="Usted no esta en el Generador de Viajes" />
+    <Planeacion title="Planeación Integral"  description="Usted no esta en Planeación" />
+    <AsignacionRecurso title="Asignación"  description="Usted no esta en la Asignación de recursos al servicio" />
+    <ReporteMovimientos title="Visor Movimientos"  description="Usted no esta en la Visualizacion de movimientos" />
+    <ReporteEventos title="Visor Eventos"  description="Usted no esta en la Visualizacion de eventos" />
+    <ReporteBalanceUnidades title="Balance Unidades"  description="Usted no esta en la Visualización del estatus total de unidades" />
+    <ReporteIngresoUnidad title="Ingreso Unidad"  description="Usted no esta en la Visualización el ingreso por unidad" />
+    <ReporteBitacoraEventos title="Bitacora Eventos"  description="Usted no esta en la Bitacora de Eventos" />
+    <ReporteIngresoServicioPeriodo title="Visor Indicadores"  description="Usted no esta en el Visor de Indicadores" />
+    <ReporteDevoluciones title="Devoluciones"  description="Usted no esta en Devoluciones" />
+  </Operacion>
+</ValidacionForma>

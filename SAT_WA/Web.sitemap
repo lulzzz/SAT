@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="Principal.aspx" title="Principal"  description="Pagina principal del sitio">
+    <siteMapNode url="~/Documentacion/PrincipalDocumentacion.aspx" title="Documentación"  description="Pagina Principal Modulo Documentación"/>
+
+    <siteMapNode url="~/Operacion/PrincipalOperacion.aspx" title="Operación"  description="Pagina Principal Modulo Operación">
+      <siteMapNode url="~/Documentacion/Servicio.aspx" title="Documentacion de Servicio"  description="Documentacion de Servicio" />
+      <siteMapNode url="~/Documentacion/VisorDocumentacion.aspx" title="Reporte de Servicios"  description="Permite visualizar los servicios en cualquier estatus" />
+      <siteMapNode url="~/EgresoServicio/AutorizacionDeposito.aspx" title="Autorizacion Deposito"  description="Permite autorizar los depositos solicitados" />
+      <siteMapNode url="~/Operacion/Despacho.aspx" title="Despacho"  description="Despacho del servicio" />
+      <siteMapNode url="~/Operacion/DespachoSimplificado.aspx" title="Despacho por Unidad"  description="Despacho del servicio" />
+      <siteMapNode url="~/Operacion/GeneradorViajes.aspx" title="Generador de Viajes"  description="Generador de Viajes" />
+      <siteMapNode url="~/Operacion/Planeacion.aspx" title="Planeación Integral"  description="Planeación de Servicios y Asignación de Recursos" />
+      <siteMapNode url="~/Operacion/AsignacionRecurso.aspx" title="Asignación"  description="Asignación de recursos al servicio" />
+      <siteMapNode url="~/Operacion/ReporteMovimientos.aspx" title="Visor Movimientos"  description="Visualizacion de movimientos" />
+      <siteMapNode url="~/Operacion/ReporteEventos.aspx" title="Visor Eventos"  description="Visualizacion de eventos" />
+      <siteMapNode url="~/Operacion/ReporteBalanceUnidades.aspx" title="Balance Unidades"  description="Visualización del estatus total de unidades" />
+      <siteMapNode url="~/Operacion/ReporteIngresoUnidad.aspx" title="Ingreso Unidad"  description="Visualización el ingreso por unidad" />
+      <siteMapNode url="~/Operacion/ReporteBitacoraEventos.aspx" title="Bitacora Eventos"  description="Visualización de eventos por servcicio" />
+      <siteMapNode url="~/FacturacionElectronica/ReporteIngresoServicioPeriodo.aspx" title="Visor Indicadores"  description="Visualizacion de indicadores" />
+      <siteMapNode url="~/Operacion/ReporteDevoluciones.aspx" title="Devoluciones"  description="Visualización el ingreso por unidad" />
+    </siteMapNode>
+
+    <siteMapNode url="~/Liquidacion/PrincipalLiquidaciones.aspx" title="Liquidación"  description="Pagina Principal Módulo Liquidación">
+      <siteMapNode url="~/Tarifas/TarifasPago.aspx" title="Tarifas Pago"  description="Permite generar tarifas de pago" />
+      <siteMapNode url="~/Liquidacion/Liquidacion.aspx" title="Liquidacion Recurso"  description="Permite generar liquidaciones a distintos tipos de recursos" />
+      <siteMapNode url="~/Liquidacion/LiquidacionSimplificada.aspx" title="Liquidacion Recurso"  description="Permite generar liquidaciones a distintos tipos de recursos" />
+      <siteMapNode url="~/Liquidacion/CobroRecurrente.aspx" title="Cobro Recurrente"  description="Cobro Recurrente" />
+      <siteMapNode url="~/Liquidacion/ControlAnticipos.aspx" title="Control Anticipos"  description="Control de Anticipos" />
+      <siteMapNode url="~/Liquidacion/ReporteLiquidacion.aspx" title="Reporte Liquidacion"  description="Permite visualizar las liquidaciones pendientes" />
+      <siteMapNode url="~/Liquidacion/ReportePagoMovimientos.aspx" title="Reporte Pago a Operadores"  description="Permite visualizar los movimientos en vacío y servicios, asi como los pagos asignados a los mismos." />
+      <siteMapNode url="~/Liquidacion/ReporteControlAnticipos.aspx" title="Reporte Control Anticipos"  description="Permite visualizar anticipos que se realizaron con importador control anticipos." />
+      <siteMapNode url="~/EgresoServicio/ReporteDepositos.aspx" title="Reporte Depositos"  description="Nos permite visualizar los depositos emitidos" />
+      <siteMapNode url="~/EgresoServicio/ReporteValesDeDiesel.aspx" title="Reporte Vales Diesel"  description="Permite visualizar los vales de diesel emitidos" />
+      <siteMapNode url="~/Documentacion/AnticiposProgramados.aspx" title="Programación de anticipos"  description="Permite registrar anticipos programados" />
+    </siteMapNode>
+    <siteMapNode url="~/Mantenimiento/PrincipalMantenimiento.aspx" title="Mantenimiento"  description="Pagina Principal Módulo Mantenimiento">
+      <siteMapNode url="~/Mantenimiento/OrdenTrabajo.aspx" title="Orden Trabajo"  description="Permite dar de alta ordenes de trabajo" />
+      <siteMapNode url="~/Mantenimiento/ActividadesTaller.aspx" title="Actividades Taller"  description="Permite gestionar las actividades pendientes del taller" />
+      <siteMapNode url="~/Mantenimiento/Actividad.aspx" title="Actividad"  description="Permite dar de alta las actividades" />
+      <siteMapNode url="~/Mantenimiento/VisorOrdenTrabajo.aspx" title="Visor Orden Trabajo"  description="Permite visualizar todas las ordenes de trabajo generadas" />
+      <siteMapNode url="~/Mantenimiento/ImportacionLecturasDiesel.aspx" title="Lecturas Diesel"  description="Permite importar las Lecturas de Diesel desde Archivos XML" />
+    </siteMapNode>
+
+    <siteMapNode url="~/Almacen/PrincipalAlmacen.aspx" title="Almacén"  description="Pagina Principal Modulo Almácen">
+      <siteMapNode url="~/Almacen/OrdenCompra.aspx" title="Orden de Compra"  description="Encabezado de una orden de compra."/>
+      <siteMapNode url="~/Almacen/RequisicionServicio.aspx" title="Requisicion Servicio"  description="Permite la liga de Requisiciones con los Viajes."/>
+      <siteMapNode url="~/Almacen/RequisicionesPendientes.aspx" title="Requisiciones Pendientes"  description="Muestra las lista de requisiciones que estan pendientes por abastecer."/>
+      <siteMapNode url="~/Almacen/RequisicionSurtido.aspx" title="Requisición Surtido"  description="Permite abastecer las requisiciones."/>
+      <siteMapNode url="~/Almacen/OrdenesCompraPendientes.aspx" title="O.C. Pendientes"  description="Permite visualizar el reporte de ordenes de compras pendientes por abastecer y solicitadas"/>
+      <siteMapNode url="~/Almacen/ExistenciasAlmacen.aspx" title="Existencias Almacén"  description="Permite visualizar el reporte de existencias de almacén"/>
+      <siteMapNode url="~/Almacen/Producto.aspx" title="Producto"  description="Permite almacenar el Catalogo de producto."/>
+      <siteMapNode url="~/Almacen/ReporteTrazabilidadInventario.aspx" title="Reporte Trazabilidad"  description="Permite visualizar el reporte del comportamiento del inventario."/>
+    </siteMapNode>
+
+
+    <siteMapNode url="~/Administrativo/PrincipalAdministrativo.aspx" title="Administrativo"  description="Pagina Principal Modulo Administrativo">
+      <siteMapNode url="~/EgresoServicio/DepositosPendientes.aspx" title="Depositos Tesoreria"  description="Permite marcar como depositados los " />
+      <siteMapNode url="~/EgresoServicio/ReporteEgreso.aspx" title="Reporte Egresos"  description="Permite visualizar el egreso de las distintas cuentas" />
+      <siteMapNode url="~/Administrativo/FichaIngreso.aspx" title="Fichas Ingreso"  description="Registra las fichas de ingreso de la empresa" />
+      <siteMapNode url="~/Administrativo/ReporteFichaIngreso.aspx" title="Reporte Fichas Ingreso"  description="Visualiza las fichas de ingreso de la empresa" />
+      <siteMapNode url="~/Administrativo/ReporteFichaIngresoAplicacion.aspx" title="Reporte Fichas Aplicadas"  description="Visualiza las fichas aplicadas de la empresa" />
+      <siteMapNode url="~/Administrativo/Bancos.aspx" title="Bancos"  description="Administra bancos del sistema" />
+      <siteMapNode url="~/Administrativo/CuentaBancos.aspx" title="Cuenta Bancos"  description="Administra las cuentas bancarias" />
+      <siteMapNode url="~/Administrativo/TipoCambio.aspx" title="Tipo de Cambio"  description="Administra los Tipos de Cambio" />
+      <siteMapNode url="~/Nomina/Nomina.aspx" title="Nomina"  description="Administra la nomina de los empleados de la empresa" />
+      <siteMapNode url="~/Nomina/ReporteNomina.aspx" title="Reporte Nomina"  description="Crea un reporte de las nominas dadas de alta." />
+      <siteMapNode url="~/Nomina/ReporteNomina12.aspx" title="Reporte Nomina 1.2"  description="Crea un reporte de las nominas dadas de alta en versón 1.2." />
+      <siteMapNode url="~/Nomina/ReporteNominaEmpleado.aspx" title="Reporte Nómina de Empleados"  description="Crea un reporte de las nominas de empleados dadas de alta." />
+      <siteMapNode url="~/Administrativo/ReporteEgresoIngreso.aspx" title="Reporte Egreso-Ingreso de Cuentas"  description="Visualiza el reporte de Egresos e Ingresos registrados" />
+      <siteMapNode url="~/EgresoServicio/DepositosRechazados.aspx" title="Reporte Egreso Rechazados"  description="Viualiza el reporte de Egresos Rechazados" />
+    </siteMapNode>
+
+    <siteMapNode url="~/CuentasPagar/PrincipalCuentasPagar.aspx" title="Cuentas Pagar"  description="Pagina Principal Cuentas Pagar">
+      <siteMapNode url="~/CuentasPagar/RecepcionFactura.aspx" title="Recepcion Facturas"  description="Reciba las facturas de sus proveedores" />
+      <siteMapNode url="~/CuentasPagar/FacturadoRecepcionPagosV10.aspx" title="Recepción de Pagos"  description="Administre las facturas de Pago" />
+      <siteMapNode url="~/CuentasPagar/EntregaFactura.aspx" title="Entrega Factura"  description="Entregue las facturas recibidas durante el día" />
+      <siteMapNode url="~/CuentasPagar/Facturado.aspx" title="Factura Proveedor"  description="Visualice las facturas de su proveedor" />
+      <siteMapNode url="~/EgresoServicio/DieselFactura.aspx" title="Facturas Diesel"  description="Comprueba las facturas de diesel contra los vales emitidos" />
+      <siteMapNode url="~/Ruta/RutaCruces.aspx" title="Facturas Iave"  description="Comprueba las facturas de caseta Iave contra las casetas Iave emitidos" />
+      <siteMapNode url="~/CuentasPagar/AplicacionFacturasProveedor.aspx" title="Factura Proveedor"  description="Visualice las facturas de su proveedor" />
+      <siteMapNode url="~/CuentasPagar/AnticiposProveedor.aspx" title="Anticipos Proveedor"  description="Visualice las facturas de su proveedor" />
+      <siteMapNode url="~/CuentasPagar/ReporteSaldosDetalles.aspx" title="Saldos Detalle"  description="Muestra los saldos a nivel servicio" />
+      <siteMapNode url="~/CuentasPagar/ReporteSaldosGlobales.aspx" title="Saldos Globales"  description="Muestra los saldos a nivel proveedor" />
+      <siteMapNode url="~/CuentasPagar/ReporteSaldosPeriodo.aspx" title="Saldos Periodo"  description="Muestra los saldos de acuerdo a su fecha de vencimiento" />
+      <siteMapNode url="~/CuentasPagar/ReporteIntegracionCuentasPagar.aspx" title="Integración CxP"  description="Muestra los pagos confirmados y programados a facturas de proveedor" />
+    </siteMapNode>
+
+    <siteMapNode url="~/CuentasCobrar/PrincipalCobro.aspx" title="Gestión Cobro"  description="Pagina Principal para la gestion de cuentas por cobrar">
+      <siteMapNode url="~/Tarifas/Tarifas.aspx" title="Tarifas Cobro"  description="Administracion de tarifas de cobro a clientes" />
+      <siteMapNode url="~/CuentasCobrar/FacturaGlobal.aspx" title="Facturación Global"  description="Armado de facturas globales" />
+      <siteMapNode url="~/FacturacionElectronica/FacturacionOtros.aspx" title="Facturación Otros"  description="Genera facturas por conceptos distintos a servicios" />
+      <siteMapNode url="~/FacturacionElectronica/FacturacionElectronicaSimplificada.aspx" title="Facturación x Servicio"  description="Genera facturas de servicios terminados" />
+      <siteMapNode url="~/CuentasCobrar/AplicacionPago.aspx" title="Aplicacion Pagos"  description="Aplicación de pagos a facturas" />
+      <siteMapNode url="~/CuentasCobrar/ReporteSaldosDetalle.aspx" title="Saldos Detalle"  description="Muestra los saldos a nivel servicio" />
+      <siteMapNode url="~/CuentasCobrar/ReporteSaldosGlobales.aspx" title="Saldos Globales"  description="Muestra los saldos a nivel cliente" />
+      <siteMapNode url="~/CuentasCobrar/ReporteSaldosPeriodo.aspx" title="Saldos Periodo"  description="Muestra los saldos de acuerdo a su fecha de vencimiento" />
+      <siteMapNode url="~/CuentasCobrar/NotaCredito.aspx" title ="Nota Credito" description ="Nota de Credito"/>
+    </siteMapNode>
+
+    <siteMapNode url="~/General/PrincipalGlobal.aspx" title="Configuración"  description="Pagina Principal Modulo Configuración">
+      <siteMapNode url="~/General/CompaniaEmisorReceptor.aspx" title="Compañia"  description="Administracion de compañias"/>
+      <siteMapNode url="~/General/Producto.aspx" title="Producto"  description="Productos"/>
+      <siteMapNode url="~/General/Ubicacion.aspx" title="Ubicaciones"  description="Administra tus ubicaciones"/>
+      <siteMapNode url="~/General/Kilometraje.aspx" title="Kilometraje"  description="Administra su kilometraje"/>
+      <siteMapNode url ="~/General/ImportadorKilometraje.aspx" title ="Importador de kilometraje" description ="Importador de Kilometraje"/>
+      <siteMapNode url="~/Ruta/Caseta.aspx" title="Caseta"  description="Administracion del catalogo de Casetas"/>
+      <siteMapNode url="~/General/ProveedorTipoServicio.aspx" title="Proveedor Tipo Servicio"  description="Administra los diferentes tipos de servicio de los proveedores."/>
+      <siteMapNode url="~/General/TipoVencimiento.aspx" title="TipoVencimiento"  description="Administra los tipos de vencimiento"/>
+      <siteMapNode url="~/General/ClasificacionTipo.aspx" title="Tipo Clasificación"  description="Almacenar el catálogo de tipo de clasificación"/>
+      <siteMapNode url="~/General/Operador.aspx" title="Empleados"  description="Administra a los operadores de la empresa"/>
+      <siteMapNode url="~/General/ReporteVencimientos.aspx" title="Reporte Vencimientos"  description="Permite visualizar los vencimientos de recursos"/>
+      <siteMapNode url="~/Tarifas/TipoCargo.aspx" title="Concepto Cobro"  description="Administracion de los conceptos de cobro de la aplicacion" />
+      <siteMapNode url="~/EgresoServicio/PrecioCombustible.aspx" title="Precio Combustible"  description="Asigna precios de combustible en base a periodos y regiones" />
+      <siteMapNode url="~/Liquidacion/TipoPago.aspx" title="TipoPago"  description="Administra los diferentes tipos de pago de liquidaciones" />
+      <siteMapNode url="~/Liquidacion/TipoCobroRecurrente.aspx" title="Tipo Cobro Recurrente"  description="Administra los diferentes tipos de cobro recurrentes" />
+      <siteMapNode url="~/General/Unidad.aspx" title="Unidad"  description="Almacenar el catálogo de Unidades"/>
+      <siteMapNode url="~/General/Notificacion.aspx" title="Notificacion"  description="Envió correo eletrónico de acuerdo al evnto establecido"/>
+    </siteMapNode>
+
+    <siteMapNode url ="~/FacturacionElectronica33/PrincipalFacturacionElectronica33.aspx" title="Facturación Electrónica v3.3" description ="Página Principal Módulo Facturación Electrónica">
+      <siteMapNode url ="~/FacturacionElectronica33/ComprobanteV33.aspx" title ="Comprobantes Versión 3.3" description ="Comprobantes v3.3"/>
+      <siteMapNode url ="~/FacturacionElectronica33/FacturacionOtrosV33.aspx" title ="Facturación Otros v3.3" description ="Facturación Otros v3.3"/>
+      <siteMapNode url ="~/FacturacionElectronica33/FacturaGlobalV33.aspx" title ="Facturación Global v3.3" description ="Facturación Global v3.3"/>
+      <siteMapNode url ="~/FacturacionElectronica33/FormaPago.aspx" title ="Forma de Pago" description ="Forma de Pagos"/>
+      <siteMapNode url ="~/FacturacionElectronica33/ReporteComprobanteV33.aspx" title ="Reporte Comprobante v3.3" description="Reporte Comprobante"/>
+      <siteMapNode url ="~/FacturacionElectronica33/SerieFolioCFDI.aspx" title ="Serie Folio CFDI" description ="Manejo de Folios por Serie y Versión."/>
+      <siteMapNode url ="~/FacturacionElectronica33/TipoComprobante.aspx" title ="Forma de Pago" description ="Forma de Pagos"/>
+      <siteMapNode url ="~/Nomina/Nomina1233.aspx" title ="Nómina 1.2 v3.3" description ="Nómina 1.2 v3.3"/>
+      <siteMapNode url ="~/FacturacionElectronica33/ComprobanteRecepcionPagosV10.aspx" title="CFDI Recepción Pagos" description="CFDI Recepción Pagos"/>
+      <siteMapNode url ="~/FacturacionElectronica33/CancelacionTimbreFiscalV33.aspx" title ="Cancelación Timbre F." description ="Cancelación Timbre F."/>
+      <siteMapNode url ="~/FacturacionElectronica33/CancelacionCFDI.aspx" title ="Cancelación CFDI" description ="Cancelación CFDI"/>
+    </siteMapNode>
+
+    <siteMapNode url="~/ControlEvidencia/PrincipalEvidencias.aspx" title="Control Evidencia"  description="Pagina Principal Modulo Control Evidencia">
+      <siteMapNode url="~/ControlEvidencia/HojaInstruccion.aspx" title="Hoja de Instruccion" description="Gestiona las hojas de instruccion."/>
+      <siteMapNode url="~/ControlEvidencia/RecepcionDocumento.aspx" title="Recepcion de Documento" description="Gestiona la recepción de los documentos."/>
+      <siteMapNode url="~/ControlEvidencia/RecepcionPaquetes.aspx" title="Recepcion de Paquetes" description="Gestiona la recepción de los paquetes."/>
+      <siteMapNode url="~/ControlEvidencia/ArmadoEnvioPaquetes.aspx" title="Armado de Paquetes" description="Gestiona el armado de los paquetes."/>
+      <siteMapNode url="~/ControlEvidencia/VisorDocumentos.aspx" title="Visor de Documentos" description="Gestiona el reporte de los documentos."/>
+      <siteMapNode url="~/ControlEvidencia/VisorHojaInstruccion.aspx" title="Visor de Hojas de Instrucción" description="Gestiona el reporte de las hojas de instrucción."/>
+    </siteMapNode>
+    <siteMapNode url="~/ControlPatio/PrincipalControlPatio.aspx" title="Control Patio"  description="Pagina Principal Control de Patio">
+      <siteMapNode url="~/ControlPatio/ControlAcceso.aspx" title="Control Acceso"  description="Control de acceso a patio" />
+      <siteMapNode url="~/ControlPatio/OperacionPAtio.aspx" title="Operacion Patio"  description="Permite asignar cajones y andenes" />
+      <siteMapNode url="~/ControlPatio/ZonaPatio.aspx" title="Zona Patio"  description="Administra las zonas disponibles en el layout de patio" />
+      <siteMapNode url="~/ControlPatio/ReporteHistorialUnidades.aspx" title="Historial Unidades"  description="Historial de Unidades" />
+      <siteMapNode url="~/ControlPatio/UnidadesDentro.aspx" title="Unidades Dentro"  description="Unidades dentro de Patio" />
+      <siteMapNode url="~/ControlPatio/ReporteHistorialCajones.aspx" title="Historial Cajones"  description="Historial de Cajones" />
+      <siteMapNode url="~/ControlPatio/ReporteCajones.aspx" title="Reporte Cajones"  description="Reporte Actual de Cajones" />
+      <siteMapNode url="~/ControlPatio/ReporteHistorialAndenes.aspx" title="Historial Andenes"  description="Historial de Andenes" />
+      <siteMapNode url="~/ControlPatio/ReporteAndenesAhora.aspx" title="Reporte Andenes"  description="Reporte Actual de Andenes" />
+    </siteMapNode>
+    <siteMapNode url="~/Soporte/PrincipalSoporteTecnico.aspx" title="Soporte Técnico"  description="Pagina Principal Modulo Soporte Técnico">
+      <siteMapNode url="~/Soporte/EliminacionValeDiesel.aspx" title="Eliminación Vale De Diesel"  description="Eliminación Vale De Diesel" />
+      <siteMapNode url="~/Soporte/SoporteTecnico.aspx" title="Soporte Técnico"  description="Soporte Técnico" />
+      <siteMapNode url="~/FacturacionElectronica/CertificadoDigital.aspx" title="Certificado Digital"  description="Certificado Digital" />
+      <siteMapNode url="~/Soporte/CambioOperador.aspx" title="Cambio de Operador" description="Cambio de Operador" />
+    </siteMapNode>
+    <siteMapNode url="~/Seguridad/Usuario.aspx" title="Usuario"  description="Permite dar de alta las cuentas de usuario."></siteMapNode>
+    <siteMapNode url="~/RDLC/ReporteCompania.aspx" title="Otros Reportes"  description="Permite consultar diversos reportes operativos y gerenciales."></siteMapNode>
+    <siteMapNode url="~/Operacion/PrincipalEcosistema.aspx" title="Ecosistema"  description="Página Principal del Modulo de Ecosistema.">
+      <siteMapNode url="~/Operacion/Publicaciones.aspx" title="Publicaciones"  description="Permite consultar las publicaciones de Unidades y de Servicios." />
+    </siteMapNode>
+    <siteMapNode url="~/Ruta/Ruta1.aspx" title="Ruta"  description="Página Principal del Modulo de Rutas.">
+      <siteMapNode url="~/Ruta/Ruta.aspx" title="Ruta"  description="Permite cconsultar la Ruta ligadas a Casetas y Vales" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

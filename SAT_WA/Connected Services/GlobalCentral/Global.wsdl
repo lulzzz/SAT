@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.tectos.com.mx/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tectos.com.mx/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.tectos.com.mx/Imports">
+      <xsd:import schemaLocation="http://www.administratransportefacil.com/CENTRAL_WCF/Global.svc?xsd=xsd0" namespace="http://www.tectos.com.mx/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IGlobal_InsertaUnidadCentral_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaUnidadCentral" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaUnidadCentral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaUnidadCentralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaOperadorCentral_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaOperadorCentral" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaOperadorCentral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaOperadorCentralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaCiudadDestinoCentral_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaCiudadDestinoCentral" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaCiudadDestinoCentral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaCiudadDestinoCentralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionClientePublicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionClientePublicacion" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionClientePublicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionClientePublicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionConceptoFletePublicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionConceptoFletePublicacion" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionConceptoFletePublicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionConceptoFletePublicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionProductoPublicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionProductoPublicacion" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionProductoPublicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionProductoPublicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionUbicacionPublicacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionUbicacionPublicacion" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionUbicacionPublicacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionUbicacionPublicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionClienteServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionClienteServicio" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionClienteServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionClienteServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionConceptoFleteServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionConceptoFleteServicio" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionConceptoFleteServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionConceptoFleteServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionProductoServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionProductoServicio" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionProductoServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionProductoServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionUbicacionServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionUbicacionServicio" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionUbicacionServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionUbicacionServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_EditaUnidadCentral_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditaUnidadCentral" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_EditaUnidadCentral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditaUnidadCentralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_EditaOperadorCentral_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditaOperadorCentral" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_EditaOperadorCentral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditaOperadorCentralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionTransportistaServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionTransportistaServicio" />
+  </wsdl:message>
+  <wsdl:message name="IGlobal_InsertaRelacionTransportistaServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertaRelacionTransportistaServicioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IGlobal">
+    <wsdl:operation name="InsertaUnidadCentral">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaUnidadCentral" message="tns:IGlobal_InsertaUnidadCentral_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaUnidadCentralResponse" message="tns:IGlobal_InsertaUnidadCentral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaOperadorCentral">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaOperadorCentral" message="tns:IGlobal_InsertaOperadorCentral_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaOperadorCentralResponse" message="tns:IGlobal_InsertaOperadorCentral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaCiudadDestinoCentral">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaCiudadDestinoCentral" message="tns:IGlobal_InsertaCiudadDestinoCentral_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaCiudadDestinoCentralResponse" message="tns:IGlobal_InsertaCiudadDestinoCentral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRelacionClientePublicacion">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionClientePublicacion" message="tns:IGlobal_InsertaRelacionClientePublicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionClientePublicacionResponse" message="tns:IGlobal_InsertaRelacionClientePublicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRelacionConceptoFletePublicacion">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionConceptoFletePublicacion" message="tns:IGlobal_InsertaRelacionConceptoFletePublicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionConceptoFletePublicacionResponse" message="tns:IGlobal_InsertaRelacionConceptoFletePublicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRelacionProductoPublicacion">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionProductoPublicacion" message="tns:IGlobal_InsertaRelacionProductoPublicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionProductoPublicacionResponse" message="tns:IGlobal_InsertaRelacionProductoPublicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRelacionUbicacionPublicacion">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionUbicacionPublicacion" message="tns:IGlobal_InsertaRelacionUbicacionPublicacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionUbicacionPublicacionResponse" message="tns:IGlobal_InsertaRelacionUbicacionPublicacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRelacionClienteServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionClienteServicio" message="tns:IGlobal_InsertaRelacionClienteServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionClienteServicioResponse" message="tns:IGlobal_InsertaRelacionClienteServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRelacionConceptoFleteServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionConceptoFleteServicio" message="tns:IGlobal_InsertaRelacionConceptoFleteServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionConceptoFleteServicioResponse" message="tns:IGlobal_InsertaRelacionConceptoFleteServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRelacionProductoServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionProductoServicio" message="tns:IGlobal_InsertaRelacionProductoServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionProductoServicioResponse" message="tns:IGlobal_InsertaRelacionProductoServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRelacionUbicacionServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionUbicacionServicio" message="tns:IGlobal_InsertaRelacionUbicacionServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionUbicacionServicioResponse" message="tns:IGlobal_InsertaRelacionUbicacionServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditaUnidadCentral">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/EditaUnidadCentral" message="tns:IGlobal_EditaUnidadCentral_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/EditaUnidadCentralResponse" message="tns:IGlobal_EditaUnidadCentral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditaOperadorCentral">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/EditaOperadorCentral" message="tns:IGlobal_EditaOperadorCentral_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/EditaOperadorCentralResponse" message="tns:IGlobal_EditaOperadorCentral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRelacionTransportistaServicio">
+      <wsdl:input wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionTransportistaServicio" message="tns:IGlobal_InsertaRelacionTransportistaServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.tectos.com.mx/IGlobal/InsertaRelacionTransportistaServicioResponse" message="tns:IGlobal_InsertaRelacionTransportistaServicio_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

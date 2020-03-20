@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.tectos.com.mx/" elementFormDefault="qualified" targetNamespace="http://www.tectos.com.mx/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ObtieneDatosPublicacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_publicacion" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneDatosPublicacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtieneDatosPublicacionResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PublicaUnidad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nombre_compania" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_unidad_origen" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_operador" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="ciudad_disponibilidad" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="estado_disponibilidad" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="inicio_disponibilidad" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="limite_disponibilidad" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="observacion" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="ciudades_deseadas_xml" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PublicaUnidadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="PublicaUnidadResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtienePublicacionesCompania">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania_visualiza" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nombre_publicante" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="ciudad_disponibilidad" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="fecha_ini_disponibilidad" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="fecha_fin_disponibilidad" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtienePublicacionesCompaniaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtienePublicacionesCompaniaResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneReporteGeneralPublicaciones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania_visualiza" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nombre_publicante" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="ciudad_disponibilidad" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="fecha_ini_disponibilidad" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="fecha_fin_disponibilidad" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneReporteGeneralPublicacionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtieneReporteGeneralPublicacionesResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneCiudadesPublicacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_publicacion" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneCiudadesPublicacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtieneCiudadesPublicacionResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneDatosRespuesta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_respuesta" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneDatosRespuestaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtieneDatosRespuestaResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RespuestaPublicacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nombre_compania" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_publicacion" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_producto_origen" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="producto_origen" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="peso" type="xs:decimal" />
+        <xs:element minOccurs="1" maxOccurs="1" name="tarifa_ofertada" type="xs:decimal" />
+        <xs:element minOccurs="0" maxOccurs="1" name="observacion" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contacto" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="telefono_contacto" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="ciudad_evento_respuesta_xml" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RespuestaPublicacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="RespuestaPublicacionResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneCiudadesEventoRespuesta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_respuesta" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneCiudadesEventoRespuestaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtieneCiudadesEventoRespuestaResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AceptaRespuestaPublicacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_respuesta_publicacion" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="tarifa_aceptada" type="xs:decimal" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AceptaRespuestaPublicacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="AceptaRespuestaPublicacionResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RechazaRespuestaPublicacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_respuesta_publicacion" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RechazaRespuestaPublicacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="RechazaRespuestaPublicacionResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneRespuestasPublicacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_publicacion" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="bit_publicacion_propia" type="xs:boolean" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneRespuestasPublicacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtieneRespuestasPublicacionResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertaCiudadEventoRespuesta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_respuesta" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="secuencia" type="xs:decimal" />
+        <xs:element minOccurs="0" maxOccurs="1" name="ciudad" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="actividad" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="cita" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertaCiudadEventoRespuestaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="InsertaCiudadEventoRespuestaResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VisualizarRespuesta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_respuesta_publicacion" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VisualizarRespuestaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="VisualizarRespuestaResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DocumentaServicioUnidad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_respuesta_publicacion" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_servicio_origen" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_cliente_origen" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nombre_cliente" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="no_servicio" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="confirmacion" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_concepto_flete_origen" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="paradas_xml" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DocumentaServicioUnidadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="DocumentaServicioUnidadResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneDatosServicioUnidad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_publicacion" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneDatosServicioUnidadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtieneDatosServicioUnidadResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizaServicioUnidad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_publicacion" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_servicio_destino" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizaServicioUnidadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ActualizaServicioUnidadResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PublicaServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_servicio_origen" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania_origen" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nombre_compania" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_cliente_origen" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nombre_cliente" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="no_viaje" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="confirmacion" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="observacion" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_concepto_flete_origen" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="tarifa_publicacion" type="xs:decimal" />
+        <xs:element minOccurs="0" maxOccurs="1" name="producto" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_producto" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="peso" type="xs:decimal" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contacto" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="bit_full" type="xs:boolean" />
+        <xs:element minOccurs="1" maxOccurs="1" name="bit_maniobras" type="xs:boolean" />
+        <xs:element minOccurs="1" maxOccurs="1" name="bit_rc" type="xs:boolean" />
+        <xs:element minOccurs="0" maxOccurs="1" name="dimensiones" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="paradas_xml" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PublicaServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="PublicaServicioResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VisualizaServiciosPublicados">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nombre_compania" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VisualizaServiciosPublicadosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="VisualizaServiciosPublicadosResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RespuestaServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="nombre_compania" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="tarifa_ofertada" type="xs:decimal" />
+        <xs:element minOccurs="0" maxOccurs="1" name="observacion" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contacto" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="telefono" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_servicio" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RespuestaServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="RespuestaServicioResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AceptaRespuestaServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_respuesta_servicio" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="tarifa_aceptada" type="xs:decimal" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AceptaRespuestaServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="AceptaRespuestaServicioResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RechazaRespuestaServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_respuesta_servicio" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RechazaRespuestaServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="RechazaRespuestaServicioResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneRespuestasServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_servicio" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="bit_servicio_propio" type="xs:boolean" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneRespuestasServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtieneRespuestasServicioResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneParadasServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_servicio_central" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneParadasServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtieneParadasServicioResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneDatosServicioCentral">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_servicio" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneDatosServicioCentralResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtieneDatosServicioCentralResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizaServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_servicio_central" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_servicio_destino" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_usuario" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizaServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ActualizaServicioResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PublicacionesCompania">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PublicacionesCompaniaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="PublicacionesCompaniaResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtienePublicacionUnidad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_unidad" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtienePublicacionUnidadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtienePublicacionUnidadResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneDatosPublicacionServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_servicio_central" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtieneDatosPublicacionServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtieneDatosPublicacionServicioResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtienePublicacionServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania" type="xs:int" />
+        <xs:element minOccurs="1" maxOccurs="1" name="id_servicio_origen" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtienePublicacionServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObtienePublicacionServicioResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiciosCompania">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_compania" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servicios" type="tns:ArrayOfInt" />
+        <xs:element minOccurs="0" maxOccurs="1" name="servidor" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="bd" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="contrasena" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfInt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="int" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiciosCompaniaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ServiciosCompaniaResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

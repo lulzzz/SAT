@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <FullPath>Debug</FullPath>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorLevel>2</ErrorLevel>
+    <OverwriteDatasets>False</OverwriteDatasets>
+    <OverwriteDataSources>False</OverwriteDataSources>
+    <TargetServerVersion>SSRS2016</TargetServerVersion>
+    <Platform>Win32</Platform>
+    <TargetReportFolder>SAT_RS_V4.7.1</TargetReportFolder>
+    <TargetDatasetFolder>Conjuntos de datos</TargetDatasetFolder>
+    <TargetDatasourceFolder>Orígenes de datos</TargetDatasourceFolder>
+    <TargetReportPartFolder>Elementos de informe</TargetReportPartFolder>
+    <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DebugLocal' ">
+    <FullPath>DebugLocal</FullPath>
+    <OutputPath>bin\DebugLocal</OutputPath>
+    <ErrorLevel>2</ErrorLevel>
+    <OverwriteDatasets>False</OverwriteDatasets>
+    <OverwriteDataSources>False</OverwriteDataSources>
+    <TargetServerVersion>SSRS2016</TargetServerVersion>
+    <Platform>Win32</Platform>
+    <TargetReportFolder>SAT_RS_V4.7.1</TargetReportFolder>
+    <TargetDatasetFolder>Conjuntos de datos</TargetDatasetFolder>
+    <TargetDatasourceFolder>Orígenes de datos</TargetDatasourceFolder>
+    <TargetReportPartFolder>Elementos de informe</TargetReportPartFolder>
+    <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <FullPath>Release</FullPath>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorLevel>2</ErrorLevel>
+    <OverwriteDatasets>True</OverwriteDatasets>
+    <OverwriteDataSources>False</OverwriteDataSources>
+    <TargetServerVersion>SSRS2016</TargetServerVersion>
+    <Platform>Win32</Platform>
+    <TargetReportFolder>SAT_AZTLAN_RS</TargetReportFolder>
+    <TargetDatasetFolder>Conjuntos de datos</TargetDatasetFolder>
+    <TargetDatasourceFolder>Orígenes de datos</TargetDatasourceFolder>
+    <TargetReportPartFolder>Elementos de informe</TargetReportPartFolder>
+    <TargetServerURL>http://38.110.58.15/ReportServer/</TargetServerURL>
+  </PropertyGroup>
+  <PropertyGroup>
+    <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkZGwzMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAiIHhtbG5zOmRkbDMwMF8zMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAvMzAwIiB4bWxuczpkZGw0MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAiIHhtbG5zOmRkbDQwMF80MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAvNDAwIiB4bWxuczpkZGw1MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAiIHhtbG5zOmRkbDUwMF81MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAvNTAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD50cnVlPC9FbmFibGVkPg0KICA8UHJvamVjdE5hbWU+U0FLPC9Qcm9qZWN0TmFtZT4NCiAgPEF1eFBhdGg+U0FLPC9BdXhQYXRoPg0KICA8TG9jYWxQYXRoPlNBSzwvTG9jYWxQYXRoPg0KICA8UHJvdmlkZXI+U0FLPC9Qcm92aWRlcj4NCjwvU291cmNlQ29udHJvbEluZm8+</State>
+    <DataSources>@(DataSource)</DataSources>
+    <DataSets>@(DataSet)</DataSets>
+    <Reports>@(Report)</Reports>
+  </PropertyGroup>
+  <ItemGroup>
+    <DataSet Include="ds_global.sp_compania_reporte_catalogo_tcrc.rsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <DataSource Include="TECTOS_SAT_AZTLAN_SERVERIS.rds" />
+    <DataSource Include="TECTOS_SAT_NEXTIA_SERVERIS.rds" />
+  </ItemGroup>
+  <ItemGroup>
+    <Report Include="ActividadUnidadDia.rdl" />
+    <Report Include="ActualizacionUsuarioDia.rdl" />
+    <Report Include="Axejit_Almacen.rdl" />
+    <Report Include="AXEJIT_HorasDescansoOperador.rdl" />
+    <Report Include="Axejit_IndicadoresCobranza.rdl" />
+    <Report Include="Axejit_IndicadoresGenerales.rdl" />
+    <Report Include="Axejit_IngresoxUnidad.rdl" />
+    <Report Include="Axejit_KilometrajePorCobrar.rdl" />
+    <Report Include="Axejit_PocesoCxCPeriodo.rdl" />
+    <Report Include="Axejit_ProcesoCxCCliente.rdl" />
+    <Report Include="AXEJIT_ReporteRendimientoDiesel.rdl" />
+    <Report Include="Axejit_UnidadesEstancia.rdl" />
+    <Report Include="AXEJIT_WalmartPagoxKilometraje.rdl" />
+    <Report Include="AXEJIT_WalmartPagoxServicio.rdl" />
+    <Report Include="BalanceUnidades.rdl" />
+    <Report Include="EstanciaUnidadUbicacion.rdl" />
+    <Report Include="ETVU_ReporteServicioTerceros.rdl" />
+    <Report Include="ETVU_ReporteUtilidadServicios.rdl" />
+    <Report Include="FacturaGlobalDetalles.rdl" />
+    <Report Include="GENERALES_BalanceUnidades.rdl" />
+    <Report Include="GENERALES_CargasDia.rdl" />
+    <Report Include="GENERALES_DescargasDia.rdl" />
+    <Report Include="GENERALES_FacturacionGlobalCxC.rdl" />
+    <Report Include="GENERALES_FacturacionServiciosCxC.rdl" />
+    <Report Include="GENERALES_IndicadoresCobranza.rdl" />
+    <Report Include="GENERALES_IndicadoresGenerales.rdl" />
+    <Report Include="GENERALES_IngresoUnidadDetalle.rdl" />
+    <Report Include="GENERALES_IngresoxUnidad.rdl" />
+    <Report Include="GENERALES_OnTime.rdl" />
+    <Report Include="GENERALES_OntimeCliente.rdl" />
+    <Report Include="GENERALES_PocesoCxCPeriodo.rdl" />
+    <Report Include="GENERALES_ProcesoCxCCliente.rdl" />
+    <Report Include="GENERALES_RendimientoUnidades.rdl" />
+    <Report Include="GENERALES_UbicacionRemolques.rdl" />
+    <Report Include="GENERALES_UbicacionTractores.rdl" />
+    <Report Include="GROCHA_ReporteILN.rdl" />
+    <Report Include="GROCHA_ReporteServiciosA1A2.rdl" />
+    <Report Include="GROCHA_ReporteServiciosBoshPorFechas.rdl" />
+    <Report Include="IndicadoresGenerales.rdl" />
+    <Report Include="IngresoxUnidad.rdl" />
+    <Report Include="IngresoxUnidadCliente_TEM.rdl" />
+    <Report Include="KilometrajePorCobrar.rdl" />
+    <Report Include="MantenimientoPreventivoUnidades.rdl" />
+    <Report Include="MonitoreoUnidadDia.rdl" />
+    <Report Include="OntimeCliente.rdl" />
+    <Report Include="PocesoCxCPeriodo.rdl" />
+    <Report Include="ProcesoCxCCliente.rdl" />
+    <Report Include="RendimientoUnidades.rdl" />
+    <Report Include="ServiciosUnidad.rdl" />
+    <Report Include="TEM_CargasDia.rdl" />
+    <Report Include="TEM_DescargasDia.rdl" />
+    <Report Include="TEM_EstatusServicios.rdl" />
+    <Report Include="TEM_HistorialOperador.rdl" />
+    <Report Include="TEM_OnTime.rdl" />
+    <Report Include="TEM_ReporteCelaya.rdl" />
+    <Report Include="TEM_UbicacionRemolques.rdl" />
+    <Report Include="TEM_UbicacionTractores.rdl" />
+    <Report Include="ViajesDiaUnidad.rdl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
+</Project>
