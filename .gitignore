@@ -69,3 +69,8 @@ SAT_RS/bin/Release/TEM_ReporteCelaya.rdl
 SAT_RS/bin/Release/TEM_UbicacionRemolques.rdl
 SAT_RS/bin/Release/TEM_UbicacionTractores.rdl
 SAT_RS/bin/Release/ViajesDiaUnidad.rdl
+.vs/SAT/v16/.suo
+SAT_CL/obj/Release/SAT_CL.csproj.FileListAbsolute.txt
+SAT_NISSAN/obj/Release/SAT_NISSAN.csproj.FileListAbsolute.txt
+SAT_WA/obj/Release/SAT_WA.csproj.FileListAbsolute.txt
+SAT_WCF/obj/Release/SAT_WCF.csproj.FileListAbsolute.txt
