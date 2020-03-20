@@ -1,5 +1,4 @@
-﻿using SAT_CL.CXP;
-using System;
+﻿using System;
 using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -155,7 +154,7 @@ namespace SAT.CuentasPagar
             }
 
             //Obteniendo Reporte de Saldos Globales
-            using (DataTable dtSaldosGlobales = Reportes.ObtieneReporteSaldoGlobal(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, 
+            using (DataTable dtSaldosGlobales = SAT_CL.CXP.Reportes.ObtieneReporteSaldoGlobal(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, 
                                                     Convert.ToInt32(TSDK.Base.Cadena.RegresaCadenaSeparada(txtCliente.Text, "ID:", 1)), fec_ini, fec_fin))
             {
                 //Validando que existan Registros

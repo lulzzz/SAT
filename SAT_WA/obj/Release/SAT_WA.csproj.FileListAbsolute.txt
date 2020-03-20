@@ -1,3 +1,7 @@
+C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\obj\Release\SAT_WA.csprojAssemblyReference.cache
+C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\obj\Release\RdlCompile.cache
+C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\obj\Release\RdlCompile.compiled
+C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\obj\Release\SAT_WA.csproj.CoreCompileInputs.cache
 C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\bin\SqlServerTypes\x64\msvcr120.dll
 C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\bin\SqlServerTypes\x86\msvcr120.dll
@@ -134,10 +138,6 @@ C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\bin\System.Text.Json.xml
 C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\bin\System.ValueTuple.xml
 C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\bin\TSDK.pdb
-C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\obj\Release\SAT_WA.csprojAssemblyReference.cache
-C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\obj\Release\RdlCompile.cache
-C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\obj\Release\RdlCompile.compiled
-C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\obj\Release\SAT_WA.csproj.CoreCompileInputs.cache
 C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\obj\Release\SAT_WA.csproj.CopyComplete
 C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\obj\Release\SAT_WA.dll
 C:\Users\alast\Source\repos\tectos\SAT\SAT_WA\obj\Release\SAT_WA.pdb

@@ -671,7 +671,7 @@ namespace SAT.CuentasPagar
             }
 
             //Obteniendo Reporte de Saldos Detalle
-            using (DataTable dtSaldosDetalle = Reportes.ObtieneReporteSaldoDetalle(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
+            using (DataTable dtSaldosDetalle = SAT_CL.CXP.Reportes.ObtieneReporteSaldoDetalle(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
                                                         Convert.ToInt32(TSDK.Base.Cadena.RegresaCadenaSeparada(txtCliente.Text, "ID:", 1)), fec_ini, fec_fin,
                                                         Convert.ToByte(ddlEstatus.SelectedValue), txtSerie.Text, txtFolio.Text, txtUUID.Text))
             {

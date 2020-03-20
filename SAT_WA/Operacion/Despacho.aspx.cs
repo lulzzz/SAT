@@ -848,7 +848,7 @@ namespace SAT.Operacion
         private void cargaServiciosParaDespacho()
         {
             //Obteniendo detalles de viaje
-            using (DataTable dt = Reportes.CargaServiciosParaDespacho(Convert.ToInt32(Cadena.RegresaCadenaSeparada(Cadena.VerificaCadenaVacia(txtCliente.Text, "0"), ':', 1)),
+            using (DataTable dt = SAT_CL.Documentacion.Reportes.CargaServiciosParaDespacho(Convert.ToInt32(Cadena.RegresaCadenaSeparada(Cadena.VerificaCadenaVacia(txtCliente.Text, "0"), ':', 1)),
                                                                     Convert.ToInt32(Cadena.RegresaCadenaSeparada(Cadena.VerificaCadenaVacia(txtCiudadOrigen.Text, "0"), ':', 1)),
                                                                     Convert.ToInt32(Cadena.RegresaCadenaSeparada(Cadena.VerificaCadenaVacia(txtCiudadDestino.Text, "0"), ':', 1)),
                                                                      ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, txtNoServicio.Text,

@@ -146,7 +146,7 @@ namespace SAT.CuentasPagar
         private void buscaSaldosPeriodo()
         {
             //Obteniendo Reporte de Saldos Detalle
-            using (DataTable dtSaldosPeriodo = Reportes.ObtieneReporteSaldosPeriodo(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
+            using (DataTable dtSaldosPeriodo = SAT_CL.CXP.Reportes.ObtieneReporteSaldosPeriodo(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
                                                     Convert.ToInt32(TSDK.Base.Cadena.RegresaCadenaSeparada(txtCliente.Text, "ID:", 1))))
             {
                 //Validando que existan Registros

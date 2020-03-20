@@ -214,7 +214,7 @@ namespace SAT.Liquidacion
             DateTime fec_iniD = DateTime.MinValue, fec_finD = DateTime.MinValue;
 
             //Obteniendo Reporte de Saldos Detalle
-            using (DataTable dtControlAnticipos = Reportes.ObtieneReporteControlAnticipos(Convert.ToInt32(TSDK.Base.Cadena.RegresaCadenaSeparada(txtCliente.Text, "ID:", 1)), Convert.ToInt32(ddlViajeMaestro.SelectedValue), fec_ini, fec_fin, 
+            using (DataTable dtControlAnticipos = SAT_CL.Liquidacion.Reportes.ObtieneReporteControlAnticipos(Convert.ToInt32(TSDK.Base.Cadena.RegresaCadenaSeparada(txtCliente.Text, "ID:", 1)), Convert.ToInt32(ddlViajeMaestro.SelectedValue), fec_ini, fec_fin, 
                                                   Convert.ToString(Cadena.RegresaElementoNoVacio(txtNoServicio.Text, "")), Convert.ToString(Cadena.RegresaElementoNoVacio(txtSerie.Text, "")), ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, 
                                                   Convert.ToInt32(Cadena.RegresaElementoNoVacio(txtFolio.Text, "0")), Convert.ToInt32(TSDK.Base.Cadena.RegresaCadenaSeparada(txtClienteP.Text, "ID:", 1)), Convert.ToString(Cadena.RegresaElementoNoVacio(txtFolioP.Text, "0")), 
                                                   Convert.ToString(Cadena.RegresaElementoNoVacio(txtSerieP.Text, "0")), Cadena.RegresaElementoNoVacio(txtUUID.Text, "")))

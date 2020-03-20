@@ -1,5 +1,4 @@
-﻿using SAT_CL.Almacen;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -133,28 +132,28 @@ namespace SAT.Almacen
                 Controles.SeleccionaFila(gvRequisicionesPendiente, sender, "lnk", false);
 
                 //Instanciando Requisición
-                using (Requisicion requision = new Requisicion(Convert.ToInt32(gvRequisicionesPendiente.SelectedDataKey["Id"])))
+                using (SAT_CL.Almacen.Requisicion requision = new SAT_CL.Almacen.Requisicion(Convert.ToInt32(gvRequisicionesPendiente.SelectedDataKey["Id"])))
                 {
                     //Validando que exista la Requisición
                     if (requision.habilitar)
                     {
                         //Validando que la Requisición este Solicitada
-                        if(requision.estatus == Requisicion.Estatus.Solicitada)
+                        if(requision.estatus == SAT_CL.Almacen.Requisicion.Estatus.Solicitada)
                         
                             //Actualizando Estatus de la Requisición
-                            result = requision.ActualizaEstatusRequisicionDetalles(Requisicion.Estatus.Cancelada, ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+                            result = requision.ActualizaEstatusRequisicionDetalles(SAT_CL.Almacen.Requisicion.Estatus.Cancelada, ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
                         else
                         {
                             //Validando Estatus
                             switch(requision.estatus)
                             {
-                                case Requisicion.Estatus.AbastecidaParcial:
+                                case SAT_CL.Almacen.Requisicion.Estatus.AbastecidaParcial:
                                     {
                                         //Instanciando Excepción
                                         result = new RetornoOperacion("La Requisición se encuentra Abastecida Parcialmente, Imposible su Cancelación");
                                         break;
                                     }
-                                case Requisicion.Estatus.Cerrada:
+                                case SAT_CL.Almacen.Requisicion.Estatus.Cerrada:
                                     {
                                         //Instanciando Excepción
                                         result = new RetornoOperacion("La Requisición se encuentra Cerrada, Imposible su Cancelación");
@@ -228,7 +227,7 @@ namespace SAT.Almacen
             }
             
             //Obteniendo Requisiciones
-            using (DataTable dtRequisiciones = Reportes.ObtieneRequisicionesPendientes(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
+            using (DataTable dtRequisiciones = SAT_CL.Almacen.Reportes.ObtieneRequisicionesPendientes(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
                                                 fec_ini_sol, fec_fin_sol, fec_ini_ent, fec_fin_ent,Convert.ToByte(ddlEstatus.SelectedValue),Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtAlmacen.Text,"ID:",1)),Convert.ToInt32(Cadena.VerificaCadenaVacia(txtNoRequisicio.Text,"0"))))
             {
                 //Validando que existen Registros

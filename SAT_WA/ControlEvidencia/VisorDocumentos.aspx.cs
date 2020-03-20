@@ -54,7 +54,7 @@ namespace SAT.ControlEvidencia
         protected void btnBuscar_OnClick(object sender, EventArgs e)
         {
             //Obteniendo Tablas de los Reportes
-            using (DataSet dtables = Reportes.CargaReporteDocumentos(
+            using (DataSet dtables = SAT_CL.ControlEvidencia.Reportes.CargaReporteDocumentos(
                  txtNViaje.Text, Convert.ToInt32(TSDK.Base.Cadena.RegresaCadenaSeparada(txtCompania.Text, ":", 1)),
                  Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtCliente.Text, "ID:", 1)),
                  Convert.ToByte(ddlEstatus.SelectedValue), txtReferencia.Text,

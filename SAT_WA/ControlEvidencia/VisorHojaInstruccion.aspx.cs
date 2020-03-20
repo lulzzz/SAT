@@ -1,5 +1,4 @@
 ﻿using SAT_CL;
-using SAT_CL.ControlEvidencia;
 using System;
 using System.Data;
 using System.Web.UI;
@@ -48,7 +47,7 @@ namespace SAT.ControlEvidencia
         /// <param name="e"></param>
         protected void btnBuscar_OnClick(object sender, EventArgs e)
         {   //Obteniendo Reporte de Hojas de Instrucción
-            DataTable reporte = Reportes.CargaReporteHojaInstruccion(
+            DataTable reporte = SAT_CL.ControlEvidencia.Reportes.CargaReporteHojaInstruccion(
                 Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtCompania.Text, ":", 1)),
                 Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtCliente.Text, "ID:", 1)),
                 Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtRemitente.Text, "ID:", 1)),

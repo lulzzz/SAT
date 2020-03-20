@@ -964,7 +964,7 @@ namespace SAT.Operacion
             string id_flota = Controles.RegresaSelectedValuesListBox(lbxFlota, "{0},", true, false);
 
             //Cargando Unidades
-            using (DataTable mit = Reportes.CargaDespachoSimplificadoUnidades(((UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, txtNoUnidad.Text,
+            using (DataTable mit = SAT_CL.Documentacion.Reportes.CargaDespachoSimplificadoUnidades(((UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, txtNoUnidad.Text,
                                         id_estatus.Length > 1 ? id_estatus.Substring(0, id_estatus.Length - 1) : "", Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtUbicacion.Text, "ID:", 1)), 
                                         tipo_unidad, chkUnidadesPropias.Checked, chkUnidadesNoPropias.Checked, Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtClienteUnidad.Text, "ID:", 1)), id_flota.Length > 1 ? id_flota.Substring(0, id_flota.Length - 1) : ""))
             {

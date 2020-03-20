@@ -450,7 +450,7 @@ namespace SAT.Operacion
             //Actualizamos Grid View
             inicializaGridViewRecursos();
             //Obteniendo detalles de viaje
-            using (DataTable dt = Reportes.CargaServiciosSinIniciar(Convert.ToInt32(Cadena.RegresaCadenaSeparada(Cadena.VerificaCadenaVacia(txtCliente.Text, "0"), ':', 1)),
+            using (DataTable dt = SAT_CL.Documentacion.Reportes.CargaServiciosSinIniciar(Convert.ToInt32(Cadena.RegresaCadenaSeparada(Cadena.VerificaCadenaVacia(txtCliente.Text, "0"), ':', 1)),
                                                                     Convert.ToInt32(Cadena.RegresaCadenaSeparada(Cadena.VerificaCadenaVacia(txtCiudadOrigen.Text, "0"), ':', 1)),
                                                                     Convert.ToInt32(Cadena.RegresaCadenaSeparada(Cadena.VerificaCadenaVacia(txtCiudadDestino.Text, "0"), ':', 1)),
                                                                     txtFecha.Text, ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor))
