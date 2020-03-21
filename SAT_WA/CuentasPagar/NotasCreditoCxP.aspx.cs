@@ -448,42 +448,46 @@ namespace SAT.CuentasPagar
                                 }
                             }
 
+                            if(tipoCFDI.Equals("ingreso") || tipoCFDI.Equals("E"))
+                            {
+                                //string IdByte = doc.ToString();
+                                //int id_cfdi = 0;
+                                string rfcE = version.Equals("3.2") ? doc.Root.Element(ns + "Emisor").Attribute("rfc").Value : doc.Root.Element(ns + "Emisor").Attribute("Rfc").Value;
+                                string rfcR = version.Equals("3.2") ? doc.Root.Element(ns + "Emisor").Attribute("rfc").Value : doc.Root.Element(ns + "Emisor").Attribute("Rfc").Value;
+                                string emisor = version.Equals("3.2") ? doc.Root.Element(ns + "Emisor").Attribute("nombre").Value : doc.Root.Element(ns + "Emisor").Attribute("Nombre").Value;
+                                string receptor = version.Equals("3.2") ? doc.Root.Element(ns + "Receptor").Attribute("nombre").Value : doc.Root.Element(ns + "Receptor").Attribute("Nombre").Value;
 
-                            //string IdByte = doc.ToString();
-                            //int id_cfdi = 0;
-                            string rfcE = version.Equals("3.2") ? doc.Root.Element(ns + "Emisor").Attribute("rfc").Value : doc.Root.Element(ns + "Emisor").Attribute("Rfc").Value;
-                            string rfcR = version.Equals("3.2") ? doc.Root.Element(ns + "Emisor").Attribute("rfc").Value : doc.Root.Element(ns + "Emisor").Attribute("Rfc").Value;
-                            string emisor = version.Equals("3.2") ? doc.Root.Element(ns + "Emisor").Attribute("nombre").Value : doc.Root.Element(ns + "Emisor").Attribute("Nombre").Value;
-                            string receptor = version.Equals("3.2") ? doc.Root.Element(ns + "Receptor").Attribute("nombre").Value : doc.Root.Element(ns + "Receptor").Attribute("Nombre").Value;
-
-                            string folio = "", serie = "";
-                            if (doc.Root.Attribute("serie") != null || doc.Root.Attribute("Serie") != null)
-                            {
-                                serie = version.Equals("3.2") ? doc.Root.Attribute("serie").Value : doc.Root.Attribute("Serie").Value;
+                                string folio = "", serie = "";
+                                if (doc.Root.Attribute("serie") != null || doc.Root.Attribute("Serie") != null)
+                                {
+                                    serie = version.Equals("3.2") ? doc.Root.Attribute("serie").Value : doc.Root.Attribute("Serie").Value;
+                                }
+                                if (doc.Root.Attribute("folio") != null || doc.Root.Attribute("Folio") != null)
+                                {
+                                    folio = version.Equals("3.2") ? doc.Root.Attribute("folio").Value : doc.Root.Attribute("Folio").Value;
+                                }
+                                DateTime fecha = DateTime.Parse(version.Equals("3.2") ? doc.Root.Attribute("fecha").Value : doc.Root.Attribute("Fecha").Value);
+                                XElement timbre = (from XElement el in doc.Root.Element(ns + "Complemento").Elements()
+                                                   where el.Name.Equals(el.GetNamespaceOfPrefix("tfd") + "TimbreFiscalDigital")
+                                                   select el).DefaultIfEmpty(null).FirstOrDefault();
+                                string uuid = timbre.Attribute("UUID").Value;
+                                string tipoComprobante = doc.Root.Attribute("TipoDeComprobante").Value.ToUpper();
+                                decimal subtotal = Convert.ToDecimal(version.Equals("3.2") ? doc.Root.Attribute("subTotal").Value : doc.Root.Attribute("SubTotal").Value);
+                                decimal retenciones = Convert.ToDecimal(version.Equals("3.2") ? TSDK.Base.Xml.DevuleveValorAtibutoElementoCadena(doc.Root.Element(ns + "Impuestos"), "totalImpuestosRetenidos", "0") : TSDK.Base.Xml.DevuleveValorAtibutoElementoCadena(doc.Root.Element(ns + "Impuestos"), "TotalImpuestosRetenidos", "0"));
+                                decimal traslados = Convert.ToDecimal(version.Equals("3.2") ? TSDK.Base.Xml.DevuleveValorAtibutoElementoCadena(doc.Root.Element(ns + "Impuestos"), "totalImpuestosTrasladados", "0") : TSDK.Base.Xml.DevuleveValorAtibutoElementoCadena(doc.Root.Element(ns + "Impuestos"), "TotalImpuestosTrasladados", "0"));
+                                decimal descuento = Convert.ToDecimal(version.Equals("3.2") ? TSDK.Base.Xml.DevuleveValorAtibutoElementoCadena(doc.Root, "descuento", "0") : TSDK.Base.Xml.DevuleveValorAtibutoElementoCadena(doc.Root, "Descuento", "0"));
+                                decimal total = Convert.ToDecimal(version.Equals("3.2") ? doc.Root.Attribute("total").Value : doc.Root.Attribute("Total").Value);
+                                string estatus = FacturadoProveedor.EstatusFactura.EnRevision.ToString();
+                                //Para cada uno de los archivos cargados
+                                foreach (string a in (List<string>)Session["id_registro"])
+                                {
+                                    if (a.Contains(folio) || a.Contains(uuid))
+                                        archivo = a.ToString();
+                                }
+                                dtImportacion.Rows.Add(null, null, doc, archivo, rfcE, rfcR, tipoComprobante, emisor, receptor, serie, folio, uuid, fecha, subtotal, descuento, traslados, retenciones, total, estatus);
                             }
-                            if (doc.Root.Attribute("folio") != null || doc.Root.Attribute("Folio") != null)
-                            {
-                                folio = version.Equals("3.2") ? doc.Root.Attribute("folio").Value : doc.Root.Attribute("Folio").Value;
-                            }
-                            DateTime fecha = DateTime.Parse(version.Equals("3.2") ? doc.Root.Attribute("fecha").Value : doc.Root.Attribute("Fecha").Value);
-                            XElement timbre = (from XElement el in doc.Root.Element(ns + "Complemento").Elements()
-                                               where el.Name.Equals(el.GetNamespaceOfPrefix("tfd") + "TimbreFiscalDigital")
-                                               select el).DefaultIfEmpty(null).FirstOrDefault();
-                            string uuid = timbre.Attribute("UUID").Value;
-                            string tipoComprobante = doc.Root.Attribute("TipoDeComprobante").Value.ToUpper();
-                            decimal subtotal = Convert.ToDecimal(version.Equals("3.2") ? doc.Root.Attribute("subTotal").Value : doc.Root.Attribute("SubTotal").Value);
-                            decimal retenciones = Convert.ToDecimal(version.Equals("3.2") ? TSDK.Base.Xml.DevuleveValorAtibutoElementoCadena(doc.Root.Element(ns + "Impuestos"), "totalImpuestosRetenidos", "0") : TSDK.Base.Xml.DevuleveValorAtibutoElementoCadena(doc.Root.Element(ns + "Impuestos"), "TotalImpuestosRetenidos", "0"));
-                            decimal traslados = Convert.ToDecimal(version.Equals("3.2") ? TSDK.Base.Xml.DevuleveValorAtibutoElementoCadena(doc.Root.Element(ns + "Impuestos"), "totalImpuestosTrasladados", "0") : TSDK.Base.Xml.DevuleveValorAtibutoElementoCadena(doc.Root.Element(ns + "Impuestos"), "TotalImpuestosTrasladados", "0"));
-                            decimal descuento = Convert.ToDecimal(version.Equals("3.2") ? TSDK.Base.Xml.DevuleveValorAtibutoElementoCadena(doc.Root, "descuento", "0") : TSDK.Base.Xml.DevuleveValorAtibutoElementoCadena(doc.Root, "Descuento", "0"));
-                            decimal total = Convert.ToDecimal(version.Equals("3.2") ? doc.Root.Attribute("total").Value : doc.Root.Attribute("Total").Value);
-                            string estatus = FacturadoProveedor.EstatusFactura.EnRevision.ToString();
-                            //Para cada uno de los archivos cargados
-                            foreach (string a in (List<string>)Session["id_registro"])
-                            {
-                                if (a.Contains(folio) || a.Contains(uuid))
-                                    archivo = a.ToString();
-                            }
-                            dtImportacion.Rows.Add(null, null, doc, archivo, rfcE, rfcR, tipoComprobante, emisor, receptor, serie, folio, uuid, fecha, subtotal, descuento, traslados, retenciones, total, estatus);
+                            else
+                                resultado = new RetornoOperacion("El XML cargado no corresponde a un Egreso. Seleccione un XML de tipo Egreso.");
 
                         }
                         else
