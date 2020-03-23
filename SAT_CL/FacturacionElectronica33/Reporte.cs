@@ -434,6 +434,13 @@ namespace SAT_CL.FacturacionElectronica33
             }
             return dtcomprobantes;
         }
-        #endregion
-    }
+		public static DataSet cargaDetallesFacturaGlobal(int id_compania, int id_factura_global)
+		{
+			object[] param = { 19, id_compania, id_factura_global, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+			//Cargando los registros de interés
+			using (DataSet DS = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nom_sp, param))
+				return DS;
+		}
+		#endregion
+	}
 }

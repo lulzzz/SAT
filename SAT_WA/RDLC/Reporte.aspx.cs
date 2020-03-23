@@ -152,6 +152,9 @@ namespace SAT.RDLC
                 case "GastosGenerales":
                     inicializaReporteGastosGenerales();
                     break;
+                case "FacturaGlobal":
+                    inicializaFacturaGlobal();
+                    break;
             }
 
             //Refrescando Reporte
@@ -5158,6 +5161,107 @@ namespace SAT.RDLC
             byte[] bytes = this.rvReporte.LocalReport.Render("PDF");
             //Descargando Archivo PDF
             //TSDK.Base.Archivo.DescargaArchivo(bytes, string.Format("Gastos_generales_servicio_{0}.pdf", Serv.no_servicio), TSDK.Base.Archivo.ContentType.application_PDF);
+        }
+
+        /// <summary>
+        /// Metodo que inicializa en forma específica el reporte de facturas globales
+        /// </summary>
+        private void inicializaFacturaGlobal()
+        {
+            //Obteniendo Segmento
+            int IdFacturaGlobal = Convert.ToInt32(Request.QueryString["idRegistro"]);
+
+            //Cargando Reporte
+            rvReporte.LocalReport.ReportPath = Server.MapPath("~/RDLC/FacturaGlobal.rdlc");
+            //Limpia el datasource
+            rvReporte.LocalReport.DataSources.Clear();
+            //Declarando Arreglo de Parametros por Recibir
+            ReportParameter[] param = new ReportParameter[6];
+            //Instanciando Proceso
+            using (SAT_CL.Facturacion.FacturaGlobal fg = new SAT_CL.Facturacion.FacturaGlobal(IdFacturaGlobal))
+            {
+                using (SAT_CL.Global.CompaniaEmisorReceptor CER = new SAT_CL.Global.CompaniaEmisorReceptor(fg.id_compania))
+                {
+                    byte[] logo = null;
+                    //Declarando la tabla para almacenar al logo
+                    using (DataTable dtLogo = new DataTable())
+                    {
+                        //Añadiendo la única columna
+                        dtLogo.Columns.Add("Logotipo", typeof(byte[]));
+                        try { logo = System.IO.File.ReadAllBytes(CER.ruta_logotipo); }
+                        catch { logo = null; }
+
+                        //Agregando imagen
+                        dtLogo.Rows.Add(logo);
+
+                        //Agregamos al origen de datos
+                        ReportDataSource rdsLogo = new ReportDataSource("Logotipo", dtLogo);
+                        rvReporte.LocalReport.DataSources.Add(rdsLogo);
+                    }
+                }
+            }
+
+            //Instanciando Proceso
+            using (SAT_CL.Facturacion.FacturaGlobal fg = new SAT_CL.Facturacion.FacturaGlobal(IdFacturaGlobal))
+            {
+                using (SAT_CL.Global.CompaniaEmisorReceptor CER = new SAT_CL.Global.CompaniaEmisorReceptor(fg.id_compania))
+                {
+                    //DataSet DSFacturaGlobal = SAT_CL.FacturacionElectronica33.Reporte.cargaDetallesFacturaGlobal(CER.id_compania_emisor_receptor, IdFacturaGlobal)
+                    using (DataSet dsFacturaGlobal = SAT_CL.FacturacionElectronica33.Reporte.cargaDetallesFacturaGlobal(CER.id_compania_emisor_receptor, IdFacturaGlobal))
+                    {
+                        //Validando que Exista el Paquete
+                        if (TSDK.Datos.Validacion.ValidaOrigenDatos(dsFacturaGlobal, "Table"))
+                        {
+                            //Recorriendo Ciclo
+                            foreach (DataRow dr in dsFacturaGlobal.Tables["Table"].Rows)
+                            {
+                                //Creando Parametros
+                                param[0] = new ReportParameter("NoFactura", dr["NoFactura"].ToString());
+                                param[1] = new ReportParameter("Cliente", dr["Cliente"].ToString());
+                                param[2] = new ReportParameter("Estatus", dr["Estatus"].ToString());
+                                param[3] = new ReportParameter("SerieFolio", dr["SerieFolio"].ToString());
+                                param[4] = new ReportParameter("Descripcion", dr["Descripcion"].ToString());//*/
+                                param[5] = new ReportParameter("FechaExp", dr["FechaExp"].ToString());
+                            }
+                        }
+
+                        //Declarando Variables Auxiliares
+                        DataTable dtviajesFacturaGlobal = new DataTable();
+
+                        //Creando Columnas
+                        dtviajesFacturaGlobal.Columns.Add("NoServicio", typeof(string));
+                        dtviajesFacturaGlobal.Columns.Add("NoViaje", typeof(string));
+                        dtviajesFacturaGlobal.Columns.Add("Referencia", typeof(string));
+                        dtviajesFacturaGlobal.Columns.Add("Origen", typeof(string));
+                        dtviajesFacturaGlobal.Columns.Add("Destino", typeof(string));
+                        dtviajesFacturaGlobal.Columns.Add("FecFac", typeof(DateTime));
+                        dtviajesFacturaGlobal.Columns.Add("Subtotal", typeof(decimal));
+                        dtviajesFacturaGlobal.Columns.Add("IVA", typeof(decimal));
+                        dtviajesFacturaGlobal.Columns.Add("Retencion", typeof(decimal));
+                        dtviajesFacturaGlobal.Columns.Add("Total", typeof(decimal));
+                        //Validando que Exista el Paquete
+                        if (TSDK.Datos.Validacion.ValidaOrigenDatos(dsFacturaGlobal, "Table1"))
+                        {
+                            //Recorriendo Registros
+                            foreach (DataRow dr in dsFacturaGlobal.Tables["Table1"].Rows)
+
+                                //Añadiendo Registros
+                                dtviajesFacturaGlobal.Rows.Add(dr["NoServicio"].ToString(), dr["NoViaje"].ToString(), dr["Referencia"].ToString(), dr["Origen"].ToString(),
+                                    dr["Destino"].ToString(), dr["FecFac"].ToString(), dr["Subtotal"].ToString(), dr["IVA"].ToString(), dr["Retencion"].ToString(), dr["Total"].ToString());
+                        }
+                        else
+                            //Añadiendo Registros
+                            dtviajesFacturaGlobal.Rows.Add("", "", "", "", "", "", "", "", "", "");
+
+                        //Agregamos el origen de datos de Carga
+                        ReportDataSource rdsviajesFacturasLigadas = new ReportDataSource("VajesFacturasGlobal", dtviajesFacturaGlobal);
+                        rvReporte.LocalReport.DataSources.Add(rdsviajesFacturasLigadas);
+
+                        //Asignando Parametros
+                        this.rvReporte.LocalReport.SetParameters(param);
+                    }
+                }
+            }
         }
     }
 }
