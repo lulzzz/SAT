@@ -57,9 +57,9 @@ namespace SAT.ControlEvidencia
                 case "ImpresionDocumentos":
                     {
                         //Obteniendo Ruta
-                        string urlReporte = TSDK.Base.Cadena.RutaRelativaAAbsoluta("~/ControlEvidencia/RecepcionDocumento.aspx", "~/Accesorios/ImpresionDocumentos.aspx");
+                        string impresion_url = TSDK.Base.Cadena.RutaRelativaAAbsoluta("~/Operacion/Despacho.aspx", "~/Accesorios/ImpresionDocumentos.aspx");
                         //Instanciando nueva ventana de navegador para apertura de registro
-                        TSDK.ASP.ScriptServer.AbreNuevaVentana(string.Format("{0}?&idRegistro={2}", urlReporte, "ImpresionDocumentos", ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor), "Impresión Documentos", "location=NO,toolbar=NO,scrollbars=YES,menubar=NO,status=YES,width='+screen.width+',height='+screen.height+',fullscreen=YES", Page);
+                        TSDK.ASP.ScriptServer.AbreNuevaVentana(string.Format("{0}?&idRegistro={2}&idUsuario={3}", impresion_url, "Impresiones", ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_usuario), "Impresion Documentos", "location=NO,toolbar=NO,scrollbars=YES,menubar=NO,status=YES,width='+screen.width+',height='+screen.height+',fullscreen=YES", Page);
                         break;
                     }
             }

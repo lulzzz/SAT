@@ -47,7 +47,15 @@ namespace SAT.UserControls
         {   //Invocando Método de Asignación
             asignaAtributos();
         }
-
+        /// <summary>
+        /// Evento Producido al dar click en boton Cerrar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lkbCerrarModal_Click(object sender, EventArgs e)
+        {
+            ScriptServer.AlternarVentana(lkbCerrarModal, "impresionPorte", "contenedorVentanaImpresionPorte", "ventanaImpresionPorte");
+        }
         /// <summary>
         /// Evento Producido al Cambiar el Tamaño del GridView
         /// </summary>
@@ -109,19 +117,19 @@ namespace SAT.UserControls
                         DataRow fila = ((DataRowView)e.Row.DataItem).Row;
                         if (fila["ImpresionCP"].ToString() == "1")
                         {
-                            imbPorte.Enabled = false;
+                            imbPorte.Visible = false;
                         }
                         if (fila["ImpresionCPV"].ToString() == "1")
                         {
-                            imbViajera.Enabled = false;
+                            imbViajera.Visible = false;
                         }
                         if (fila["ImpresionHI"].ToString() == "1")
                         {
-                            imbInstruccion.Enabled = false;
+                            imbInstruccion.Visible = false;
                         }
                         if (fila["ImpresionGastos"].ToString() == "1")
                         {
-                            imbGastos.Enabled = false;
+                            imbGastos.Visible = false;
                         }
                     }
                 }
@@ -163,7 +171,8 @@ namespace SAT.UserControls
                                 //Mostramos Modal
                                 ScriptServer.AlternarVentana(gvServicios, "impresionPorte", "contenedorVentanaImpresionPorte", "ventanaImpresionPorte");
                                 //Inicializando control
-                                wucImpresionPorte.InicializaImpresionCartaPorte(Convert.ToInt32(gvServicios.SelectedValue), UserControls.wucImpresionPorte.TipoImpresion.CartaPorte);                                                               
+                                wucImpresionPorte.InicializaImpresionCartaPorte(Convert.ToInt32(gvServicios.SelectedValue), UserControls.wucImpresionPorte.TipoImpresion.CartaPorte);
+                                SAT_CL.Global.Referencia.InsertaReferencia(Convert.ToInt32(gvServicios.SelectedValue), 1, SAT_CL.Global.ReferenciaTipo.ObtieneIdReferenciaTipo(0, 1, "Conteo Impresión CP", 0, "General"), "1", Fecha.ObtieneFechaEstandarMexicoCentro(), this._idUsuario);
                             }
                             else
                             {
@@ -212,6 +221,7 @@ namespace SAT.UserControls
                             break;
                         }
                 }
+                cargaServicios();
             }
         }
         /// <summary>
