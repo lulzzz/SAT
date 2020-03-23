@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SAT.FacturacionElectronica33 {
-    
-    
-    public partial class FacturaGlobalV33 {
-        
+namespace SAT.FacturacionElectronica33
+{
+
+
+    public partial class FacturaGlobalV33
+    {
+
         /// <summary>
         /// Control upMenuPrincipal.
         /// </summary>
@@ -20,7 +22,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upMenuPrincipal;
-        
+
         /// <summary>
         /// Control lkbNuevo.
         /// </summary>
@@ -29,7 +31,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbNuevo;
-        
+
         /// <summary>
         /// Control lkbAbrir.
         /// </summary>
@@ -38,7 +40,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbAbrir;
-        
+
         /// <summary>
         /// Control lkbGuardar.
         /// </summary>
@@ -47,16 +49,16 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbGuardar;
-        
+
         /// <summary>
-        /// Control lkbSalir.
+        /// Control lkbImprimir.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lkbSalir;
-        
+        protected global::System.Web.UI.WebControls.LinkButton lkbImprimir;
+
         /// <summary>
         /// Control lkbEditar.
         /// </summary>
@@ -65,7 +67,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbEditar;
-        
+
         /// <summary>
         /// Control lkbEliminar.
         /// </summary>
@@ -74,7 +76,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbEliminar;
-        
+
         /// <summary>
         /// Control lkbVerComprobante.
         /// </summary>
@@ -83,7 +85,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbVerComprobante;
-        
+
         /// <summary>
         /// Control lkbComentario.
         /// </summary>
@@ -92,7 +94,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbComentario;
-        
+
         /// <summary>
         /// Control lkbBitacora.
         /// </summary>
@@ -101,7 +103,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbBitacora;
-        
+
         /// <summary>
         /// Control lkbReferencias.
         /// </summary>
@@ -110,7 +112,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbReferencias;
-        
+
         /// <summary>
         /// Control lkbArchivos.
         /// </summary>
@@ -119,7 +121,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbArchivos;
-        
+
         /// <summary>
         /// Control lkbAddendaFacturaElectronica.
         /// </summary>
@@ -128,7 +130,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbAddendaFacturaElectronica;
-        
+
         /// <summary>
         /// Control lkbRegistrarFacturaElectronica.
         /// </summary>
@@ -137,7 +139,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbRegistrarFacturaElectronica;
-        
+
         /// <summary>
         /// Control lkbTimbrarFacturaElectronica.
         /// </summary>
@@ -146,7 +148,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbTimbrarFacturaElectronica;
-        
+
         /// <summary>
         /// Control lkbEliminarCFDI.
         /// </summary>
@@ -155,7 +157,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbEliminarCFDI;
-        
+
         /// <summary>
         /// Control lkbCancelarCFDI.
         /// </summary>
@@ -164,7 +166,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbCancelarCFDI;
-        
+
         /// <summary>
         /// Control lkbPDF.
         /// </summary>
@@ -173,7 +175,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbPDF;
-        
+
         /// <summary>
         /// Control lkbXML.
         /// </summary>
@@ -182,7 +184,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbXML;
-        
+
         /// <summary>
         /// Control lkbEmail.
         /// </summary>
@@ -191,7 +193,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbEmail;
-        
+
         /// <summary>
         /// Control lkbFEReferencias.
         /// </summary>
@@ -200,7 +202,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbFEReferencias;
-        
+
         /// <summary>
         /// Control pnlFacturaGlobal.
         /// </summary>
@@ -209,7 +211,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlFacturaGlobal;
-        
+
         /// <summary>
         /// Control uplblNoFactura.
         /// </summary>
@@ -218,7 +220,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblNoFactura;
-        
+
         /// <summary>
         /// Control lblNoFactura.
         /// </summary>
@@ -227,7 +229,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNoFactura;
-        
+
         /// <summary>
         /// Control upddlEstatus.
         /// </summary>
@@ -236,7 +238,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upddlEstatus;
-        
+
         /// <summary>
         /// Control ddlEstatus.
         /// </summary>
@@ -245,7 +247,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEstatus;
-        
+
         /// <summary>
         /// Control uptxtDescripcion.
         /// </summary>
@@ -254,7 +256,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtDescripcion;
-        
+
         /// <summary>
         /// Control txtDescripcion.
         /// </summary>
@@ -263,7 +265,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
-        
+
         /// <summary>
         /// Control uptxtCliente.
         /// </summary>
@@ -272,7 +274,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtCliente;
-        
+
         /// <summary>
         /// Control txtCliente.
         /// </summary>
@@ -281,7 +283,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCliente;
-        
+
         /// <summary>
         /// Control upbtnGuardar.
         /// </summary>
@@ -290,7 +292,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnGuardar;
-        
+
         /// <summary>
         /// Control btnGuardar.
         /// </summary>
@@ -299,7 +301,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardar;
-        
+
         /// <summary>
         /// Control upbtnCancelar.
         /// </summary>
@@ -308,7 +310,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnCancelar;
-        
+
         /// <summary>
         /// Control btnCancelar.
         /// </summary>
@@ -317,7 +319,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
-        
+
         /// <summary>
         /// Control uplblSubtotal.
         /// </summary>
@@ -326,7 +328,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblSubtotal;
-        
+
         /// <summary>
         /// Control lblSubtotal.
         /// </summary>
@@ -335,7 +337,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSubtotal;
-        
+
         /// <summary>
         /// Control uplblTrasladado.
         /// </summary>
@@ -344,7 +346,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblTrasladado;
-        
+
         /// <summary>
         /// Control lblTrasladado.
         /// </summary>
@@ -353,7 +355,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTrasladado;
-        
+
         /// <summary>
         /// Control uplblRetenido.
         /// </summary>
@@ -362,7 +364,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblRetenido;
-        
+
         /// <summary>
         /// Control lblRetenido.
         /// </summary>
@@ -371,7 +373,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRetenido;
-        
+
         /// <summary>
         /// Control uplblTotal.
         /// </summary>
@@ -380,7 +382,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblTotal;
-        
+
         /// <summary>
         /// Control lblTotal.
         /// </summary>
@@ -389,7 +391,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTotal;
-        
+
         /// <summary>
         /// Control uptxtPaqPrevio.
         /// </summary>
@@ -398,7 +400,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtPaqPrevio;
-        
+
         /// <summary>
         /// Control txtPaqPrevio.
         /// </summary>
@@ -407,7 +409,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPaqPrevio;
-        
+
         /// <summary>
         /// Control upbtnAgregarPQ.
         /// </summary>
@@ -416,7 +418,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnAgregarPQ;
-        
+
         /// <summary>
         /// Control btnAgregarPQ.
         /// </summary>
@@ -425,7 +427,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregarPQ;
-        
+
         /// <summary>
         /// Control uplblError.
         /// </summary>
@@ -434,7 +436,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblError;
-        
+
         /// <summary>
         /// Control lblError.
         /// </summary>
@@ -443,7 +445,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblError;
-        
+
         /// <summary>
         /// Control upbtnPestanaFacturasDisponibles.
         /// </summary>
@@ -452,7 +454,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnPestanaFacturasDisponibles;
-        
+
         /// <summary>
         /// Control btnPestanaFacturasDisponibles.
         /// </summary>
@@ -461,7 +463,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPestanaFacturasDisponibles;
-        
+
         /// <summary>
         /// Control upbtnPestanaFacturasLigadas.
         /// </summary>
@@ -470,7 +472,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnPestanaFacturasLigadas;
-        
+
         /// <summary>
         /// Control btnPestanaFacturasLigadas.
         /// </summary>
@@ -479,7 +481,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPestanaFacturasLigadas;
-        
+
         /// <summary>
         /// Control upmtvFacturas.
         /// </summary>
@@ -488,7 +490,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upmtvFacturas;
-        
+
         /// <summary>
         /// Control mtvFacturas.
         /// </summary>
@@ -497,7 +499,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.MultiView mtvFacturas;
-        
+
         /// <summary>
         /// Control vwFacturasDisponibles.
         /// </summary>
@@ -506,7 +508,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View vwFacturasDisponibles;
-        
+
         /// <summary>
         /// Control pnlFacturasDisponibles.
         /// </summary>
@@ -515,7 +517,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlFacturasDisponibles;
-        
+
         /// <summary>
         /// Control uptxtReferencia.
         /// </summary>
@@ -524,7 +526,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtReferencia;
-        
+
         /// <summary>
         /// Control txtReferencia.
         /// </summary>
@@ -533,7 +535,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtReferencia;
-        
+
         /// <summary>
         /// Control lkbImportarArchivo.
         /// </summary>
@@ -542,7 +544,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbImportarArchivo;
-        
+
         /// <summary>
         /// Control upbtnBuscarFacturas.
         /// </summary>
@@ -551,7 +553,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnBuscarFacturas;
-        
+
         /// <summary>
         /// Control btnBuscarFacturas.
         /// </summary>
@@ -560,7 +562,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBuscarFacturas;
-        
+
         /// <summary>
         /// Control upddlTamanoFacDisp.
         /// </summary>
@@ -569,7 +571,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upddlTamanoFacDisp;
-        
+
         /// <summary>
         /// Control ddlTamanoFacDisp.
         /// </summary>
@@ -578,7 +580,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTamanoFacDisp;
-        
+
         /// <summary>
         /// Control uplblOrdenadoFacDisp.
         /// </summary>
@@ -587,7 +589,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblOrdenadoFacDisp;
-        
+
         /// <summary>
         /// Control lblOrdenadoFacDisp.
         /// </summary>
@@ -596,7 +598,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblOrdenadoFacDisp;
-        
+
         /// <summary>
         /// Control uplnkExportarFacDisp.
         /// </summary>
@@ -605,7 +607,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplnkExportarFacDisp;
-        
+
         /// <summary>
         /// Control lnkExportarFacDisp.
         /// </summary>
@@ -614,7 +616,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkExportarFacDisp;
-        
+
         /// <summary>
         /// Control upgvFacturasDisponibles.
         /// </summary>
@@ -623,7 +625,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upgvFacturasDisponibles;
-        
+
         /// <summary>
         /// Control gvFacturasDisponibles.
         /// </summary>
@@ -632,7 +634,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvFacturasDisponibles;
-        
+
         /// <summary>
         /// Control vwFacturasLigadas.
         /// </summary>
@@ -641,7 +643,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View vwFacturasLigadas;
-        
+
         /// <summary>
         /// Control upddlTamanoFacLigadas.
         /// </summary>
@@ -650,7 +652,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upddlTamanoFacLigadas;
-        
+
         /// <summary>
         /// Control ddlTamanoFacLigadas.
         /// </summary>
@@ -659,7 +661,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTamanoFacLigadas;
-        
+
         /// <summary>
         /// Control uplblOrdenadoFacLigadas.
         /// </summary>
@@ -668,7 +670,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblOrdenadoFacLigadas;
-        
+
         /// <summary>
         /// Control lblOrdenadoFacLigadas.
         /// </summary>
@@ -677,7 +679,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblOrdenadoFacLigadas;
-        
+
         /// <summary>
         /// Control uplnkExportarFacLigadas.
         /// </summary>
@@ -686,7 +688,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplnkExportarFacLigadas;
-        
+
         /// <summary>
         /// Control lnkExportarFacLigadas.
         /// </summary>
@@ -695,7 +697,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkExportarFacLigadas;
-        
+
         /// <summary>
         /// Control upgvFacturasLigadas.
         /// </summary>
@@ -704,7 +706,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upgvFacturasLigadas;
-        
+
         /// <summary>
         /// Control gvFacturasLigadas.
         /// </summary>
@@ -713,7 +715,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvFacturasLigadas;
-        
+
         /// <summary>
         /// Control upbtnGuardarFactura.
         /// </summary>
@@ -722,7 +724,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnGuardarFactura;
-        
+
         /// <summary>
         /// Control btnGuardarFactura.
         /// </summary>
@@ -731,7 +733,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardarFactura;
-        
+
         /// <summary>
         /// Control uplnkCerrarImagen.
         /// </summary>
@@ -740,7 +742,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplnkCerrarImagen;
-        
+
         /// <summary>
         /// Control lnkCerrarImagen.
         /// </summary>
@@ -749,7 +751,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkCerrarImagen;
-        
+
         /// <summary>
         /// Control upddlTamanoConceptos.
         /// </summary>
@@ -758,7 +760,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upddlTamanoConceptos;
-        
+
         /// <summary>
         /// Control ddlTamanoFacConceptos.
         /// </summary>
@@ -767,7 +769,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTamanoFacConceptos;
-        
+
         /// <summary>
         /// Control uplblOrdenadoFacConceptos.
         /// </summary>
@@ -776,7 +778,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblOrdenadoFacConceptos;
-        
+
         /// <summary>
         /// Control lblOrdenadoFacConceptos.
         /// </summary>
@@ -785,7 +787,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblOrdenadoFacConceptos;
-        
+
         /// <summary>
         /// Control uplnkExportarConceptos.
         /// </summary>
@@ -794,7 +796,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplnkExportarConceptos;
-        
+
         /// <summary>
         /// Control lnkExportarFacConceptos.
         /// </summary>
@@ -803,7 +805,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkExportarFacConceptos;
-        
+
         /// <summary>
         /// Control upgvFacturaConceptos.
         /// </summary>
@@ -812,7 +814,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upgvFacturaConceptos;
-        
+
         /// <summary>
         /// Control gvFacturaConceptos.
         /// </summary>
@@ -821,7 +823,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvFacturaConceptos;
-        
+
         /// <summary>
         /// Control upbtnGuardarConceptos.
         /// </summary>
@@ -830,7 +832,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnGuardarConceptos;
-        
+
         /// <summary>
         /// Control btnGuardarConceptos.
         /// </summary>
@@ -839,7 +841,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardarConceptos;
-        
+
         /// <summary>
         /// Control uplkbCerrarRegistarFacturacionElectronica.
         /// </summary>
@@ -848,7 +850,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplkbCerrarRegistarFacturacionElectronica;
-        
+
         /// <summary>
         /// Control lkbCerrarRegistarFacturacionElectronica.
         /// </summary>
@@ -857,7 +859,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbCerrarRegistarFacturacionElectronica;
-        
+
         /// <summary>
         /// Control upddlTipoFacturacionElectronica.
         /// </summary>
@@ -866,7 +868,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upddlTipoFacturacionElectronica;
-        
+
         /// <summary>
         /// Control ddlTipoFacturacionElectronica.
         /// </summary>
@@ -875,7 +877,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoFacturacionElectronica;
-        
+
         /// <summary>
         /// Control uptxtNoIdentificacion.
         /// </summary>
@@ -884,7 +886,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtNoIdentificacion;
-        
+
         /// <summary>
         /// Control txtNoIdentificacion.
         /// </summary>
@@ -893,7 +895,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNoIdentificacion;
-        
+
         /// <summary>
         /// Control upddlFormaPago.
         /// </summary>
@@ -902,7 +904,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upddlFormaPago;
-        
+
         /// <summary>
         /// Control ddlFormaPago.
         /// </summary>
@@ -911,7 +913,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlFormaPago;
-        
+
         /// <summary>
         /// Control upddlMetodoPago.
         /// </summary>
@@ -920,7 +922,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upddlMetodoPago;
-        
+
         /// <summary>
         /// Control ddlMetodoPago.
         /// </summary>
@@ -929,7 +931,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMetodoPago;
-        
+
         /// <summary>
         /// Control upddlSucursal.
         /// </summary>
@@ -938,7 +940,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upddlSucursal;
-        
+
         /// <summary>
         /// Control ddlSucursal.
         /// </summary>
@@ -947,7 +949,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSucursal;
-        
+
         /// <summary>
         /// Control upddlUsoCFDI.
         /// </summary>
@@ -956,7 +958,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upddlUsoCFDI;
-        
+
         /// <summary>
         /// Control ddlUsoCFDI.
         /// </summary>
@@ -965,7 +967,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlUsoCFDI;
-        
+
         /// <summary>
         /// Control uptxtTotalFactura.
         /// </summary>
@@ -974,7 +976,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtTotalFactura;
-        
+
         /// <summary>
         /// Control txtTotalFactura.
         /// </summary>
@@ -983,7 +985,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTotalFactura;
-        
+
         /// <summary>
         /// Control uplblErrorFacturacionElectronica.
         /// </summary>
@@ -992,7 +994,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblErrorFacturacionElectronica;
-        
+
         /// <summary>
         /// Control lblErrorFacturacionElectronica.
         /// </summary>
@@ -1001,7 +1003,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrorFacturacionElectronica;
-        
+
         /// <summary>
         /// Control upbtnRegistrarFacturaElectronica.
         /// </summary>
@@ -1010,7 +1012,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnRegistrarFacturaElectronica;
-        
+
         /// <summary>
         /// Control btnRegistrarFacturaElectronica.
         /// </summary>
@@ -1019,7 +1021,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistrarFacturaElectronica;
-        
+
         /// <summary>
         /// Control uplkbCerrarTimbrarFacturacionElectronica.
         /// </summary>
@@ -1028,7 +1030,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplkbCerrarTimbrarFacturacionElectronica;
-        
+
         /// <summary>
         /// Control lkbCerrarTimbrarFacturacionElectronica.
         /// </summary>
@@ -1037,7 +1039,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbCerrarTimbrarFacturacionElectronica;
-        
+
         /// <summary>
         /// Control uptxtSerie.
         /// </summary>
@@ -1046,7 +1048,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtSerie;
-        
+
         /// <summary>
         /// Control txtSerie.
         /// </summary>
@@ -1055,7 +1057,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSerie;
-        
+
         /// <summary>
         /// Control upchkOmitirAddenda.
         /// </summary>
@@ -1064,7 +1066,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upchkOmitirAddenda;
-        
+
         /// <summary>
         /// Control chkOmitirAddenda.
         /// </summary>
@@ -1073,7 +1075,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkOmitirAddenda;
-        
+
         /// <summary>
         /// Control lbllblTimbrarFacturacionElectronica.
         /// </summary>
@@ -1082,7 +1084,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel lbllblTimbrarFacturacionElectronica;
-        
+
         /// <summary>
         /// Control lblTimbrarFacturacionElectronica.
         /// </summary>
@@ -1091,7 +1093,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTimbrarFacturacionElectronica;
-        
+
         /// <summary>
         /// Control upbtnAceptarTimbrarFacturacionElectronica.
         /// </summary>
@@ -1100,7 +1102,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnAceptarTimbrarFacturacionElectronica;
-        
+
         /// <summary>
         /// Control btnAceptarTimbrarFacturacionElectronica.
         /// </summary>
@@ -1109,7 +1111,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptarTimbrarFacturacionElectronica;
-        
+
         /// <summary>
         /// Control uplkbCerrarAddenda.
         /// </summary>
@@ -1118,7 +1120,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplkbCerrarAddenda;
-        
+
         /// <summary>
         /// Control lkbCerrarAddenda.
         /// </summary>
@@ -1127,7 +1129,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbCerrarAddenda;
-        
+
         /// <summary>
         /// Control upddlAddenda.
         /// </summary>
@@ -1136,7 +1138,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upddlAddenda;
-        
+
         /// <summary>
         /// Control ddlAddenda.
         /// </summary>
@@ -1145,7 +1147,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlAddenda;
-        
+
         /// <summary>
         /// Control uplblErrorAddenda.
         /// </summary>
@@ -1154,7 +1156,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblErrorAddenda;
-        
+
         /// <summary>
         /// Control lblErrorAddenda.
         /// </summary>
@@ -1163,7 +1165,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrorAddenda;
-        
+
         /// <summary>
         /// Control upbtnAceptarAddenda.
         /// </summary>
@@ -1172,7 +1174,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnAceptarAddenda;
-        
+
         /// <summary>
         /// Control btnAceptarAddenda.
         /// </summary>
@@ -1181,7 +1183,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptarAddenda;
-        
+
         /// <summary>
         /// Control uplkbCerrarwucAddendaComprobante.
         /// </summary>
@@ -1190,7 +1192,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplkbCerrarwucAddendaComprobante;
-        
+
         /// <summary>
         /// Control lkbCerrarwucAddendaComprobante.
         /// </summary>
@@ -1199,7 +1201,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbCerrarwucAddendaComprobante;
-        
+
         /// <summary>
         /// Control upwucAddendaComprobante.
         /// </summary>
@@ -1208,7 +1210,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upwucAddendaComprobante;
-        
+
         /// <summary>
         /// Control wucAddendaComprobante.
         /// </summary>
@@ -1217,7 +1219,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::SAT.UserControls.wucAddendaComprobante wucAddendaComprobante;
-        
+
         /// <summary>
         /// Control uplkbCerrarEmail.
         /// </summary>
@@ -1226,7 +1228,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplkbCerrarEmail;
-        
+
         /// <summary>
         /// Control lkbCerrarEmail.
         /// </summary>
@@ -1235,7 +1237,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbCerrarEmail;
-        
+
         /// <summary>
         /// Control uptxtAsunto.
         /// </summary>
@@ -1244,7 +1246,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtAsunto;
-        
+
         /// <summary>
         /// Control txtAsunto.
         /// </summary>
@@ -1253,7 +1255,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAsunto;
-        
+
         /// <summary>
         /// Control uptxtMensaje.
         /// </summary>
@@ -1262,7 +1264,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtMensaje;
-        
+
         /// <summary>
         /// Control txtMensaje.
         /// </summary>
@@ -1271,7 +1273,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMensaje;
-        
+
         /// <summary>
         /// Control uplblErrorEmail.
         /// </summary>
@@ -1280,7 +1282,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblErrorEmail;
-        
+
         /// <summary>
         /// Control lblErrorEmail.
         /// </summary>
@@ -1289,7 +1291,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrorEmail;
-        
+
         /// <summary>
         /// Control upbtnAceptarEmail.
         /// </summary>
@@ -1298,7 +1300,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnAceptarEmail;
-        
+
         /// <summary>
         /// Control btnAceptarEmail.
         /// </summary>
@@ -1307,7 +1309,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptarEmail;
-        
+
         /// <summary>
         /// Control upbtnCancelarEliminarCFDI.
         /// </summary>
@@ -1316,7 +1318,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnCancelarEliminarCFDI;
-        
+
         /// <summary>
         /// Control btnCancelarEliminarCFDI.
         /// </summary>
@@ -1325,7 +1327,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelarEliminarCFDI;
-        
+
         /// <summary>
         /// Control upbtnAceptarEliminarCFDI.
         /// </summary>
@@ -1334,7 +1336,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnAceptarEliminarCFDI;
-        
+
         /// <summary>
         /// Control btnAceptarEliminarCFDI.
         /// </summary>
@@ -1343,7 +1345,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptarEliminarCFDI;
-        
+
         /// <summary>
         /// Control uptxtMotivo.
         /// </summary>
@@ -1352,7 +1354,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtMotivo;
-        
+
         /// <summary>
         /// Control txtMotivo.
         /// </summary>
@@ -1361,7 +1363,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMotivo;
-        
+
         /// <summary>
         /// Control upbtnCancelarCancelacionCFDI.
         /// </summary>
@@ -1370,7 +1372,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnCancelarCancelacionCFDI;
-        
+
         /// <summary>
         /// Control btnCancelarCancelacionCFDI.
         /// </summary>
@@ -1379,7 +1381,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelarCancelacionCFDI;
-        
+
         /// <summary>
         /// Control upbtnAceptarCancelacionCFDI.
         /// </summary>
@@ -1388,7 +1390,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnAceptarCancelacionCFDI;
-        
+
         /// <summary>
         /// Control btnAceptarCancelacionCFDI.
         /// </summary>
@@ -1397,7 +1399,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptarCancelacionCFDI;
-        
+
         /// <summary>
         /// Control uplnkCerrarVentanaEC.
         /// </summary>
@@ -1406,7 +1408,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplnkCerrarVentanaEC;
-        
+
         /// <summary>
         /// Control lnkCerrarVentanaEC.
         /// </summary>
@@ -1415,7 +1417,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkCerrarVentanaEC;
-        
+
         /// <summary>
         /// Control upucFacturadoConcepto.
         /// </summary>
@@ -1424,7 +1426,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upucFacturadoConcepto;
-        
+
         /// <summary>
         /// Control ucFacturadoConcepto.
         /// </summary>
@@ -1433,7 +1435,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::SAT.UserControls.wucFacturadoConcepto ucFacturadoConcepto;
-        
+
         /// <summary>
         /// Control uplnkCerrarReferencias.
         /// </summary>
@@ -1442,7 +1444,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplnkCerrarReferencias;
-        
+
         /// <summary>
         /// Control lnkCerrarReferencias.
         /// </summary>
@@ -1451,7 +1453,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkCerrarReferencias;
-        
+
         /// <summary>
         /// Control upucReferenciasViaje.
         /// </summary>
@@ -1460,7 +1462,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upucReferenciasViaje;
-        
+
         /// <summary>
         /// Control ucReferenciasViaje.
         /// </summary>
@@ -1469,7 +1471,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::SAT.UserControls.wucReferenciaViaje ucReferenciasViaje;
-        
+
         /// <summary>
         /// Control uplnkCerrarDev.
         /// </summary>
@@ -1478,7 +1480,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplnkCerrarDev;
-        
+
         /// <summary>
         /// Control LinkButton1.
         /// </summary>
@@ -1487,7 +1489,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
-        
+
         /// <summary>
         /// Control upddlTamanoReferencias.
         /// </summary>
@@ -1496,7 +1498,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upddlTamanoReferencias;
-        
+
         /// <summary>
         /// Control ddlTamanoReferencias.
         /// </summary>
@@ -1505,7 +1507,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTamanoReferencias;
-        
+
         /// <summary>
         /// Control uplblOrdenadoReferencias.
         /// </summary>
@@ -1514,7 +1516,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblOrdenadoReferencias;
-        
+
         /// <summary>
         /// Control lblOrdenadoReferencias.
         /// </summary>
@@ -1523,7 +1525,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblOrdenadoReferencias;
-        
+
         /// <summary>
         /// Control upgvReferencias.
         /// </summary>
@@ -1532,7 +1534,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upgvReferencias;
-        
+
         /// <summary>
         /// Control gvReferencias.
         /// </summary>
@@ -1541,7 +1543,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvReferencias;
-        
+
         /// <summary>
         /// Control upbtnRegistrarFE.
         /// </summary>
@@ -1550,7 +1552,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnRegistrarFE;
-        
+
         /// <summary>
         /// Control btnRegistrarFE.
         /// </summary>
@@ -1559,7 +1561,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistrarFE;
-        
+
         /// <summary>
         /// Control uplkbCerrar.
         /// </summary>
@@ -1568,7 +1570,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplkbCerrar;
-        
+
         /// <summary>
         /// Control lkbCerrar.
         /// </summary>
@@ -1577,7 +1579,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkbCerrar;
-        
+
         /// <summary>
         /// Control uptxtComentario.
         /// </summary>
@@ -1586,7 +1588,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtComentario;
-        
+
         /// <summary>
         /// Control txtComentario.
         /// </summary>
@@ -1595,7 +1597,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtComentario;
-        
+
         /// <summary>
         /// Control upbtnAceptarComentario.
         /// </summary>
@@ -1604,7 +1606,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnAceptarComentario;
-        
+
         /// <summary>
         /// Control btnAceptarComentario.
         /// </summary>
@@ -1613,7 +1615,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptarComentario;
-        
+
         /// <summary>
         /// Control upbtnSi.
         /// </summary>
@@ -1622,7 +1624,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnSi;
-        
+
         /// <summary>
         /// Control btnSi.
         /// </summary>
@@ -1631,7 +1633,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSi;
-        
+
         /// <summary>
         /// Control upbtnNo.
         /// </summary>
@@ -1640,7 +1642,7 @@ namespace SAT.FacturacionElectronica33 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upbtnNo;
-        
+
         /// <summary>
         /// Control btnNo.
         /// </summary>

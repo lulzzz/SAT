@@ -128,6 +128,13 @@ namespace SAT.FacturacionElectronica33
                 case "Ayuda":
                     //TODO: Implementar uso de ayuda
                     break;
+                case "Imprimir":
+                    //Obteniendo Ruta
+                    string urlReporte = TSDK.Base.Cadena.RutaRelativaAAbsoluta("~/FacturacionElectronica33/FacturaGlobalV33.aspx", "~/RDLC/Reporte.aspx");
+
+                    //Instanciando nueva ventana de navegador para apertura de registro
+                    TSDK.ASP.ScriptServer.AbreNuevaVentana(string.Format("{0}?idTipoReporte={1}&idRegistro={2}", urlReporte, "FacturaGlobal", Convert.ToInt32(Session["id_registro"])), "Factura Global", "location=NO,toolbar=NO,scrollbars=YES,menubar=NO,status=YES,width=800,height=500", Page);
+                    break;
             }
         }
         /// <summary>
@@ -2145,7 +2152,7 @@ namespace SAT.FacturacionElectronica33
                         lkbAbrir.Enabled =
                         lkbGuardar.Enabled =
                         btnGuardar.Enabled =
-                        lkbSalir.Enabled = true;
+                        lkbImprimir.Enabled = true;
                         //Edicion
                         lkbEditar.Enabled = false;
                         //Herramientas
@@ -2171,7 +2178,7 @@ namespace SAT.FacturacionElectronica33
                         //Archivo
                         lkbNuevo.Enabled =
                         lkbAbrir.Enabled =
-                        lkbSalir.Enabled = true;
+                        lkbImprimir.Enabled = true;
                         lkbGuardar.Enabled =
                         btnGuardar.Enabled = false;
                         //Edicion
@@ -2201,7 +2208,7 @@ namespace SAT.FacturacionElectronica33
                         lkbAbrir.Enabled =
                         lkbGuardar.Enabled =
                         btnGuardar.Enabled =
-                        lkbSalir.Enabled = true;
+                        lkbImprimir.Enabled = true;
                         //Edicion
                         lkbEditar.Enabled = false;
                         //Herramientas
