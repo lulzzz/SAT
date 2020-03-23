@@ -113,353 +113,269 @@
                 <asp:Button ID="btnVistaPrevia" runat="server" Text="Vista Previa >>" CssClass="boton" OnClick="btnVistaPrevia_Click" />
             </div>
         </div>
-    </div>
-    <div class="contenedor_media_seccion_derecha">
-        <div class="header_seccion">
-            <img src="../Image/intercambio.png" style="width: 48px; height: 48px" />
-            <h2>2. Visualiza los datos contenidos del XML.</h2>
-        </div>
-        <div class="columna2x">
-            <div class="renglon2x">
-                <div class="etiqueta">
-                    <label for="txtCompania">ID</label>
+        <div class="contenedor_media_seccion_derecha">
+            <div class="header_seccion">
+                <img src="../Image/find.png"/>
+                <h2>2. Visualiza los datos contenidos del XML.</h2>
+            </div>
+            <div class="columna2x">
+                <div class="renglon2x">
+                    <div class="etiqueta">
+                        <label for="txtEmisor">Emisor</label>
+                    </div>
+                    <div class="control2x">
+                        <asp:UpdatePanel ID="uptxtEmisor" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtEmisor" runat="server" CssClass="textbox2x validate[required]" TabIndex="5" MaxLength="10"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
-                <div class="control2x">
-                    <asp:UpdatePanel ID="uplblId" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:Label ID="lblId" runat="server"></asp:Label>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-                        </Triggers>
-                    </asp:UpdatePanel>
+                <div class="renglon2x">
+                    <div class="etiqueta">
+                        <label for="txtReceptor">Receptor</label>
+                    </div>
+                    <div class="control2x">
+                        <asp:UpdatePanel ID="uptxtReceptor" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtReceptor" runat="server" CssClass="textbox2x validate[required, custom[positiveNumber]]"
+                                    TabIndex="6" MaxLength="9"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div class="renglon2x">
+                    <div class="etiqueta">
+                        <label for="txtSerie">Serie</label>
+                    </div>
+                    <div class="control2x">
+                        <asp:UpdatePanel ID="uptxtSerie" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtSerie" runat="server" CssClass="textbox2x validate[required]" TabIndex="7" MaxLength="36"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div class="renglon2x">
+                    <div class="etiqueta">
+                        <label for="txtFolio">Folio</label>
+                    </div>
+                    <div class="control2x">
+                        <asp:UpdatePanel ID="uptxtFolio" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtFolio" runat="server" CssClass="textbox2x validate[required]" TabIndex="14"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div class="renglon2x">
+                    <div class="etiqueta">
+                        <label for="txtUUID">UUID</label>
+                    </div>
+                    <div class="control2x">
+                        <asp:UpdatePanel ID="uptxtUUID" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtUUID" runat="server" CssClass="textbox2x validate[required, custom[number]]"
+                                    TabIndex="12" MaxLength="9"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
             </div>
-            <div class="renglon2x">
-                <div class="etiqueta">
-                    <label for="ddlEstatus">Estatus</label>
+            <div class="columna">
+                <div class="renglon">
+                    <div class="etiqueta">
+                        <label for="txtFechaFactura">Fecha de factura</label>
+                    </div>
+                    <div class="control">
+                        <asp:UpdatePanel ID="uptxtFechaFactura" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtFechaFactura" runat="server" CssClass="textbox validate[required, custom[number]]"
+                                    TabIndex="13" MaxLength="9"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="upddlEstatus" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:DropDownList ID="ddlEstatus" runat="server" CssClass="dropdown2x" Enabled="false"></asp:DropDownList>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
+                <div class="renglon">
+                    <div class="etiqueta">
+                        <label for="txtSubtotal">Subtotal</label>
+                    </div>
+                    <div class="control">
+                        <asp:UpdatePanel ID="uptxtSubtotal" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtSubtotal" runat="server" CssClass="textbox validate[required, custom[number]]"
+                                    TabIndex="15" MaxLength="9"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
-            </div>
-            <div class="renglon2x">
-                <div class="etiqueta">
-                    <label for="txtCompania">Compañia</label>
+                <div class="renglon">
+                    <div class="etiqueta">
+                        <label for="txtDescuento">Descuento</label>
+                    </div>
+                    <div class="control">
+                        <asp:UpdatePanel ID="uptxtDescuento" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtDescuento" runat="server" CssClass="textbox validate[required, custom[number]]"
+                                    TabIndex="16" MaxLength="9"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="uptxtCompania" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtCompania" runat="server" CssClass="textbox2x validate[required, custom[IdCatalogo]]"
-                                TabIndex="1" Enabled="false"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
+                <div class="renglon">
+                    <div class="etiqueta">
+                        <label for="txtTrasladado">Trasladado</label>
+                    </div>
+                    <div class="control">
+                        <asp:UpdatePanel ID="uptxtTrasladado" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtTrasladado" runat="server" CssClass="textbox validate[required, custom[number]]"
+                                    TabIndex="11" MaxLength="9"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
-            </div>
-            <div class="renglon2x">
-                <div class="etiqueta">
-                    <label for="ddlTipoFactura">Tipo de Factura</label>
+                <div class="renglon">
+                    <div class="etiqueta">
+                        <label for="txtRetenido">Retenido</label>
+                    </div>
+                    <div class="control">
+                        <asp:UpdatePanel ID="uptxtRetenido" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtRetenido" runat="server" CssClass="textbox validate[required, custom[number]]"
+                                    TabIndex="17" MaxLength="9"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
-                <div class="control2x">
-                    <asp:UpdatePanel ID="upddlTipoFactura" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:DropDownList ID="ddlTipoFactura" runat="server" CssClass="dropdown2x" TabIndex="3"></asp:DropDownList>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
+                <div class="renglon">
+                    <div class="etiqueta">
+                        <label for="txtTotal">Total</label>
+                    </div>
+                    <div class="control">
+                        <asp:UpdatePanel ID="uptxtTotal" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtTotal" runat="server" CssClass="textbox validate[required]" TabIndex="4"
+                                    MaxLength="10"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
-            </div>
-            <div class="renglon2x">
-                <div class="etiqueta">
-                    <label for="txtProveedor">Proveedor</label>
+                <div class="renglon">
+                    <div class="etiqueta">
+                        <label for="txtEstatusSistema">Estatus sistema</label>
+                    </div>
+                    <div class="control">
+                        <asp:UpdatePanel ID="uptxtEstatusSistema" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtEstatusSistema" runat="server" CssClass="textbox validate[required]" TabIndex="9" MaxLength="9"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="uptxtProveedor" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtProveedor" runat="server" CssClass="textbox2x validate[required, custom[IdCatalogo]]"
-                                TabIndex="2"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
+                <div class="renglon">
+                    <div class="etiqueta">
+                        <label for="txtEstatusSAT">Estatus SAT</label>
+                    </div>
+                    <div class="control">
+                        <asp:UpdatePanel ID="uptxtEstatusSAT" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtEstatusSAT" runat="server" CssClass="textbox validate[required, custom[dateTime24]]" TabIndex="10"
+                                    MaxLength="16"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
-            </div>
-            <div class="renglon2x">
-                <div class="etiqueta">
-                    <label for="txtFechaFactura">Fecha de Factura</label>
-                </div>
-                <div class="control2x">
-                    <asp:UpdatePanel ID="uptxtFechaFactura" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtFechaFactura" runat="server" CssClass="textbox2x validate[required, custom[dateTime24]]"
-                                TabIndex="8" MaxLength="16"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-            <div class="renglon2x">
-                <div class="etiqueta">
-                    <label for="txtSerie">Serie</label>
-                </div>
-                <div class="control2x">
-                    <asp:UpdatePanel ID="uptxtSerie" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtSerie" runat="server" CssClass="textbox2x validate[required]" TabIndex="5" MaxLength="10"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-            <div class="renglon2x">
-                <div class="etiqueta">
-                    <label for="txtFolio">Folio</label>
-                </div>
-                <div class="control2x">
-                    <asp:UpdatePanel ID="uptxtFolio" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtFolio" runat="server" CssClass="textbox2x validate[required, custom[positiveNumber]]"
-                                TabIndex="6" MaxLength="9"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-            <div class="renglon2x">
-                <div class="etiqueta">
-                    <label for="txtUUID">UUID</label>
-                </div>
-                <div class="control2x">
-                    <asp:UpdatePanel ID="uptxtUUID" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtUUID" runat="server" CssClass="textbox2x validate[required]" TabIndex="7" MaxLength="36"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-            <div class="renglon2x">
-                <div class="etiqueta">
-                    <label for="txtCondPago">Condición de Pago</label>
-                </div>
-                <div class="control2x">
-                    <asp:UpdatePanel ID="uptxtCondPago" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtCondPago" runat="server" CssClass="textbox2x validate[required]" TabIndex="14"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-        </div>
-        <div class="columna">
-            <div class="renglon">
-                <div class="etiqueta">
-                    <label for="txtSubTotal">Subtotal</label>
-                </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="uptxtSubTotal" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtSubTotal" runat="server" CssClass="textbox validate[required, custom[number]]"
-                                TabIndex="12" MaxLength="9"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
+                <div class="renglon">
+                    <div class="etiqueta">
+                        <label for="txtObservacion">Observación</label>
+                    </div>
+                    <div class="control">
+                        <asp:UpdatePanel ID="uptxtObservacion" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtObservacion" runat="server" CssClass="textbox validate[required]" TabIndex="18"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnImportar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnVistaPrevia" />
+                                <asp:AsyncPostBackTrigger ControlID="btnBorrar" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
             </div>
-            <div class="renglon">
-                <div class="etiqueta">
-                    <label for="txtDescuento">Descuento</label>
-                </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="uptxtDescuento" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtDescuento" runat="server" CssClass="textbox validate[required, custom[number]]"
-                                TabIndex="13" MaxLength="9"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-            <div class="renglon">
-                <div class="etiqueta">
-                    <label for="txtTrasladado">Trasladado</label>
-                </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="uptxtTrasladado" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtTrasladado" runat="server" CssClass="textbox validate[required, custom[number]]"
-                                TabIndex="15" MaxLength="9"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-            <div class="renglon">
-                <div class="etiqueta">
-                    <label for="txtRetenido">Retenido</label>
-                </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="uptxtRetenido" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtRetenido" runat="server" CssClass="textbox validate[required, custom[number]]"
-                                TabIndex="16" MaxLength="9"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-            <div class="renglon">
-                <div class="etiqueta">
-                    <label for="txtTotal">Total</label>
-                </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="uptxtTotal" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtTotal" runat="server" CssClass="textbox validate[required, custom[number]]"
-                                TabIndex="11" MaxLength="9"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-            <div class="renglon">
-                <div class="etiqueta">
-                    <label for="txtSaldo">Saldo</label>
-                </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="uptxtSaldo" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtSaldo" runat="server" CssClass="textbox validate[required, custom[number]]"
-                                TabIndex="17" MaxLength="9"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-            <div class="renglon">
-                <div class="etiqueta">
-                    <label for="txtMoneda">Moneda</label>
-                </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="uptxtMoneda" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtMoneda" runat="server" CssClass="textbox validate[required]" TabIndex="4"
-                                MaxLength="10"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-            <div class="renglon">
-                <div class="etiqueta">
-                    <label for="txtMontoTC">Tipo de Cambio</label>
-                </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="uptxtMontoTC" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtMontoTC" runat="server" CssClass="textbox validate[required]" TabIndex="9" MaxLength="9"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-            <div class="renglon">
-                <div class="etiqueta">
-                    <label for="txtFechaTC">Fecha T.C.</label>
-                </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="uptxtFechaTC" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtFechaTC" runat="server" CssClass="textbox validate[required, custom[dateTime24]]" TabIndex="10"
-                                MaxLength="16"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-            <div class="renglon">
-                <div class="etiqueta">
-                    <label for="txtDiasCredito">Dias de Credito</label>
-                </div>
-                <div class="control">
-                    <asp:UpdatePanel ID="uptxtDiasCredito" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="txtDiasCredito" runat="server" CssClass="textbox validate[required]" TabIndex="18"></asp:TextBox>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnImportar" />
-
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-
         </div>
     </div>
+
     <!--Sección del GV que muestra las facturas relacionadas del XML con las registradas-->
     <div class="contenedor_seccion_completa">
         <div class="header_seccion">
-            <img src="../Image/cfdi_xml.png" />
+            <img src="../Image/intercambio.png" style="width: 48px; height: 48px" />
             <h2>3. Verifica las facturas relacionadas e importalas al sistema.</h2>
         </div>
         <div class="renglon2x">
@@ -503,7 +419,7 @@
                     </Triggers>
                 </asp:UpdatePanel>
             </div>
-            <div class="etiqueta">
+            <div class="control">
                 <asp:UpdatePanel ID="upbtnImportar" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <asp:Button ID="btnImportar" runat="server" Text="Importar" CssClass="boton" OnClick="btnImportar_Click" />

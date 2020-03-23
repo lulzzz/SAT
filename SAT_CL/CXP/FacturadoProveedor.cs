@@ -1402,6 +1402,20 @@ namespace SAT_CL.CXP {
 			return result;
 		}
 
+		public static DataTable ObtieneFacturasRelacionadasNC(String UUID)
+		{
+			DataTable dtFacturasRelacionadasNC = null;
+
+			object[] param = { };
+
+			using (DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nom_sp, param))
+			{
+				if (Validacion.ValidaOrigenDatos(ds, "Table"))
+					dtFacturasRelacionadasNC = ds.Tables["Table"];
+				return dtFacturasRelacionadasNC;
+			}
+		}
+
 		#region Importación CFDI 3.2
 		/// <summary>
 		/// Método encargado de Importar el CFDI en la versión 3.2

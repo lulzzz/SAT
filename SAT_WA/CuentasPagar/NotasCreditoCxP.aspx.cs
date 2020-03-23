@@ -371,33 +371,6 @@ namespace SAT.CuentasPagar
             //Validando Sesión Registro B
             if (Session["id_registro_b"] != null && Session["id_registro"] != null)
             {
-                //Creando tabla concentradora de información
-                DataTable dtImportacion = new DataTable();
-                //Añadiendo columna para enumerar resultados
-                DataColumn cID = new DataColumn("cont", typeof(int));
-                cID.AutoIncrement = true;
-                cID.AutoIncrementSeed = 1;
-                cID.AutoIncrementStep = 1;
-                dtImportacion.Columns.Add(cID);
-                dtImportacion.Columns.Add("id", typeof(int));
-                dtImportacion.Columns.Add("xml", typeof(string));
-                dtImportacion.Columns.Add("nombre", typeof(string));
-                dtImportacion.Columns.Add("rfcE", typeof(string));
-                dtImportacion.Columns.Add("rfcR", typeof(string));
-                dtImportacion.Columns.Add("TipoComprobante", typeof(string));
-                dtImportacion.Columns.Add("Emisor", typeof(string));
-                dtImportacion.Columns.Add("Receptor", typeof(string));
-                dtImportacion.Columns.Add("Serie", typeof(string));
-                dtImportacion.Columns.Add("Folio", typeof(string));
-                dtImportacion.Columns.Add("UUID", typeof(string));
-                dtImportacion.Columns.Add("FechaFactura", typeof(DateTime));
-                dtImportacion.Columns.Add("SubTotal", typeof(decimal));
-                dtImportacion.Columns.Add("Descuento", typeof(decimal));
-                dtImportacion.Columns.Add("Trasladado", typeof(decimal));
-                dtImportacion.Columns.Add("Retenido", typeof(decimal));
-                dtImportacion.Columns.Add("Total", typeof(decimal));
-                dtImportacion.Columns.Add("EstatusSistema", typeof(string));
-                dtImportacion.Columns.Add("EstatusSAT", typeof(string));
                 //Para cada uno de los archivos cargados
                 foreach (byte[] b in (List<byte[]>)Session["id_registro_b"])
                 {
@@ -448,7 +421,7 @@ namespace SAT.CuentasPagar
                                 }
                             }
 
-                            if(tipoCFDI.Equals("ingreso") || tipoCFDI.Equals("E"))
+                            if(tipoCFDI == 2)
                             {
                                 //string IdByte = doc.ToString();
                                 //int id_cfdi = 0;
@@ -484,7 +457,33 @@ namespace SAT.CuentasPagar
                                     if (a.Contains(folio) || a.Contains(uuid))
                                         archivo = a.ToString();
                                 }
-                                dtImportacion.Rows.Add(null, null, doc, archivo, rfcE, rfcR, tipoComprobante, emisor, receptor, serie, folio, uuid, fecha, subtotal, descuento, traslados, retenciones, total, estatus);
+                                //dtImportacion.Rows.Add(null, null, doc, archivo, rfcE, rfcR, tipoComprobante, emisor, receptor, serie, folio, uuid, fecha, subtotal, descuento, traslados, retenciones, total, estatus);
+                                txtEmisor.Text = emisor;
+                                txtReceptor.Text = receptor;
+                                txtSerie.Text = serie;
+                                txtFolio.Text = folio;
+                                txtUUID.Text = uuid;
+                                txtFechaFactura.Text = Convert.ToString(fecha);
+                                txtSubtotal.Text = Convert.ToString(subtotal);
+                                txtDescuento.Text = Convert.ToString(descuento);
+                                txtTrasladado.Text = Convert.ToString(traslados);
+                                txtRetenido.Text = Convert.ToString(retenciones);
+                                txtTotal.Text = Convert.ToString(total);
+                                txtEstatusSAT.Text = estatus;
+
+                                //Realizando la carga de los servicios coincidentes
+                                using (DataTable mit = SAT_CL.CXP.FacturadoProveedor.ObtieneFacturasRelacionadasNC(uuid))
+                                {
+                                    //Cargando Gridview
+                                    Controles.CargaGridView(gvVistaPrevia, mit, "Id", lblOrdenarVistaPrevia.Text, true, 3);
+                                    //Si no hay registros
+                                    if (mit == null)
+                                        //Elimiando de sesión
+                                        Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table");
+                                    //Si existen registros, se sobrescribe
+                                    else
+                                        Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], mit, "Table");
+                                }
                             }
                             else
                                 resultado = new RetornoOperacion("El XML cargado no corresponde a un Egreso. Seleccione un XML de tipo Egreso.");
@@ -501,7 +500,7 @@ namespace SAT.CuentasPagar
                     resultados.Add(resultado);
                 }
                 //Almacenando resultados en sesión
-                Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtImportacion, "TableImportacion");
+                //Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtImportacion, "TableImportacion");
 
                 //Borrando archivo de memoria, una vez que se cargó a una tabla
                 //Session["id_registro_b"] = null;
@@ -510,7 +509,7 @@ namespace SAT.CuentasPagar
                 //ScriptServer.EjecutaFuncionDefinidaJavaScript(this, "<script> BorraNombreArchivoCargado(); </script>", "NombreArchivo");
 
                 //Llenando gridview de vista previa (Sin llaves de selección)
-                Controles.CargaGridView(gvVistaPrevia, dtImportacion, "Cont-Id-xml-nombre-rfcE-rfcR-Emisor-UUID-Total-FechaFactura-TipoComprobante-EstatusSistema", lblOrdenarVistaPrevia.Text, true, 1);
+                //Controles.CargaGridView(gvVistaPrevia, dtImportacion, "Cont-Id-xml-nombre-rfcE-rfcR-Emisor-UUID-Total-FechaFactura-TipoComprobante-EstatusSistema", lblOrdenarVistaPrevia.Text, true, 1);
 
                 //Señalando resultado exitoso
                 resultados.Add(new RetornoOperacion("Vista Previa generada con éxito.", true));

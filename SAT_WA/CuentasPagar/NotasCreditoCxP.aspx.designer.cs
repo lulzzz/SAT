@@ -42,112 +42,40 @@ namespace SAT.CuentasPagar
         protected global::System.Web.UI.WebControls.Button btnVistaPrevia;
 
         /// <summary>
-        /// Control uplblId.
+        /// Control uptxtEmisor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uplblId;
+        protected global::System.Web.UI.UpdatePanel uptxtEmisor;
 
         /// <summary>
-        /// Control lblId.
+        /// Control txtEmisor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblId;
+        protected global::System.Web.UI.WebControls.TextBox txtEmisor;
 
         /// <summary>
-        /// Control upddlEstatus.
+        /// Control uptxtReceptor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upddlEstatus;
+        protected global::System.Web.UI.UpdatePanel uptxtReceptor;
 
         /// <summary>
-        /// Control ddlEstatus.
+        /// Control txtReceptor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstatus;
-
-        /// <summary>
-        /// Control uptxtCompania.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uptxtCompania;
-
-        /// <summary>
-        /// Control txtCompania.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCompania;
-
-        /// <summary>
-        /// Control upddlTipoFactura.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upddlTipoFactura;
-
-        /// <summary>
-        /// Control ddlTipoFactura.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoFactura;
-
-        /// <summary>
-        /// Control uptxtProveedor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uptxtProveedor;
-
-        /// <summary>
-        /// Control txtProveedor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProveedor;
-
-        /// <summary>
-        /// Control uptxtFechaFactura.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uptxtFechaFactura;
-
-        /// <summary>
-        /// Control txtFechaFactura.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaFactura;
+        protected global::System.Web.UI.WebControls.TextBox txtReceptor;
 
         /// <summary>
         /// Control uptxtSerie.
@@ -204,40 +132,40 @@ namespace SAT.CuentasPagar
         protected global::System.Web.UI.WebControls.TextBox txtUUID;
 
         /// <summary>
-        /// Control uptxtCondPago.
+        /// Control uptxtFechaFactura.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uptxtCondPago;
+        protected global::System.Web.UI.UpdatePanel uptxtFechaFactura;
 
         /// <summary>
-        /// Control txtCondPago.
+        /// Control txtFechaFactura.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCondPago;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaFactura;
 
         /// <summary>
-        /// Control uptxtSubTotal.
+        /// Control uptxtSubtotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uptxtSubTotal;
+        protected global::System.Web.UI.UpdatePanel uptxtSubtotal;
 
         /// <summary>
-        /// Control txtSubTotal.
+        /// Control txtSubtotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSubTotal;
+        protected global::System.Web.UI.WebControls.TextBox txtSubtotal;
 
         /// <summary>
         /// Control uptxtDescuento.
@@ -312,94 +240,58 @@ namespace SAT.CuentasPagar
         protected global::System.Web.UI.WebControls.TextBox txtTotal;
 
         /// <summary>
-        /// Control uptxtSaldo.
+        /// Control uptxtEstatusSistema.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uptxtSaldo;
+        protected global::System.Web.UI.UpdatePanel uptxtEstatusSistema;
 
         /// <summary>
-        /// Control txtSaldo.
+        /// Control txtEstatusSistema.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSaldo;
+        protected global::System.Web.UI.WebControls.TextBox txtEstatusSistema;
 
         /// <summary>
-        /// Control uptxtMoneda.
+        /// Control uptxtEstatusSAT.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uptxtMoneda;
+        protected global::System.Web.UI.UpdatePanel uptxtEstatusSAT;
 
         /// <summary>
-        /// Control txtMoneda.
+        /// Control txtEstatusSAT.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMoneda;
+        protected global::System.Web.UI.WebControls.TextBox txtEstatusSAT;
 
         /// <summary>
-        /// Control uptxtMontoTC.
+        /// Control uptxtObservacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uptxtMontoTC;
+        protected global::System.Web.UI.UpdatePanel uptxtObservacion;
 
         /// <summary>
-        /// Control txtMontoTC.
+        /// Control txtObservacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMontoTC;
-
-        /// <summary>
-        /// Control uptxtFechaTC.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uptxtFechaTC;
-
-        /// <summary>
-        /// Control txtFechaTC.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaTC;
-
-        /// <summary>
-        /// Control uptxtDiasCredito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uptxtDiasCredito;
-
-        /// <summary>
-        /// Control txtDiasCredito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDiasCredito;
+        protected global::System.Web.UI.WebControls.TextBox txtObservacion;
 
         /// <summary>
         /// Control upddlTamanoUnidades.
