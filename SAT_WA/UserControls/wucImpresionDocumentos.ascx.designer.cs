@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SAT.UserControls {
-    
-    
-    public partial class wucImpresionDocumentos {
-        
+namespace SAT.UserControls
+{
+
+
+    public partial class wucImpresionDocumentos
+    {
+
         /// <summary>
         /// Control txtCliente.
         /// </summary>
@@ -20,7 +22,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCliente;
-        
+
         /// <summary>
         /// Control chkDocumentados.
         /// </summary>
@@ -29,7 +31,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkDocumentados;
-        
+
         /// <summary>
         /// Control chkIniciados.
         /// </summary>
@@ -38,7 +40,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkIniciados;
-        
+
         /// <summary>
         /// Control txtViaje.
         /// </summary>
@@ -47,7 +49,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtViaje;
-        
+
         /// <summary>
         /// Control uprbCarga.
         /// </summary>
@@ -56,7 +58,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uprbCarga;
-        
+
         /// <summary>
         /// Control rbCarga.
         /// </summary>
@@ -65,7 +67,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton rbCarga;
-        
+
         /// <summary>
         /// Control uprbDescarga.
         /// </summary>
@@ -74,7 +76,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uprbDescarga;
-        
+
         /// <summary>
         /// Control rbDescarga.
         /// </summary>
@@ -83,7 +85,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton rbDescarga;
-        
+
         /// <summary>
         /// Control uprbInicioViaje.
         /// </summary>
@@ -92,7 +94,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uprbInicioViaje;
-        
+
         /// <summary>
         /// Control rbInicioViaje.
         /// </summary>
@@ -101,7 +103,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton rbInicioViaje;
-        
+
         /// <summary>
         /// Control uprbFinViaje.
         /// </summary>
@@ -110,7 +112,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uprbFinViaje;
-        
+
         /// <summary>
         /// Control rbFinViaje.
         /// </summary>
@@ -119,7 +121,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton rbFinViaje;
-        
+
         /// <summary>
         /// Control uptxtFechaInicio.
         /// </summary>
@@ -128,7 +130,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtFechaInicio;
-        
+
         /// <summary>
         /// Control txtFechaInicio.
         /// </summary>
@@ -137,7 +139,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaInicio;
-        
+
         /// <summary>
         /// Control upchkIncluir.
         /// </summary>
@@ -146,7 +148,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upchkIncluir;
-        
+
         /// <summary>
         /// Control chkIncluir.
         /// </summary>
@@ -155,7 +157,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkIncluir;
-        
+
         /// <summary>
         /// Control uptxtFechaFin.
         /// </summary>
@@ -164,7 +166,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uptxtFechaFin;
-        
+
         /// <summary>
         /// Control txtFechaFin.
         /// </summary>
@@ -173,7 +175,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaFin;
-        
+
         /// <summary>
         /// Control txtServicio.
         /// </summary>
@@ -182,7 +184,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtServicio;
-        
+
         /// <summary>
         /// Control txtOperador.
         /// </summary>
@@ -191,7 +193,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOperador;
-        
+
         /// <summary>
         /// Control txtUnidad.
         /// </summary>
@@ -200,7 +202,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUnidad;
-        
+
         /// <summary>
         /// Control uplbxOperacionServicio.
         /// </summary>
@@ -209,7 +211,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplbxOperacionServicio;
-        
+
         /// <summary>
         /// Control lbxOperacionServicio.
         /// </summary>
@@ -218,7 +220,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox lbxOperacionServicio;
-        
+
         /// <summary>
         /// Control uplbxAlcance.
         /// </summary>
@@ -227,7 +229,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplbxAlcance;
-        
+
         /// <summary>
         /// Control lbxAlcance.
         /// </summary>
@@ -236,7 +238,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox lbxAlcance;
-        
+
         /// <summary>
         /// Control btnBuscar.
         /// </summary>
@@ -245,7 +247,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBuscar;
-        
+
         /// <summary>
         /// Control upddlTamano.
         /// </summary>
@@ -254,7 +256,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upddlTamano;
-        
+
         /// <summary>
         /// Control ddlTamano.
         /// </summary>
@@ -263,7 +265,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTamano;
-        
+
         /// <summary>
         /// Control uplblOrdenado.
         /// </summary>
@@ -272,7 +274,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplblOrdenado;
-        
+
         /// <summary>
         /// Control lblOrdenado.
         /// </summary>
@@ -281,7 +283,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblOrdenado;
-        
+
         /// <summary>
         /// Control uplnkExportar.
         /// </summary>
@@ -290,7 +292,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel uplnkExportar;
-        
+
         /// <summary>
         /// Control lnkExportar.
         /// </summary>
@@ -299,7 +301,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkExportar;
-        
+
         /// <summary>
         /// Control upgvServicios.
         /// </summary>
@@ -308,7 +310,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upgvServicios;
-        
+
         /// <summary>
         /// Control gvServicios.
         /// </summary>
@@ -317,7 +319,25 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvServicios;
-        
+
+        /// <summary>
+        /// Control uplkbCerrarModal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel uplkbCerrarModal;
+
+        /// <summary>
+        /// Control lkbCerrarModal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lkbCerrarModal;
+
         /// <summary>
         /// Control upwucImpresionPorte.
         /// </summary>
@@ -326,7 +346,7 @@ namespace SAT.UserControls {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upwucImpresionPorte;
-        
+
         /// <summary>
         /// Control wucImpresionPorte.
         /// </summary>

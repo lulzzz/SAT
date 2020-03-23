@@ -282,7 +282,7 @@
                 </asp:UpdatePanel>
             </div>
         </div>
-        <div class="grid_seccion_completa_encabezado_fijo">
+        <div class="grid_seccion_completa_400px_altura">
             <asp:UpdatePanel ID="upgvServicios" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
                     <asp:GridView ID="gvServicios" runat="server" AllowPaging="true" AllowSorting="true"
@@ -372,6 +372,7 @@
                 <Triggers>
                     <asp:AsyncPostBackTrigger ControlID="btnBuscar" />
                     <asp:AsyncPostBackTrigger ControlID="ddlTamano" />
+                    <asp:AsyncPostBackTrigger ControlID="gvServicios" />
                 </Triggers>
             </asp:UpdatePanel>
         </div>
@@ -381,6 +382,15 @@
 <!-- Ventana de Impresión -->
     <div id="contenedorVentanaImpresionPorte" class="modal">
         <div id="ventanaImpresionPorte" class="contenedor_ventana_confirmacion" style="width: auto;">
+            <div class="boton_cerrar_modal">
+                <asp:UpdatePanel runat="server" ID="uplkbCerrarModal" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <asp:LinkButton ID="lkbCerrarModal" runat="server" OnClick="lkbCerrarModal_Click" >
+                            <img src="../Image/Cerrar16.png" />
+                        </asp:LinkButton>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
             <div class="columna2x">
                 <asp:UpdatePanel ID="upwucImpresionPorte" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
