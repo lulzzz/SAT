@@ -360,12 +360,12 @@
                                     <asp:ImageButton ID="imbInstruccion" runat="server" ImageUrl="~/Image/imprimir.png" Width="28" Height="28" OnClick="imbImprimir_Click" CommandName="Instruccion" ToolTip="Imprimir Hoja de Instrucción" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Gastos">
+                            <%--<asp:TemplateField HeaderText="Gastos">
                                 <ItemStyle HorizontalAlign="Center" Width="50" />
                                 <ItemTemplate>
                                     <asp:ImageButton ID="imbGastos" runat="server" ImageUrl="~/Image/imprimir.png" Width="28" Height="28" OnClick="imbImprimir_Click" CommandName="Gastos" ToolTip="Imprimir Gastos" />
                                 </ItemTemplate>
-                            </asp:TemplateField>                      
+                            </asp:TemplateField>   --%>                   
                         </Columns>
                     </asp:GridView>
                 </ContentTemplate>

@@ -127,10 +127,10 @@ namespace SAT.UserControls
                         {
                             imbInstruccion.Visible = false;
                         }
-                        if (fila["ImpresionGastos"].ToString() == "1")
-                        {
-                            imbGastos.Visible = false;
-                        }
+                        //if (fila["ImpresionGastos"].ToString() == "1")
+                        //{
+                        //    imbGastos.Visible = false;
+                        //}
                     }
                 }
             }
@@ -208,18 +208,18 @@ namespace SAT.UserControls
                             }
                             break;
                         }
-                    case "Gastos":
-                        {
-                            //Validamos Selección
-                            if (gvServicios.SelectedIndex != -1)
-                            {
-                                string urlReporte = TSDK.Base.Cadena.RutaRelativaAAbsoluta("~/Accesorios/ImpresionDocumentos.aspx", "~/RDLC/Reporte.aspx");
-                                //Instanciando nueva ventana de navegador para apertura de registro
-                                TSDK.ASP.ScriptServer.AbreNuevaVentana(string.Format("{0}?idTipoReporte={1}&idRegistro={2}", urlReporte, "GastosGenerales", Convert.ToInt32(gvServicios.SelectedValue)), "GastosGenerales", "location=NO,toolbar=NO,scrollbars=YES,menubar=NO,status=YES,width=800,height=500", Page);
-                                SAT_CL.Global.Referencia.InsertaReferencia(Convert.ToInt32(gvServicios.SelectedValue), 1, SAT_CL.Global.ReferenciaTipo.ObtieneIdReferenciaTipo(0, 1, "Conteo Impresión Gastos", 0, "General"), "1", Fecha.ObtieneFechaEstandarMexicoCentro(), this._idUsuario);
-                            }
-                            break;
-                        }
+                    //case "Gastos":
+                    //    {
+                    //        //Validamos Selección
+                    //        if (gvServicios.SelectedIndex != -1)
+                    //        {
+                    //            string urlReporte = TSDK.Base.Cadena.RutaRelativaAAbsoluta("~/Accesorios/ImpresionDocumentos.aspx", "~/RDLC/Reporte.aspx");
+                    //            //Instanciando nueva ventana de navegador para apertura de registro
+                    //            TSDK.ASP.ScriptServer.AbreNuevaVentana(string.Format("{0}?idTipoReporte={1}&idRegistro={2}", urlReporte, "GastosGenerales", Convert.ToInt32(gvServicios.SelectedValue)), "GastosGenerales", "location=NO,toolbar=NO,scrollbars=YES,menubar=NO,status=YES,width=800,height=500", Page);
+                    //            SAT_CL.Global.Referencia.InsertaReferencia(Convert.ToInt32(gvServicios.SelectedValue), 1, SAT_CL.Global.ReferenciaTipo.ObtieneIdReferenciaTipo(0, 1, "Conteo Impresión Gastos", 0, "General"), "1", Fecha.ObtieneFechaEstandarMexicoCentro(), this._idUsuario);
+                    //        }
+                    //        break;
+                    //    }
                 }
                 cargaServicios();
             }
@@ -334,7 +334,7 @@ namespace SAT.UserControls
                     //cargaPublicacionesActivasServicios(id);
                 }
 
-                Controles.CargaGridView(gvServicios, mit, "id_servicio-movimiento-id_parada_actual-IdParadaInicial-NoServicio-ImpresionCP-ImpresionCPV-ImpresionHI-ImpresionGastos", lblOrdenado.Text, true, 4);
+                Controles.CargaGridView(gvServicios, mit, "id_servicio-movimiento-id_parada_actual-IdParadaInicial-NoServicio-ImpresionCP-ImpresionCPV-ImpresionHI", lblOrdenado.Text, true, 4);
                 //Guardando en sesión el origen de datos
                 if (mit != null)
                     Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], mit, "Table");
