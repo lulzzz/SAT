@@ -485,6 +485,22 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="VajesFacturaGlobal" msprop:Generator_TableClassName="VajesFacturaGlobalDataTable" msprop:Generator_TableVarName="tableVajesFacturaGlobal" msprop:Generator_RowChangedName="VajesFacturaGlobalRowChanged" msprop:Generator_TablePropName="VajesFacturaGlobal" msprop:Generator_RowDeletingName="VajesFacturaGlobalRowDeleting" msprop:Generator_RowChangingName="VajesFacturaGlobalRowChanging" msprop:Generator_RowEvHandlerName="VajesFacturaGlobalRowChangeEventHandler" msprop:Generator_RowDeletedName="VajesFacturaGlobalRowDeleted" msprop:Generator_RowClassName="VajesFacturaGlobalRow" msprop:Generator_UserTableName="VajesFacturaGlobal" msprop:Generator_RowEvArgName="VajesFacturaGlobalRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NoServicio" msprop:Generator_ColumnVarNameInTable="columnNoServicio" msprop:Generator_ColumnPropNameInRow="NoServicio" msprop:Generator_ColumnPropNameInTable="NoServicioColumn" msprop:Generator_UserColumnName="NoServicio" type="xs:string" minOccurs="0" />
+              <xs:element name="NoViaje" msprop:Generator_ColumnVarNameInTable="columnNoViaje" msprop:Generator_ColumnPropNameInRow="NoViaje" msprop:Generator_ColumnPropNameInTable="NoViajeColumn" msprop:Generator_UserColumnName="NoViaje" type="xs:string" minOccurs="0" />
+              <xs:element name="Referencia" msprop:Generator_ColumnVarNameInTable="columnReferencia" msprop:Generator_ColumnPropNameInRow="Referencia" msprop:Generator_ColumnPropNameInTable="ReferenciaColumn" msprop:Generator_UserColumnName="Referencia" type="xs:string" minOccurs="0" />
+              <xs:element name="Origen" msprop:Generator_ColumnVarNameInTable="columnOrigen" msprop:Generator_ColumnPropNameInRow="Origen" msprop:Generator_ColumnPropNameInTable="OrigenColumn" msprop:Generator_UserColumnName="Origen" type="xs:string" minOccurs="0" />
+              <xs:element name="Destino" msprop:Generator_ColumnVarNameInTable="columnDestino" msprop:Generator_ColumnPropNameInRow="Destino" msprop:Generator_ColumnPropNameInTable="DestinoColumn" msprop:Generator_UserColumnName="Destino" type="xs:string" minOccurs="0" />
+              <xs:element name="FecFac" msprop:Generator_ColumnVarNameInTable="columnFecFac" msprop:Generator_ColumnPropNameInRow="FecFac" msprop:Generator_ColumnPropNameInTable="FecFacColumn" msprop:Generator_UserColumnName="FecFac" type="xs:string" minOccurs="0" />
+              <xs:element name="Subtotal" msprop:Generator_ColumnVarNameInTable="columnSubtotal" msprop:Generator_ColumnPropNameInRow="Subtotal" msprop:Generator_ColumnPropNameInTable="SubtotalColumn" msprop:Generator_UserColumnName="Subtotal" type="xs:string" minOccurs="0" />
+              <xs:element name="IVA" msprop:Generator_ColumnVarNameInTable="columnIVA" msprop:Generator_ColumnPropNameInRow="IVA" msprop:Generator_ColumnPropNameInTable="IVAColumn" msprop:Generator_UserColumnName="IVA" type="xs:string" minOccurs="0" />
+              <xs:element name="Retencion" msprop:Generator_ColumnVarNameInTable="columnRetencion" msprop:Generator_ColumnPropNameInRow="Retencion" msprop:Generator_ColumnPropNameInTable="RetencionColumn" msprop:Generator_UserColumnName="Retencion" type="xs:string" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>
