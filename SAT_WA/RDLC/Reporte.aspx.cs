@@ -5234,7 +5234,7 @@ namespace SAT.RDLC
                         dtviajesFacturaGlobal.Columns.Add("Referencia", typeof(string));
                         dtviajesFacturaGlobal.Columns.Add("Origen", typeof(string));
                         dtviajesFacturaGlobal.Columns.Add("Destino", typeof(string));
-                        dtviajesFacturaGlobal.Columns.Add("FecFac", typeof(DateTime));
+                        dtviajesFacturaGlobal.Columns.Add("FecFac", typeof(string));
                         dtviajesFacturaGlobal.Columns.Add("Subtotal", typeof(decimal));
                         dtviajesFacturaGlobal.Columns.Add("IVA", typeof(decimal));
                         dtviajesFacturaGlobal.Columns.Add("Retencion", typeof(decimal));
@@ -5251,7 +5251,7 @@ namespace SAT.RDLC
                         }
                         else
                             //Añadiendo Registros
-                            dtviajesFacturaGlobal.Rows.Add("", "", "", "", "", "", "", "", "", "");
+                            dtviajesFacturaGlobal.Rows.Add("", "", "", "", "", "", 0, 0, 0, 0);
 
                         //Agregamos el origen de datos de Carga
                         ReportDataSource rdsviajesFacturasLigadas = new ReportDataSource("VajesFacturasGlobal", dtviajesFacturaGlobal);

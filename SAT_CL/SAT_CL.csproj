@@ -508,6 +508,7 @@
     <Compile Include="Global\Referencia.cs" />
     <Compile Include="Global\ReferenciaTipo.cs" />
     <Compile Include="Global\Reporte.cs" />
+    <Compile Include="Global\ReporteCliente.cs" />
     <Compile Include="Global\Requerimiento.cs" />
     <Compile Include="Global\Sucursal.cs" />
     <Compile Include="Global\TablaColumnaFiltro.cs" />
