@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="TECTOS_SAT_NEXTIA_SERVERIS">
-  <ConnectionProperties>
-    <Extension>SQL</Extension>
-    <ConnectString>Data Source=38.110.58.15;Initial Catalog=TECTOS_SAT_NEXTIA_db</ConnectString>
-  </ConnectionProperties>
-  <DataSourceID>55f179cb-7f22-41c8-879e-6c38df8e957b</DataSourceID>
-</RptDataSource>

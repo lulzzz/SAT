@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<sitemanifest>
-  <IisApp path="C:\Users\alast\Source\Workspaces\SAT\TECTOS_4.7.1\SAT_V4.7.1\SAT_WA_V4.7.1\obj\Release\Package\PackageTmp" />
-  <setAcl path="C:\Users\alast\Source\Workspaces\SAT\TECTOS_4.7.1\SAT_V4.7.1\SAT_WA_V4.7.1\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
-  <setAcl path="C:\Users\alast\Source\Workspaces\SAT\TECTOS_4.7.1\SAT_V4.7.1\SAT_WA_V4.7.1\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
-</sitemanifest>
