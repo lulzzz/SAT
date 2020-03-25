@@ -1150,6 +1150,7 @@
     <None Include="Properties\PublishProfiles\tectos_paquete_web_deploy_serveris_nextia.pubxml" />
     <None Include="Properties\PublishProfiles\tectos_web_deploy_dc10058_aztlan.pubxml" />
     <None Include="Properties\PublishProfiles\tectos_web_deploy_dc10058_nextia.pubxml" />
+    <None Include="Properties\PublishProfiles\tectos_web_deploy_dc10058_test.pubxml" />
     <None Include="Properties\PublishProfiles\tectos_web_deploy_localserver_sat_aztlan.pubxml" />
     <None Include="Properties\PublishProfiles\tectos_web_deploy_localserver_sat_nextia.pubxml" />
     <Content Include="RDLC\QRUnidad.rdlc" />
