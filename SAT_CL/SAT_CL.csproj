@@ -595,6 +595,7 @@
     <Compile Include="Seguridad\Usuario.cs" />
     <Compile Include="Seguridad\UsuarioCompania.cs" />
     <Compile Include="Seguridad\UsuarioSesion.cs" />
+    <Compile Include="Seguridad\UsuarioToken.cs" />
     <Compile Include="Soporte\SoporteTecnico.cs" />
     <Compile Include="Soporte\SoporteTecnicoDetalle.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />

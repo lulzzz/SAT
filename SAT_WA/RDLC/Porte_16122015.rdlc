@@ -351,7 +351,7 @@
                         <Value>=Parameters!DatosRemitente.Value</Value>
                         <Style>
                           <FontFamily>Cordia New</FontFamily>
-                          <FontSize>8pt</FontSize>
+                          <FontSize>7pt</FontSize>
                         </Style>
                       </TextRun>
                     </TextRuns>
@@ -359,8 +359,8 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>DatosRemitente</rd:DefaultName>
-                <Top>2.87048cm</Top>
-                <Height>0.51824cm</Height>
+                <Top>2.8352cm</Top>
+                <Height>0.65156cm</Height>
                 <Width>9.43678cm</Width>
                 <ZIndex>8</ZIndex>
                 <Style>
@@ -383,7 +383,7 @@
                         <Value>=Parameters!DatosDestinatario.Value</Value>
                         <Style>
                           <FontFamily>Cordia New</FontFamily>
-                          <FontSize>8pt</FontSize>
+                          <FontSize>7pt</FontSize>
                         </Style>
                       </TextRun>
                     </TextRuns>
@@ -391,9 +391,9 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>DatosDestinatario</rd:DefaultName>
-                <Top>2.87048cm</Top>
+                <Top>2.8352cm</Top>
                 <Left>9.58494cm</Left>
-                <Height>0.51824cm</Height>
+                <Height>0.65156cm</Height>
                 <Width>10.0971cm</Width>
                 <ZIndex>9</ZIndex>
                 <Style>

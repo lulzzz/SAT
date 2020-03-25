@@ -9,7 +9,7 @@
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <LastActiveSolutionConfig>Release|Any CPU</LastActiveSolutionConfig>
-    <NameOfLastUsedPublishProfile>tectos_web_deploy_localserver_sat_aztlan</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>tectos_web_deploy_dc10058_aztlan</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
