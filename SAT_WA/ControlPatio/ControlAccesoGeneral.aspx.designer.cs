@@ -609,42 +609,6 @@ namespace SAT.ControlPatio
         protected global::System.Web.UI.WebControls.View vwSalida;
 
         /// <summary>
-        /// Control uplblSTag.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uplblSTag;
-
-        /// <summary>
-        /// Control lblSTag.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSTag;
-
-        /// <summary>
-        /// Control uptxtSTag.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uptxtSTag;
-
-        /// <summary>
-        /// Control txtSTag.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSTag;
-
-        /// <summary>
         /// Control uptxtBDescripcion.
         /// </summary>
         /// <remarks>

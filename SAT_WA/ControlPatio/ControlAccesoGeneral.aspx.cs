@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TSDK.ASP;
 using TSDK.Base;
-
+using TSDK.Datos;
 
 namespace SAT.ControlPatio
 {
@@ -60,8 +60,6 @@ namespace SAT.ControlPatio
                     mtvControlAcceso.ActiveViewIndex = 1;
                     btnEntrada.CssClass = "boton_pestana";
                     btnSalida.CssClass = "boton_pestana_activo";
-                    txtSTag.Focus();
-                    txtSTag.Text = "";
                     txtBPlacas.Text = "";
                     txtBDescripcion.Text = "";
                     break;
@@ -169,7 +167,7 @@ namespace SAT.ControlPatio
             {
                 case "Agregar":
                     {   //Validando Tabla de Session
-                        if (TSDK.Datos.Validacion.ValidaOrigenDatos(TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table")))
+                        if (Validacion.ValidaOrigenDatos(OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table")))
                         {   //Obteniendo Valor Maximo
                             int max = Convert.ToByte(((DataSet)Session["DS"]).Tables["Table"].AsEnumerable().Max(dr => dr["Ind"]));
                             //Agregando Fila
@@ -197,7 +195,7 @@ namespace SAT.ControlPatio
                                 dtUnidades.Rows.Add(1, 0, Convert.ToInt32(Cadena.VerificaCadenaVacia(Cadena.RegresaCadenaSeparada(txtTransportista.Text, "ID:", 1),"0")),Cadena.RegresaCadenaSeparada(txtTransportista.Text, "ID:", 0).ToString(),
                                  id_tipo_detalle, tipo_detalle, Convert.ToInt32(Cadena.VerificaCadenaVacia(Cadena.RegresaCadenaSeparada(txtDescripcion.Text, "ID:", 1), "0")), Cadena.RegresaCadenaSeparada(txtDescripcion.Text, "ID:", 0).ToString(), txtIdentificador.Text, txtReferencia.Text, ddlEstado.SelectedValue, ddlEstado.SelectedItem.Text);
                                 //Añadiendo Tabla a DataSet
-                                Session["DS"] = TSDK.Datos.OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidades, "Table");
+                                Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidades, "Table");
                             }
                         }
 
@@ -251,6 +249,28 @@ namespace SAT.ControlPatio
             //Inicializando Indices
             TSDK.ASP.Controles.InicializaIndices(gvEntidades);
         }
+        /// <summary>
+        /// Evento Text Descripcion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+            //Instanciando Unidad
+            using (SAT_CL.ControlPatio.UnidadPatio uni = new SAT_CL.ControlPatio.UnidadPatio(Convert.ToInt32(Cadena.VerificaCadenaVacia(Cadena.RegresaCadenaSeparada(txtDescripcion.Text, "ID:", 1), "0"))))
+            {
+                if (uni.habilitar)
+                {
+                    txtIdentificador.Text = uni.placas;
+                    txtReferencia.Focus();
+                }
+                else
+                {
+                    txtIdentificador.Text = "";
+                    txtIdentificador.Focus();
+                }
+            }
+        }
 
         #region Eventos GridView "Entidades"
 
@@ -263,7 +283,7 @@ namespace SAT.ControlPatio
         {   //Validando que existan Registros
             if (gvEntidades.DataKeys.Count > 0)
                 //Exportando Contenido del GridView
-                TSDK.ASP.Controles.ExportaContenidoGridView(TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table"), "Id");
+                TSDK.ASP.Controles.ExportaContenidoGridView(OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table"), "Id");
         }
         /// <summary>
         /// Evento Producido al Cambiar el Ordenamiento del GridView "Entidades"
@@ -272,7 +292,7 @@ namespace SAT.ControlPatio
         /// <param name="e"></param>
         protected void gvEntidades_Sorting(object sender, GridViewSortEventArgs e)
         {   //Invocando Método de Cambio de Ordenamiento
-            lblOrdenado.Text = TSDK.ASP.Controles.CambiaSortExpressionGridView(gvEntidades, TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table"), e.SortExpression);
+            lblOrdenado.Text = TSDK.ASP.Controles.CambiaSortExpressionGridView(gvEntidades, OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table"), e.SortExpression);
         }
         /// <summary>
         /// Evento Producido al Cambiar la Paginación del GridView "Entidades"
@@ -281,7 +301,7 @@ namespace SAT.ControlPatio
         /// <param name="e"></param>
         protected void gvEntidades_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {   //Invocando Método de Cambio ed Paginación
-            TSDK.ASP.Controles.CambiaIndicePaginaGridView(gvEntidades, TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table"), e.NewPageIndex);
+            TSDK.ASP.Controles.CambiaIndicePaginaGridView(gvEntidades, OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table"), e.NewPageIndex);
         }
         /// <summary>
         /// Evento Producido al dar clic al Link "Editar"
@@ -372,7 +392,7 @@ namespace SAT.ControlPatio
                 //Aceptando Cambios
                 ((DataSet)Session["DS"]).Tables["Table"].AcceptChanges();
                 //Validando Origen de Datos
-                if (TSDK.Datos.Validacion.ValidaOrigenDatos(((DataSet)Session["DS"]).Tables["Table"]))
+                if (Validacion.ValidaOrigenDatos(((DataSet)Session["DS"]).Tables["Table"]))
                     //Cargando GridView
                     TSDK.ASP.Controles.CargaGridView(gvEntidades, ((DataSet)Session["DS"]).Tables["Table"], "Ind-Id", "", true, 1);
                 else//Inicializando GridView
@@ -388,7 +408,7 @@ namespace SAT.ControlPatio
         /// <param name="e"></param>
         protected void ddlTamano_SelectedIndexChanged(object sender, EventArgs e)
         {   //Invocando Método de Cambio de Tamaño
-            TSDK.ASP.Controles.CambiaTamañoPaginaGridView(gvEntidades, TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table"), Convert.ToInt32(ddlTamano.SelectedValue));
+            TSDK.ASP.Controles.CambiaTamañoPaginaGridView(gvEntidades, OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table"), Convert.ToInt32(ddlTamano.SelectedValue));
         }
 
         #endregion
@@ -416,7 +436,7 @@ namespace SAT.ControlPatio
         /// <param name="e"></param>
         protected void gvUnidades_Sorting(object sender, GridViewSortEventArgs e)
         {   //Cambiando Expresión de Ordenamiento
-            lblOrdenadoUnidad.Text = TSDK.ASP.Controles.CambiaSortExpressionGridView(gvUnidades, TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table1"), e.SortExpression);
+            lblOrdenadoUnidad.Text = TSDK.ASP.Controles.CambiaSortExpressionGridView(gvUnidades, OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table1"), e.SortExpression);
             //Inicializando Indices
             TSDK.ASP.Controles.InicializaIndices(gvUnidades);
         }
@@ -427,7 +447,7 @@ namespace SAT.ControlPatio
         /// <param name="e"></param>
         protected void gvUnidades_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {   //Cambiando Indice de Página
-            TSDK.ASP.Controles.CambiaIndicePaginaGridView(gvUnidades, TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table1"), e.NewPageIndex);
+            TSDK.ASP.Controles.CambiaIndicePaginaGridView(gvUnidades, OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table1"), e.NewPageIndex);
             //Inicializando Indices
             TSDK.ASP.Controles.InicializaIndices(gvUnidades);
         }
@@ -444,13 +464,13 @@ namespace SAT.ControlPatio
                 //Obteniendo Unidades Ligadas al Acceso
                 using (DataTable dtUnidadesAcceso = DetalleAccesoPatio.ObtieneUnidadesAcceso(Convert.ToInt32(gvUnidades.SelectedDataKey["IdAccesoEntrada"]), Convert.ToInt32(gvUnidades.SelectedDataKey["Id"])))
                 {   //Validando que existan Unidades
-                    if (TSDK.Datos.Validacion.ValidaOrigenDatos(dtUnidadesAcceso))
+                    if (Validacion.ValidaOrigenDatos(dtUnidadesAcceso))
                     {   //Añadiendo Tabla a DataSet de Session
-                        Session["DS"] = TSDK.Datos.OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidadesAcceso, "Table2");
+                        Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidadesAcceso, "Table2");
                         //Quitando Registros Agregados
                         quitaRegistrosAgregados();
                         //Validando que existan Unidades
-                        if (TSDK.Datos.Validacion.ValidaOrigenDatos(((DataSet)Session["DS"]).Tables["Table2"]))
+                        if (Validacion.ValidaOrigenDatos(((DataSet)Session["DS"]).Tables["Table2"]))
                         {   //Cargando GridView
                             TSDK.ASP.Controles.CargaGridView(gvSalidas, ((DataSet)Session["DS"]).Tables["Table2"], "Id-IdAccesoEnt", "", true, 1);
                             //Cambiando Comando de Nombre
@@ -467,7 +487,7 @@ namespace SAT.ControlPatio
                         {   //Inicializando GridView
                             TSDK.ASP.Controles.InicializaGridview(gvSalidas);
                             //Eliminando Tabla de DataSet de Session
-                            Session["DS"] = TSDK.Datos.OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table2");
+                            Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table2");
                             //Obteniendo Fecha
                             DateTime fecha;
                             DateTime.TryParse(txtFecha.Text, out fecha);
@@ -480,7 +500,7 @@ namespace SAT.ControlPatio
                                 {   //Obteniendo Transportista
                                     string transportista = gvUnidades.Rows[gvUnidades.SelectedIndex].Cells[4].Text;
                                     //Validando que exista la Tabla
-                                    if (TSDK.Datos.Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
+                                    if (Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
                                     {   //Añadiendo Registro a la Tabla
                                         ((DataSet)Session["DS"]).Tables["Table3"].Rows.Add(detail.id_detalle_acceso_patio,
                                             detail.descripcion_detalle_acceso, transportista, detail.identificacion_detalle_acceso,
@@ -501,11 +521,11 @@ namespace SAT.ControlPatio
                                                 detail.descripcion_detalle_acceso, transportista, detail.identificacion_detalle_acceso,
                                                 gvUnidades.Rows[gvUnidades.SelectedIndex].Cells[6].Text, detail.bit_cargado == true ? "Cargado" : "Vacio");
                                             //Añadiendo Tabla a Session
-                                            Session["DS"] = TSDK.Datos.OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidadesTemp, "Table3");
+                                            Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidadesTemp, "Table3");
                                         }
                                     }
                                     //Validando que exista la Tabla
-                                    if (TSDK.Datos.Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
+                                    if (Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
                                     {   //Cargando GridView
                                         TSDK.ASP.Controles.CargaGridView(gvUnidadesTemp, ((DataSet)Session["DS"]).Tables["Table3"], "Id", "", true, 1);
                                         //Instanciando Mensaje
@@ -515,7 +535,7 @@ namespace SAT.ControlPatio
                                     {   //Inicializando GridView
                                         TSDK.ASP.Controles.InicializaGridview(gvUnidadesTemp);
                                         //Eliminando Tabla de Session
-                                        Session["DS"] = TSDK.Datos.OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table3");
+                                        Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table3");
                                         //Instanciando Mensaje
                                         result = new RetornoOperacion("");
                                     }
@@ -533,7 +553,7 @@ namespace SAT.ControlPatio
                     {   //Inicializando GridView
                         TSDK.ASP.Controles.InicializaGridview(gvSalidas);
                         //Eliminando Tabla de DataSet de Session
-                        Session["DS"] = TSDK.Datos.OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table2");
+                        Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table2");
                         //Obteniendo Fecha
                         DateTime fecha;
                         DateTime.TryParse(txtFecha.Text, out fecha);
@@ -546,7 +566,7 @@ namespace SAT.ControlPatio
                             {   //Obteniendo Transportista
                                 string transportista = gvUnidades.Rows[gvUnidades.SelectedIndex].Cells[4].Text;
                                 //Validando que exista la Tabla
-                                if (TSDK.Datos.Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
+                                if (Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
                                 {   //Añadiendo Registro a la Tabla
                                     ((DataSet)Session["DS"]).Tables["Table3"].Rows.Add(detail.id_detalle_acceso_patio,
                                         detail.descripcion_detalle_acceso, transportista, detail.identificacion_detalle_acceso,
@@ -567,11 +587,11 @@ namespace SAT.ControlPatio
                                             detail.descripcion_detalle_acceso, transportista, detail.identificacion_detalle_acceso,
                                             gvUnidades.Rows[gvUnidades.SelectedIndex].Cells[6].Text, detail.bit_cargado == true ? "Cargado" : "Vacio");
                                         //Añadiendo Tabla a Session
-                                        Session["DS"] = TSDK.Datos.OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidadesTemp, "Table3");
+                                        Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidadesTemp, "Table3");
                                     }
                                 }
                                 //Validando que exista la Tabla
-                                if (TSDK.Datos.Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
+                                if (Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
                                 {   //Cargando GridView
                                     TSDK.ASP.Controles.CargaGridView(gvUnidadesTemp, ((DataSet)Session["DS"]).Tables["Table3"], "Id", "", true, 1);
                                     //Instanciando Mensaje
@@ -581,7 +601,7 @@ namespace SAT.ControlPatio
                                 {   //Inicializando GridView
                                     TSDK.ASP.Controles.InicializaGridview(gvUnidadesTemp);
                                     //Eliminando Tabla de Session
-                                    Session["DS"] = TSDK.Datos.OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table3");
+                                    Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table3");
                                     //Instanciando Mensaje
                                     result = new RetornoOperacion("");
                                 }
@@ -614,16 +634,16 @@ namespace SAT.ControlPatio
                     //Declarando Objeto de Retorno
                     RetornoOperacion result = new RetornoOperacion();
                     //Validando que existan Unidades
-                    if (TSDK.Datos.Validacion.ValidaOrigenDatos(dtUnidadesAcceso))
+                    if (Validacion.ValidaOrigenDatos(dtUnidadesAcceso))
                     {
                         //Añadiendo Tabla a DataSet de Session
-                        Session["DS"] = TSDK.Datos.OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidadesAcceso, "Table2");
+                        Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidadesAcceso, "Table2");
 
                         //Quitando Registros Agregados
                         quitaRegistrosAgregados();
 
                         //Validando que existan Unidades
-                        if (TSDK.Datos.Validacion.ValidaOrigenDatos(((DataSet)Session["DS"]).Tables["Table2"]))
+                        if (Validacion.ValidaOrigenDatos(((DataSet)Session["DS"]).Tables["Table2"]))
                         {
                             //Cargando GridView
                             TSDK.ASP.Controles.CargaGridView(gvSalidas, ((DataSet)Session["DS"]).Tables["Table2"], "Id-IdAccesoEnt", "", true, 1);
@@ -641,12 +661,12 @@ namespace SAT.ControlPatio
                         {   //Inicializando GridView
                             TSDK.ASP.Controles.InicializaGridview(gvSalidas);
                             //Eliminando Tabla de DataSet de Session
-                            Session["DS"] = TSDK.Datos.OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table2");
+                            Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table2");
                             //Obteniendo Fecha
                             DateTime fecha;
                             DateTime.TryParse(txtFecha.Text, out fecha);
                             //Inicializando Bloque Transaccional
-                            using (TransactionScope trans = TSDK.Datos.Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
+                            using (TransactionScope trans = Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
                             {   //Instanciando Detalle
                                 using (DetalleAccesoPatio dap = new DetalleAccesoPatio(Convert.ToInt32(gvUnidades.SelectedDataKey["Id"])))
                                 //Instanciando Acceso de Entrada
@@ -697,12 +717,12 @@ namespace SAT.ControlPatio
                         //Inicializando GridView
                         TSDK.ASP.Controles.InicializaGridview(gvSalidas);
                         //Eliminando Tabla de DataSet de Session
-                        Session["DS"] = TSDK.Datos.OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table2");
+                        Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table2");
                         //Obteniendo Fecha
                         DateTime fecha;
                         DateTime.TryParse(txtFecha.Text, out fecha);
                         //Inicializando Bloque Transaccional
-                        using (TransactionScope trans = TSDK.Datos.Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
+                        using (TransactionScope trans = Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
                         {   //Insertando Acceso al Patio
                             result = AccesoPatio.InsertaAccesoPatio(Convert.ToInt32(ddlPatio.SelectedValue), Convert.ToInt32(ddlAcceso.SelectedValue),
                                             AccesoPatio.TipoActualizacion.Web, AccesoPatio.TipoAcceso.Salida, fecha, "",
@@ -737,7 +757,6 @@ namespace SAT.ControlPatio
                             TSDK.ASP.Controles.InicializaIndices(gvUnidades);
                             TSDK.ASP.Controles.InicializaIndices(gvSalidas);
                             TSDK.ASP.Controles.InicializaGridview(gvSalidas);
-                            txtSTag.Text = "";
                             txtBDescripcion.Text = "";
                             txtBPlacas.Text = "";
                         }
@@ -763,7 +782,7 @@ namespace SAT.ControlPatio
         {   //Validando que existan registros
             if (gvUnidades.DataKeys.Count > 0)
                 //Invocando Método de Exportación
-                TSDK.ASP.Controles.ExportaContenidoGridView(TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table1"), "Id");
+                TSDK.ASP.Controles.ExportaContenidoGridView(OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table1"), "Id");
         }
         /// <summary>
         /// 
@@ -772,7 +791,7 @@ namespace SAT.ControlPatio
         /// <param name="e"></param>
         protected void ddlTamanoUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {   //Cambiando Tamaño de Página
-            TSDK.ASP.Controles.CambiaTamañoPaginaGridView(gvUnidadesTemp, TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table1"), Convert.ToInt32(ddlTamanoUnidad.SelectedValue));
+            TSDK.ASP.Controles.CambiaTamañoPaginaGridView(gvUnidadesTemp, OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table1"), Convert.ToInt32(ddlTamanoUnidad.SelectedValue));
             //Inicializando Indices
             TSDK.ASP.Controles.InicializaIndices(gvUnidades);
         }
@@ -799,7 +818,7 @@ namespace SAT.ControlPatio
         {   //Validando que existan registros
             if (gvUnidadesTemp.DataKeys.Count > 0)
             {   //Invocando Método de Exportación
-                TSDK.ASP.Controles.ExportaContenidoGridView(TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table3"), "Id");
+                TSDK.ASP.Controles.ExportaContenidoGridView(OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table3"), "Id");
             }
         }
         /// <summary>
@@ -809,7 +828,7 @@ namespace SAT.ControlPatio
         /// <param name="e"></param>
         protected void gvUnidadesTemp_Sorting(object sender, GridViewSortEventArgs e)
         {   //Cambiando Expresión de Ordenamiento
-            lblOrdenadoTemp.Text = TSDK.ASP.Controles.CambiaSortExpressionGridView(gvUnidadesTemp, TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table3"), e.SortExpression);
+            lblOrdenadoTemp.Text = TSDK.ASP.Controles.CambiaSortExpressionGridView(gvUnidadesTemp, OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table3"), e.SortExpression);
         }
         /// <summary>
         /// 
@@ -818,7 +837,7 @@ namespace SAT.ControlPatio
         /// <param name="e"></param>
         protected void gvUnidadesTemp_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {   //Cambiando Indice de Página
-            TSDK.ASP.Controles.CambiaIndicePaginaGridView(gvUnidadesTemp, TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table3"), e.NewPageIndex);
+            TSDK.ASP.Controles.CambiaIndicePaginaGridView(gvUnidadesTemp, OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table3"), e.NewPageIndex);
         }
         /// <summary>
         /// 
@@ -836,14 +855,14 @@ namespace SAT.ControlPatio
                 //Aceptando los Cambios en la Tabla
                 ((DataSet)Session["DS"]).Tables["Table3"].AcceptChanges();
                 //Validando si aun existen registros
-                if (TSDK.Datos.Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
+                if (Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
                     //Cargando Controles
                     TSDK.ASP.Controles.CargaGridView(gvUnidadesTemp, ((DataSet)Session["DS"]).Tables["Table3"], "Id", "", true, 1);
                 else
                 {   //Inicializando Control
                     TSDK.ASP.Controles.InicializaGridview(gvUnidadesTemp);
                     //Eliminando Tabla de Session
-                    Session["DS"] = TSDK.Datos.OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table3");
+                    Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table3");
                 }
                 //Inicializando Indices
                 TSDK.ASP.Controles.InicializaIndices(gvUnidadesTemp);
@@ -858,7 +877,7 @@ namespace SAT.ControlPatio
         /// <param name="e"></param>
         protected void ddlTamanoTemp_SelectedIndexChanged(object sender, EventArgs e)
         {   //Cambiando Tamaño de Página
-            TSDK.ASP.Controles.CambiaTamañoPaginaGridView(gvUnidadesTemp, TSDK.Datos.OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table3"), Convert.ToInt32(ddlTamanoTemp.SelectedValue));
+            TSDK.ASP.Controles.CambiaTamañoPaginaGridView(gvUnidadesTemp, OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table3"), Convert.ToInt32(ddlTamanoTemp.SelectedValue));
         }
 
         #endregion
@@ -883,7 +902,7 @@ namespace SAT.ControlPatio
                         DateTime fecha;
                         DateTime.TryParse(txtFecha.Text, out fecha);
                         //Inicializando Bloque Transaccional
-                        using (TransactionScope trans = TSDK.Datos.Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
+                        using (TransactionScope trans = Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
                         {   //Instanciando Detalle
                             using (DetalleAccesoPatio dap = new DetalleAccesoPatio(Convert.ToInt32(gvUnidades.SelectedDataKey["Id"])))
                             {   //Instanciando Acceso de Entrada
@@ -942,7 +961,7 @@ namespace SAT.ControlPatio
                             {   //Obteniendo Transportista
                                 string transportista = gvUnidades.Rows[gvUnidades.SelectedIndex].Cells[4].Text;
                                 //Validando que exista la Tabla
-                                if (TSDK.Datos.Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
+                                if (Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
                                 {   //Añadiendo Registro a la Tabla
                                     ((DataSet)Session["DS"]).Tables["Table3"].Rows.Add(detail.id_detalle_acceso_patio,
                                         detail.descripcion_detalle_acceso, transportista, detail.identificacion_detalle_acceso,
@@ -963,7 +982,7 @@ namespace SAT.ControlPatio
                                             detail.descripcion_detalle_acceso, transportista, detail.identificacion_detalle_acceso,
                                             gvUnidades.Rows[gvUnidades.SelectedIndex].Cells[6].Text, detail.bit_cargado == true ? "Cargado" : "Vacio");
                                         //Añadiendo Tabla a Session
-                                        Session["DS"] = TSDK.Datos.OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidadesTemp, "Table3");
+                                        Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidadesTemp, "Table3");
                                     }
                                 }
                                 //Validando que existan Registros Seleccionados
@@ -985,7 +1004,7 @@ namespace SAT.ControlPatio
                                     }
                                 }
                                 //Validando que exista la Tabla
-                                if (TSDK.Datos.Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
+                                if (Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
                                 {   //Cargando GridView
                                     TSDK.ASP.Controles.CargaGridView(gvUnidadesTemp, ((DataSet)Session["DS"]).Tables["Table3"], "Id", "", true, 1);
                                     //Instanciando Mensaje
@@ -995,7 +1014,7 @@ namespace SAT.ControlPatio
                                 {   //Inicializando GridView
                                     TSDK.ASP.Controles.InicializaGridview(gvUnidadesTemp);
                                     //Eliminando Tabla de Session
-                                    Session["DS"] = TSDK.Datos.OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table3");
+                                    Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table3");
                                     //Instanciando Mensaje
                                     result = new RetornoOperacion("");
                                 }
@@ -1032,7 +1051,7 @@ namespace SAT.ControlPatio
         {   //Inicializando Indices
             TSDK.ASP.Controles.InicializaIndices(gvUnidades);
             //Restableciendo Controles de la Ventana
-            TSDK.Datos.OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table2");
+            OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table2");
             TSDK.ASP.Controles.InicializaGridview(gvSalidas);
             //Declarando Script de Ventana Modal
             string script = @"<script type='text/javascript'>
@@ -1117,9 +1136,10 @@ namespace SAT.ControlPatio
             SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogoGeneral(ddlTamanoUnidad, "", 26);
             SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogoGeneral(ddlTamanoTemp, "", 26);
             //Obteniendo Instancia de Clase
-            using (UsuarioPatio up = UsuarioPatio.ObtieneInstanciaDefault(((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario))
+            //Obteniendo Instancia de Clase
+            using (UsuarioPatio up = UsuarioPatio.ObtieneInstanciaDefault(((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario, ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor))
             {   //Cargando los Patios por Compania
-                SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogo(ddlPatio, 34, "Ninguno", ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario, "", 0, "");
+                SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogo(ddlPatio, 34, "Ninguno", ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario, "", ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, "");
                 //Asignando Patio por Defecto
                 ddlPatio.SelectedValue = up.id_patio.ToString();
                 //Cargando los Accesos de ese Patio
@@ -1142,7 +1162,7 @@ namespace SAT.ControlPatio
             //Inicializamos los indicadores de unidad en la pagina
             using (DataTable t = SAT_CL.ControlPatio.DetalleAccesoPatio.retornaIndicadoresUnidades(Convert.ToInt32(ddlPatio.SelectedValue)))
             {
-                if (TSDK.Datos.Validacion.ValidaOrigenDatos(t))
+                if (Validacion.ValidaOrigenDatos(t))
                     //Si el origen es valido recorremos la tabla 
                     foreach (DataRow r in t.Rows)
                     {
@@ -1225,32 +1245,39 @@ namespace SAT.ControlPatio
                     if (fecha != DateTime.MinValue)
                     {
                         //Validando que existan Unidades Agrupadas
-                        if (TSDK.Datos.Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table"))
+                        if (Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table"))
                         {
                             //Inicializando Bloque Transaccional
-                            using (TransactionScope trans = TSDK.Datos.Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
+                            using (TransactionScope trans = Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
                             {
                                 //Recorriendo Filas
                                 foreach (DataRow dr in ((DataSet)Session["DS"]).Tables["Table"].Rows)
                                 {
                                     //Insertando Acceso
                                     result = AccesoPatio.InsertaAccesoPatio(Convert.ToInt32(ddlPatio.SelectedValue), Convert.ToInt32(ddlAcceso.SelectedValue),
-                                                        AccesoPatio.TipoActualizacion.Web, AccesoPatio.TipoAcceso.Entrada, fecha, dr["Referencia"].ToString(), ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+                                                        AccesoPatio.TipoActualizacion.Web, AccesoPatio.TipoAcceso.Entrada, fecha, dr["Referencia"].ToString().ToUpper(), ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
 
+                                    //Validando que la Operación haya sido exitosa
+                                    if (!result.OperacionExitosa)
+                                        //Si no se inserto se termina el ciclo
+                                        break;
                                     //Validando que se insertara el Acceso
                                     if (result.OperacionExitosa)
                                     {
                                         //Guardando Acceso
                                         idAccesoEntrada = result.IdRegistro;
                                         //Inserta Transportista Y Unidad
-                                        result = InsertaTransportistaUnidadPatio(out idunidad, out idtransportista, Convert.ToInt32(dr["IdTransportista"]), dr["Transportista"].ToString(), Convert.ToInt32(ddlPatio.SelectedValue), Convert.ToInt32(dr["IdUnidad"]), dr["Unidad"].ToString(), dr["Identificador"].ToString(), ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
-
+                                        result = InsertaTransportistaUnidadPatio(out idunidad, out idtransportista, Convert.ToInt32(dr["IdTransportista"]), dr["Transportista"].ToString().ToUpper(), Convert.ToInt32(ddlPatio.SelectedValue), Convert.ToInt32(dr["IdUnidad"]), dr["Unidad"].ToString().ToUpper(), dr["Identificador"].ToString().ToUpper(), ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+                                        //Validando que la Operación haya sido exitosa
+                                        if (!result.OperacionExitosa)
+                                            //Si no se inserto se termina el ciclo
+                                            break;
                                         if (result.OperacionExitosa)
                                         {
                                             //Insertando Detalle
                                             result = DetalleAccesoPatio.InsertaDetalleAccesoPatio(idAccesoEntrada, 0, idtransportista,
-                                            0, 0, dr["Estado"].ToString() == "Cargado" ? true : false, fecha, Convert.ToByte(dr["IdTipo"]), dr["Unidad"].ToString(),
-                                            dr["Identificador"].ToString(), idunidad, ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+                                            0, 0, dr["Estado"].ToString() == "Cargado" ? true : false, fecha, Convert.ToByte(dr["IdTipo"]), dr["Unidad"].ToString().ToUpper(),
+                                            dr["Identificador"].ToString().ToUpper(), idunidad, ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
 
                                             //Validando que la Operación haya sido exitosa
                                             if (!result.OperacionExitosa)
@@ -1268,61 +1295,60 @@ namespace SAT.ControlPatio
                         }
                         else
                         {
-                            //Instanciando Transportista
-                            using (PatioTransportista pt = new PatioTransportista(Convert.ToInt32(TSDK.Base.Cadena.RegresaCadenaSeparada(txtTransportista.Text, "ID:", 1))))
-
-                                //Validando que exista un Transportista
-                                if (pt.id_transportista_patio > 0)
+                            //Validando que exista un Transportista
+                            if (txtTransportista.Text != "")
+                            {
+                                //Validando que exista una Descripción
+                                if (txtDescripcion.Text != "")
                                 {
-                                    //Validando que exista una Descripción
-                                    if (txtDescripcion.Text != "")
-                                    {
-                                        //Declarando Variable Auxiliar
-                                        byte id_tipo_detalle = 0;
-                                        string tipo_detalle = "";
-                                        //Validando el Comando del Control
-                                        if (lnkMasUnidades.CommandName == "Todas")
-                                        {   //Asignando Valores
-                                            id_tipo_detalle = Convert.ToByte(ddlTipo.SelectedValue);
-                                            tipo_detalle = ddlTipo.SelectedItem.Text;
-                                        }
-                                        else
-                                        {   //Asignando Valores
-                                            id_tipo_detalle = Convert.ToByte(rdbRemolque.Checked ? "1" : "2");
-                                            tipo_detalle = rdbRemolque.Checked ? "Remolque" : "Rabon";
-                                        }
+                                    //Declarando Variable Auxiliar
+                                    byte id_tipo_detalle = 0;
+                                    string tipo_detalle = "";
+                                    //Validando el Comando del Control
+                                    if (lnkMasUnidades.CommandName == "Todas")
+                                    {   //Asignando Valores
+                                        id_tipo_detalle = Convert.ToByte(ddlTipo.SelectedValue);
+                                        tipo_detalle = ddlTipo.SelectedItem.Text;
+                                    }
+                                    else
+                                    {   //Asignando Valores
+                                        id_tipo_detalle = Convert.ToByte(rdbRemolque.Checked ? "1" : "2");
+                                        tipo_detalle = rdbRemolque.Checked ? "Remolque" : "Rabon";
+                                    }
 
-                                        //Inicializando Bloque Transaccional
-                                        using (TransactionScope trans = TSDK.Datos.Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
+                                    //Inicializando Bloque Transaccional
+                                    using (TransactionScope trans = Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
+                                    {
+                                        //Insertando Acceso
+                                        result = AccesoPatio.InsertaAccesoPatio(Convert.ToInt32(ddlPatio.SelectedValue), Convert.ToInt32(ddlAcceso.SelectedValue),
+                                                                AccesoPatio.TipoActualizacion.Web, AccesoPatio.TipoAcceso.Entrada, fecha, txtReferencia.Text.ToUpper(), ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+
+                                        //Validando que se insertara el Acceso
+                                        if (result.OperacionExitosa)
                                         {
-                                            //Insertando Acceso
-                                            result = AccesoPatio.InsertaAccesoPatio(Convert.ToInt32(ddlPatio.SelectedValue), Convert.ToInt32(ddlAcceso.SelectedValue),
-                                                                    AccesoPatio.TipoActualizacion.Web, AccesoPatio.TipoAcceso.Entrada, fecha, "", ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+                                            //Guardando Acceso
+                                            idAccesoEntrada = result.IdRegistro;
+                                            //Inserta Transportista Y Unidad
+                                            result = InsertaTransportistaUnidadPatio(out idunidad, out idtransportista, Convert.ToInt32(Cadena.VerificaCadenaVacia(Cadena.RegresaCadenaSeparada(txtTransportista.Text, "ID:", 1), "0")), Cadena.RegresaCadenaSeparada(txtTransportista.Text, "ID:", 0).ToString().ToUpper(), Convert.ToInt32(ddlPatio.SelectedValue), Convert.ToInt32(Cadena.VerificaCadenaVacia(Cadena.RegresaCadenaSeparada(txtDescripcion.Text, "ID:", 1), "0")), Cadena.RegresaCadenaSeparada(txtDescripcion.Text, "ID:", 0).ToString().ToUpper(), txtIdentificador.Text.ToUpper(), ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+
+                                            //Insertando Detalle
+                                            result = DetalleAccesoPatio.InsertaDetalleAccesoPatio(idAccesoEntrada, 0, idtransportista,
+                                                    0, 0, ddlEstado.SelectedItem.Text == "Cargado" ? true : false, fecha, id_tipo_detalle, txtDescripcion.Text.ToUpper(),
+                                                    txtIdentificador.Text.ToUpper(), idunidad, ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
 
                                             //Validando que se insertara el Acceso
                                             if (result.OperacionExitosa)
-                                            {
-                                                //Guardando Acceso
-                                                idAccesoEntrada = result.IdRegistro;
 
-                                                //Insertando Detalle
-                                                result = DetalleAccesoPatio.InsertaDetalleAccesoPatio(idAccesoEntrada, 0, Convert.ToInt32(TSDK.Base.Cadena.RegresaCadenaSeparada(txtTransportista.Text, "ID:", 1)),
-                                                    0, 0, ddlEstado.SelectedItem.Text == "Cargado" ? true : false, fecha, id_tipo_detalle, txtDescripcion.Text,
-                                                    txtIdentificador.Text, 0, ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
-
-                                                //Validando que se insertara el Acceso
-                                                if (result.OperacionExitosa)
-
-                                                    //Completando Transacción
-                                                    trans.Complete();
-                                            }
+                                                //Completando Transacción
+                                                trans.Complete();
                                         }
                                     }
-                                    else//Instanciando Excepción
-                                        result = new RetornoOperacion("** La Descripción es Requerido");
                                 }
                                 else//Instanciando Excepción
-                                    result = new RetornoOperacion("** El Transportista es Requerido");
+                                    result = new RetornoOperacion("** La Descripción es Requerido");
+                            }
+                            else//Instanciando Excepción
+                                result = new RetornoOperacion("** El Transportista es Requerido");
                         }
 
                         //Validando la Operacion
@@ -1366,9 +1392,9 @@ namespace SAT.ControlPatio
         {   //Obteniendo Reporte de Unidades Dentro
             using (DataTable dtUnidadesDentro = Reporte.ObtieneUnidadesDentro(txtBDescripcion.Text, txtBPlacas.Text, Convert.ToInt32(ddlPatio.SelectedValue)))
             {   //Validando que existan Registros
-                if (TSDK.Datos.Validacion.ValidaOrigenDatos(dtUnidadesDentro))
+                if (Validacion.ValidaOrigenDatos(dtUnidadesDentro))
                 {   //Validando que existan Tabla
-                    if (TSDK.Datos.Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
+                    if (Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
                     {   //Recoriendo cada registro de la Busqueda
                         foreach (DataRow dr in dtUnidadesDentro.Rows)
                         {   //Recorriendo registros de la Tabla Temporal
@@ -1386,13 +1412,13 @@ namespace SAT.ControlPatio
                     //Cargando GridView
                     TSDK.ASP.Controles.CargaGridView(gvUnidades, dtUnidadesDentro, "Id-IdAccesoEntrada", "", true, 1);
                     //Añadiendo Tabla al DataSet de Session
-                    Session["DS"] = TSDK.Datos.OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidadesDentro, "Table1");
+                    Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtUnidadesDentro, "Table1");
                 }
                 else
                 {   //Inicializando GridView
                     TSDK.ASP.Controles.InicializaGridview(gvUnidades);
                     //Eliminando Tabla de Session
-                    Session["DS"] = TSDK.Datos.OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table1");
+                    Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table1");
                 }
             }
         }
@@ -1401,7 +1427,7 @@ namespace SAT.ControlPatio
         /// </summary>
         private void quitaRegistrosAgregados()
         {   //Validando que existen registros 
-            if (TSDK.Datos.Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
+            if (Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
             {   //Recoriendo cada registro de la Busqueda
                 foreach (DataRow dr in ((DataSet)Session["DS"]).Tables["Table2"].Rows)
                 {   //Recorriendo registros de la Tabla Temporal
@@ -1428,7 +1454,7 @@ namespace SAT.ControlPatio
             RetornoOperacion result = new RetornoOperacion();
 
             //Validando que existen Registros
-            if (TSDK.Datos.Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
+            if (Validacion.ValidaOrigenDatos((DataSet)Session["DS"], "Table3"))
             {
                 //Obteniendo Fecha del Acceso
                 DateTime fecha = DateTime.MinValue;
@@ -1474,7 +1500,7 @@ namespace SAT.ControlPatio
                     if (fecha_valida)
                     {
                         //Inicializando Transacción
-                        using (TransactionScope trans = TSDK.Datos.Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
+                        using (TransactionScope trans = Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
                         {
                             //Creando Acceso de Salida
                             result = AccesoPatio.InsertaAccesoPatio(Convert.ToInt32(ddlPatio.SelectedValue), Convert.ToInt32(ddlAcceso.SelectedValue),
@@ -1518,8 +1544,8 @@ namespace SAT.ControlPatio
                         if (result.OperacionExitosa)
                         {
                             //Eliminando Tabla de Session
-                            Session["DS"] = TSDK.Datos.OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table3");
-                            Session["DS"] = TSDK.Datos.OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table2");
+                            Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table3");
+                            Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table2");
 
                             //Inicializando GridView
                             TSDK.ASP.Controles.InicializaGridview(gvUnidadesTemp);
@@ -1551,43 +1577,48 @@ namespace SAT.ControlPatio
         {   //Declarando Objeto de Retorno
             RetornoOperacion result = new RetornoOperacion();
             id_unidad_o = id_transportista_o = 0;
-            //Insertar Transportita 
-            if (id_transportista > 0)
+            //Creamos la transacción 
+            using (TransactionScope scope = Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
             {
-                id_transportista_o = id_transportista;
-                result = new RetornoOperacion(true);
-            }
-            else
-            {
-                result = SAT_CL.ControlPatio.PatioTransportista.InsertarPatioTransportista(transportista.ToUpper(), tipo_patio, id_usuario);
-                id_transportista_o = result.IdRegistro;
-            }
-            //Validamos operacion exitosa
-            if (result.OperacionExitosa)
-            {
-                if (id_unidad > 0)
+                //Insertar Transportita 
+                if (id_transportista > 0)
                 {
-                    //using (SAT_CL.ControlPatio.UnidadPatio objunidad = new SAT_CL.ControlPatio.UnidadPatio(id_unidad))
-                    //{
-                    //    if (objunidad.habilitar)
-                    //        objunidad.EditaUnidadPatio(unidad, identificador, "", id_transportista > 0 ? id_transportista : result.IdRegistro, id_usuario);
-                    //    else
-                    //        result = new RetornoOperacion(false);
-                    //}
-                    id_unidad_o = id_unidad;
+                    id_transportista_o = id_transportista;
                     result = new RetornoOperacion(true);
                 }
-
                 else
                 {
-                    result = SAT_CL.ControlPatio.UnidadPatio.InsertaUnidadPatio( unidad.ToUpper(), identificador.ToUpper(), "", id_transportista > 0 ? id_transportista : result.IdRegistro, id_usuario, true);
-                    id_unidad_o = result.IdRegistro;
+                    result = SAT_CL.ControlPatio.PatioTransportista.InsertarPatioTransportista(transportista.ToUpper(), tipo_patio, id_usuario);
+                    id_transportista_o = result.IdRegistro;
                 }
+                //Validamos operacion exitosa
+                if (result.OperacionExitosa)
+                {
+                    if (id_unidad > 0)
+                    {
+                        id_unidad_o = id_unidad;
+                        result = new RetornoOperacion(true);
+                    }
 
+                    else
+                    {
+                        result = SAT_CL.ControlPatio.UnidadPatio.InsertaUnidadPatio(unidad.ToUpper(), identificador.ToUpper(), "", id_transportista > 0 ? id_transportista : result.IdRegistro, id_usuario, true);
+                        id_unidad_o = result.IdRegistro;
+                    }
+
+                }
+                //Validamos Resultado
+                if (result.OperacionExitosa)
+                {
+                    //Finalizamos Transacción
+                    scope.Complete();
+                }
             }
             //Devolviendo Resultado Obtenido
             return result;
         }
+
+
         #endregion
 
         #endregion

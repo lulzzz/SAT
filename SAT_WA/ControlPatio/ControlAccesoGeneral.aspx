@@ -33,8 +33,6 @@ return isValid1 && isValid2 && isValid3;
 //Añadiendo Validación al Evento Click del Control
 $("#<%=btnAgregar.ClientID%>").click(validaEntrada);
 
-
-
 //Cargando Control DateTimePicker
 $("#<%=txtFecha.ClientID%>").datetimepicker({
 lang: 'es',
@@ -361,7 +359,7 @@ TabIndex="10"></asp:TextBox>
 <div class="control2x">
 <asp:UpdatePanel ID="uptxtDescripcion" runat="server" UpdateMode="Conditional">
 <ContentTemplate>
-<asp:TextBox ID="txtDescripcion" runat="server" CssClass="textbox2x validate[required]" TabIndex="12"
+<asp:TextBox ID="txtDescripcion" runat="server" CssClass="textbox2x validate[required]" TabIndex="12" OnTextChanged="txtDescripcion_TextChanged" AutoPostBack="true"
 MaxLength="150"></asp:TextBox>
 </ContentTemplate>
 <Triggers>
@@ -415,6 +413,7 @@ MaxLength="150"></asp:TextBox>
 <asp:AsyncPostBackTrigger ControlID="ddlTipo" />
 <asp:AsyncPostBackTrigger ControlID="btnAgregar" />
 <asp:AsyncPostBackTrigger ControlID="gvEntidades" />
+<asp:AsyncPostBackTrigger ControlID="txtDescripcion" />
 </Triggers>
 </asp:UpdatePanel>
 </div>
@@ -438,7 +437,7 @@ MaxLength="150"></asp:TextBox>
 <div class="control2x">
 <asp:UpdatePanel ID="uptxtReferencia" runat="server" UpdateMode="Conditional">
 <ContentTemplate>
-<asp:TextBox ID="txtReferencia" runat="server" CssClass="textbox2x validate[required]" TabIndex="13"
+<asp:TextBox ID="txtReferencia" runat="server" CssClass="textbox2x validate[required]" TabIndex="14"
 MaxLength="150"></asp:TextBox>
 </ContentTemplate>
 <Triggers>
@@ -459,7 +458,7 @@ MaxLength="150"></asp:TextBox>
 <div class="control2x">
 <asp:UpdatePanel ID="upddlEstado" runat="server" UpdateMode="Conditional">
 <ContentTemplate>
-<asp:DropDownList ID="ddlEstado" runat="server" TabIndex="14" CssClass="dropdown2x" ></asp:DropDownList>
+<asp:DropDownList ID="ddlEstado" runat="server" TabIndex="15" CssClass="dropdown2x" ></asp:DropDownList>
 </ContentTemplate>
 <Triggers>
 <asp:AsyncPostBackTrigger ControlID="btnEntrar" />
@@ -509,7 +508,7 @@ Checked="false" TabIndex="11" />
 <div class="controlBoton">
 <asp:UpdatePanel ID="upbtnCancelar" runat="server" UpdateMode="Conditional">
 <ContentTemplate>
-<asp:Button ID="btnCancelar" runat="server" TabIndex="12" CssClass="boton_cancelar" 
+<asp:Button ID="btnCancelar" runat="server" TabIndex="16" CssClass="boton_cancelar" 
 Text="Cancelar" OnClick="btnCancelar_Click" />
 </ContentTemplate>
 <Triggers>
@@ -523,7 +522,7 @@ Text="Cancelar" OnClick="btnCancelar_Click" />
 <div class="controlBoton">
 <asp:UpdatePanel ID="upbtnEntrar" runat="server" UpdateMode="Conditional">
 <ContentTemplate>
-<asp:Button ID="btnEntrar" runat="server" TabIndex="13" CssClass="boton" 
+<asp:Button ID="btnEntrar" runat="server" TabIndex="17" CssClass="boton" 
 Text="Entrar" OnClick="btnEntrar_Click" />
 </ContentTemplate>
 <Triggers>
@@ -599,6 +598,7 @@ ShowFooter="true" PageSize="25" Width="100%">
 <asp:BoundField DataField="Unidad" HeaderText="Unidad" SortExpression="Unidad" />
 <asp:BoundField DataField="Identificador" HeaderText="Identificador" SortExpression="Identificador" />
 <asp:BoundField DataField="Transportista" HeaderText="Transportista" SortExpression="Transportista" />
+<asp:BoundField DataField="Referencia" HeaderText="Referencia" SortExpression="Referencia" />
 <asp:BoundField DataField="Estado" HeaderText="Estatus" SortExpression="Estado" />
 <asp:TemplateField>
 <ItemTemplate>
@@ -645,38 +645,6 @@ ShowFooter="true" PageSize="25" Width="100%">
 <img src="../Image/Salida.png" />
 <h2>Salida</h2>
 </div>
-<div class="renglon3x">
-<div class="etiqueta">
-<asp:UpdatePanel ID="uplblSTag" runat="server" UpdateMode="Conditional">
-<ContentTemplate>
-<asp:Label ID="lblSTag" runat="server" Text="Tag"></asp:Label>
-</ContentTemplate>
-<Triggers>
-<asp:AsyncPostBackTrigger ControlID="btnEntrar" />
-<asp:AsyncPostBackTrigger ControlID="lnkMasUnidades" />
-<asp:AsyncPostBackTrigger ControlID="btnCancelar" />
-<asp:AsyncPostBackTrigger ControlID="ddlTipo" />
-<asp:AsyncPostBackTrigger ControlID="btnAgregar" />
-<asp:AsyncPostBackTrigger ControlID="gvEntidades" />
-</Triggers>
-</asp:UpdatePanel>
-</div>
-<div class="control2x">
-<asp:UpdatePanel ID="uptxtSTag" runat="server" UpdateMode="Conditional">
-<ContentTemplate>
-<asp:TextBox ID="txtSTag" runat="server" CssClass="textbox2x validate[required]"  AutoPostBack="true" TabIndex="7" 
-MaxLength="150"></asp:TextBox>
-</ContentTemplate>
-<Triggers>
-<asp:AsyncPostBackTrigger ControlID="btnEntrar" />
-<asp:AsyncPostBackTrigger ControlID="lnkMasUnidades" />
-<asp:AsyncPostBackTrigger ControlID="btnCancelar" />
-<asp:AsyncPostBackTrigger ControlID="btnAgregar" />
-<asp:AsyncPostBackTrigger ControlID="gvEntidades" />
-</Triggers>
-</asp:UpdatePanel>
-</div>
-</div>
 <div class="columna2x">                            
 <div class="renglon2x">
 <div class="etiqueta_155px">
@@ -689,7 +657,6 @@ MaxLength="150"></asp:TextBox>
 MaxLength="150"></asp:TextBox>
 </ContentTemplate>
 <Triggers>
-    <asp:AsyncPostBackTrigger ControlID="txtSTag" />
 </Triggers>
 </asp:UpdatePanel>
 </div>
@@ -713,7 +680,6 @@ OnClick="btnBuscar_Click" Text="Buscar" />
 MaxLength="150"></asp:TextBox>
 </ContentTemplate>
 <Triggers>
-    <asp:AsyncPostBackTrigger ControlID="txtSTag" />
 </Triggers>
 </asp:UpdatePanel>
 </div>                                    
