@@ -335,6 +335,7 @@
     <None Include="Connected Services\DespachoCentral\Despacho.disco" />
     <None Include="Connected Services\GlobalCentral\Global.disco" />
     <Content Include="Accesorios\ImpresionDocumentos.aspx" />
+    <Content Include="ControlPatio\ControlAccesoGeneral.aspx" />
     <Content Include="ControlPatio\OperadorPatio.aspx" />
     <Content Include="ControlPatio\UnidadPatio.aspx" />
     <Content Include="CuentasCobrar\SustitucionCxC.aspx" />
@@ -1550,6 +1551,13 @@
     </Compile>
     <Compile Include="ControlPatio\ControlAcceso.aspx.designer.cs">
       <DependentUpon>ControlAcceso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPatio\ControlAccesoGeneral.aspx.cs">
+      <DependentUpon>ControlAccesoGeneral.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlPatio\ControlAccesoGeneral.aspx.designer.cs">
+      <DependentUpon>ControlAccesoGeneral.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlPatio\OperacionPatio.aspx.cs">
       <DependentUpon>OperacionPatio.aspx</DependentUpon>
