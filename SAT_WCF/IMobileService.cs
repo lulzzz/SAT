@@ -114,12 +114,12 @@ namespace SAT_WCF
         [OperationContract]
         string RegistraSalidaPatio(int id_patio, int id_acceso, string fecha_hora, string entidades_xml, int id_usuario);
         /// <summary>
-        /// Método Público encargado de Obtener la Instancia por Defecto del Usuario
+        /// Método Público encargado de Obtener la Instancia por Defecto del Usuario Y Compania
         /// </summary>
         /// <param name="id_usuario">Usuario</param>
         /// <returns>SAT_CL.ControlPatio.UsuarioPatio en formato xml Personalizado</returns>
         [OperationContract]
-        string ObtienePatioDefaultUsuario(int id_usuario);
+        string ObtienePatioDefaultUsuario(int id_usuario, int id_compania);
         /// <summary>
         /// Metodo que regresa los indicadores relacionados con las unidades en patio
         /// </summary>

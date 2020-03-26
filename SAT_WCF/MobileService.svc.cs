@@ -564,14 +564,14 @@ namespace SAT_WCF
             return resultado.ToXMLString();
         }
         /// <summary>
-        /// Método Público encargado de Obtener la Instancia por Defecto del Usuario
+        /// Método Público encargado de Obtener la Instancia por Defecto del Usuario Y Compania
         /// </summary>
         /// <param name="id_usuario"></param>
         /// <returns></returns>
-        public string ObtienePatioDefaultUsuario(int id_usuario)
+        public string ObtienePatioDefaultUsuario(int id_usuario, int id_compania)
         {
             //Obteniendo Instancia de Usuario/Patio
-            using (UsuarioPatio up = UsuarioPatio.ObtieneInstanciaDefault(id_usuario))
+            using (UsuarioPatio up = UsuarioPatio.ObtieneInstanciaDefault(id_usuario, id_compania))
             {
                 //Declarando documento xml
                 System.Xml.Linq.XDocument d = new System.Xml.Linq.XDocument(new System.Xml.Linq.XDeclaration("1.0", "UTF-8", "true"));
