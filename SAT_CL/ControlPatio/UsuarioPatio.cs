@@ -204,11 +204,11 @@ namespace SAT_CL.ControlPatio
         /// </summary>
         /// <param name="id_usuario">Usuario</param>
         /// <returns></returns>
-        public static UsuarioPatio ObtieneInstanciaDefault(int id_usuario)
+        public static UsuarioPatio ObtieneInstanciaDefault(int id_usuario, int id_compania)
         {   //Declarando Objeto de Retorno
             UsuarioPatio result = new UsuarioPatio();
             //Armando Arreglo de Parametros
-            object[] param = { 4, 0, id_usuario, 0, false, 0, 0, false, "", "" };
+            object[] param = { 4, 0, id_usuario, id_compania, false, 0, 0, false, "", "" };
             //Obteniendo instancia
             using(DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nom_sp, param))
             {   //Validando que exista el Registro
