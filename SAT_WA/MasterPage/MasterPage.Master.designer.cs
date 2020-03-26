@@ -861,15 +861,6 @@ namespace SAT.MasterPage
         protected global::System.Web.UI.WebControls.LinkButton lnkControlAcceso;
 
         /// <summary>
-        /// Control lnkControlAccesoGeneral.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkControlAccesoGeneral;
-
-        /// <summary>
         /// Control lnkOperacionPatio.
         /// </summary>
         /// <remarks>

@@ -291,8 +291,8 @@
                         <ul>
                             <li>
                                 <asp:LinkButton ID="lnkControlAcceso" runat="server" CommandName="~/ControlPatio/ControlAcceso.aspx" OnClick="lnkDireccionaModulo_Click">Control Acceso</asp:LinkButton></li>
-                            <li>
-                                <asp:LinkButton ID="lnkControlAccesoGeneral" runat="server" CommandName="~/ControlPatio/ControlAccesoGeneral.aspx" OnClick="lnkDireccionaModulo_Click">Control Acceso</asp:LinkButton></li>
+<%--                            <li>
+                                <asp:LinkButton ID="lnkControlAccesoGeneral" runat="server" CommandName="~/ControlPatio/ControlAccesoGeneral.aspx" OnClick="lnkDireccionaModulo_Click">Control Acceso</asp:LinkButton></li>--%>
                             <li>
                                 <asp:LinkButton ID="lnkOperacionPatio" runat="server" CommandName="~/ControlPatio/OperacionPatio.aspx" OnClick="lnkDireccionaModulo_Click">Operacion Patio</asp:LinkButton></li>
                             <li>
