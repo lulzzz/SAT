@@ -293,17 +293,29 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="LiqsCerradas" HeaderText="Liq. Cerradas" SortExpression="LiqsCerradas" DataFormatString="{0:C2}" ItemStyle-CssClass="label_error" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" HeaderStyle-Width="60" ItemStyle-Width="60" />
-                            <asp:TemplateField HeaderText="Finiquito Auto." SortExpression="FiniquitoAuto">
-                                <HeaderStyle Width="60" />
+                            <asp:TemplateField HeaderText="Finiquito (CC) Auto." SortExpression="FiniquitoAutoCC">
+                                <HeaderStyle Width="60" BackColor="#3AB53A" ForeColor="White" />
                                 <ItemStyle HorizontalAlign="Right" Width="60" />
                                 <FooterStyle HorizontalAlign="Right" />
                                 <ItemTemplate>
-                                    <asp:Label ID="lblFiniquitoAutorizado" runat="server" CssClass="label_negrita"
-                                         Text='<%# Eval("FiniquitoAuto", "{0:C2}") %>' Visible="false"></asp:Label>
-                                    <asp:LinkButton ID="lkbFiniquitoAutorizado" runat="server" Text='<%# Eval("FiniquitoAuto", "{0:C2}") %>'
-                                         OnClick="lkbAccionesAnticipos_Click" CommandName="FiniquitoAutorizado" Visible="true"></asp:LinkButton>
+                                    <asp:Label ID="lblFiniquitoCC" runat="server" CssClass="label_negrita"
+                                         Text='<%# Eval("FiniquitoAutoCC", "{0:C2}") %>' Visible="false"></asp:Label>
+                                    <asp:LinkButton ID="lkbFiniquitoCC" runat="server" Text='<%# Eval("FiniquitoAutoCC", "{0:C2}") %>'
+                                         OnClick="lkbAccionesAnticipos_Click" CommandName="FiniquitoAutoCC" Visible="true"></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Finiquito (SC) Auto." SortExpression="FiniquitoAutoSC">
+                                <HeaderStyle Width="60" BackColor="#E24848" ForeColor="White" />
+                                <ItemStyle HorizontalAlign="Right" Width="60" />
+                                <FooterStyle HorizontalAlign="Right" />
+                                <ItemTemplate>
+                                    <asp:Label ID="lblFiniquitoSC" runat="server" CssClass="label_negrita"
+                                         Text='<%# Eval("FiniquitoAutoSC", "{0:C2}") %>' Visible="false"></asp:Label>
+                                    <asp:LinkButton ID="lkbFiniquitoSC" runat="server" Text='<%# Eval("FiniquitoAutoSC", "{0:C2}") %>'
+                                         OnClick="lkbAccionesAnticipos_Click" CommandName="FiniquitoAutoCC" Visible="true"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="FiniquitoAuto" HeaderText="Finiquito Auto." SortExpression="FiniquitoAuto" DataFormatString="{0:C2}" ItemStyle-CssClass="label_negrita" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" HeaderStyle-Width="60" ItemStyle-Width="60" />
                             <asp:TemplateField HeaderText="Depositos CxP">
                                 <ItemStyle HorizontalAlign="Center" Width="50" />
                                 <ItemTemplate>
@@ -668,6 +680,9 @@
                                 <asp:Button ID="btnRegistrarFiniquito" runat="server" CssClass="boton"
                                     TabIndex="13" Text="Registrar" CommandName="RegistrarFiniquito" OnClick="btnAccionesAnticipos_Click" />
                             </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="gvViajesAnticipos" />
+                            </Triggers>
                         </asp:UpdatePanel>
                     </div>
                     <div class="controlBoton">
