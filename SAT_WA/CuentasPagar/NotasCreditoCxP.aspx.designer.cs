@@ -24,15 +24,6 @@ namespace SAT.CuentasPagar
         protected global::System.Web.UI.UpdatePanel updivFile;
 
         /// <summary>
-        /// Control btnBorrar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBorrar;
-
-        /// <summary>
         /// Control btnVistaPrevia.
         /// </summary>
         /// <remarks>
@@ -40,6 +31,15 @@ namespace SAT.CuentasPagar
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVistaPrevia;
+
+        /// <summary>
+        /// Control btnBorrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBorrar;
 
         /// <summary>
         /// Control uptxtEmisor.

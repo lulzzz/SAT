@@ -110,6 +110,21 @@ namespace SAT.CuentasPagar
         {
             //Limpiando archivos de sesión
             Session["id_registro_b"] = null;
+            //Limpiando texbox
+            txtEmisor.Text = ""; txtEmisor.Enabled = true;
+            txtReceptor.Text = ""; txtReceptor.Enabled = true;
+            txtSerie.Text = ""; txtSerie.Enabled = true;
+            txtFolio.Text = ""; txtFolio.Enabled = true;
+            txtUUID.Text = ""; txtUUID.Enabled = true;
+            txtFechaFactura.Text = ""; txtFechaFactura.Enabled = true;
+            txtSubtotal.Text = ""; txtSubtotal.Enabled = true;
+            txtDescuento.Text = ""; txtDescuento.Enabled = true;
+            txtTrasladado.Text = ""; txtTrasladado.Enabled = true;
+            txtRetenido.Text = ""; txtRetenido.Enabled = true;
+            txtTotal.Text = ""; txtTotal.Enabled = true;
+            txtEstatusSAT.Text = ""; txtEstatusSAT.Enabled = true;
+            txtEstatusSistema.Text = ""; txtEstatusSistema.Enabled = true;
+            txtObservacion .Text= "";  txtObservacion.Enabled = true;
             //Limpiando grid
             Controles.InicializaGridview(gvVistaPrevia);
             //Eliminando de Session
@@ -211,23 +226,25 @@ namespace SAT.CuentasPagar
         /// <param name="e"></param>
         protected void gvVistaPrevia_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //Validar el tipo de fila
+            //validando Fila de Datos
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //Castear controles desde la interfaz
-                using (Label lblEstatusSAT = (Label)e.Row.FindControl("lblEstatusSAT"))
-                using (Label lblEstatusSistema = (Label)e.Row.FindControl("lblEstatusSistema"))
-                using (CheckBox chkVariosA = (CheckBox)e.Row.FindControl("chkVariosA"))
+                //Recuperando información de la fila actual
+                if (e.Row.DataItem != null)
                 {
-                    if (chkVariosA.Checked)
-                        lblEstatusSistema.Text = FacturadoProveedor.EstatusFactura.Aceptada.ToString();
-                    else
-                        lblEstatusSistema.Text = FacturadoProveedor.EstatusFactura.EnRevision.ToString();
-                    //Validar que se recupera el control de kilometraje
-                    if (lblEstatusSAT != null && lblEstatusSAT.Text != "")
+                    //Obteniendo Fila de Datos
+                    DataRow fila = ((DataRowView)e.Row.DataItem).Row;
+
+                    //Validando Fila
+                    if (fila != null)
                     {
-                        if (lblEstatusSAT.Text.Contains("Cancelado") || lblEstatusSAT.Text.Contains("No Encontrado"))
-                            e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffb5c2");
+                        //Verificar que la columna donde se encuentran los controles dinámicos no esté vacía
+                        if (Convert.ToString(fila["Id"]).Equals("0"))
+                            e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#F6CECE");
+                        //Si no está la factura en el sistema
+                        else
+                            //Coloreando fila de verde por ser UUID relacionado
+                            e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#9FF781");
                     }
                 }
             }
@@ -421,7 +438,7 @@ namespace SAT.CuentasPagar
                                 }
                             }
 
-                            if(tipoCFDI == 2)
+                            if (tipoCFDI == 2)
                             {
                                 //string IdByte = doc.ToString();
                                 //int id_cfdi = 0;
@@ -458,36 +475,97 @@ namespace SAT.CuentasPagar
                                         archivo = a.ToString();
                                 }
                                 //dtImportacion.Rows.Add(null, null, doc, archivo, rfcE, rfcR, tipoComprobante, emisor, receptor, serie, folio, uuid, fecha, subtotal, descuento, traslados, retenciones, total, estatus);
-                                txtEmisor.Text = emisor;
-                                txtReceptor.Text = receptor;
-                                txtSerie.Text = serie;
-                                txtFolio.Text = folio;
-                                txtUUID.Text = uuid;
-                                txtFechaFactura.Text = Convert.ToString(fecha);
-                                txtSubtotal.Text = Convert.ToString(subtotal);
-                                txtDescuento.Text = Convert.ToString(descuento);
-                                txtTrasladado.Text = Convert.ToString(traslados);
-                                txtRetenido.Text = Convert.ToString(retenciones);
-                                txtTotal.Text = Convert.ToString(total);
-                                txtEstatusSAT.Text = estatus;
+                                txtEmisor.Text = emisor; txtEmisor.Enabled = false;
+                                txtReceptor.Text = receptor; txtReceptor.Enabled = false;
+                                txtSerie.Text = serie; txtSerie.Enabled = false;
+                                txtFolio.Text = folio; txtFolio.Enabled = false;
+                                txtUUID.Text = uuid; txtUUID.Enabled = false;
+                                txtFechaFactura.Text = Convert.ToString(fecha); txtFechaFactura.Enabled = false;
+                                txtSubtotal.Text = Convert.ToString(subtotal); txtSubtotal.Enabled = false;
+                                txtDescuento.Text = Convert.ToString(descuento); txtDescuento.Enabled = false;
+                                txtTrasladado.Text = Convert.ToString(traslados); txtTrasladado.Enabled = false;
+                                txtRetenido.Text = Convert.ToString(retenciones); txtRetenido.Enabled = false;
+                                txtTotal.Text = Convert.ToString(total); txtTotal.Enabled = false;
+                                txtEstatusSAT.Text = estatus; txtEstatusSAT.Enabled = false;
+                                txtEstatusSistema.Enabled = false;
+                                txtObservacion.Enabled = false;
+                                //Obteniendo UUIDs de las facturas relacionadas contenidas en el XML cargado
+                                IEnumerable<XElement> UUIDsRelacionados = (from XElement UUIDR in doc.Root.Element(ns + "CfdiRelacionados").Descendants()
+                                                                           where UUIDR.Name.Equals(UUIDR.GetNamespaceOfPrefix("cfdi") + "CfdiRelacionado")
+                                                                           select UUIDR).ToList();//.DefaultIfEmpty(null).FirstOrDefault();
 
-                                //Realizando la carga de los servicios coincidentes
-                                using (DataTable mit = SAT_CL.CXP.FacturadoProveedor.ObtieneFacturasRelacionadasNC(uuid))
+                                //Creando tabla que aloja a los UUIDs relacionados
+                                DataTable dtFacturasRelacionadas = new DataTable();
+                                dtFacturasRelacionadas.Columns.Add("Id", typeof(int));
+                                dtFacturasRelacionadas.Columns.Add("IdCompaniaProveedor", typeof(int));
+                                dtFacturasRelacionadas.Columns.Add("IdCompaniaReceptor", typeof(int));
+                                dtFacturasRelacionadas.Columns.Add("CompaniaProveedor", typeof(string));
+                                dtFacturasRelacionadas.Columns.Add("CompaniaReceptor", typeof(string));
+                                dtFacturasRelacionadas.Columns.Add("IdServicio", typeof(int));
+                                dtFacturasRelacionadas.Columns.Add("Serie", typeof(string));
+                                dtFacturasRelacionadas.Columns.Add("Folio", typeof(string));
+                                dtFacturasRelacionadas.Columns.Add("Uuid", typeof(string));
+                                dtFacturasRelacionadas.Columns.Add("FechaFactura", typeof(DateTime));
+                                dtFacturasRelacionadas.Columns.Add("IdTipoFactura", typeof(byte));
+                                dtFacturasRelacionadas.Columns.Add("TipoComprobante", typeof(string));
+                                dtFacturasRelacionadas.Columns.Add("IdNaturalezaCFDI", typeof(byte));
+                                dtFacturasRelacionadas.Columns.Add("IdEstatusFactura", typeof(byte));
+                                dtFacturasRelacionadas.Columns.Add("IdEstatusRecepcion", typeof(byte));
+                                dtFacturasRelacionadas.Columns.Add("IdRecepcion", typeof(int));
+                                dtFacturasRelacionadas.Columns.Add("IdSegmentoNegocio", typeof(int));
+                                dtFacturasRelacionadas.Columns.Add("IdTipoServicio", typeof(int));
+                                dtFacturasRelacionadas.Columns.Add("TotalFactura", typeof(decimal));
+                                dtFacturasRelacionadas.Columns.Add("SubtotalFactura", typeof(decimal));
+                                dtFacturasRelacionadas.Columns.Add("DescuentoFactura", typeof(decimal));
+                                dtFacturasRelacionadas.Columns.Add("TrasladadoFactura", typeof(decimal));
+                                dtFacturasRelacionadas.Columns.Add("RetenidoFactura", typeof(decimal));
+                                dtFacturasRelacionadas.Columns.Add("Moneda", typeof(string));
+                                dtFacturasRelacionadas.Columns.Add("MontoTipoCambio", typeof(decimal));
+                                dtFacturasRelacionadas.Columns.Add("FechaTipoCambio", typeof(DateTime));
+                                dtFacturasRelacionadas.Columns.Add("TotalFacturaPesos", typeof(decimal));
+                                dtFacturasRelacionadas.Columns.Add("SubtotalPesos", typeof(decimal));
+                                dtFacturasRelacionadas.Columns.Add("DescuentoFacturaPesos", typeof(decimal));
+                                dtFacturasRelacionadas.Columns.Add("TrasladadoPesos", typeof(decimal));
+                                dtFacturasRelacionadas.Columns.Add("RetenidoPesos", typeof(decimal));
+                                dtFacturasRelacionadas.Columns.Add("BitTransferido", typeof(bool));
+                                dtFacturasRelacionadas.Columns.Add("FechaTransferido", typeof(DateTime));
+                                dtFacturasRelacionadas.Columns.Add("Saldo", typeof(decimal));
+                                dtFacturasRelacionadas.Columns.Add("CondicionPago", typeof(string));
+                                dtFacturasRelacionadas.Columns.Add("DiasCredito", typeof(int));
+                                dtFacturasRelacionadas.Columns.Add("IdCausaFaltaPago", typeof(int));
+                                dtFacturasRelacionadas.Columns.Add("IdResultadoValidacion", typeof(byte));
+                                dtFacturasRelacionadas.Columns.Add("ResultadoValidacion", typeof(string));
+
+                                foreach (XElement element in UUIDsRelacionados)
                                 {
-                                    //Cargando Gridview
-                                    Controles.CargaGridView(gvVistaPrevia, mit, "Id", lblOrdenarVistaPrevia.Text, true, 3);
-                                    //Si no hay registros
-                                    if (mit == null)
-                                        //Elimiando de sesión
-                                        Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table");
-                                    //Si existen registros, se sobrescribe
-                                    else
-                                        Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], mit, "Table");
+                                    using (DataTable mit = SAT_CL.CXP.FacturadoProveedor.ObtieneFacturaRelacionadaNC(Convert.ToString(element.Attribute("UUID").Value)))
+                                    {
+                                        if (mit == null)
+                                        {
+                                            dtFacturasRelacionadas.Rows.Add(0, null, null, "", "", null, "", "", Convert.ToString(element.Attribute("UUID").Value), null, null, "", null, null, null, null, null, null, null, null, null, null, null, "", null, null, null, null, null, null, null, null, null, null, "", null, null, null, "");
+                                        }
+                                        else
+                                        {
+                                            dtFacturasRelacionadas.Merge(mit);
+                                        }
+                                    }
+
                                 }
+                                //Cargando Gridview
+                                Controles.CargaGridView(gvVistaPrevia, dtFacturasRelacionadas, "Id", lblOrdenarVistaPrevia.Text);
+                                //Si no hay registros
+                                if (dtFacturasRelacionadas == null)
+                                    //Elimiando de sesión
+                                    Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "TableImportacion");
+                                //Si existen registros, se sobrescribe
+                                else
+                                    Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], dtFacturasRelacionadas, "TableImportacion");
+                                //Señalando resultado exitoso
+                                resultados.Add(new RetornoOperacion("Vista Previa generada con éxito.", true));
+
                             }
                             else
                                 resultado = new RetornoOperacion("El XML cargado no corresponde a un Egreso. Seleccione un XML de tipo Egreso.");
-
                         }
                         else
                             resultado = new RetornoOperacion("Error al leer contenido de archivo XML.");
@@ -511,8 +589,7 @@ namespace SAT.CuentasPagar
                 //Llenando gridview de vista previa (Sin llaves de selección)
                 //Controles.CargaGridView(gvVistaPrevia, dtImportacion, "Cont-Id-xml-nombre-rfcE-rfcR-Emisor-UUID-Total-FechaFactura-TipoComprobante-EstatusSistema", lblOrdenarVistaPrevia.Text, true, 1);
 
-                //Señalando resultado exitoso
-                resultados.Add(new RetornoOperacion("Vista Previa generada con éxito.", true));
+
             }
             else
                 //Instanciando Excepcion

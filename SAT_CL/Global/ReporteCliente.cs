@@ -124,7 +124,7 @@ namespace SAT_CL.Global
             bool result = false;
 
             //Armando Arreglo de Parametros
-            object[] param = { 3, id_reporte_cliente, 0, 0, 0, 0, 0, 0, 0, "", "" };
+            object[] param = { 3, id_reporte_cliente, 0, 0, 0, 0, 0, 0, false, "", "" };
 
             //Instanciando 
             using (DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nom_sp, param))

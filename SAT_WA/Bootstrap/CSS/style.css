@@ -1,0 +1,108 @@
+
+
+
+/*CSS PARA LOGIN 1 */
+.headercolor {
+    /*background: #2c3e50;*/
+    background: #94001E;
+    color: #fff;
+}
+
+
+
+.imagen {
+    padding: 50px 0;
+}
+
+.mensaje-login {
+    padding: 3px 0;
+    /*background: #2c3e50;*/
+    background: #94001E;
+    color: #fff;
+}
+
+.user-img {
+    margin-top: -50px;
+    margin-bottom: 35px;
+    top: 0px;
+    left: 0px;
+}
+
+    .user-img img {
+        width: 110px;
+        height: 110px;
+        box-shadow: 0px 0px 3px #848484;
+        border-radius: 50%;
+    }
+
+
+.modal-content {
+    opacity: 85;
+    padding: 0 20px;
+    box-shadow: 0px 0px 3px #848484;
+    height: 440px;
+    height: 440px;
+}
+
+.h {
+    margin: 15px 0;
+}
+
+.login-footer {
+    margin: 0px;
+    padding: 95px 0 0 0;
+}
+
+/*css para revision*/
+.modal-content-Colu {
+    padding: 50px 0;
+}
+
+
+/*param menu*/
+.Menu {
+    width: 100px;
+    height: 30px;
+    float: right;
+}
+.mensaje_login_bootstrap {
+    margin: 0px;
+    padding: 1px;
+    height: auto;
+    width: auto;
+    background-color: #20a2dc;
+    color: white;
+    /*font-size: 20px;
+    text-align: left;*/
+}
+.footer_menu {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.footer_section_izquierda {
+    margin: 0px 0px 0px 40px;
+    padding: 0px;
+    width: 56%;
+    height: 100%;
+    float: left;
+}
+
+.footer_section_izquierda p {
+    margin: 15px 0px 5px 0px;
+    color: grey;
+}
+.footer_menu li {
+    display: inline;
+}
+header {
+    height: 40px;
+    min-width: 100%;
+    background-image: linear-gradient(#a5d16f,#BBDA95);
+}
+footer {
+    width: 100%;
+    height: 80px;
+    background-color: gainsboro;
+    color: gray;
+}

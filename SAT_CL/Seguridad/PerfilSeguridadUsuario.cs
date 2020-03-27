@@ -288,7 +288,36 @@ namespace SAT_CL.Seguridad
             //Devolviendo Resultado Obtenido
             return dtPerfiles;
         }
+        /// <summary>
+        /// Método encargado de Obtener el Acceso del Perfil Activo del Usuario
+        /// </summary>
+        /// <param name="id_usuario">Usuario</param>
+        /// <returns></returns>
+        public static string ObtieneAccesoPerfilActivo(int id_usuario)
+        {
+            //Declarando Objeto de Retorno
+            string acceso = "";
 
+            //Armando Arreglo de Parametros
+            object[] param = { 6, 0, 0, id_usuario, false, 0, false, "", "" };
+
+            //Obteniendo Registro del SP
+            using (DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nom_sp, param))
+            {
+                //Validando que Exista el Registro
+                if (TSDK.Datos.Validacion.ValidaOrigenDatos(ds, "Table"))
+                {
+                    //Recorriendo Registro
+                    foreach (DataRow dr in ds.Tables["Table"].Rows)
+
+                        //Asignando Acceso
+                        acceso = dr["URL"].ToString();
+                }
+            }
+
+            //Devolviendo Resultado Obtenido
+            return acceso;
+        }
         #endregion
     }
 }
