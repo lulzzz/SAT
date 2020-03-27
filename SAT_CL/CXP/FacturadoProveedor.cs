@@ -1402,20 +1402,6 @@ namespace SAT_CL.CXP {
 			return result;
 		}
 
-		public static DataTable ObtieneFacturasRelacionadasNC(String UUID)
-		{
-			DataTable dtFacturasRelacionadasNC = null;
-
-			object[] param = { };
-
-			using (DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nom_sp, param))
-			{
-				if (Validacion.ValidaOrigenDatos(ds, "Table"))
-					dtFacturasRelacionadasNC = ds.Tables["Table"];
-				return dtFacturasRelacionadasNC;
-			}
-		}
-
 		#region Importación CFDI 3.2
 		/// <summary>
 		/// Método encargado de Importar el CFDI en la versión 3.2
@@ -2947,6 +2933,20 @@ namespace SAT_CL.CXP {
                 }
             }
         }
+
+		public static DataTable ObtieneFacturaRelacionadaNC(string UUIDRelacionado)
+		{
+			DataTable dtFacturaRelacionadaNC = null;
+
+			object[] param = { 15, 0, 0, 0, 0, "", "", UUIDRelacionado, null, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, null, 0, 0, 0, 0, 0, false, null, 0, 0, 0, 0, 0, "", 0, true, "", "" };
+
+			using (DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nom_sp, param))
+			{
+				if (Validacion.ValidaOrigenDatos(ds, "Table"))
+					dtFacturaRelacionadaNC = ds.Tables["Table"];
+				return dtFacturaRelacionadaNC;
+			}
+		}
 
 		#endregion
 

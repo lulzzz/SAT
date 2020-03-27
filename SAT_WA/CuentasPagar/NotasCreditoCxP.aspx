@@ -106,11 +106,11 @@
                 </asp:UpdatePanel>
             </div>
             <div class="controlBoton">
-                <asp:Button ID="btnBorrar" runat="server" Text="Limpiar" CssClass="boton_cancelar" OnClick="btnBorrar_Click" />
-            </div>
-
-            <div class="controlBoton">
                 <asp:Button ID="btnVistaPrevia" runat="server" Text="Vista Previa >>" CssClass="boton" OnClick="btnVistaPrevia_Click" />
+            </div>
+            <br />
+            <div class="controlBoton">
+                <asp:Button ID="btnBorrar" runat="server" Text="Limpiar" CssClass="boton_cancelar" OnClick="btnBorrar_Click" />
             </div>
         </div>
         <div class="contenedor_media_seccion_derecha">
@@ -404,9 +404,10 @@
                         <asp:Label ID="lblOrdenarVistaPrevia" runat="server"></asp:Label>
                     </ContentTemplate>
                     <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="gvVistaPrevia" EventName="Sorting" />
                     </Triggers>
                 </asp:UpdatePanel>
-            </div>
+            </div><!--
             <div class="etiqueta">
                 <asp:UpdatePanel ID="uplimbValidacion" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
@@ -425,7 +426,7 @@
                         <asp:Button ID="btnImportar" runat="server" Text="Importar" CssClass="boton" OnClick="btnImportar_Click" />
                     </ContentTemplate>
                 </asp:UpdatePanel>
-            </div>
+            </div>-->
         </div>
 
         <div class="grid_seccion_completa_400px_altura">
@@ -436,7 +437,7 @@
                         ShowHeaderWhenEmpty="True" PageSize="25" AllowSorting="True"
                         CssClass="gridview" Width="100%">
                         <AlternatingRowStyle CssClass="gridviewrowalternate" />
-                        <EmptyDataRowStyle BackColor="#ffffff" ForeColor="#ff0000" />
+                        <EmptyDataRowStyle BackColor="#ffffff" ForeColor="#fffffff" />
                         <Columns>
                             <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="10px" ItemStyle-Width="10px">
                                 <HeaderTemplate>
@@ -446,88 +447,93 @@
                                     <asp:CheckBox ID="chkVarios" OnCheckedChanged="chkTodos_CheckedChanged" AutoPostBack="true" runat="server" HeaderStyle-Width="10px" ItemStyle-Width="10px" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField HeaderText="Cont" DataField="Cont" SortExpression="Cont" Visible="false">
-                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
-                            </asp:BoundField>
                             <asp:BoundField HeaderText="Id" DataField="Id" SortExpression="Id" Visible="false">
                                 <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="xml" DataField="xml" SortExpression="xml" Visible="false">
-                                <ItemStyle Wrap="true" HorizontalAlign="Right" />
+                            <asp:BoundField HeaderText="IdCompaniaProveedor" DataField="IdCompaniaProveedor" SortExpression="IdCompaniaProveedor" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="nombre" DataField="nombre" SortExpression="nombre" Visible="false">
-                                <ItemStyle Wrap="true" HorizontalAlign="Right" />
+                            <asp:BoundField HeaderText="IdCompaniaReceptor" DataField="IdCompaniaReceptor" SortExpression="IdCompaniaReceptor" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="rfcE" DataField="rfcE" SortExpression="rfcE" Visible="false">
-                                <ItemStyle Wrap="true" HorizontalAlign="Right" />
+                            <asp:BoundField HeaderText="IdServicio" DataField="IdServicio" SortExpression="IdServicio" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="rfcR" DataField="rfcR" SortExpression="rfcR" Visible="false">
-                                <ItemStyle Wrap="true" HorizontalAlign="Right" />
-                            </asp:BoundField>
-                            <asp:BoundField HeaderText="TipoComprobante" DataField="TipoComprobante" SortExpression="TipoComprobante" Visible="false">
-                                <ItemStyle Wrap="true" HorizontalAlign="Right" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Emisor" HeaderText="Emisor" SortExpression="Emisor">
+                            <asp:BoundField HeaderText="Emisor" DataField="CompaniaProveedor" SortExpression="CompaniaProveedor">
                                 <ItemStyle Width="100px" Wrap="true" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Receptor" HeaderText="Receptor" SortExpression="Receptor">
+                            <asp:BoundField HeaderText="Receptor" DataField="CompaniaReceptor" SortExpression="CompaniaReceptor">
                                 <ItemStyle Width="100px" Wrap="true" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Serie" HeaderText="Serie" SortExpression="Serie">
-                                <ItemStyle Width="15px" Wrap="true" />
+                            <asp:BoundField HeaderText="Serie" DataField="Serie" SortExpression="Serie">
+                                <ItemStyle Width="15px" Wrap="true" HorizontalAlign="Center"/>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Folio" HeaderText="Folio" SortExpression="Folio">
-                                <ItemStyle Width="15px" Wrap="true" />
+                            <asp:BoundField HeaderText="Folio" DataField="Folio" SortExpression="Folio">
+                                <ItemStyle Width="15px" Wrap="true" HorizontalAlign="Right"/>
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="UUID" DataField="UUID" SortExpression="UUID">
-                                <ItemStyle Width="150px" Wrap="true" />
+                            <asp:BoundField HeaderText="UUID" DataField="Uuid" SortExpression="Uuid">
+                                <ItemStyle Width="150px" Wrap="true" HorizontalAlign="Right" />
                             </asp:BoundField>
                             <asp:BoundField DataField="FechaFactura" DataFormatString="{0:dd/MM/yyyy HH:mm}" HeaderText="Fecha Factura" SortExpression="FechaFactura">
                                 <ItemStyle Width="60px" Wrap="true" HorizontalAlign="Right" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="SubTotal" DataFormatString="{0:c}" HeaderText="SubTotal" SortExpression="SubTotal">
+                            <asp:BoundField HeaderText="IdTipoFactura" DataField="IdTipoFactura" SortExpression="IdTipoFactura" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="TipoComprobante" DataField="TipoComprobante" SortExpression="TipoComprobante" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="IdNaturalezaCFDI" DataField="IdNaturalezaCFDI" SortExpression="IdNaturalezaCFDI" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="IdEstatusFactura" DataField="IdEstatusFactura" SortExpression="IdEstatusFactura" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="IdEstatusRecepcion" DataField="IdEstatusRecepcion" SortExpression="IdEstatusRecepcion" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="IdRecepcion" DataField="IdRecepcion" SortExpression="IdRecepcion" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="IdSegmentoNegocio" DataField="IdSegmentoNegocio" SortExpression="IdSegmentoNegocio" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="IdTipoServicio" DataField="IdTipoServicio" SortExpression="IdTipoServicio" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="SubtotalPesos" DataFormatString="{0:c}" HeaderText="SubTotal" SortExpression="SubtotalPesos">
                                 <ItemStyle Width="20px" Wrap="true" HorizontalAlign="Right" />
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="Descuento" DataField="Descuento" SortExpression="Descuento" DataFormatString="{0:c}">
+                            <asp:BoundField HeaderText="Descuento" DataField="DescuentoFacturaPesos" SortExpression="DescuentoFacturaPesos" DataFormatString="{0:c}">
                                 <ItemStyle Width="20px" Wrap="true" HorizontalAlign="Right" />
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="Trasladado" DataField="Trasladado" SortExpression="Trasladado" DataFormatString="{0:c}">
+                            <asp:BoundField HeaderText="Trasladado" DataField="TrasladadoPesos" SortExpression="TrasladadoPesos" DataFormatString="{0:c}">
                                 <ItemStyle Width="20px" Wrap="true" HorizontalAlign="Right" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Retenido" DataFormatString="{0:c}" HeaderText="Retenido" SortExpression="Retenido">
+                            <asp:BoundField DataField="RetenidoPesos" DataFormatString="{0:c}" HeaderText="Retenido" SortExpression="RetenidoPesos">
                                 <ItemStyle Width="20px" Wrap="true" HorizontalAlign="Right" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Total" DataFormatString="{0:c}" HeaderText="Total" SortExpression="Total">
+                            <asp:BoundField DataField="TotalFacturaPesos" DataFormatString="{0:c}" HeaderText="Total" SortExpression="TotalFacturaPesos">
                                 <ItemStyle Width="20px" Wrap="true" HorizontalAlign="Right" />
                             </asp:BoundField>
-                            <asp:TemplateField SortExpression="EstatusSistema" HeaderText="EstatusSistema" ItemStyle-Width="40px">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblEstatusSistema" Text='<%# Eval("EstatusSistema") %>' runat="server"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField SortExpression="EstatusSAT" HeaderText="EstatusSAT" ItemStyle-Width="70px">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblEstatusSAT" runat="server"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField SortExpression="Observacion" HeaderText="Observación" ItemStyle-Width="170px">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblObservacion" runat="server"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="¿Aceptada?" SortExpression="Aceptada">
-                                <HeaderStyle Width="60" />
-                                <ItemStyle HorizontalAlign="Center" Width="60" />
-                                <ItemTemplate>
-                                    <asp:CheckBox ID="chkVariosA" runat="server" AutoPostBack="true" OnCheckedChanged="chkAceptadaE_CheckedChanged" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Eliminar">
-                                <ItemStyle HorizontalAlign="Center" Width="20px" />
-                                <ItemTemplate>
-                                    <asp:ImageButton ID="imbEliminar" runat="server" OnClick="imbEliminar_Click" ImageUrl="~/Image/borrar.png" Width="25" Height="25" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            <asp:BoundField DataField="Saldo" DataFormatString="{0:c}" HeaderText="Saldo" SortExpression="Saldo">
+                                <ItemStyle Width="20px" Wrap="true" HorizontalAlign="Right" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="CondicionPago" HeaderText="Condición Pago" SortExpression="CondicionPago">
+                                <ItemStyle Width="40px" Wrap="true" HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="DiasCredito" HeaderText="Días Crédito" SortExpression="DiasCredito">
+                                <ItemStyle Width="25px" Wrap="true" HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="IdCausaFaltaPago" DataField="IdCausaFaltaPago" SortExpression="IdCausaFaltaPago" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="IdResultadoValidacion" DataField="IdResultadoValidacion" SortExpression="IdResultadoValidacion" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
+                            </asp:BoundField>
+                            <asp:BoundField HeaderText="ResultadoValidacion" DataField="ResultadoValidacion" SortExpression="ResultadoValidacion" Visible="false">
+                                <ItemStyle HorizontalAlign="Right" Width="15px" Wrap="true" />
+                            </asp:BoundField>                     
                         </Columns>
                         <FooterStyle CssClass="gridviewfooter" />
                         <HeaderStyle CssClass="gridviewheader" />
