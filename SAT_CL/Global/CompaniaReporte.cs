@@ -33,6 +33,13 @@ namespace SAT_CL.Global
         /// Obtiene la URL Base del reporte a mostrar
         /// </summary>
         public string url_reporte_ssrs { get { return this._url_reporte_ssrs; } }
+
+        private int _id_tipo_reporte;
+        /// <summary>
+        /// Obtiene la compañía a la que pertenece el reporte
+        /// </summary>
+        public int id_tipo_reporte { get { return this._id_tipo_reporte; } }
+
         private bool _habilitar;
         /// <summary>
         /// Obtiene el valor de habilitación del reporte
@@ -78,7 +85,7 @@ namespace SAT_CL.Global
             bool result = false;
 
             //Armando Arreglo de Parametros
-            object[] param = { 3, id_registro, 0, "", "", 0, false, "", "" };
+            object[] param = { 3, id_registro, 0, "", "", 0, 0, false, "", "" };
 
             //Buscando registro en BD
             using (DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nombre_stored_procedure, param))
@@ -94,6 +101,7 @@ namespace SAT_CL.Global
                         this._id_compania_reporte = Convert.ToInt32(dr["IdCompania"]);
                         this._descripcion_reporte = dr["Descripcion"].ToString();
                         this._url_reporte_ssrs = dr["Url"].ToString();
+                        this._id_tipo_reporte = Convert.ToInt32(dr["TipoReporte"]);
                         this._habilitar = Convert.ToBoolean(dr["Habilitar"]);
                         //Asignando Retorno Correcto
                         result = true;
