@@ -1,0 +1,41 @@
+.headercolor {
+    /*background: #2c3e50;*/
+    /*background: #94001E;*/
+    background: #B9D992;
+    color: #fff;
+}
+
+.footercolor {
+    /*background: #2c3e50;*/
+    /*background: #D9B26B;*/
+    background: #D9B26B;
+    color: #fff;
+}
+
+.content {
+    opacity: 85;
+    padding: 20px 20px;
+    box-shadow: 0px 0px 3px #848484;
+    /* height: 440px;
+    height: 750px; */
+}
+
+.login-footer {
+    margin: 0px;
+    padding: 20px 0 0 0;
+}
+
+.title-img {
+    margin-top: -54px;
+    margin-left: 180px;
+    margin-right: 0px;
+    top: 0px;
+    left: 0px;
+}
+
+    .title-img img {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 0px 3px #848484;
+        border-radius: 70%;
+    }

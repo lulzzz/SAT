@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Data;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 using System.Transactions;
 using TSDK.Base;
 using TSDK.Datos;
@@ -522,6 +525,199 @@ namespace SAT_CL.Seguridad
             //Generando TOKEN
             retorno = generaTokenUsuario(id_usuario_registro, clave_encriptacion, llave_encriptacion, id_compania, id_usuario, out token_nvo);
             return retorno;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id_usuario_registro"></param>
+        /// <param name="clave_encriptacion"></param>
+        /// <param name="llave_encriptacion"></param>
+        /// <param name="id_compania"></param>
+        /// <param name="id_usuario"></param>
+        /// <param name="token_usuario"></param>
+        /// <returns></returns>
+        private static RetornoOperacion generaTokenUUID(int id_usuario_registro, string llave_encriptacion, int id_compania, int id_usuario, out string token_usuario)
+        {
+            RetornoOperacion retorno = new RetornoOperacion();
+            DateTime fecha_actual = Fecha.ObtieneFechaEstandarMexicoCentro();
+            token_usuario = "";
+
+            if (llave_encriptacion.Length <= 5)
+            {
+                //Validando Usuario
+                using (Usuario user = new Usuario(id_usuario_registro))
+                {
+                    if (user.habilitar)
+                    {
+                        using (TransactionScope scope = Transaccion.InicializaBloqueTransaccional(System.Transactions.IsolationLevel.ReadCommitted))
+                        {
+                            using (UsuarioToken activo = UsuarioToken.ObtieneTokenActivo(id_usuario_registro, id_compania))
+                            {
+                                if (!activo.habilitar)
+                                    //Generando Resultado Positivo
+                                    retorno = new RetornoOperacion(id_usuario, "Listo para Crear el Token", true);
+                                else
+                                {
+                                    //Terminando TOKEN
+                                    retorno = activo.TerminaUsuarioToken(id_usuario);
+                                    if (retorno.OperacionExitosa)
+                                        //Generando Resultado Positivo
+                                        retorno = new RetornoOperacion(id_usuario, "Listo para Crear el Token", true);
+                                }
+                            }
+
+                            if (retorno.OperacionExitosa)
+                            {
+                                //CrearToken
+                                token_usuario = Guid.NewGuid().ToString(); 
+                                //Validando se genero el token
+                                //if (retorno.OperacionExitosa)
+                                //{
+                                    retorno = SAT_CL.Seguridad.UsuarioToken.InsertaUsuarioToken(id_usuario_registro, id_compania, 0, 1, llave_encriptacion, token_usuario, fecha_actual, DateTime.MinValue, id_usuario);
+                                    while (!retorno.OperacionExitosa)
+                                    {
+                                        //CrearToken
+                                        token_usuario = Guid.NewGuid().ToString();
+                                        retorno = UsuarioToken.InsertaUsuarioToken(id_usuario_registro, id_compania, 0, 1, llave_encriptacion, token_usuario, fecha_actual, DateTime.MinValue, id_usuario);
+                                    if (retorno.OperacionExitosa)
+                                        break;
+                                    }
+
+                                    if (retorno.OperacionExitosa)
+                                    {
+                                        retorno = new RetornoOperacion(retorno.IdRegistro, "Token Generado Exitosamente!", true);
+                                        //Completando Transacción
+                                        scope.Complete();
+                                    }
+                                //}
+                            }
+                        }
+                    }
+                    else
+                        retorno = new RetornoOperacion("El usuario que ingreso, es invalido");
+                }
+            }
+            else
+                retorno = new RetornoOperacion("La llave de encriptación debe de ser de 10 caracteres máximo");
+
+            return retorno;
+        }
+        /// <summary>
+        /// Método encargado de Generar un Nuevo Token de Autenticación de Usuario por Compania
+        /// </summary>
+        /// <param name="id_usuario_registro"></param>
+        /// <param name="id_compania"></param>
+        /// <param name="id_usuario"></param>
+        /// <param name="token_nvo"></param>
+        /// <returns></returns>
+        public static RetornoOperacion GeneraNuevoTokenUUID(int id_usuario_registro, int id_compania, int id_usuario, out string token_nvo)
+        {
+            RetornoOperacion retorno = new RetornoOperacion();
+            token_nvo = "";
+
+            //Obteniendo Clave de Encriptación (Aleatorio)
+            string llave_encriptacion = Cadena.CadenaAleatoria(1, 2, 1);
+            if (!llave_encriptacion.Equals(""))
+            {
+                //Generando TOKEN
+                retorno = generaTokenUUID(id_usuario_registro, llave_encriptacion, id_compania, id_usuario, out token_nvo);
+            }
+            else
+                retorno = new RetornoOperacion("El token no se genero correctamente");
+
+            return retorno;
+        }
+
+        public string cifrarTextoAES(string textoCifrar, string palabraPaso,
+          string valorRGBSalt, string algoritmoEncriptacionHASH,
+          int iteraciones, string vectorInicial, int tamanoClave)
+        {
+            try
+            {
+                byte[] InitialVectorBytes = Encoding.ASCII.GetBytes(vectorInicial);
+                byte[] saltValueBytes = Encoding.ASCII.GetBytes(valorRGBSalt);
+                byte[] plainTextBytes = Encoding.UTF8.GetBytes(textoCifrar);
+
+                PasswordDeriveBytes password =
+                    new PasswordDeriveBytes(palabraPaso, saltValueBytes,
+                        algoritmoEncriptacionHASH, iteraciones);
+
+                byte[] keyBytes = password.GetBytes(tamanoClave / 8);
+
+                RijndaelManaged symmetricKey = new RijndaelManaged();
+
+                symmetricKey.Mode = CipherMode.CBC;
+
+                ICryptoTransform encryptor =
+                    symmetricKey.CreateEncryptor(keyBytes, InitialVectorBytes);
+
+                MemoryStream memoryStream = new MemoryStream();
+
+                CryptoStream cryptoStream =
+                    new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
+
+                cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+
+                cryptoStream.FlushFinalBlock();
+
+                byte[] cipherTextBytes = memoryStream.ToArray();
+
+                memoryStream.Close();
+                cryptoStream.Close();
+
+                string textoCifradoFinal = Convert.ToBase64String(cipherTextBytes);
+
+                return textoCifradoFinal;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public string descifrarTextoAES(string textoCifrado, string palabraPaso,
+    string valorRGBSalt, string algoritmoEncriptacionHASH,
+    int iteraciones, string vectorInicial, int tamanoClave)
+        {
+            try
+            {
+                byte[] InitialVectorBytes = Encoding.ASCII.GetBytes(vectorInicial);
+                byte[] saltValueBytes = Encoding.ASCII.GetBytes(valorRGBSalt);
+
+                byte[] cipherTextBytes = Convert.FromBase64String(textoCifrado);
+
+                PasswordDeriveBytes password =
+                    new PasswordDeriveBytes(palabraPaso, saltValueBytes,
+                        algoritmoEncriptacionHASH, iteraciones);
+
+                byte[] keyBytes = password.GetBytes(tamanoClave / 8);
+
+                RijndaelManaged symmetricKey = new RijndaelManaged();
+
+                symmetricKey.Mode = CipherMode.CBC;
+
+                ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, InitialVectorBytes);
+
+                MemoryStream memoryStream = new MemoryStream(cipherTextBytes);
+
+                CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
+
+                byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+
+                int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+
+                memoryStream.Close();
+                cryptoStream.Close();
+
+                string textoDescifradoFinal = Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+
+                return textoDescifradoFinal;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         #endregion

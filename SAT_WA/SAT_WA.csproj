@@ -319,6 +319,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bootstrap\CSS\bootstrap-theme.css.map" />
+    <Content Include="Bootstrap\CSS\bootstrap-theme.min.css.map" />
+    <Content Include="Bootstrap\CSS\bootstrap.css.map" />
+    <Content Include="Bootstrap\CSS\bootstrap.min.css.map" />
+    <Content Include="Bootstrap\font\glyphicons-halflings-regular.eot" />
+    <Content Include="Bootstrap\font\glyphicons-halflings-regular.ttf" />
+    <Content Include="Bootstrap\font\glyphicons-halflings-regular.woff" />
+    <Content Include="Bootstrap\font\glyphicons-halflings-regular.woff2" />
     <None Include="Connected Services\DespachoCentral\configuration91.svcinfo" />
     <None Include="Connected Services\DespachoCentral\configuration.svcinfo" />
     <None Include="Connected Services\DespachoCentral\Despacho2.wsdl" />
@@ -335,6 +343,17 @@
     <None Include="Connected Services\DespachoCentral\Despacho.disco" />
     <None Include="Connected Services\GlobalCentral\Global.disco" />
     <Content Include="Accesorios\ImpresionDocumentos.aspx" />
+    <Content Include="Bootstrap\CSS\bootstrap-theme.css" />
+    <Content Include="Bootstrap\CSS\bootstrap-theme.min.css" />
+    <Content Include="Bootstrap\CSS\bootstrap.css" />
+    <Content Include="Bootstrap\CSS\bootstrap.min.css" />
+    <Content Include="Bootstrap\CSS\main.css" />
+    <Content Include="Bootstrap\CSS\style.css" />
+    <Content Include="Bootstrap\font\glyphicons-halflings-regular.svg" />
+    <Content Include="Bootstrap\jss\bootstrap.js" />
+    <Content Include="Bootstrap\jss\bootstrap.min.js" />
+    <Content Include="Bootstrap\jss\jquery.js" />
+    <Content Include="Bootstrap\jss\npm.js" />
     <Content Include="ControlPatio\ControlAccesoGeneral.aspx" />
     <Content Include="ControlPatio\OperadorPatio.aspx" />
     <Content Include="ControlPatio\UnidadPatio.aspx" />
@@ -344,6 +363,7 @@
     <Content Include="CuentasPagar\ProcesoRevisionCxP.aspx" />
     <Content Include="Documentacion\AnticiposProgramados.aspx" />
     <Content Include="EgresoServicio\ReporteValesDeDiesel.aspx" />
+    <Content Include="Externa\Login.aspx" />
     <Content Include="FacturacionElectronica33\CancelacionCFDI.aspx" />
     <Content Include="FacturacionElectronica33\ReporteComplementoPagos.aspx" />
     <Content Include="General\ImportadorKilometraje.aspx" />
@@ -373,6 +393,7 @@
     <Content Include="Image\dictionary.png" />
     <Content Include="Image\diesel.png" />
     <Content Include="Image\exchange.png" />
+    <Content Include="Image\factory.png" />
     <Content Include="Image\find.png" />
     <Content Include="Image\flag.png" />
     <Content Include="Image\imprimir.png" />
@@ -405,8 +426,15 @@
     <Content Include="Image\TripWorking.png" />
     <Content Include="Image\twitter.svg" />
     <Content Include="Image\unidad.png" />
+    <Content Include="Image\usuario.png" />
     <Content Include="Liquidacion\ControlAnticipos.aspx" />
     <Content Include="Liquidacion\ReporteControlAnticipos.aspx" />
+    <Content Include="Materialize\css\materialize.css" />
+    <Content Include="Materialize\css\materialize.min.css" />
+    <Content Include="Materialize\css\style.css" />
+    <Content Include="Materialize\js\jquery.js" />
+    <Content Include="Materialize\js\materialize.js" />
+    <Content Include="Materialize\js\materialize.min.js" />
     <Content Include="Operacion\GeneradorViajes.aspx" />
     <Content Include="RDL\ReportesClientes.aspx" />
     <Content Include="Ruta\RutaCruces.aspx" />
@@ -1929,6 +1957,13 @@
     </Compile>
     <Compile Include="Externa\Calificacion.aspx.designer.cs">
       <DependentUpon>Calificacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Externa\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Externa\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Externa\wucCalificacion.ascx.cs">
       <DependentUpon>wucCalificacion.ascx</DependentUpon>
