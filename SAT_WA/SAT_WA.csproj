@@ -364,6 +364,7 @@
     <Content Include="Documentacion\AnticiposProgramados.aspx" />
     <Content Include="EgresoServicio\ReporteValesDeDiesel.aspx" />
     <Content Include="Externa\Login.aspx" />
+    <Content Include="Externa\TokenInvalido.aspx" />
     <Content Include="FacturacionElectronica33\CancelacionCFDI.aspx" />
     <Content Include="FacturacionElectronica33\ReporteComplementoPagos.aspx" />
     <Content Include="General\Contacto.aspx" />
@@ -1965,6 +1966,13 @@
     </Compile>
     <Compile Include="Externa\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Externa\TokenInvalido.aspx.cs">
+      <DependentUpon>TokenInvalido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Externa\TokenInvalido.aspx.designer.cs">
+      <DependentUpon>TokenInvalido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Externa\wucCalificacion.ascx.cs">
       <DependentUpon>wucCalificacion.ascx</DependentUpon>

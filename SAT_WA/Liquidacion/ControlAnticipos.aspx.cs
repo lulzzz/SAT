@@ -142,7 +142,7 @@ namespace SAT.Liquidacion
                                                                                                 {
                                                                                                     if (retorno.OperacionExitosa)
                                                                                                         retorno = SAT_CL.EgresoServicio.ServicioImportacionAnticipos.InsertaServicioImportacionAnticipos
-                                                                                                                    (Convert.ToInt32(det["Id"]), idDeposito, tipoAnticipo, tar_prov.monto_cc, tar_prov.monto_sc, 0, 0, idUsuario);
+                                                                                                                    (Convert.ToInt32(det["Id"]), idDeposito, tipoAnticipo, tar_prov.monto_cc, tar_prov.monto_sc, 0, 0, 0, idUsuario);
                                                                                                     else
                                                                                                         break;
                                                                                                 }
@@ -208,10 +208,17 @@ namespace SAT.Liquidacion
                             foreach (DataRow dr in OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table").Select("Id = " + gvViajesAnticipos.SelectedDataKey["Id"].ToString()))
                             {
                                 //Obteniendo Montos por Evaluar
+                                byte tipoFiniquito = btn.CommandArgument.ToUpper().Equals("CC") ? (byte)1 : (byte)2;
                                 decimal monto_fin = 0.00M, fin_auto = 0.00M;
                                 decimal.TryParse(txtMontoFiniquito.Text, out monto_fin);
-                                decimal.TryParse(dr["FiniquitoAuto"].ToString(), out fin_auto);
                                 int idUsuario = ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario;
+
+                                //Validando Monto del tipo del Anticipo
+                                if (tipoFiniquito == 1)
+                                    decimal.TryParse(dr["FiniquitoAutoCC"].ToString(), out fin_auto);
+                                else if (tipoFiniquito == 2)
+                                    decimal.TryParse(dr["FiniquitoAutoSC"].ToString(), out fin_auto);
+                                
                                 //Validando monto
                                 if (monto_fin > 0)
                                 {
@@ -302,11 +309,29 @@ namespace SAT.Liquidacion
                                                                                                 {
                                                                                                     if (sia.habilitar)
                                                                                                     {
-                                                                                                        if (sia.id_anticipo_finiquito == 0)
-                                                                                                            retorno = sia.ActualizaFiniquitoServicioImportacionAnticipos(idFiniquito, idUsuario);
-                                                                                                        else
-                                                                                                            retorno = SAT_CL.EgresoServicio.ServicioImportacionAnticipos.InsertaServicioImportacionAnticipos(
-                                                                                                                sia.id_servicio_importacion_detalle, 0, 0, tar_prov.monto_cc, tar_prov.monto_sc, idFiniquito, 0, idUsuario);
+                                                                                                        switch(tipoFiniquito)
+                                                                                                        {
+                                                                                                            case 1:
+                                                                                                                {
+                                                                                                                    if (sia.id_anticipo_finiquito_cc == 0)
+                                                                                                                        retorno = sia.ActualizaFiniquitoServicioImportacionAnticiposCC(idFiniquito, idUsuario);
+                                                                                                                    else
+                                                                                                                        retorno = SAT_CL.EgresoServicio.ServicioImportacionAnticipos.InsertaServicioImportacionAnticipos
+                                                                                                                            (sia.id_servicio_importacion_detalle, 0, 0, tar_prov.monto_cc, tar_prov.monto_sc, idFiniquito, 0, 0, idUsuario);
+                                                                                                                    break;
+                                                                                                                }
+                                                                                                            case 2:
+                                                                                                                {
+                                                                                                                    if (sia.id_anticipo_finiquito_sc == 0)
+                                                                                                                        retorno = sia.ActualizaFiniquitoServicioImportacionAnticiposSC(idFiniquito, idUsuario);
+                                                                                                                    else
+                                                                                                                        retorno = SAT_CL.EgresoServicio.ServicioImportacionAnticipos.InsertaServicioImportacionAnticipos
+                                                                                                                            (sia.id_servicio_importacion_detalle, 0, 0, tar_prov.monto_cc, tar_prov.monto_sc, 0, idFiniquito, 0, idUsuario);
+                                                                                                                    break;
+                                                                                                                }
+                                                                                                        }
+                                                                                                        
+                                                                                                        
                                                                                                     }
                                                                                                     else
                                                                                                         retorno = new RetornoOperacion("No se puede recuperar el Anticipo de las Importaciones");
@@ -325,8 +350,23 @@ namespace SAT.Liquidacion
                                                                                                 foreach (DataRow det in dtDetImps.Rows)
                                                                                                 {
                                                                                                     if (retorno.OperacionExitosa)
-                                                                                                        retorno = SAT_CL.EgresoServicio.ServicioImportacionAnticipos.InsertaServicioImportacionAnticipos
-                                                                                                                    (Convert.ToInt32(det["Id"]), 0, 0, tar_prov.monto_cc, tar_prov.monto_sc, idFiniquito, 0, idUsuario);
+                                                                                                    {
+                                                                                                        switch (tipoFiniquito)
+                                                                                                        {
+                                                                                                            case 1:
+                                                                                                                {
+                                                                                                                    retorno = SAT_CL.EgresoServicio.ServicioImportacionAnticipos.InsertaServicioImportacionAnticipos
+                                                                                                                    (Convert.ToInt32(det["Id"]), 0, 0, tar_prov.monto_cc, tar_prov.monto_sc, idFiniquito, 0, 0, idUsuario);
+                                                                                                                    break;
+                                                                                                                }
+                                                                                                            case 2:
+                                                                                                                {
+                                                                                                                    retorno = SAT_CL.EgresoServicio.ServicioImportacionAnticipos.InsertaServicioImportacionAnticipos
+                                                                                                                    (Convert.ToInt32(det["Id"]), 0, 0, tar_prov.monto_cc, tar_prov.monto_sc, 0, idFiniquito, 0, idUsuario);
+                                                                                                                    break;
+                                                                                                                }
+                                                                                                        }
+                                                                                                    }
                                                                                                     else
                                                                                                         break;
                                                                                                 }
@@ -529,25 +569,49 @@ namespace SAT.Liquidacion
                         }
                     }
 
-                    if (row["FiniquitoAuto"] != null)
+                    if (row["FiniquitoAutoCC"] != null)
                     {
                         //Obteniendo Controles
-                        using (LinkButton lkbFiniquitoAutorizado = (LinkButton)e.Row.FindControl("lkbFiniquitoAutorizado"))
-                        using (Label lblFiniquitoAutorizado = (Label)e.Row.FindControl("lblFiniquitoAutorizado"))
+                        using (LinkButton lkbFiniquitoCC = (LinkButton)e.Row.FindControl("lkbFiniquitoCC"))
+                        using (Label lblFiniquitoCC = (Label)e.Row.FindControl("lblFiniquitoCC"))
                         {
-                            if (lkbFiniquitoAutorizado != null && lblFiniquitoAutorizado != null)
+                            if (lkbFiniquitoCC != null && lblFiniquitoCC != null)
                             {
                                 decimal fin_auto = 0.00M;
-                                decimal.TryParse(row["FiniquitoAuto"].ToString(), out fin_auto);
+                                decimal.TryParse(row["FiniquitoAutoCC"].ToString(), out fin_auto);
                                 if (fin_auto > 0)
                                 {
-                                    lkbFiniquitoAutorizado.Visible = true;
-                                    lblFiniquitoAutorizado.Visible = false;
+                                    lkbFiniquitoCC.Visible = true;
+                                    lblFiniquitoCC.Visible = false;
                                 }
                                 else
                                 {
-                                    lkbFiniquitoAutorizado.Visible = false;
-                                    lblFiniquitoAutorizado.Visible = true;
+                                    lkbFiniquitoCC.Visible = false;
+                                    lblFiniquitoCC.Visible = true;
+                                }
+                            }
+                        }
+                    }
+
+                    if (row["FiniquitoAutoSC"] != null)
+                    {
+                        //Obteniendo Controles
+                        using (LinkButton lkbFiniquitoSC = (LinkButton)e.Row.FindControl("lkbFiniquitoSC"))
+                        using (Label lblFiniquitoSC = (Label)e.Row.FindControl("lblFiniquitoSC"))
+                        {
+                            if (lkbFiniquitoSC != null && lblFiniquitoSC != null)
+                            {
+                                decimal fin_auto = 0.00M;
+                                decimal.TryParse(row["FiniquitoAutoSC"].ToString(), out fin_auto);
+                                if (fin_auto > 0)
+                                {
+                                    lkbFiniquitoSC.Visible = true;
+                                    lblFiniquitoSC.Visible = false;
+                                }
+                                else
+                                {
+                                    lkbFiniquitoSC.Visible = false;
+                                    lblFiniquitoSC.Visible = true;
                                 }
                             }
                         }
@@ -696,12 +760,24 @@ namespace SAT.Liquidacion
                                 }
                                 break;
                             }
-                        case "FiniquitoAutorizado":
+                        case "FiniquitoAutoSC":
+                        case "FiniquitoAutoCC":
                             {
                                 foreach (DataRow dr in OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table").Select("Id = " + gvViajesAnticipos.SelectedDataKey["Id"].ToString()))
                                 {
-                                    decimal ant_auto = 0.00M;
-                                    decimal.TryParse(dr["FiniquitoAuto"].ToString(), out ant_auto);
+                                    string tipo = lkb.CommandName.Contains("CC") ? "CC" : lkb.CommandName.Contains("SC") ? "SC" : "";
+                                    decimal ant_auto = 0.00M, monto_permitido = 0.00M, deps_previos = 0.00M;
+
+                                    //Validando Monto del tipo del Anticipo
+                                    if (tipo.Equals("CC"))
+                                    {
+                                        decimal.TryParse(dr["FiniquitoAutoCC"].ToString(), out ant_auto);
+                                    }
+                                    else if (tipo.Equals("SC"))
+                                    {
+                                        decimal.TryParse(dr["FiniquitoAutoSC"].ToString(), out ant_auto);
+                                    }
+
                                     if (ant_auto > 0)
                                     {
                                         //Inicializando Control
@@ -709,8 +785,8 @@ namespace SAT.Liquidacion
                                         lblFechaVFin.Text = string.Format("{0:dd/MM/yyyy}", dr["FechaOperacion"]);
                                         lblTotalVFin.Text = string.Format("{0}", dr["TotalViajes"]);
                                         lblMontoTFin.Text = string.Format("{0:C2}", dr["AdeudoTotal"]);
-                                        lblMontoPerFin.Text = string.Format("{0:C2}", dr["FiniquitoAuto"]);
-                                        txtMontoFiniquito.Text = string.Format("{0:0.00}", dr["FiniquitoAuto"]);
+                                        lblMontoPerFin.Text = string.Format("{0:C2}", ant_auto);
+                                        txtMontoFiniquito.Text = string.Format("{0:0.00}", ant_auto);
                                         txtReferenciaFin.Text = "";
                                         //Mostrando Ventana Modal
                                         gestionaVentanaModal(this.Page, "FiniquitoAutorizado");

@@ -617,7 +617,7 @@ namespace SAT_CL.Seguridad
             token_nvo = "";
 
             //Obteniendo Clave de Encriptación (Aleatorio)
-            string llave_encriptacion = Cadena.CadenaAleatoria(1, 2, 1);
+            string llave_encriptacion = Cadena.CadenaAleatoria(1, 5, 4);
             if (!llave_encriptacion.Equals(""))
             {
                 //Generando TOKEN

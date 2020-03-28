@@ -56,20 +56,40 @@
                 </div>
                  <%--Fila 2--%>
                 <div class="row">
+
+                    <div class="grid_seccion_completa_400px_altura">
+                        <asp:UpdatePanel ID="uprvSSRS" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <rsweb:ReportViewer ID="rvSSRS" runat="server" Width="100%" Height="50%" Font-Names="Verdana" Font-Size="8pt" ProcessingMode="Remote"
+                                    waitmessagefont-names="Verdana" waitmessagefont-size="14pt" AsyncRendering="true" ExportContentDisposition="OnlyHtmlInline"  Visible="false">
+                                </rsweb:ReportViewer>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="ddlReporte" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
+
+                    <asp:UpdatePanel ID="uprvPBI" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <asp:Label ID="rvPBI" runat="server" CssClass="label_negrita" Text="POWER BI" Visible="false" ></asp:Label > 
+                        </ContentTemplate>
+                        <Triggers>
+                                                            <asp:AsyncPostBackTrigger ControlID="ddlReporte" />
+                        </Triggers>
+                    </asp:UpdatePanel>
+
+                    <asp:UpdatePanel ID="uprvAND" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                           <asp:Label ID="rvAND" runat="server" CssClass="label_negrita" Text="ANALITYESDATA" Visible="false"></asp:Label>
+                        </ContentTemplate>
+                        <Triggers>
+                                                            <asp:AsyncPostBackTrigger ControlID="ddlReporte" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                 <%--Columna 1--%>
-                    <div class="col s12 m12">
-                        <div class="grid_seccion_completa_400px_altura">
-                            <asp:UpdatePanel ID="uprvSSRS" runat="server" UpdateMode="Conditional">
-                                <ContentTemplate>
-                                    <rsweb:ReportViewer ID="rvSSRS" runat="server" Width="100%" Height ="50%" Font-Names="Verdana" Font-Size="8pt" ProcessingMode="Remote"
-                                        waitmessagefont-names="Verdana" waitmessagefont-size="14pt" AsyncRendering="true" ExportContentDisposition="OnlyHtmlInline">
-                                    </rsweb:ReportViewer>
-                                </ContentTemplate>
-                                <Triggers>
-                                    <asp:AsyncPostBackTrigger ControlID="ddlReporte" />
-                                </Triggers>
-                            </asp:UpdatePanel>
-                        </div>
+                    <div class="col s12 m12">                        
+
                     </div>
                 </div>
             </div>

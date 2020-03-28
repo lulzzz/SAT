@@ -1374,12 +1374,12 @@ namespace SAT_CL.Bancos {
                                                             //Recorriendo Ciclo
                                                             foreach (EgresoServicio.ServicioImportacionAnticipos anticipo in anticipos)
                                                             {
-                                                                if (anticipo.habilitar && anticipo.id_anticipo_finiquito > 0)
+                                                                if (anticipo.habilitar && (anticipo.id_anticipo_finiquito_cc > 0 || anticipo.id_anticipo_finiquito_sc > 0))
                                                                 
                                                                     //Quitando Anticipo Previo de la Relación - respetando el Finiquito que tenga
                                                                     resultado = anticipo.ActualizaDepositoPrevioImportacionAnticipos(0, id_usuario);
                                                                 
-                                                                else if (anticipo.habilitar && anticipo.id_anticipo_finiquito == 0)
+                                                                else if (anticipo.habilitar && anticipo.id_anticipo_finiquito_cc == 0)
                                                                     
                                                                     //Quitando Anticipo Previo de la Relación
                                                                     resultado = anticipo.DeshabilitaServicioImportacionAnticipos(id_usuario);
@@ -1452,17 +1452,27 @@ namespace SAT_CL.Bancos {
                                                             //Recorriendo Ciclo
                                                             foreach (EgresoServicio.ServicioImportacionAnticipos finiquito in finiquitos)
                                                             {
-                                                                if (finiquito.habilitar && finiquito.id_anticipo_previo > 0)
+																if (finiquito.habilitar)
+																{
+																	//Validando Finiquito CC
+																	if (finiquito.id_anticipo_finiquito_cc > 0)
+																		//Quitando el Finiquito de la Relación - respetando el Anticipo Previo que tenga
+																		resultado = finiquito.ActualizaFiniquitoServicioImportacionAnticiposCC(0, id_usuario);
+																	//Validando Finiquito CC
+																	else if (finiquito.id_anticipo_finiquito_sc > 0)
+																		//Quitando el Finiquito de la Relación - respetando el Anticipo Previo que tenga
+																		resultado = finiquito.ActualizaFiniquitoServicioImportacionAnticiposSC(0, id_usuario);
 
-                                                                    //Quitando el Finiquito de la Relación - respetando el Anticipo Previo que tenga
-                                                                    resultado = finiquito.ActualizaFiniquitoServicioImportacionAnticipos(0, id_usuario);
-
-                                                                else if (finiquito.habilitar && finiquito.id_anticipo_previo == 0)
-
-                                                                    //Quitando el Finiquito de la Relación
-                                                                    resultado = finiquito.DeshabilitaServicioImportacionAnticipos(id_usuario);
-                                                                else
-                                                                    resultado = new RetornoOperacion("No se puede recuperar la relación del Finiquito");
+																	//Validando Existencia de Anticipos
+																	if (finiquito.ActualizaServicioImportacionAnticipos() && finiquito.id_anticipo_previo == 0)
+																	{
+																		if (finiquito.id_anticipo_finiquito_cc == 0 && finiquito.id_anticipo_finiquito_sc == 0)
+																			//Quitando el Finiquito de la Relación
+																			resultado = finiquito.DeshabilitaServicioImportacionAnticipos(id_usuario);
+																	}
+																}
+																else
+																	resultado = new RetornoOperacion("No se puede recuperar la relación del Finiquito");
 
                                                                 //Validando Errores
                                                                 if (!resultado.OperacionExitosa)
