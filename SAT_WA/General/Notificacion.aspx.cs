@@ -18,7 +18,7 @@ namespace SAT.General
         protected void Page_Load(object sender, EventArgs e)
         {
             //Si no es una recraga de página
-           if (!this.IsPostBack)
+            if (!this.IsPostBack)
                 inicializaForma();
         }
 
@@ -53,7 +53,7 @@ namespace SAT.General
                     {
                         //Si ya existe un registro activo
                         if (Convert.ToInt32(Session["id_registro"]) > 0)
-                           //Guarda Notificación
+                            //Guarda Notificación
                             guardaNotificacion(lkbGuardar);
                         break;
                     }
@@ -166,12 +166,12 @@ namespace SAT.General
                             txtContacto.Text = objContacto.nombre + " ID:" + objContacto.id_contacto.ToString();
                             //Instanciamos Cliente
                             using (SAT_CL.Global.CompaniaEmisorReceptor objCompania = new SAT_CL.Global.CompaniaEmisorReceptor(objNotificacion.id_compania_cliente))
-                            {   
+                            {
                                 //Si la Notificación es Para Todos los Clientes
-                                if(objNotificacion.id_compania_cliente ==0)
+                                if (objNotificacion.id_compania_cliente == 0)
                                     txtCliente.Text = "TODOS" + " ID:0";
                                 else
-                                txtCliente.Text = objCompania.nombre + " ID:" + objCompania.id_compania_emisor_receptor.ToString();
+                                    txtCliente.Text = objCompania.nombre + " ID:" + objCompania.id_compania_emisor_receptor.ToString();
 
                             }
                             //Validamos Tabla 
@@ -261,7 +261,7 @@ namespace SAT.General
                         lkbAbrir.Enabled =
                         lkbGuardar.Enabled =
                         lkbSalir.Enabled =
-                            //Edicion
+                        //Edicion
                         lkbEditar.Enabled =
                         lkbBitacora.Enabled =
                         lkbReferencias.Enabled =
@@ -322,35 +322,35 @@ namespace SAT.General
             //Declaramos Objeto Resultado
             RetornoOperacion resultado = new RetornoOperacion();
             //Validando el Estatus de la Página
-                switch ((Pagina.Estatus)Session["estatus"])
-                {
-                    case Pagina.Estatus.Nuevo:
-                        {
-                            //Insertando Notificación
-                            resultado = SAT_CL.Notificacion.Notificacion.InsertaNotificacion(Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtContacto.Text,":", 1)),
-                                                                                            ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,                                                                                       
-                                                                                            Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtCliente.Text,":", 1)), 15, 
-                                                                                            Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtUbicacion.Text, ':', 1)),((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+            switch ((Pagina.Estatus)Session["estatus"])
+            {
+                case Pagina.Estatus.Nuevo:
+                    {
+                        //Insertando Notificación
+                        resultado = SAT_CL.Notificacion.Notificacion.InsertaNotificacion(Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtContacto.Text, ":", 1)),
+                                                                                        ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
+                                                                                        Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtCliente.Text, ":", 1)), 15,
+                                                                                        Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtUbicacion.Text, ':', 1)), ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
 
-                            break;
-                        }
-                    case Pagina.Estatus.Edicion:
+                        break;
+                    }
+                case Pagina.Estatus.Edicion:
+                    {
+                        //Instanciando Notificación
+                        using (SAT_CL.Notificacion.Notificacion objNotificacion = new SAT_CL.Notificacion.Notificacion(Convert.ToInt32(Session["id_registro"])))
                         {
-                            //Instanciando Notificación
-                            using (SAT_CL.Notificacion.Notificacion objNotificacion = new SAT_CL.Notificacion.Notificacion(Convert.ToInt32(Session["id_registro"])))
-                            {
-                               
-                                    //Editando Notificación
-                                    resultado = objNotificacion.EditaNotificacion(Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtContacto.Text,":", 1)),
-                                                                                            ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,                                                                                       
-                                                                                            Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtCliente.Text,":", 1)), 15, 
-                                                                                            Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtUbicacion.Text, ':', 1)),((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
 
-                                
-                            }
-                            break;
+                            //Editando Notificación
+                            resultado = objNotificacion.EditaNotificacion(Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtContacto.Text, ":", 1)),
+                                                                                    ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
+                                                                                    Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtCliente.Text, ":", 1)), 15,
+                                                                                    Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtUbicacion.Text, ':', 1)), ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+
+
                         }
-                }
+                        break;
+                    }
+            }
             //Validando Operación Exitosa
             if (resultado.OperacionExitosa)
             {
@@ -400,7 +400,7 @@ namespace SAT.General
             //Muestra el mensaje de error
             TSDK.ASP.ScriptServer.MuestraNotificacion(control, resultado, ScriptServer.PosicionNotificacion.AbajoDerecha);
         }
-        
+
         /// <summary>
         /// Muestra u oculta la ventana modal solicitada
         /// </summary>
@@ -437,7 +437,7 @@ namespace SAT.General
                     break;
             }
         }
- 
+
         #endregion
 
         #region Métodos Eventos
@@ -510,13 +510,13 @@ namespace SAT.General
 
             //Recuperando controles 
             using (DropDownList ddlEvento = (DropDownList)gvEvento.FooterRow.FindControl("ddlEvento"))
-                {
-                    //Insertamos Evento
-                    resultado =  SAT_CL.Notificacion.DetalleNotificacion.InsertarDetalleNotificacion(Convert.ToInt32(Session["id_registro"]), Convert.ToInt32(ddlEvento.SelectedValue),
-                                   ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+            {
+                //Insertamos Evento
+                resultado = SAT_CL.Notificacion.DetalleNotificacion.InsertarDetalleNotificacion(Convert.ToInt32(Session["id_registro"]), Convert.ToInt32(ddlEvento.SelectedValue),
+                               ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
 
-                }
-            
+            }
+
 
             //SI no existen errores
             if (resultado.OperacionExitosa)
@@ -578,7 +578,7 @@ namespace SAT.General
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void lnkInsertar_Click(object sender, EventArgs e)
-        {   
+        {
             //Guardamos Evento
             guardaEvento();
         }
@@ -590,7 +590,7 @@ namespace SAT.General
         /// <param name="e"></param>
         protected void lnkDeshabilitar_Click(object sender, EventArgs e)
         {
-             //Si hay registros
+            //Si hay registros
             if (gvEvento.DataKeys.Count > 0)
             {
                 //Seleccionando la fila correspondiente
@@ -607,7 +607,7 @@ namespace SAT.General
         /// <param name="e"></param>
         protected void lnkBitacora_Click(object sender, EventArgs e)
         {
-             //Si hay registros
+            //Si hay registros
             if (gvEvento.DataKeys.Count > 0)
             {
                 //Seleccionando la fila correspondiente
@@ -677,7 +677,7 @@ namespace SAT.General
                 //Fila tipo Datos, para obtener objetos LinkButton correspondientes
                 case DataControlRowType.DataRow:
                     //Creamos instancias del tipo LinkButton correspondientes a Deshabilitar y Guardar
-                    using (LinkButton  lnkBitacora = (LinkButton)fila.FindControl("lnkBitacora"),
+                    using (LinkButton lnkBitacora = (LinkButton)fila.FindControl("lnkBitacora"),
                       lnkDeshabilitar = (LinkButton)fila.FindControl("lnkDeshabilitar"))
                     {
                         switch ((Pagina.Estatus)Session["estatus"])
@@ -717,62 +717,62 @@ namespace SAT.General
                         //Creamos Instancias de Tipo TextBox y DropDownList
 
                         using (DropDownList ddlEvento = (DropDownList)fila.FindControl("ddlEvento"))
+                        {
+                            using (LinkButton lnkInsertar = (LinkButton)fila.FindControl("lnkInsertar"))
                             {
-                                using (LinkButton lnkInsertar = (LinkButton)fila.FindControl("lnkInsertar"))
+                                //Validando Estatus de la Pagina
+                                switch ((Pagina.Estatus)Session["estatus"])
                                 {
-                                    //Validando Estatus de la Pagina
-                                    switch ((Pagina.Estatus)Session["estatus"])
-                                    {
-                                        case Pagina.Estatus.Nuevo:
-                                            //case Pagina.Estatus.Copiar:
-                                            {
-                                                //Deshabilitamos controles
-                                                lnkInsertar.Enabled =
-                                                ddlEvento.Enabled = false;
-                                            }
-                                            break;
-                                        case Pagina.Estatus.Lectura:
-                                            {
-                                                //Deshabilitamos controles
-                                                lnkInsertar.Enabled =
-                                              ddlEvento.Enabled = false;
-
-                                            }
-                                            break;
-                                        case Pagina.Estatus.Edicion:
-                                            {
-                                                //Habilitamos controles 
-                                                lnkInsertar.Enabled =
-                                                ddlEvento.Enabled =true;
-                                                
-                                            }
-                                            break;
-                                    }
-                                    //Validamos que exista Notificación
-                                    if (Convert.ToInt32(Session["id_registro"]) > 0)
-                                    {
-                                        //Intsnaciamos Notificación
-                                        using (SAT_CL.Notificacion.Notificacion objNotificacion = new SAT_CL.Notificacion.Notificacion(Convert.ToInt32(Session["id_registro"])))
+                                    case Pagina.Estatus.Nuevo:
+                                        //case Pagina.Estatus.Copiar:
                                         {
-                                            //cargando catalogo Tipo Operacion
-                                            SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogo(ddlEvento, 95, "", ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, "", objNotificacion.id_tabla, "");
+                                            //Deshabilitamos controles
+                                            lnkInsertar.Enabled =
+                                            ddlEvento.Enabled = false;
                                         }
-                                    }
-                                    else
+                                        break;
+                                    case Pagina.Estatus.Lectura:
+                                        {
+                                            //Deshabilitamos controles
+                                            lnkInsertar.Enabled =
+                                          ddlEvento.Enabled = false;
+
+                                        }
+                                        break;
+                                    case Pagina.Estatus.Edicion:
+                                        {
+                                            //Habilitamos controles 
+                                            lnkInsertar.Enabled =
+                                            ddlEvento.Enabled = true;
+
+                                        }
+                                        break;
+                                }
+                                //Validamos que exista Notificación
+                                if (Convert.ToInt32(Session["id_registro"]) > 0)
+                                {
+                                    //Intsnaciamos Notificación
+                                    using (SAT_CL.Notificacion.Notificacion objNotificacion = new SAT_CL.Notificacion.Notificacion(Convert.ToInt32(Session["id_registro"])))
                                     {
                                         //cargando catalogo Tipo Operacion
-                                        SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogo(ddlEvento, 95, "Sin Asignar", ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, "", 0, "");
+                                        SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogo(ddlEvento, 95, "", ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, "", objNotificacion.id_tabla, "");
                                     }
-
                                 }
+                                else
+                                {
+                                    //cargando catalogo Tipo Operacion
+                                    SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogo(ddlEvento, 95, "Sin Asignar", ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, "", 0, "");
+                                }
+
                             }
                         }
+                    }
                     break;
             }
         }
 
-      
-        
+
+
         #endregion
 
         #region Métodos
@@ -783,22 +783,22 @@ namespace SAT.General
         private void inicializaContenidoControlesContacto()
         {
             //Si ya existe un registro activo de Contacto
-             if (Convert.ToInt32(Session["id_registro_b"]) != 0)
+            if (Convert.ToInt32(Session["id_registro_b"]) != 0)
             {
                 //Instanciamos Contacto
-                 using(Contacto  objContacto= new  Contacto(Convert.ToInt32(Session["id_registro_b"])))
-                 {
-                     txtNombre.Text = objContacto.nombre;
-                     txtTelefono.Text = objContacto.telefono;
-                     txtEMail.Text = objContacto.email;
-                 }
+                using (SAT_CL.Global.Contacto objContacto = new SAT_CL.Global.Contacto(Convert.ToInt32(Session["id_registro_b"])))
+                {
+                    txtNombre.Text = objContacto.nombre;
+                    txtTelefono.Text = objContacto.telefono;
+                    txtEMail.Text = objContacto.email;
+                }
             }
             else
-             {
-                 txtNombre.Text = "";
-                 txtTelefono.Text = "";
-                 txtEMail.Text = "";
-             }
+            {
+                txtNombre.Text = "";
+                txtTelefono.Text = "";
+                txtEMail.Text = "";
+            }
 
         }
 
@@ -814,19 +814,17 @@ namespace SAT.General
             {
                 //Insertando Contacto
                 resultado = SAT_CL.Global.Contacto.InsertaContacto(txtNombre.Text, txtTelefono.Text, txtEMail.Text,
-                            ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
+                            ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, 0,
                             ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
-
             }
             else
             {
                 //Instanciando  Contacto
-                using (Contacto objContacto = new  Contacto(Convert.ToInt32(Session["id_registro_b"])))
+                using (SAT_CL.Global.Contacto objContacto = new SAT_CL.Global.Contacto(Convert.ToInt32(Session["id_registro_b"])))
                 {
 
                     //Editando Contacto
-                    resultado = objContacto.EditaContacto(txtNombre.Text, txtTelefono.Text, txtEMail.Text, ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
-                                            ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+                    resultado = objContacto.EditaContacto(txtNombre.Text, txtTelefono.Text, txtEMail.Text, ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
 
 
                 }
@@ -840,7 +838,7 @@ namespace SAT.General
 
                 //Inicializa Contenido Controles
                 inicializaContenidoControlesContacto();
-               
+
             }
             //Muestra el mensaje de error
             TSDK.ASP.ScriptServer.MuestraNotificacion(btnAceptarContacto, resultado, ScriptServer.PosicionNotificacion.AbajoDerecha);
@@ -856,8 +854,8 @@ namespace SAT.General
             //Si ya existe un registro activo de Contacto
             if (Convert.ToInt32(Session["id_registro_b"]) > 0)
             {
-                  //Instanciando  Contacto
-                using (Contacto objContacto = new Contacto(Convert.ToInt32(Session["id_registro_b"])))
+                //Instanciando  Contacto
+                using (SAT_CL.Global.Contacto objContacto = new SAT_CL.Global.Contacto(Convert.ToInt32(Session["id_registro_b"])))
                 {
                     resultado = objContacto.DeshabilitaContacto(((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
                 }
@@ -889,9 +887,9 @@ namespace SAT.General
         /// <param name="e"></param>
         protected void lnkVentana_Click(object sender, EventArgs e)
         {
-             //Si ya existe un registro activo de Contacto
+            //Si ya existe un registro activo de Contacto
             Session["id_registro_b"] = Cadena.RegresaCadenaSeparada(txtContacto.Text, ':', 1);
-            
+
             //Inicializamos Controles
             inicializaContenidoControlesContacto();
 
@@ -923,7 +921,7 @@ namespace SAT.General
             deshabilitaContacto();
         }
 
-       
+
 
 
 

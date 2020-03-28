@@ -366,6 +366,7 @@
     <Content Include="Externa\Login.aspx" />
     <Content Include="FacturacionElectronica33\CancelacionCFDI.aspx" />
     <Content Include="FacturacionElectronica33\ReporteComplementoPagos.aspx" />
+    <Content Include="General\Contacto.aspx" />
     <Content Include="General\ImportadorKilometraje.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Image\archivo_xml1.png" />
@@ -2160,6 +2161,13 @@
     </Compile>
     <Compile Include="General\CompaniaEmisorReceptor.aspx.designer.cs">
       <DependentUpon>CompaniaEmisorReceptor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="General\Contacto.aspx.cs">
+      <DependentUpon>Contacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="General\Contacto.aspx.designer.cs">
+      <DependentUpon>Contacto.aspx</DependentUpon>
     </Compile>
     <Compile Include="General\ImportadorKilometraje.aspx.cs">
       <DependentUpon>ImportadorKilometraje.aspx</DependentUpon>

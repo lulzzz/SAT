@@ -46,6 +46,13 @@ namespace SAT_CL.Global
         /// </summary>
         public int id_compania_emisor { get { return this._id_compania_emisor; } }       
 
+        private int _id_usuario_sistema;
+        /// <summary>
+        /// Atributo encargado de almacenar el Id de usuario en el sistema
+        /// </summary>
+        public int id_usuario_sistema { get { return this._id_usuario_sistema; } }
+
+
         private bool _habilitar;
         /// <summary>
         /// Atributo encargado de Almacenar el Estado del Registro
@@ -100,6 +107,7 @@ namespace SAT_CL.Global
             this._telefono = "";
             this._email =""; 
             this._id_compania_emisor = 0;
+            this._id_usuario_sistema = 0;
             this._habilitar = false;
 
         }
@@ -112,7 +120,7 @@ namespace SAT_CL.Global
         {   //Declarando Objeto de Retorno
             bool result = false;
             //Armando Arreglo de Parametros
-            object[] param = {3, id_registro, "", "", "", 0, 0, false, "", "" };
+            object[] param = {3, id_registro, "", "", "", 0, 0, 0, false, "", "" };
             //Obteniendo Resultado del SP
             using (DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nom_sp, param))
             {   //Validando que existan registros
@@ -125,6 +133,7 @@ namespace SAT_CL.Global
                         this._telefono = dr["Telefono"].ToString();
                         this._email = dr["EMail"].ToString();
                         this._id_compania_emisor = Convert.ToInt32(dr["IdCompaniaEmisor"]);
+                        this._id_usuario_sistema = Convert.ToInt32(dr["IdUsuarioSistema"]);
                         this._habilitar = Convert.ToBoolean(dr["Habilitar"]);
                         //Asignando Resultado Positivo
                         result = true;
@@ -145,11 +154,11 @@ namespace SAT_CL.Global
         /// <param name="id_usuario">Id Usuario</param>
         /// <param name="habilitar">Habilitar</param>
         /// <returns></returns>
-        private RetornoOperacion actualizaRegistros(string nombre, string telefono, string email,int id_compania_emisor,int id_usuario, bool habilitar)
+        private RetornoOperacion actualizaRegistros(string nombre, string telefono, string email,int id_usuario, bool habilitar)
         {   //Declarando Objeto de Retorno
             RetornoOperacion result = new RetornoOperacion();
             //Armando Arreglo de Parametros
-            object[] param = { 2, this._id_contacto, nombre, telefono, email, id_compania_emisor, id_usuario, habilitar, "", "" };
+            object[] param = { 2, this._id_contacto, nombre, telefono, email, this._id_compania_emisor, this._id_usuario_sistema,id_usuario, habilitar, "", "" };
             //Obteniendo Resultado del SP
             result = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoObjeto(_nom_sp, param);
             //Devolviendo Resultado Obtenido
@@ -169,11 +178,11 @@ namespace SAT_CL.Global
         /// <param name="id_compania_emisor">Compañia Emisor</param>
         /// <param name="id_usuario">Id Usuario</param>
         /// <returns></returns>
-        public static RetornoOperacion InsertaContacto(string nombre, string telefono, string email, int id_compania_emisor, int id_usuario)
+        public static RetornoOperacion InsertaContacto(string nombre, string telefono, string email, int id_compania_emisor, int id_usuario_sistema, int id_usuario)
         {   //Declarando Objeto de Retorno
             RetornoOperacion result = new RetornoOperacion();
             //Armando Arreglo de Parametros
-            object[] param = { 1, 0, nombre, telefono, email, id_compania_emisor, id_usuario, true, "", "" };
+            object[] param = { 1, 0, nombre, telefono, email, id_compania_emisor, id_usuario_sistema, id_usuario, true, "", "" };
             //Obteniendo Resultado del SP
             result = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoObjeto(_nom_sp, param);
             //Devolviendo Resultado Obtenido
@@ -189,9 +198,9 @@ namespace SAT_CL.Global
         /// <param name="id_compania_emisor">Compañia Emisor</param>
         /// <param name="id_usuario">Id Usuario</param>
         /// <returns></returns>
-        public RetornoOperacion EditaContacto(string nombre, string telefono, string email, int id_compania_emisor, int id_usuario)
+        public RetornoOperacion EditaContacto(string nombre, string telefono, string email, int id_usuario)
         {   //Invocando Método de Actualización
-            return this.actualizaRegistros(nombre,  telefono,  email,  id_compania_emisor,  id_usuario, this._habilitar);
+            return this.actualizaRegistros(nombre,  telefono,  email,id_usuario, this._habilitar);
         }
 
         /// <summary>
@@ -201,7 +210,7 @@ namespace SAT_CL.Global
         /// <returns></returns>
         public RetornoOperacion DeshabilitaContacto(int id_usuario)
         {   //Invocando Método de Actualización
-            return this.actualizaRegistros(this._nombre, this._telefono, this._email, this._id_compania_emisor, id_usuario, false);
+            return this.actualizaRegistros(this._nombre, this._telefono, this._email, id_usuario, false);
         }
 
         /// <summary>
@@ -212,9 +221,6 @@ namespace SAT_CL.Global
         {   //Invocando Método de Carga
             return this.cargaAtributosInstancia(this._id_contacto);
         }
-
-
-
         #endregion
     }
 
