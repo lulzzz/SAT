@@ -221,6 +221,27 @@ namespace SAT_CL.Global
         {   //Invocando Método de Carga
             return this.cargaAtributosInstancia(this._id_contacto);
         }
+
+        public static DataTable CargaTokensUsuarioContacto(int id_contacto)
+        {
+            //Declarando objeto de retorno
+            DataTable mit = null;
+
+            //Inicializando los parámetros de consulta
+            object[] param = { 4, id_contacto, "", "", "", 0, 0, 0, false, "", "" };
+
+            //Cargando los registros de interés
+            using (DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nom_sp, param))
+            {
+                //Si hay registros
+                if (TSDK.Datos.Validacion.ValidaOrigenDatos(ds, "Table"))
+                    mit = ds.Tables[0];
+
+                //Devolviendo resultados
+                return mit;
+            }
+
+        }
         #endregion
     }
 

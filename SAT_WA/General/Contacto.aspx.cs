@@ -1,6 +1,7 @@
 ﻿using SAT_CL.Seguridad;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Transactions;
 using System.Web;
@@ -8,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TSDK.ASP;
 using TSDK.Base;
+using TSDK.Datos;
 
 namespace SAT.General
 {
@@ -123,6 +125,17 @@ namespace SAT.General
                         inicializaBitacora(Session["id_registro"].ToString(), "180", "Contacto");
                         break;
                     }
+                //Si la elección del menú es la opción Gestionar Tokens
+                case "Tokens":
+                    {
+                        //Titulo de Control
+                        h2EncabezadoGestionTokens.InnerText = string.Format("Gestión de Tokens del Contacto '{0}'", txtNombre.Text);
+                        //ALternando Ventana
+                        ScriptServer.AlternarVentana(this.Page, "VerGestionTokens", "contenedorGestionTokens", "ventanaGestionTokens");
+                        //Invoca al método de carga del gestor de Tokens
+                        CargaGestorTokens(Convert.ToInt32(Session["id_registro"]));
+                        break;
+                    }
             }
         }
 
@@ -143,12 +156,15 @@ namespace SAT.General
             habilitaMenu();
             //Cargando contenido de controles
             cargaContenidoControles();
+            //Inicializando GridView de Gestión de Tokens
+            Controles.InicializaGridview(gvGestionTokens);
         }
 
         private void cargaCatalogos()
         {
             //Cargando catálogo de perfiles de reportes
             SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogo(ddlPerfil, 199, "-- Seleccione un Perfil de la Lista", ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, "", 0, "");
+            SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogoGeneral(ddlTamañoGridViewGestionTokens, "", 18);
         }
 
         private void cargaContenidoControles()
@@ -362,11 +378,11 @@ namespace SAT.General
                                         ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario
                                     );
 
-                                    if(resultado.OperacionExitosa)
+                                    if (resultado.OperacionExitosa)
                                     {
-                                        using(SAT_CL.Seguridad.Usuario u = new SAT_CL.Seguridad.Usuario(c.id_usuario_sistema))
+                                        using (SAT_CL.Seguridad.Usuario u = new SAT_CL.Seguridad.Usuario(c.id_usuario_sistema))
                                         {
-                                            if(u.id_usuario > 0)
+                                            if (u.id_usuario > 0)
                                             {
                                                 Usuario OldU = u;
                                                 resultado = u.EditaInformacionGeneral(
@@ -375,7 +391,6 @@ namespace SAT.General
                                                     OldU.sesiones_disponibles,
                                                     ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario
                                                 );
-
                                             }
                                         }
                                     }
@@ -464,6 +479,13 @@ namespace SAT.General
                                                         if (psu.id_perfil_usuario > 0)
                                                         {
                                                             retorno = psu.DeshabilitaPerfilSeguridadUsuario(((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+                                                            if(retorno.OperacionExitosa)
+                                                            {
+                                                                using (UsuarioToken activo = UsuarioToken.ObtieneTokenActivo(c.id_usuario_sistema, c.id_compania_emisor))
+                                                                {
+                                                                    retorno = activo.TerminaUsuarioToken(((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -523,7 +545,159 @@ namespace SAT.General
             //Invoca el método de la clase ScriptServer que abrira una nueva ventana acorde a una ubicacion, un titulo de la ventana, una configuracion de dimensiones.
             ScriptServer.AbreNuevaVentana(url, "Bitacora  Contacto", configuracion, Page);
         }
+        #endregion
 
+        #region Gestión de Tokens del Usuario consultado(GridView)
+        protected void lkbCerrarVentanaModal_Click(object sender, EventArgs e)
+        {
+            //Alternando Ventana
+            ScriptServer.AlternarVentana(this.Page, "VerGestionTokens", "contenedorGestionTokens", "ventanaGestionTokens");
+            //Recargando Grid
+            Controles.InicializaIndices(gvGestionTokens);
+        }
+        /// <summary>
+        /// Evento que carga el tamaño de registros mostrados en el GV de Tokens
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void ddlTamañoGridViewGestionTokens_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Controles.CambiaTamañoPaginaGridView(gvGestionTokens, OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table"), Convert.ToInt32(ddlTamañoGridViewGestionTokens.SelectedValue), true, 3);
+        }
+        protected void gvGestionTokens_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            Controles.CambiaIndicePaginaGridView(gvGestionTokens, OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table"), e.NewPageIndex, true, 3);
+        }
+        /// <summary>
+        /// Eventio que ordena los registros del GV de Tokens
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void gvGestionTokens_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            lblCriterioGridViewGestionTokens.Text = Controles.CambiaSortExpressionGridView(gvGestionTokens, OrigenDatos.RecuperaDataTableDataSet((DataSet)Session["DS"], "Table"), e.SortExpression, true, 3);
+        }
+        /// <summary>
+        /// Evento que llena el GridView de Anticipos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void gvGestionTokens_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //validando Fila de Datos
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                //Recuperando información de la fila actual
+                if (e.Row.DataItem != null)
+                {
+                    //Obteniendo Fila de Datos
+                    DataRow fila = ((DataRowView)e.Row.DataItem).Row;
+
+                    //Validando Fila
+                    if (fila != null)
+                    {
+                        using (LinkButton lkbAccionToken1 = (LinkButton)e.Row.FindControl("lkbAccionToken1"),
+                                lkbEliminarToken = (LinkButton)e.Row.FindControl("lkbEliminarToken"))
+                        {
+                            //Validando que el Token no ha expirado
+                            if (fila["FechaFinVigencia"].ToString() == "")
+                            {
+                                if (fila["RegistroHabilitado"].Equals("SI"))
+                                    //Coloreando fila de verde por ser un Token vigente
+                                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#5BC24C");
+                                else if (fila["RegistroHabilitado"].Equals("NO"))
+                                {
+                                    //Coloreando fila de rojo por ser un Token cancelado
+                                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#E9573F");
+                                    //Ocultamos las acciones exclusivas para Tokens vigentes
+                                    lkbAccionToken1.Visible = false;
+                                    lkbEliminarToken.Visible = false;
+                                }
+                                else
+                                {
+                                    lkbAccionToken1.Visible = false;
+                                    lkbEliminarToken.Visible = false;
+                                }
+                            }
+                            else
+                            {
+                                //Ocultamos las acciones exclusivas para Tokens activos
+                                lkbAccionToken1.Visible = false;
+                                lkbEliminarToken.Visible = false;
+
+                                //Pintamos filas de Tokens históricos normales y cancelados
+                                if (fila["RegistroHabilitado"].Equals("NO"))
+                                    //Coloreando fila de rojo por ser un Token histórico cancelado
+                                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#E9573F");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void CargaGestorTokens(int IdContacto)
+        {
+            //Realizando la carga de los Tokens coincidentes
+            using (DataTable mit = SAT_CL.Global.Contacto.CargaTokensUsuarioContacto(IdContacto))
+            {
+                //Cargando Gridview
+                Controles.CargaGridView(gvGestionTokens, mit, "IdContacto-IdUsuarioToken-IdUsuarioSistema-IdUsuarioCompania", lblCriterioGridViewGestionTokens.Text, true, 3);
+
+                //Si no hay registros
+                if (mit == null)
+                    //Elimiando de sesión
+                    Session["DS"] = OrigenDatos.EliminaTablaDataSet((DataSet)Session["DS"], "Table");
+                //Si existen registros, se sobrescribe
+                else
+                    Session["DS"] = OrigenDatos.AñadeTablaDataSet((DataSet)Session["DS"], mit, "Table");
+            }
+        }
+        /// <summary>
+        /// Evento que genera un nuevo Token
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnGenerarToken_Click(object sender, EventArgs e)
+        {
+            generaToken();
+        }
+        /// <summary>
+        /// Método que genera Tokens para el usuario especificado
+        /// </summary>
+        private void generaToken()
+        {
+            RetornoOperacion resultado = new RetornoOperacion();
+            int IdContacto = Convert.ToInt32(Session["id_registro"]);
+            string Token;
+            using (SAT_CL.Global.Contacto C = new SAT_CL.Global.Contacto(IdContacto))
+            {
+                //Validando que exista el contacto
+                if(C.id_contacto > 0)
+                {
+                    resultado = SAT_CL.Seguridad.UsuarioToken.GeneraNuevoTokenUUID(C.id_usuario_sistema, C.id_compania_emisor, ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario,out Token);
+                    if(resultado.OperacionExitosa)
+                    {
+                        resultado = new RetornoOperacion("Generación existosa. Nuevo Token generado: " + Token, true);
+                        //Mostrando Mensaje de Operación
+                        ScriptServer.MuestraNotificacion(this, resultado, ScriptServer.PosicionNotificacion.AbajoDerecha);
+                        CargaGestorTokens(C.id_contacto);
+                    }
+                    else
+                        //Mostrando Mensaje de Operación
+                        ScriptServer.MuestraNotificacion(this, resultado, ScriptServer.PosicionNotificacion.AbajoDerecha);
+                }
+            }
+
+        }
+        /// <summary>
+        /// Método para guardar las acciones lkb del Adán
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lkbTokens_OnClick(object sender, EventArgs e)
+        {
+
+        }
         #endregion
     }
 }

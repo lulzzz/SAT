@@ -107,7 +107,7 @@
                         <a href="#" class="fa fa-flag-o"></a>
                         <ul>
                             <li>
-                                <asp:LinkButton ID="lkbTokens" runat="server" Text="Tokens del Contacto" OnClick="lkbElementoMenu_Click" CommandName="Tokens" /></li>
+                                <asp:LinkButton ID="lkbTokens" runat="server" Text="Gestionar Tokens" OnClick="lkbElementoMenu_Click" CommandName="Tokens" /></li>
                             <!--<li>
                                 <asp:LinkButton ID="lkbContratoIndeterminado" runat="server" Text="C.Definido" OnClick="lkbElementoMenu_Click" CommandName="ContratoIndeterminado" />
                             </li>
@@ -283,6 +283,131 @@
                     </Triggers>
                 </asp:UpdatePanel>
             </div>
+        </div>
+    </div>
+
+    <!--VENTANA MODAL DE GESTIÓN DE TOKENS DEL USUARIO-->
+    <div id="contenedorGestionTokens" class="modal">
+        <div id="ventanaGestionTokens" class="contenedor_ventana_confirmacion_arriba" style="min-width: 722px; width: 722px; height: 500px; padding-bottom: 5px;">
+            <div class="columna3x" style="min-width: 722px; width: 722px; height: 500px; padding-bottom: 5px;">
+                <div class="boton_cerrar_modal">
+                    <asp:UpdatePanel runat="server" ID="uplkbCerrarVentanaModal" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <asp:LinkButton ID="lkbCerrarVentanaModal" runat="server" Text="Cerrar" OnClick="lkbCerrarVentanaModal_Click">
+                                <img src="../Image/Cerrar16.png" />
+                            </asp:LinkButton>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="header_seccion">
+                    <img src="../Image/Autorizacion.png" style="width: 32px;" />
+                    <asp:UpdatePanel ID="uph2EncabezadoGestionTokens" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <h2 id="h2EncabezadoGestionTokens" runat="server">Gestión de Tokens</h2>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="gvGestionTokens" />
+                            <asp:AsyncPostBackTrigger ControlID="lkbTokens" />
+                        </Triggers>
+                    </asp:UpdatePanel>
+                </div>
+
+                <div class="renglon3x" style="height: 90px">
+                    <div class="etiqueta">
+                        <label for="ddlTamañoGridViewGestionTokens">Mostrar</label>
+                    </div>
+                    <div class="control">
+                        <asp:UpdatePanel ID="upddlTamañoGridViewGestionTokens" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:DropDownList ID="ddlTamañoGridViewGestionTokens" runat="server" OnSelectedIndexChanged="ddlTamañoGridViewGestionTokens_SelectedIndexChanged" TabIndex="8" AutoPostBack="true" CssClass="dropdown">
+                                </asp:DropDownList>
+                            </ContentTemplate>
+                            <Triggers>
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="etiqueta">
+                        <label for="lblCriterioGridViewGestionTokens">Ordenado por:</label>
+                    </div>
+                    <div class="etiqueta">
+                        <asp:UpdatePanel ID="uplblCriterioGridViewGestionTokens" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:Label ID="lblCriterioGridViewGestionTokens" runat="server"></asp:Label>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="gvGestionTokens" EventName="Sorting" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="control" style="text-align:right">
+                        <asp:UpdatePanel ID="upbtnGenerarToken" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:Button ID="btnGenerarToken" runat="server" CssClass="boton" Text="Generar Token" OnClick="btnGenerarToken_Click" TabIndex="6" />
+                            </ContentTemplate>
+                            <Triggers>
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
+
+                </div>
+
+                <div id="GestionTokens" class="grid_seccion_completa_400px_altura" style="width: 700px">
+                    <asp:UpdatePanel ID="upgvGestionTokens" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <asp:GridView ID="gvGestionTokens" CssClass="gridview" OnPageIndexChanging="gvGestionTokens_PageIndexChanging" OnSorting="gvGestionTokens_Sorting" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
+                                ShowFooter="True" TabIndex="22" OnRowDataBound="gvGestionTokens_RowDataBound"
+                                PageSize="5" Width="100%">
+                                <Columns>
+                                    <asp:BoundField DataField="IdContacto" HeaderText="IdContacto" SortExpression="IdContacto" ItemStyle-Width="10px" HeaderStyle-Width="10px" Visible="false" />
+                                    <asp:BoundField DataField="IdUsuarioToken" HeaderText="IdUsuarioToken" SortExpression="IdUsuarioToken" ItemStyle-Width="10px" HeaderStyle-Width="10px" Visible="false" />
+                                    <asp:BoundField DataField="IdUsuarioSistema" HeaderText="IdUsuarioSistema" SortExpression="IdUsuarioSistema" ItemStyle-Width="10px" HeaderStyle-Width="10px" Visible="false" />
+                                    <asp:BoundField DataField="IdUsuarioCompania" HeaderText="IdUsuarioCompania" SortExpression="IdUsuarioCompania" ItemStyle-Width="10px" HeaderStyle-Width="10px" Visible="false" />
+                                    <asp:BoundField DataField="Secuencia" HeaderText="Secuencia" SortExpression="Secuencia" ItemStyle-Width="70px" HeaderStyle-Width="70px">
+                                        <ItemStyle HorizontalAlign="Right" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Token" HeaderText="Token" SortExpression="Token">
+                                        <ItemStyle HorizontalAlign="Right" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="FechaInicioVigencia" DataFormatString="{0:dd/MM/yyyy HH:mm}" HeaderText="Inicio de vigencia" SortExpression="FechaInicioVigencia" ItemStyle-Width="100px" HeaderStyle-Width="100px">
+                                        <ItemStyle HorizontalAlign="Right" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="FechaFinVigencia" DataFormatString="{0:dd/MM/yyyy HH:mm}" HeaderText="Fin de vigencia" SortExpression="FechaFinVigencia" ItemStyle-Width="100px" HeaderStyle-Width="100px">
+                                        <ItemStyle HorizontalAlign="Right" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="RegistroHabilitado" HeaderText="RegistroHabilitado" SortExpression="RegistroHabilitado" ItemStyle-Width="10px" HeaderStyle-Width="10px" Visible="false" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="lkbAccionToken1" runat="server" Text="AccionToken1" OnClick="lkbTokens_OnClick" CommandName="AccionToken1"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="lkbEliminarToken" runat="server" Text="Cancelar Token" OnClick="lkbTokens_OnClick" CommandName="Cancelar"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                                <AlternatingRowStyle CssClass="gridviewrowalternate" />
+                                <EmptyDataRowStyle BackColor="#ffffff" ForeColor="#ff0000" />
+                                <FooterStyle CssClass="gridviewfooter" />
+                                <HeaderStyle CssClass="gridviewheader" />
+                                <RowStyle CssClass="gridviewrow" />
+                                <SelectedRowStyle CssClass="gridviewrowselected" />
+                                <SortedAscendingCellStyle CssClass="gridviewcellsortASC" />
+                                <SortedDescendingCellStyle CssClass="gridviewcellsortDESC" />
+                            </asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="ddlTamañoGridViewGestionTokens" />
+                            <asp:AsyncPostBackTrigger ControlID="lkbCerrarVentanaModal" />
+                            <asp:AsyncPostBackTrigger ControlID="lkbTokens" />
+                            <asp:AsyncPostBackTrigger ControlID="btnGenerarToken" />
+                            <asp:AsyncPostBackTrigger ControlID="gvGestionTokens" />
+                            <asp:AsyncPostBackTrigger ControlID="btnGenerarToken" />
+                        </Triggers>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+
         </div>
     </div>
 </asp:Content>
