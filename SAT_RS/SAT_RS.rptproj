@@ -106,8 +106,11 @@
     <Report Include="RendimientoUnidades.rdl" />
     <Report Include="ServiciosUnidad.rdl" />
     <Report Include="TEM_CargasDia.rdl" />
+    <Report Include="TEM_CargaTiempo.rdl" />
     <Report Include="TEM_DescargasDia.rdl" />
+    <Report Include="TEM_DescargaTiempo.rdl" />
     <Report Include="TEM_EstatusServicios.rdl" />
+    <Report Include="TEM_EstatusUnidadesDIario.rdl" />
     <Report Include="TEM_HistorialOperador.rdl" />
     <Report Include="TEM_OnTime.rdl" />
     <Report Include="TEM_ReporteCelaya.rdl" />

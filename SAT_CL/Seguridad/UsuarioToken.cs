@@ -67,6 +67,12 @@ namespace SAT_CL.Seguridad
         /// </summary>
         public string token { get { return this._token; } }
 
+        private int _vigencia;
+        /// <summary>
+        /// Atributo que guarda el identificador de la Vigencia.
+        /// </summary>
+        public int vigencia { get { return this._vigencia; } }
+
         private DateTime _fecha_creacion;
         /// <summary>
         /// Atributo que almacena la Fecha de Creacion 
@@ -78,6 +84,12 @@ namespace SAT_CL.Seguridad
         /// Atributo que almacena la Fecha de Creacion 
         /// </summary>
         public DateTime fecha_termino { get { return this._fecha_termino; } }
+
+        private string _estatus;
+        /// <summary>
+        /// Atributo que guarda el identificador del Estatus del registro.
+        /// </summary>
+        public string estatus { get { return this._estatus; } }
 
         private int _id_usuario;
         /// <summary>
@@ -107,6 +119,7 @@ namespace SAT_CL.Seguridad
             this._id_clave_encriptacion = 0;
             this._llave_encriptacion = "";
             this._token = "";
+            this._vigencia = 0;
             this._fecha_creacion = DateTime.MinValue;
             this._fecha_termino = DateTime.MinValue;
             this._id_usuario = 0;
@@ -155,7 +168,7 @@ namespace SAT_CL.Seguridad
             bool result = false;
 
             //Armando Arreglo de Parametros
-            object[] param = { 3, id_usuario_token, 0, 0, 0, 0, "", "", null, null, 0, false, "", "" };
+            object[] param = { 3, id_usuario_token, 0, 0, 0, 0, "", "", 0, null, null, 0, false, "", "" };
 
             //Obteniendo Registro del SP
             using (DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nombre_stored_procedure, param))
@@ -174,6 +187,8 @@ namespace SAT_CL.Seguridad
                         this._id_clave_encriptacion = Convert.ToInt32(dr["IdClaveEncriptacion"]);
                         this._llave_encriptacion = dr["LlaveEncriptacion"].ToString();
                         this._token = dr["Token"].ToString();
+                        this._vigencia = Convert.ToInt32(dr["Vigencia"]);
+                        this._estatus = dr["Estatus"].ToString();
                         DateTime.TryParse(dr["FechaCreacion"].ToString(), out this._fecha_creacion);
                         DateTime.TryParse(dr["FechaTermino"].ToString(), out this._fecha_termino);
                         this._habilitar = Convert.ToBoolean(dr["Habilitar"]);
@@ -196,7 +211,7 @@ namespace SAT_CL.Seguridad
             bool result = false;
 
             //Armando Arreglo de Parametros
-            object[] param = { 5, 0, 0, 0, 0, 0, "", token, null, null, 0, false, "", "" };
+            object[] param = { 5, 0, 0, 0, 0, 0, "", token, 0, null, null, 0, false, "", "" };
 
             //Obteniendo Registro del SP
             using (DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nombre_stored_procedure, param))
@@ -215,6 +230,8 @@ namespace SAT_CL.Seguridad
                         this._id_clave_encriptacion = Convert.ToInt32(dr["IdClaveEncriptacion"]);
                         this._llave_encriptacion = dr["LlaveEncriptacion"].ToString();
                         this._token = dr["Token"].ToString();
+                        this._vigencia = Convert.ToInt32(dr["Vigencia"]);
+                        this._estatus = dr["Estatus"].ToString();
                         DateTime.TryParse(dr["FechaCreacion"].ToString(), out this._fecha_creacion);
                         DateTime.TryParse(dr["FechaTermino"].ToString(), out this._fecha_termino);
                         this._habilitar = Convert.ToBoolean(dr["Habilitar"]);
@@ -236,12 +253,13 @@ namespace SAT_CL.Seguridad
         /// <param name="id_clave_encriptacion"> Id Clave Encriptacion </param>
         /// <param name="llave_encriptacion"> Llave Encriptacion </param>
         /// <param name="token"> Token </param>
+        /// <param name="vigencia"></param>
         /// <param name="fecha_creacion"> Fecha Creacion </param>
         /// <param name="fecha_termino"> Fecha Termino</param>
         /// <param name="id_usuario"> Id Usuario Actualiza </param>
         /// <param name="habilitar"> Estatus Habilitar </param>
         /// <returns></returns>
-        private RetornoOperacion editaUsuarioToken(int id_usuario_registra, int id_compania, int secuencia, int id_clave_encriptacion, string llave_encriptacion, string token, DateTime fecha_creacion, DateTime fecha_termino, int id_usuario, bool habilitar)
+        private RetornoOperacion editaUsuarioToken(int id_usuario_registra, int id_compania, int secuencia, int id_clave_encriptacion, string llave_encriptacion, string token, int vigencia, DateTime fecha_creacion, DateTime fecha_termino, int id_usuario, bool habilitar)
         {
             //Declarando Objeto de Retorno
             //RetornoOperacion result = new RetornoOperacion();
@@ -254,6 +272,7 @@ namespace SAT_CL.Seguridad
                                id_clave_encriptacion,
                                llave_encriptacion,
                                token,
+                               vigencia,
                                fecha_creacion,
                                fecha_termino,
                                id_usuario,
@@ -285,13 +304,13 @@ namespace SAT_CL.Seguridad
         /// <param name="fecha_termino"> Fecha Termino</param>
         /// <param name="id_usuario"> Id Usuario Actualiza </param>
         /// <returns></returns>
-        public static RetornoOperacion InsertaUsuarioToken(int id_usuario_registra, int id_compania, int secuencia, int id_clave_encriptacion, string llave_encriptacion, string token, DateTime fecha_creacion, DateTime fecha_termino, int id_usuario)
+        public static RetornoOperacion InsertaUsuarioToken(int id_usuario_registra, int id_compania, int secuencia, int id_clave_encriptacion, string llave_encriptacion, string token, int vigencia, DateTime fecha_creacion, DateTime fecha_termino, int id_usuario)
         {
             //Declarando Objeto de Retorno
             RetornoOperacion result = new RetornoOperacion();
 
             //Armando Arreglo de Parametros
-            object[] param = { 1, 0, id_usuario_registra, id_compania, secuencia, id_clave_encriptacion, llave_encriptacion, token, TSDK.Base.Fecha.ConvierteDateTimeObjeto(fecha_creacion), TSDK.Base.Fecha.ConvierteDateTimeObjeto(fecha_termino), id_usuario, true, "", "" };
+            object[] param = { 1, 0, id_usuario_registra, id_compania, secuencia, id_clave_encriptacion, llave_encriptacion, token, vigencia, TSDK.Base.Fecha.ConvierteDateTimeObjeto(fecha_creacion), TSDK.Base.Fecha.ConvierteDateTimeObjeto(fecha_termino), id_usuario, true, "", "" };
 
             //Ejecutando SP
             result = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoObjeto(_nombre_stored_procedure, param);
@@ -308,13 +327,14 @@ namespace SAT_CL.Seguridad
         /// <param name="id_clave_encriptacion"> Id Clave Encriptacion </param>
         /// <param name="llave_encriptacion"> Llave Encriptacion </param>
         /// <param name="token"> Token </param>
+        /// <param name="vigencia"></param>
         /// <param name="fecha_creacion"> Fecha Creacion </param>
         /// <param name="fecha_termino"> Fecha Termino</param>
         /// <param name="id_usuario"> Id Usuario Actualiza </param>
         /// <returns></returns>
-        public RetornoOperacion EditarUsuarioToken(int id_usuario_registra, int id_compania, int secuencia, int id_clave_encriptacion, string llave_encriptacion, string token, DateTime fecha_creacion, DateTime fecha_termino, int id_usuario)
+        public RetornoOperacion EditarUsuarioToken(int id_usuario_registra, int id_compania, int secuencia, int id_clave_encriptacion, string llave_encriptacion, string token, int vigencia, DateTime fecha_creacion, DateTime fecha_termino, int id_usuario)
         {
-            return this.editaUsuarioToken(id_usuario_registra, id_compania, secuencia, id_clave_encriptacion, llave_encriptacion, token, fecha_creacion, fecha_termino, id_usuario, this._habilitar);
+            return this.editaUsuarioToken(id_usuario_registra, id_compania, secuencia, id_clave_encriptacion, llave_encriptacion, token, vigencia, fecha_creacion, fecha_termino, id_usuario, this._habilitar);
 
         }
         /// <summary>
@@ -324,7 +344,7 @@ namespace SAT_CL.Seguridad
         /// <returns></returns>
         public RetornoOperacion DeshabilitaUsuarioToken(int id_usuario)
         {
-            return this.editaUsuarioToken(this._id_usuario_registra, this._id_compania, this._secuencia, this._id_clave_encriptacion, this.llave_encriptacion, this._token, this._fecha_creacion, this._fecha_termino, id_usuario, false);
+            return this.editaUsuarioToken(this._id_usuario_registra, this._id_compania, this._secuencia, this._id_clave_encriptacion, this.llave_encriptacion, this._token, this._vigencia, this._fecha_creacion, this._fecha_termino, id_usuario, false);
         }
         /// <summary>
         /// Método encargado de Terminar el Token
@@ -339,7 +359,27 @@ namespace SAT_CL.Seguridad
             if (this._fecha_termino == DateTime.MinValue)
                 //Armando Arreglo de Parametros
                 result = this.editaUsuarioToken(this._id_usuario_registra, this._id_compania, this._secuencia, this._id_clave_encriptacion, this._llave_encriptacion,
-                                this._token, this._fecha_creacion, Fecha.ObtieneFechaEstandarMexicoCentro(), id_usuario, this._habilitar);
+                                this._token, this._vigencia, this._fecha_creacion, Fecha.ObtieneFechaEstandarMexicoCentro(), id_usuario, this._habilitar);
+            else
+                result = new RetornoOperacion("El Token ya esta terminado");
+
+            //Devolviendo Resultado Obtenido
+            return result;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id_usuario"></param>
+        /// <returns></returns>
+        public RetornoOperacion TerminaUsuarioTokenVigencia(int id_usuario)
+        {
+            //Declarando Objeto de Retorno
+            RetornoOperacion result = new RetornoOperacion();
+
+            if (this._fecha_termino == DateTime.MinValue)
+                //Armando Arreglo de Parametros
+                result = this.editaUsuarioToken(this._id_usuario_registra, this._id_compania, this._secuencia, this._id_clave_encriptacion, this._llave_encriptacion,
+                                this._token, this._vigencia, this._fecha_creacion, this._vigencia == 0 ? Fecha.ObtieneFechaEstandarMexicoCentro() : this._fecha_creacion.AddDays(this._vigencia), id_usuario, this._habilitar);
             else
                 result = new RetornoOperacion("El Token ya esta terminado");
 
@@ -364,7 +404,7 @@ namespace SAT_CL.Seguridad
         {
             UsuarioToken token_activo = new UsuarioToken();
             //Armando Arreglo de Parametros
-            object[] param = { 4, 0, id_usuario, id_compania, 0, 0, "", "", null, null, 0, false, "", "" };
+            object[] param = { 4, 0, id_usuario, id_compania, 0, 0, "", "", 0, null, null, 0, false, "", "" };
             //Obteniendo Registro del SP
             using (DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nombre_stored_procedure, param))
             {
@@ -387,6 +427,8 @@ namespace SAT_CL.Seguridad
                             _id_clave_encriptacion = Convert.ToInt32(dr["IdClaveEncriptacion"]),
                             _llave_encriptacion = dr["LlaveEncriptacion"].ToString(),
                             _token = dr["Token"].ToString(),
+                            _vigencia = Convert.ToInt32(dr["Vigencia"]),
+                            _estatus = dr["Estatus"].ToString(),
                             _fecha_creacion = fec_creacion,
                             _fecha_termino = fec_termino,
                             _habilitar = Convert.ToBoolean(dr["Habilitar"])
@@ -402,6 +444,12 @@ namespace SAT_CL.Seguridad
 
         #region Métodos de Gestión TOKEN
 
+
+        private static RetornoOperacion generaTokenUsuario(int id_usuario_registro, Encriptacion.MetodoDigestion clave_encriptacion, string llave_encriptacion, int id_compania, int id_usuario, out string token_usuario)
+        {
+            token_usuario = "";
+            return UsuarioToken.generaTokenUsuario(id_usuario_registro, clave_encriptacion, 1, llave_encriptacion, id_compania, id_usuario, out token_usuario);
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -412,13 +460,13 @@ namespace SAT_CL.Seguridad
         /// <param name="id_usuario"></param>
         /// <param name="token_usuario"></param>
         /// <returns></returns>
-        private static RetornoOperacion generaTokenUsuario(int id_usuario_registro, Encriptacion.MetodoDigestion clave_encriptacion, string llave_encriptacion, int id_compania, int id_usuario, out string token_usuario)
+        private static RetornoOperacion generaTokenUsuario(int id_usuario_registro, Encriptacion.MetodoDigestion clave_encriptacion, int vigencia, string llave_encriptacion, int id_compania, int id_usuario, out string token_usuario)
         {
             RetornoOperacion retorno = new RetornoOperacion();
             DateTime fecha_actual = Fecha.ObtieneFechaEstandarMexicoCentro();
             token_usuario = "";
 
-            if (llave_encriptacion.Length <= 5)
+            if (llave_encriptacion.Length <= 10)
             {
                 string llave64 = Encriptacion.CalculaHashCadenaEnBase64(llave_encriptacion, clave_encriptacion);
                 //Validando Usuario
@@ -456,7 +504,7 @@ namespace SAT_CL.Seguridad
 
                                 if (retorno.OperacionExitosa)
                                 {
-                                    retorno = UsuarioToken.InsertaUsuarioToken(id_usuario_registro, id_compania, 0, (int)clave_encriptacion, llave64, token_usuario, fecha_actual, DateTime.MinValue, id_usuario);
+                                    retorno = UsuarioToken.InsertaUsuarioToken(id_usuario_registro, id_compania, 0, (int)clave_encriptacion, llave64, token_usuario, vigencia, fecha_actual, DateTime.MinValue, id_usuario);
                                     if (retorno.OperacionExitosa)
                                     {
                                         retorno = new RetornoOperacion(retorno.IdRegistro, "Token Generado Exitosamente!", true);
@@ -526,7 +574,20 @@ namespace SAT_CL.Seguridad
             retorno = generaTokenUsuario(id_usuario_registro, clave_encriptacion, llave_encriptacion, id_compania, id_usuario, out token_nvo);
             return retorno;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id_usuario_registro"></param>
+        /// <param name="llave_encriptacion"></param>
+        /// <param name="id_compania"></param>
+        /// <param name="id_usuario"></param>
+        /// <param name="token_usuario"></param>
+        /// <returns></returns>
+        private static RetornoOperacion generaTokenUUID(int id_usuario_registro, string llave_encriptacion, int id_compania, int id_usuario, out string token_usuario)
+        {
+            token_usuario = "";
+            return generaTokenUUID(id_usuario_registro, llave_encriptacion, id_compania, id_usuario, 1, out token_usuario);
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -537,13 +598,13 @@ namespace SAT_CL.Seguridad
         /// <param name="id_usuario"></param>
         /// <param name="token_usuario"></param>
         /// <returns></returns>
-        private static RetornoOperacion generaTokenUUID(int id_usuario_registro, string llave_encriptacion, int id_compania, int id_usuario, out string token_usuario)
+        private static RetornoOperacion generaTokenUUID(int id_usuario_registro, string llave_encriptacion, int id_compania, int id_usuario, int vigencia, out string token_usuario)
         {
             RetornoOperacion retorno = new RetornoOperacion();
             DateTime fecha_actual = Fecha.ObtieneFechaEstandarMexicoCentro();
             token_usuario = "";
 
-            if (llave_encriptacion.Length <= 5)
+            if (llave_encriptacion.Length <= 10)
             {
                 //Validando Usuario
                 using (Usuario user = new Usuario(id_usuario_registro))
@@ -570,26 +631,26 @@ namespace SAT_CL.Seguridad
                             if (retorno.OperacionExitosa)
                             {
                                 //CrearToken
-                                token_usuario = Guid.NewGuid().ToString(); 
+                                token_usuario = Guid.NewGuid().ToString();
                                 //Validando se genero el token
                                 //if (retorno.OperacionExitosa)
                                 //{
-                                    retorno = SAT_CL.Seguridad.UsuarioToken.InsertaUsuarioToken(id_usuario_registro, id_compania, 0, 1, llave_encriptacion, token_usuario, fecha_actual, DateTime.MinValue, id_usuario);
-                                    while (!retorno.OperacionExitosa)
-                                    {
-                                        //CrearToken
-                                        token_usuario = Guid.NewGuid().ToString();
-                                        retorno = UsuarioToken.InsertaUsuarioToken(id_usuario_registro, id_compania, 0, 1, llave_encriptacion, token_usuario, fecha_actual, DateTime.MinValue, id_usuario);
+                                retorno = SAT_CL.Seguridad.UsuarioToken.InsertaUsuarioToken(id_usuario_registro, id_compania, 0, 1, llave_encriptacion, token_usuario, vigencia, fecha_actual, DateTime.MinValue, id_usuario);
+                                while (!retorno.OperacionExitosa)
+                                {
+                                    //CrearToken
+                                    token_usuario = Guid.NewGuid().ToString();
+                                    retorno = UsuarioToken.InsertaUsuarioToken(id_usuario_registro, id_compania, 0, 1, llave_encriptacion, token_usuario, vigencia, fecha_actual, DateTime.MinValue, id_usuario);
                                     if (retorno.OperacionExitosa)
                                         break;
-                                    }
+                                }
 
-                                    if (retorno.OperacionExitosa)
-                                    {
-                                        retorno = new RetornoOperacion(retorno.IdRegistro, "Token Generado Exitosamente!", true);
-                                        //Completando Transacción
-                                        scope.Complete();
-                                    }
+                                if (retorno.OperacionExitosa)
+                                {
+                                    retorno = new RetornoOperacion(retorno.IdRegistro, "Token Generado Exitosamente!", true);
+                                    //Completando Transacción
+                                    scope.Complete();
+                                }
                                 //}
                             }
                         }
@@ -622,6 +683,32 @@ namespace SAT_CL.Seguridad
             {
                 //Generando TOKEN
                 retorno = generaTokenUUID(id_usuario_registro, llave_encriptacion, id_compania, id_usuario, out token_nvo);
+            }
+            else
+                retorno = new RetornoOperacion("El token no se genero correctamente");
+
+            return retorno;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id_usuario_registro"></param>
+        /// <param name="id_compania"></param>
+        /// <param name="id_usuario"></param>
+        /// <param name="vigencia"></param>
+        /// <param name="token_nvo"></param>
+        /// <returns></returns>
+        public static RetornoOperacion GeneraNuevoTokenUUID(int id_usuario_registro, int id_compania, int id_usuario, int vigencia, out string token_nvo)
+        {
+            RetornoOperacion retorno = new RetornoOperacion();
+            token_nvo = "";
+
+            //Obteniendo Clave de Encriptación (Aleatorio)
+            string llave_encriptacion = Cadena.CadenaAleatoria(1, 5, 4);
+            if (!llave_encriptacion.Equals(""))
+            {
+                //Generando TOKEN
+                retorno = generaTokenUUID(id_usuario_registro, llave_encriptacion, id_compania, id_usuario, vigencia, out token_nvo);
             }
             else
                 retorno = new RetornoOperacion("El token no se genero correctamente");

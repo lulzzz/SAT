@@ -309,13 +309,13 @@
                                 <ItemStyle HorizontalAlign="Right" Width="60" />
                                 <FooterStyle HorizontalAlign="Right" />
                                 <ItemTemplate>
-                                    <asp:Label ID="lblFiniquitoSC" runat="server" CssClass="label_negrita"
+                                    <asp:Label ID="lblFiniquitoSC" runat="server" CssClass="label_error"
                                          Text='<%# Eval("FiniquitoAutoSC", "{0:C2}") %>' Visible="false"></asp:Label>
                                     <asp:LinkButton ID="lkbFiniquitoSC" runat="server" Text='<%# Eval("FiniquitoAutoSC", "{0:C2}") %>'
                                          OnClick="lkbAccionesAnticipos_Click" CommandName="FiniquitoAutoCC" Visible="true"></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="FiniquitoAuto" HeaderText="Finiquito Auto." SortExpression="FiniquitoAuto" DataFormatString="{0:C2}" ItemStyle-CssClass="label_negrita" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" HeaderStyle-Width="60" ItemStyle-Width="60" />
+                            <asp:BoundField DataField="FiniquitoAuto" HeaderText="Finiquito Auto." SortExpression="FiniquitoAuto" DataFormatString="{0:C2}" ItemStyle-CssClass="label_error" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" HeaderStyle-Width="60" ItemStyle-Width="60" />
                             <asp:TemplateField HeaderText="Depositos CxP">
                                 <ItemStyle HorizontalAlign="Center" Width="50" />
                                 <ItemTemplate>
