@@ -598,8 +598,9 @@ namespace SAT.General
                     //Validando Fila
                     if (fila != null)
                     {
-                        using (LinkButton lkbAccionToken1 = (LinkButton)e.Row.FindControl("lkbAccionToken1"),
-                                lkbFinalizar = (LinkButton)e.Row.FindControl("lkbFinalizar"))
+                        using (ImageButton imbEmail = (ImageButton)e.Row.FindControl("imbEmail"),
+                                imbMsg = (ImageButton)e.Row.FindControl("imbMsg"),
+                                imbFinalizar = (ImageButton)e.Row.FindControl("imbFinalizar"))
                         {
                             switch (fila["Estatus"].ToString())
                             {
@@ -610,12 +611,14 @@ namespace SAT.General
                                 case "Inválido":
                                     //Coloreando fila de rojo por ser un Token expirado sin terminar
                                     e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#EC6F5A");
-                                    lkbAccionToken1.Visible = false;
+                                    imbEmail.Visible = false;
+                                    imbMsg.Visible = false;
                                     break;
                                 case "Terminado":
                                     //Ocultamos las acciones exclusivas para Tokens activos
-                                    lkbAccionToken1.Visible = false;
-                                    lkbFinalizar.Visible = false;
+                                    imbEmail.Visible = false;
+                                    imbMsg.Visible = false;
+                                    imbFinalizar.Visible = false;
                                     break;
 
                             }
@@ -714,6 +717,48 @@ namespace SAT.General
                         
                     }
                     break;
+            }
+        }
+        /// <summary>
+        /// Evento producido al dar click en imagebutton
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void imbEnvio_Click(object sender, ImageClickEventArgs e)
+        {
+            RetornoOperacion resultado = new RetornoOperacion();
+            if (gvGestionTokens.DataKeys.Count > 0)
+            {
+                //Seleccionando fila actual
+                Controles.SeleccionaFila(gvGestionTokens, sender, "imb", false);
+                //Validando estatus de Página
+                switch (((ImageButton)sender).CommandName)
+                {
+                    case "Correo":
+                        {
+                            //Enviamos Notificación
+                            resultado = SAT_CL.Notificaciones.Notificacion.EnviaCorreo(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, 
+                                Convert.ToInt32(gvGestionTokens.SelectedDataKey["IdContacto"]), "ACCESO A PLATAFORMA DE REPORTES", "Encabezado.", "Titulo", "Subtitulo", "TituloCuerpo ", "Cuerpo", "idS=");
+                            break;
+                        }
+                    case "Mensaje":
+                        {
+
+                            break;
+                        }
+                    case "FinalizarToken":
+                        {
+                            using (UsuarioToken UT = new UsuarioToken(Convert.ToInt32(gvGestionTokens.SelectedDataKey["IdUsuarioToken"])))
+                            {
+                                resultado = UT.TerminaUsuarioTokenVigencia(((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+
+                                //Mostrando Mensaje de Operación
+                                ScriptServer.MuestraNotificacion(this, resultado, ScriptServer.PosicionNotificacion.AbajoDerecha);
+                                CargaGestorTokens(Convert.ToInt32(Session["id_registro"]));
+                            }
+                            break;
+                        }
+                }
             }
         }
         #endregion

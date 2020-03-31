@@ -411,10 +411,19 @@
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="RegistroHabilitado" HeaderText="RegistroHabilitado" SortExpression="RegistroHabilitado" ItemStyle-Width="10px" HeaderStyle-Width="10px" Visible="false" />
-                                    <asp:TemplateField HeaderText="Acciones">
+                                    <asp:TemplateField ItemStyle-HorizontalAlign="Center">
+                                        <ItemTemplate>                                            
+                                            <asp:ImageButton ID="imbFinalizar" runat="server" ImageAlign="Middle" ToolTip="Finalizar Token" Height="20px" ImageUrl="~/Image/ManageCancel.png" OnClick="imbEnvio_Click" CommandName="FinalizarToken"></asp:ImageButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField ItemStyle-HorizontalAlign="Center">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="lkbAccionToken1" runat="server" Text="AccionToken1" OnClick="lkbTokens_OnClick" CommandName="AccionToken1"></asp:LinkButton>
-                                            <asp:LinkButton ID="lkbFinalizar" runat="server" Text="Finalizar Token" OnClick="lkbTokens_OnClick" CommandName="FinalizarToken"></asp:LinkButton>
+                                            <asp:ImageButton ID="imbEmail" runat="server" ImageAlign="Middle" ToolTip="Enviar Correo" Height="20px" ImageUrl="~/Image/email.png" OnClick="imbEnvio_Click" CommandName="Correo" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField ItemStyle-HorizontalAlign="Center">
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="imbMsg" runat="server" ToolTip="Enviar Mensaje" Height="20px" ImageUrl="~/Image/sms.png" OnClick="imbEnvio_Click" CommandName="Mensaje" Enabled="false" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

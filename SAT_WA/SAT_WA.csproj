@@ -394,6 +394,7 @@
     <Content Include="Image\default-user.png" />
     <Content Include="Image\dictionary.png" />
     <Content Include="Image\diesel.png" />
+    <Content Include="Image\email.png" />
     <Content Include="Image\exchange.png" />
     <Content Include="Image\factory.png" />
     <Content Include="Image\find.png" />
@@ -420,6 +421,7 @@
     <Content Include="Image\print2.png" />
     <Content Include="Image\search.png" />
     <Content Include="Image\Select.png" />
+    <Content Include="Image\sms.png" />
     <Content Include="Image\transportista2.png" />
     <Content Include="Image\transportista3.png" />
     <Content Include="Image\TripCorrect.png" />
@@ -1177,6 +1179,7 @@
     <Content Include="Connected Services\GlobalCentral\SAT.GlobalCentral.InsertaUnidadCentralResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\tectos_paquete_web_deploy_serveris_aztlan.pubxml" />
     <None Include="Properties\PublishProfiles\tectos_paquete_web_deploy_serveris_nextia.pubxml" />
     <None Include="Properties\PublishProfiles\tectos_web_deploy_dc10058_aztlan.pubxml" />
