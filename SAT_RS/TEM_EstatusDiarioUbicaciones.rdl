@@ -1357,7 +1357,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>dsEstatusUbicaciones</DataSetName>
-            <Top>2.5925cm</Top>
+            <Top>2.33261cm</Top>
             <Left>0.37042cm</Left>
             <Height>1.74708cm</Height>
             <Width>32.58728cm</Width>
@@ -1486,10 +1486,10 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>2in</Height>
+        <Height>1.79167in</Height>
         <Style />
       </Body>
-      <Width>13.31733in</Width>
+      <Width>13.15066in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

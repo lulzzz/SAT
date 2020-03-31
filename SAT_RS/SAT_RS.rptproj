@@ -117,6 +117,7 @@
     <Report Include="TEM_ReporteCelaya.rdl" />
     <Report Include="TEM_UbicacionRemolques.rdl" />
     <Report Include="TEM_UbicacionTractores.rdl" />
+    <Report Include="TEM_UnidadEstatus.rdl" />
     <Report Include="ViajesDiaUnidad.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
