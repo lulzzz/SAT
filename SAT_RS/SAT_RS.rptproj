@@ -109,6 +109,7 @@
     <Report Include="TEM_CargaTiempo.rdl" />
     <Report Include="TEM_DescargasDia.rdl" />
     <Report Include="TEM_DescargaTiempo.rdl" />
+    <Report Include="TEM_EstatusDiarioUbicaciones.rdl" />
     <Report Include="TEM_EstatusServicios.rdl" />
     <Report Include="TEM_EstatusUnidadesDIario.rdl" />
     <Report Include="TEM_HistorialOperador.rdl" />
