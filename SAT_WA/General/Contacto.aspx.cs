@@ -341,10 +341,11 @@ namespace SAT.General
                                     {
                                         //Registrando el Contacto con el ID de Usuario del sistema generado
                                         resultado = SAT_CL.Global.Contacto.InsertaContacto(
+                                            ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
+                                            ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
                                             txtNombre.Text.ToUpper(),
                                             txtTelefono.Text,
                                             txtEmail.Text,
-                                            ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
                                             id_usuario,
                                             ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario
                                         );
@@ -372,6 +373,7 @@ namespace SAT.General
                                                                    ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);*/
 
                                     resultado = c.EditaContacto(
+                                        ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
                                         txtNombre.Text.ToUpper(),
                                         txtTelefono.Text,
                                         txtEmail.Text,

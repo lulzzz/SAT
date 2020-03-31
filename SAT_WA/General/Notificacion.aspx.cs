@@ -813,9 +813,8 @@ namespace SAT.General
             if (Convert.ToInt32(Session["id_registro_b"]) == 0)
             {
                 //Insertando Contacto
-                resultado = SAT_CL.Global.Contacto.InsertaContacto(txtNombre.Text, txtTelefono.Text, txtEMail.Text,
-                            ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, 0,
-                            ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+                resultado = SAT_CL.Global.Contacto.InsertaContacto(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
+                    txtNombre.Text, txtTelefono.Text, txtEMail.Text,0,((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
             }
             else
             {
@@ -824,7 +823,8 @@ namespace SAT.General
                 {
 
                     //Editando Contacto
-                    resultado = objContacto.EditaContacto(txtNombre.Text, txtTelefono.Text, txtEMail.Text, ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+                    resultado = objContacto.EditaContacto(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,txtNombre.Text, txtTelefono.Text, txtEMail.Text,
+                        ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
 
 
                 }
