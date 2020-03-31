@@ -7,6 +7,9 @@
     <link href="../CSS/Forma.css" type="text/css" rel="stylesheet" />
     <!-- Estilos Validadores JQuery -->
     <link href="../CSS/jquery.validationEngine.css" rel="stylesheet" type="text/css" />
+    <link href="../CSS/jquery.datetimepicker.css" rel="stylesheet" type="text/css" />
+    <!-- Biblioteca para uso de datetime picker -->
+<script type="text/javascript" src="../Scripts/jquery.datetimepicker.js" charset="utf-8"></script>
     <!-- Bibliotecas para Validación de formulario -->
     <script type="text/javascript" src="../Scripts/jquery.validationEngine-es.js" charset="utf-8"></script>
     <script type="text/javascript" src="../Scripts/jquery.validationEngine.js" charset="utf-8"></script>
@@ -37,6 +40,7 @@
         function EndRequestHandler(sender, args) {
             if (args.get_error() == undefined) {
                 ConfiguraJQueryContacto();
+                ConfiguraJQueryFechaVigenciaToken();
             }
         }
         //Creando función para configuración de jquery en control de usuario
@@ -56,11 +60,32 @@
                 $("#<%=btnGuardar.ClientID%>").click(validacionContacto);
                 //Link Guardar
                 $("#<%=lkbGuardar.ClientID%>").click(validacionContacto);
+            });
+        }
+        function ConfiguraJQueryFechaVigenciaToken() {
+            $(document).ready(function () {
+                //Validación de fecha de fin de token de vigencia personalizado
+                var validacionFechaVigenciaToken = function (evt) {
+                    var isValidP4 = !$("#<%=txtFechaVigenciaToken.ClientID%>").validationEngine('validate');
+
+                    return isValidP4;
+                };
+                
+                $("#<%=txtFechaVigenciaToken.ClientID%>").datetimepicker({
+                    lang: 'es',
+                    format: 'd/m/Y',
+                    timepicker: false
+                });
+
+                
+                //Validación de campos requeridos
+                $("#<%=btnGeneraTokenVigencia.ClientID%>").click(validacionFechaVigenciaToken);
 
             });
         }
-        //Invocación Inicial de método de configuración JQuery
+            //Invocación Inicial de método de configuración JQuery
         ConfiguraJQueryContacto();
+        ConfiguraJQueryFechaVigenciaToken();
     </script>
     <div id="encabezado_forma">
         <img src="../Image/Operador.png" />
@@ -288,8 +313,8 @@
 
     <!--VENTANA MODAL DE GESTIÓN DE TOKENS DEL USUARIO-->
     <div id="contenedorGestionTokens" class="modal">
-        <div id="ventanaGestionTokens" class="contenedor_ventana_confirmacion_arriba" style="min-width: 722px; width: 722px; height: 500px; padding-bottom: 5px;">
-            <div class="columna3x" style="min-width: 722px; width: 722px; height: 500px; padding-bottom: 5px;">
+        <div id="ventanaGestionTokens" class="contenedor_ventana_confirmacion_arriba" style="min-width: 800px; width: 800px; height: 510px; padding-bottom: 5px;">
+            <div class="columna4x" style="min-width: 800px; width: 800px; height: 510px; padding-bottom: 5px;">
                 <div class="boton_cerrar_modal">
                     <asp:UpdatePanel runat="server" ID="uplkbCerrarVentanaModal" UpdateMode="Conditional">
                         <ContentTemplate>
@@ -312,7 +337,7 @@
                     </asp:UpdatePanel>
                 </div>
 
-                <div class="renglon3x" style="height: 90px">
+                <div class="renglon4x" style="width: 800px; height: 90px;">
                     <div class="etiqueta">
                         <label for="ddlTamañoGridViewGestionTokens">Mostrar</label>
                     </div>
@@ -339,7 +364,7 @@
                             </Triggers>
                         </asp:UpdatePanel>
                     </div>
-                    <div class="control" style="text-align:right">
+                    <div class="control">
                         <asp:UpdatePanel ID="upbtnGenerarToken" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
                                 <asp:Button ID="btnGenerarToken" runat="server" CssClass="boton" Text="Generar Token" OnClick="btnGenerarToken_Click" TabIndex="6" />
@@ -348,10 +373,18 @@
                             </Triggers>
                         </asp:UpdatePanel>
                     </div>
-
+                    <div class="control">
+                        <asp:UpdatePanel ID="upbtnGenerarTokenVigenciaPersonalizada" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:Button ID="btnGenerarTokenVigenciaPersonalizada" runat="server" CssClass="boton2x" Text="Token con Vigencia" OnClick="btnGenerarTokenVigenciaPersonalizada_Click" TabIndex="6" />
+                            </ContentTemplate>
+                            <Triggers>
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
 
-                <div id="GestionTokens" class="grid_seccion_completa_400px_altura" style="width: 700px">
+                <div id="GestionTokens" class="grid_seccion_completa_400px_altura" style="width: 777px">
                     <asp:UpdatePanel ID="upgvGestionTokens" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
                             <asp:GridView ID="gvGestionTokens" CssClass="gridview" OnPageIndexChanging="gvGestionTokens_PageIndexChanging" OnSorting="gvGestionTokens_Sorting" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
@@ -374,15 +407,14 @@
                                     <asp:BoundField DataField="FechaFinVigencia" DataFormatString="{0:dd/MM/yyyy HH:mm}" HeaderText="Fin de vigencia" SortExpression="FechaFinVigencia" ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                         <ItemStyle HorizontalAlign="Right" />
                                     </asp:BoundField>
+                                    <asp:BoundField DataField="Estatus" HeaderText="Estatus" SortExpression="Estatus" ItemStyle-Width="70px" HeaderStyle-Width="70px">
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
                                     <asp:BoundField DataField="RegistroHabilitado" HeaderText="RegistroHabilitado" SortExpression="RegistroHabilitado" ItemStyle-Width="10px" HeaderStyle-Width="10px" Visible="false" />
-                                    <asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Acciones">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="lkbAccionToken1" runat="server" Text="AccionToken1" OnClick="lkbTokens_OnClick" CommandName="AccionToken1"></asp:LinkButton>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                            <asp:LinkButton ID="lkbEliminarToken" runat="server" Text="Cancelar Token" OnClick="lkbTokens_OnClick" CommandName="Cancelar"></asp:LinkButton>
+                                            <asp:LinkButton ID="lkbFinalizar" runat="server" Text="Finalizar Token" OnClick="lkbTokens_OnClick" CommandName="FinalizarToken"></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -402,12 +434,59 @@
                             <asp:AsyncPostBackTrigger ControlID="lkbTokens" />
                             <asp:AsyncPostBackTrigger ControlID="btnGenerarToken" />
                             <asp:AsyncPostBackTrigger ControlID="gvGestionTokens" />
-                            <asp:AsyncPostBackTrigger ControlID="btnGenerarToken" />
+                            <asp:AsyncPostBackTrigger ControlID="btnGeneraTokenVigencia" />
+
                         </Triggers>
                     </asp:UpdatePanel>
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <!--VENTANA MODAL PARA ELEJIR FECHA DE EXPIRACIÖN DEL TOKEN-->
+    <div id="contenedorFechaVigenciaToken" class="modal">
+        <div id="ventanaFechaVigenciaToken" class="contenedor_ventana_confirmacion_arriba" style="min-width: 600px; width: 600px; padding-bottom: 5px;">
+            <div class="columna" style="min-width: 600px; width: 600px; padding-bottom: 5px;">
+                <div class="boton_cerrar_modal">
+                    <asp:UpdatePanel runat="server" ID="uplkbCerrarVentanaModalFechaVigenciaToken" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <asp:LinkButton ID="lkbCerrarVentanaModalFechaVigenciaToken" runat="server" Text="Cerrar" OnClick="lkbCerrarVentanaModalFechaVigenciaToken_Click">
+                                <img src="../Image/Cerrar16.png" />
+                            </asp:LinkButton>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="header_seccion">
+                    <img src="../Image/Calendario.png" style="width: 32px;" />
+                    <h2>Establecer vigencia del Token</h2>
+                </div>
+                <div class="renglon3x">
+                    <div class="etiqueta" style="width: 150px;">
+                        <label for="txtFechaVigenciaToken">Fecha de vigencia del Token</label>
+                    </div>
+                    <div class="control">
+                        <asp:UpdatePanel ID="uptxtFechaVigenciaToken" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtFechaVigenciaToken" runat="server" CssClass="textbox validate[required] custom[date]" TabIndex="16"></asp:TextBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnGeneraTokenVigencia" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="controlBoton" style="width: 200px">
+                        <asp:UpdatePanel ID="upbtnGeneraTokenVigencia" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <asp:Button ID="btnGeneraTokenVigencia" runat="server" Text="Generar Token" CssClass="boton" Style="width: 150px;"
+                                    OnClick="btnGeneraTokenVigencia_Click" />
+                            </ContentTemplate>
+                            <Triggers>
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </asp:Content>

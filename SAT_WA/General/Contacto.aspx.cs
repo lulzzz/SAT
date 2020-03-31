@@ -481,7 +481,7 @@ namespace SAT.General
                                                         if (psu.id_perfil_usuario > 0)
                                                         {
                                                             retorno = psu.DeshabilitaPerfilSeguridadUsuario(((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
-                                                            if(retorno.OperacionExitosa)
+                                                            if (retorno.OperacionExitosa)
                                                             {
                                                                 using (UsuarioToken activo = UsuarioToken.ObtieneTokenActivo(c.id_usuario_sistema, c.id_compania_emisor))
                                                                 {
@@ -599,38 +599,25 @@ namespace SAT.General
                     if (fila != null)
                     {
                         using (LinkButton lkbAccionToken1 = (LinkButton)e.Row.FindControl("lkbAccionToken1"),
-                                lkbEliminarToken = (LinkButton)e.Row.FindControl("lkbEliminarToken"))
+                                lkbFinalizar = (LinkButton)e.Row.FindControl("lkbFinalizar"))
                         {
-                            //Validando que el Token no ha expirado
-                            if (fila["FechaFinVigencia"].ToString() == "")
+                            switch (fila["Estatus"].ToString())
                             {
-                                if (fila["RegistroHabilitado"].Equals("SI"))
+                                case "Vigente":
                                     //Coloreando fila de verde por ser un Token vigente
-                                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#5BC24C");
-                                else if (fila["RegistroHabilitado"].Equals("NO"))
-                                {
-                                    //Coloreando fila de rojo por ser un Token cancelado
-                                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#E9573F");
-                                    //Ocultamos las acciones exclusivas para Tokens vigentes
+                                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#85D27A");
+                                    break;
+                                case "Inválido":
+                                    //Coloreando fila de rojo por ser un Token expirado sin terminar
+                                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#EC6F5A");
                                     lkbAccionToken1.Visible = false;
-                                    lkbEliminarToken.Visible = false;
-                                }
-                                else
-                                {
+                                    break;
+                                case "Terminado":
+                                    //Ocultamos las acciones exclusivas para Tokens activos
                                     lkbAccionToken1.Visible = false;
-                                    lkbEliminarToken.Visible = false;
-                                }
-                            }
-                            else
-                            {
-                                //Ocultamos las acciones exclusivas para Tokens activos
-                                lkbAccionToken1.Visible = false;
-                                lkbEliminarToken.Visible = false;
+                                    lkbFinalizar.Visible = false;
+                                    break;
 
-                                //Pintamos filas de Tokens históricos normales y cancelados
-                                if (fila["RegistroHabilitado"].Equals("NO"))
-                                    //Coloreando fila de rojo por ser un Token histórico cancelado
-                                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#E9573F");
                             }
                         }
                     }
@@ -643,7 +630,7 @@ namespace SAT.General
             using (DataTable mit = SAT_CL.Global.Contacto.CargaTokensUsuarioContacto(IdContacto))
             {
                 //Cargando Gridview
-                Controles.CargaGridView(gvGestionTokens, mit, "IdContacto-IdUsuarioToken-IdUsuarioSistema-IdUsuarioCompania", lblCriterioGridViewGestionTokens.Text, true, 3);
+                Controles.CargaGridView(gvGestionTokens, mit, "IdContacto-IdUsuarioCompania-IdClienteProveedor-IdUsuarioToken-IdUsuarioSistema", lblCriterioGridViewGestionTokens.Text, true, 3);
 
                 //Si no hay registros
                 if (mit == null)
@@ -663,6 +650,12 @@ namespace SAT.General
         {
             generaToken();
         }
+
+        protected void btnGenerarTokenVigenciaPersonalizada_Click(object sender, EventArgs e)
+        {
+            //ALternando Ventana
+            ScriptServer.AlternarVentana(this.Page, "ElegirFechaVigencia", "contenedorFechaVigenciaToken", "ventanaFechaVigenciaToken");
+        }
         /// <summary>
         /// Método que genera Tokens para el usuario especificado
         /// </summary>
@@ -674,10 +667,10 @@ namespace SAT.General
             using (SAT_CL.Global.Contacto C = new SAT_CL.Global.Contacto(IdContacto))
             {
                 //Validando que exista el contacto
-                if(C.id_contacto > 0)
+                if (C.id_contacto > 0)
                 {
-                    resultado = SAT_CL.Seguridad.UsuarioToken.GeneraNuevoTokenUUID(C.id_usuario_sistema, C.id_compania_emisor, ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario,out Token);
-                    if(resultado.OperacionExitosa)
+                    resultado = SAT_CL.Seguridad.UsuarioToken.GeneraNuevoTokenUUID(C.id_usuario_sistema, C.id_compania_emisor,((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario, 1, out Token);
+                    if (resultado.OperacionExitosa)
                     {
                         resultado = new RetornoOperacion("Generación existosa. Nuevo Token generado: " + Token, true);
                         //Mostrando Mensaje de Operación
@@ -691,6 +684,7 @@ namespace SAT.General
             }
 
         }
+
         /// <summary>
         /// Método para guardar las acciones lkb del Adán
         /// </summary>
@@ -698,7 +692,96 @@ namespace SAT.General
         /// <param name="e"></param>
         protected void lkbTokens_OnClick(object sender, EventArgs e)
         {
+            RetornoOperacion resultado = new RetornoOperacion();
+            switch (((LinkButton)sender).CommandName)
+            {
+                case "AccionToken1":
+                    break;
+                case "FinalizarToken":
+                    if (gvGestionTokens.DataKeys.Count > 0)
+                    {
+                        //Seleccionando fila actual
+                        Controles.SeleccionaFila(gvGestionTokens, sender, "lnk", false);
 
+                        using (UsuarioToken UT = new UsuarioToken(Convert.ToInt32(gvGestionTokens.SelectedDataKey["IdUsuarioToken"])))
+                        {
+                            resultado = UT.TerminaUsuarioTokenVigencia(((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);
+
+                            //Mostrando Mensaje de Operación
+                            ScriptServer.MuestraNotificacion(this, resultado, ScriptServer.PosicionNotificacion.AbajoDerecha);
+                            CargaGestorTokens(Convert.ToInt32(Session["id_registro"]));
+                        }
+                        
+                    }
+                    break;
+            }
+        }
+        #endregion
+
+        #region Eventos de la ventana modal para elejir fecha de vigencia de token
+        protected void lkbCerrarVentanaModalFechaVigenciaToken_Click(object sender, EventArgs e)
+        {
+            //Alternando Ventana
+            ScriptServer.AlternarVentana(this.Page, "ElegirFechaVigencia", "contenedorFechaVigenciaToken", "ventanaFechaVigenciaToken");
+            //Recargando Grid
+            Controles.InicializaIndices(gvGestionTokens);
+        }
+        /// <summary>
+        /// Método que llama al método que genera tokens vigencia
+        /// </summary>
+        protected void btnGeneraTokenVigencia_Click(object sender, EventArgs e)
+        {
+            generaTokenVigencia();
+        }
+        /// <summary>
+        /// Método que genera Tokens con una fecha de vigencia personalizada
+        /// </summary>
+        private void generaTokenVigencia()
+        {
+            RetornoOperacion resultado = new RetornoOperacion();
+            int IdContacto = Convert.ToInt32(Session["id_registro"]);
+            DateTime FechaInicial = Fecha.ObtieneFechaEstandarMexicoCentro();
+            DateTime FechaFinal = Convert.ToDateTime(txtFechaVigenciaToken.Text);
+            TimeSpan Dias = FechaFinal - FechaInicial;
+            int Vigencia;
+            string Token;
+
+            Vigencia = Dias.Days;
+
+            if (Vigencia >= 1)
+            {
+
+                using (SAT_CL.Global.Contacto C = new SAT_CL.Global.Contacto(IdContacto))
+                {
+                    //Validando que exista el contacto
+                    if (C.id_contacto > 0)
+                    {
+
+                        resultado = SAT_CL.Seguridad.UsuarioToken.GeneraNuevoTokenUUID(C.id_usuario_sistema, C.id_compania_emisor, ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario, Vigencia, out Token);
+                        if (resultado.OperacionExitosa)
+                        {
+                            resultado = new RetornoOperacion("Generación existosa. Nuevo Token generado: " + Token, true);
+                            //Mostrando Mensaje de Operación
+                            ScriptServer.MuestraNotificacion(this, resultado, ScriptServer.PosicionNotificacion.AbajoDerecha);
+                            CargaGestorTokens(C.id_contacto);
+                        }
+                        else
+                            //Mostrando Mensaje de Operación
+                            ScriptServer.MuestraNotificacion(this, resultado, ScriptServer.PosicionNotificacion.AbajoDerecha);
+                    }
+                }
+
+                //Alternando Ventana
+                ScriptServer.AlternarVentana(this.Page, "ElegirFechaVigencia", "contenedorFechaVigenciaToken", "ventanaFechaVigenciaToken");
+                //Recargando Grid
+                Controles.InicializaIndices(gvGestionTokens);
+            }
+            else
+            {
+                resultado = new RetornoOperacion("La fecha de vigencia del Token debe ser mayor a la fecha de hoy.", false);
+                //Mostrando Mensaje de Operación
+                ScriptServer.MuestraNotificacion(this, resultado, ScriptServer.PosicionNotificacion.AbajoDerecha);
+            }
         }
         #endregion
     }
