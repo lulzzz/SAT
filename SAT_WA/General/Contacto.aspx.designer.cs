@@ -366,6 +366,24 @@ namespace SAT.General
         protected global::System.Web.UI.WebControls.Button btnGenerarToken;
 
         /// <summary>
+        /// Control upbtnGenerarTokenVigenciaPersonalizada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upbtnGenerarTokenVigenciaPersonalizada;
+
+        /// <summary>
+        /// Control btnGenerarTokenVigenciaPersonalizada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGenerarTokenVigenciaPersonalizada;
+
+        /// <summary>
         /// Control upgvGestionTokens.
         /// </summary>
         /// <remarks>
@@ -382,5 +400,59 @@ namespace SAT.General
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvGestionTokens;
+
+        /// <summary>
+        /// Control uplkbCerrarVentanaModalFechaVigenciaToken.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel uplkbCerrarVentanaModalFechaVigenciaToken;
+
+        /// <summary>
+        /// Control lkbCerrarVentanaModalFechaVigenciaToken.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lkbCerrarVentanaModalFechaVigenciaToken;
+
+        /// <summary>
+        /// Control uptxtFechaVigenciaToken.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel uptxtFechaVigenciaToken;
+
+        /// <summary>
+        /// Control txtFechaVigenciaToken.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFechaVigenciaToken;
+
+        /// <summary>
+        /// Control upbtnGeneraTokenVigencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upbtnGeneraTokenVigencia;
+
+        /// <summary>
+        /// Control btnGeneraTokenVigencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGeneraTokenVigencia;
     }
 }
