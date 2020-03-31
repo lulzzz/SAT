@@ -59,6 +59,7 @@ namespace SAT_CL.Global
             this._id_compania = 0;
             this._descripcion_reporte =
             this._url_reporte_ssrs = "";
+            this._id_tipo_reporte = 0;
             this._habilitar = false;
         }
         /// <summary>
