@@ -53,22 +53,26 @@
                     var isValidP1 = !$("#<%=txtNombre.ClientID%>").validationEngine('validate');
                     var isValidP2 = !$("#<%=txtTelefono.ClientID%>").validationEngine('validate');
                     var isValidP3 = !$("#<%=txtEmail.ClientID%>").validationEngine('validate');
-
+                    var isValidP4 = !$("#<%=txtClienteProveedor.ClientID%>").validationEngine('validate');
                     return isValidP1 && isValidP2 && isValidP3 && isValidP4;
                 };
                 //Botón Guardar
                 $("#<%=btnGuardar.ClientID%>").click(validacionContacto);
                 //Link Guardar
                 $("#<%=lkbGuardar.ClientID%>").click(validacionContacto);
+                
+                //Catálogo de Clientes y Proveedores
+                $("#<%=txtClienteProveedor.ClientID%>").autocomplete({ source: '../WebHandlers/AutoCompleta.ashx?id=67&param=<%=((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor%>&param2=' + $("#<%=ddlClienteProveedor.ClientID%>").val()});
             });
         }
+        
         function ConfiguraJQueryFechaVigenciaToken() {
             $(document).ready(function () {
                 //Validación de fecha de fin de token de vigencia personalizado
                 var validacionFechaVigenciaToken = function (evt) {
-                    var isValidP4 = !$("#<%=txtFechaVigenciaToken.ClientID%>").validationEngine('validate');
+                    var isValidP5 = !$("#<%=txtFechaVigenciaToken.ClientID%>").validationEngine('validate');
 
-                    return isValidP4;
+                    return isValidP5;
                 };
                 
                 $("#<%=txtFechaVigenciaToken.ClientID%>").datetimepicker({
@@ -218,6 +222,49 @@
                             <asp:AsyncPostBackTrigger ControlID="lkbGuardar" />
                             <asp:AsyncPostBackTrigger ControlID="lkbEditar" />
                             <asp:AsyncPostBackTrigger ControlID="lkbBajaEliminar" />
+                        </Triggers>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+
+            <div class="renglon2x">
+                <div class="etiqueta">
+                    <label for="ddlClienteProveedor">Tipo de Contacto</label>
+                </div>
+                <div class="control">
+                    <asp:UpdatePanel ID="upddlClienteProveedor" runat="server">
+                        <ContentTemplate>
+                            <asp:DropDownList ID="ddlClienteProveedor" runat="server" CssClass="dropdown" AutoPostBack="true" OnSelectedIndexChanged="ddlClienteProveedor_SelectedIndexChanged"></asp:DropDownList>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnGuardar" />
+                            <asp:AsyncPostBackTrigger ControlID="btnCancelar" />
+                            <asp:AsyncPostBackTrigger ControlID="lkbNuevo" />
+                            <asp:AsyncPostBackTrigger ControlID="lkbGuardar" />
+                            <asp:AsyncPostBackTrigger ControlID="lkbEditar" />
+                            <asp:AsyncPostBackTrigger ControlID="lkbBajaEliminar" />
+                        </Triggers>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+
+            <div class="renglon2x">
+                <div class="etiqueta">
+                    <label for="txtClienteProveedor">Companía</label>
+                </div>
+                <div class="control2x">
+                    <asp:UpdatePanel ID="uptxtClienteProveedor" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <asp:TextBox ID="txtClienteProveedor" runat="server" TabIndex="3" CssClass="textbox2x validate[required] custom[IdCatalogo]" MaxLength="100"></asp:TextBox>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnGuardar" />
+                            <asp:AsyncPostBackTrigger ControlID="btnCancelar" />
+                            <asp:AsyncPostBackTrigger ControlID="lkbNuevo" />
+                            <asp:AsyncPostBackTrigger ControlID="lkbGuardar" />
+                            <asp:AsyncPostBackTrigger ControlID="lkbEditar" />
+                            <asp:AsyncPostBackTrigger ControlID="lkbBajaEliminar" />
+                            <asp:AsyncPostBackTrigger ControlID="ddlClienteProveedor" />
                         </Triggers>
                     </asp:UpdatePanel>
                 </div>

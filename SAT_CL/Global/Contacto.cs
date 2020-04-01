@@ -84,7 +84,7 @@ namespace SAT_CL.Global
         {   //Invocando Método de Carga
             cargaAtributosInstancia(id_registro);
         }
-
+        
         #endregion
 
         #region Destructores
@@ -227,6 +227,36 @@ namespace SAT_CL.Global
         public bool ActualizaContacto()
         {   //Invocando Método de Carga
             return this.cargaAtributosInstancia(this._id_contacto);
+        }
+
+        private bool ObtieneContactoUsuarioSistema(int id_usuario_sistema)
+        {
+            bool result = false;
+            //Armando Arreglo de Parametros
+            object[] param = { 5, 0, 0, 0, "", "", "", id_usuario_sistema, 0, false, "", "" };
+
+            //Obteniendo Resultado del SP
+            using (DataSet ds = CapaDatos.m_capaDeDatos.EjecutaProcAlmacenadoDataSet(_nom_sp, param))
+            {   //Validando que existan registros
+                if (TSDK.Datos.Validacion.ValidaOrigenDatos(ds, "Table"))
+                {   //Recorriendo cada Fila
+                    foreach (DataRow dr in ds.Tables["Table"].Rows)
+                    {
+                        this._id_contacto = Convert.ToInt32(dr["Id"]);
+                        this._id_compania_emisor = Convert.ToInt32(dr["IdCompaniaEmisor"]);
+                        this._id_cliente_proveedor = Convert.ToInt32(dr["IdClienteProveedor"]);
+                        this._nombre = dr["Nombre"].ToString();
+                        this._telefono = dr["Telefono"].ToString();
+                        this._email = dr["EMail"].ToString();
+                        this._id_usuario_sistema = Convert.ToInt32(dr["IdUsuarioSistema"]);
+                        this._habilitar = Convert.ToBoolean(dr["Habilitar"]);
+                        //Asignando Resultado Positivo
+                        result = true;
+                    }
+                }
+                //Devolviendo resultado Obtenido
+                return result;
+            }
         }
 
         public static DataTable CargaTokensUsuarioContacto(int id_contacto)

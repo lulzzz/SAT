@@ -165,6 +165,7 @@ namespace SAT.General
             //Cargando catálogo de perfiles de reportes
             SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogo(ddlPerfil, 199, "-- Seleccione un Perfil de la Lista", ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, "", 0, "");
             SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogoGeneral(ddlTamañoGridViewGestionTokens, "", 18);
+            SAT_CL.CapaNegocio.m_capaNegocio.CargaCatalogo(ddlClienteProveedor, 200, "-- Seleccione Tipo");
         }
 
         private void cargaContenidoControles()
@@ -192,6 +193,15 @@ namespace SAT.General
                             txtNombre.Text = c.nombre;
                             txtTelefono.Text = c.telefono.ToString();
                             txtEmail.Text = c.email;
+                            using (SAT_CL.Global.CompaniaEmisorReceptor er = new SAT_CL.Global.CompaniaEmisorReceptor(c.id_cliente_proveedor))
+                            {
+                                //Si el registro existe
+                                if (er.habilitar)
+                                {
+                                    //txtUsuarioSistema.Text = u.nombre.ToString() + " ID:" + c.id_usuario_sistema.ToString();
+                                    txtClienteProveedor.Text = String.Format("{0} ID:{1}", er.nombre, c.id_cliente_proveedor);
+                                }
+                            }
                             using (PerfilSeguridadUsuario psu = PerfilSeguridadUsuario.ObtienePerfilActivo(c.id_usuario_sistema))
                             {
                                 if (psu.id_usuario > 0)
@@ -220,6 +230,8 @@ namespace SAT.General
                     txtNombre.Enabled =
                     txtTelefono.Enabled =
                     txtEmail.Enabled =
+                    ddlClienteProveedor.Enabled =
+                    txtClienteProveedor.Enabled =
                     ddlPerfil.Enabled =
                     btnGuardar.Enabled =
                     btnCancelar.Enabled = false;
@@ -228,6 +240,8 @@ namespace SAT.General
                     txtNombre.Enabled =
                     txtTelefono.Enabled =
                     txtEmail.Enabled =
+                    ddlClienteProveedor.Enabled = true;
+                    txtClienteProveedor.Enabled = false;
                     ddlPerfil.Enabled =
                     btnGuardar.Enabled =
                     btnCancelar.Enabled = true;
@@ -235,7 +249,9 @@ namespace SAT.General
                 case TSDK.ASP.Pagina.Estatus.Edicion:
                     txtNombre.Enabled =
                     txtTelefono.Enabled =
-                    txtEmail.Enabled = true;
+                    txtEmail.Enabled =
+                    ddlClienteProveedor.Enabled =
+                    txtClienteProveedor.Enabled = true;
                     ddlPerfil.Enabled = false;
                     btnGuardar.Enabled =
                     btnCancelar.Enabled = true;
@@ -296,6 +312,32 @@ namespace SAT.General
             }
         }
 
+        protected void ddlClienteProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(ddlClienteProveedor.SelectedValue) > 0)
+            {
+                txtClienteProveedor.Text = "";
+                txtClienteProveedor.Enabled = true;
+                //Invocando Método de Carga
+                cargaCatalogoAutoCompleta();
+            }
+            else
+                txtClienteProveedor.Enabled = false;
+        }
+        /// <summary>
+        /// Método encargado de 
+        /// </summary>
+        private void cargaCatalogoAutoCompleta()
+        {
+            //Declarando Script de Ventana Modal
+            string script = @"<script type='text/javascript'>
+                                  //Carga Catalogo Autocompleta 'ClientesProveedores'
+                                  $('#<%=txtClienteProveedor.ClientID%>').autocomplete({ source: '../WebHandlers/AutoCompleta.ashx?id=67&param=" + ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor + "&param2=" + ddlClienteProveedor.SelectedValue + @"'});
+                              </script>";
+            //Registrando Script
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "CargaClientesProveedores", script, false);
+        }
+
         /// <summary>
         /// Inserta o actualiza los valores del registro
         /// </summary>
@@ -316,7 +358,7 @@ namespace SAT.General
                 {
                     case TSDK.ASP.Pagina.Estatus.Nuevo:
                         //Validando que se halla seleccionado un Perfil
-                        if (ddlPerfil.SelectedValue != "0")
+                        if (ddlPerfil.SelectedValue != "0" && ddlClienteProveedor.SelectedValue != "0")
                         {
                             //Asigna al objeto retorno los valores obtenidos del formulario Contacto, invocando al método de insercion de la clase usuario.
                             resultado = SAT_CL.Seguridad.Usuario.InsertaUsuario(txtNombre.Text, txtEmail.Text, pwdAleatoria, DateTime.Today,
@@ -342,7 +384,7 @@ namespace SAT.General
                                         //Registrando el Contacto con el ID de Usuario del sistema generado
                                         resultado = SAT_CL.Global.Contacto.InsertaContacto(
                                             ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
-                                            ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
+                                            Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtClienteProveedor.Text, "ID:", 1)),
                                             txtNombre.Text.ToUpper(),
                                             txtTelefono.Text,
                                             txtEmail.Text,
@@ -356,11 +398,11 @@ namespace SAT.General
                         }
                         else
                             //Instanciando Excepción
-                            resultado = new RetornoOperacion("* Seleccione un Perfil de la Lista");
+                            resultado = new RetornoOperacion("* Seleccione un Perfil y un Tipo de Contacto de la Lista");
                         break;
                     case TSDK.ASP.Pagina.Estatus.Edicion:
                         //Validando que se halla seleccionado un Perfil
-                        if (ddlPerfil.SelectedValue != "0")
+                        if (ddlClienteProveedor.SelectedValue != "0")
                         {
                             //Instanciando contacto actual
                             using (SAT_CL.Global.Contacto c = new SAT_CL.Global.Contacto(Convert.ToInt32(Session["id_registro"])))
@@ -373,7 +415,7 @@ namespace SAT.General
                                                                    ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario);*/
 
                                     resultado = c.EditaContacto(
-                                        ((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
+                                        Convert.ToInt32(Cadena.RegresaCadenaSeparada(txtClienteProveedor.Text, "ID:", 1)),
                                         txtNombre.Text.ToUpper(),
                                         txtTelefono.Text,
                                         txtEmail.Text,
@@ -402,7 +444,7 @@ namespace SAT.General
                         }
                         else
                             //Instanciando Excepción
-                            resultado = new RetornoOperacion("* Seleccione un Perfil de la Lista");
+                            resultado = new RetornoOperacion("* Seleccione un tipo de Contacto de la Lista.");
                         break;
                 }
 
