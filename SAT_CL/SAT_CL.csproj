@@ -571,6 +571,11 @@
     <Compile Include="Nomina\NominaEmpleado.cs" />
     <Compile Include="Nomina\NominaOtros.cs" />
     <Compile Include="Nomina\Reporte.cs" />
+    <Compile Include="Notificaciones\ListaDistribucion.cs" />
+    <Compile Include="Notificaciones\ListaDistribucionDetalle.cs" />
+    <Compile Include="Notificaciones\ListaDistribucionDetalleContacto.cs" />
+    <Compile Include="Notificaciones\Notificacion.cs" />
+    <Compile Include="Notificaciones\NotificacionRegistro.cs" />
     <Compile Include="Notificacion\DetalleNotificacion.cs" />
     <Compile Include="Notificacion\Notificacion.cs" />
     <Compile Include="Notificacion\TipoEventoNotificacion.cs" />

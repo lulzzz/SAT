@@ -278,6 +278,8 @@
                             <li>
                                 <asp:LinkButton ID="lnkMUbicaciones" runat="server" CommandName="~/General/Ubicacion.aspx" OnClick="lnkDireccionaModulo_Click">Ubicaciones</asp:LinkButton></li>
                             <li>
+                                <asp:LinkButton ID="lnkMContacto" runat="server" CommandName="~/General/Contacto.aspx" OnClick="lnkDireccionaModulo_Click">Contactos</asp:LinkButton></li>
+                            <li>
                                 <asp:LinkButton ID="lnkMKilometraje" runat="server" CommandName="~/General/Kilometraje.aspx" OnClick="lnkDireccionaModulo_Click">Kilometraje</asp:LinkButton>
                                 <ul>
                                     <li>

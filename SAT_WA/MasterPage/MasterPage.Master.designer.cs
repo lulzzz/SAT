@@ -825,6 +825,15 @@ namespace SAT.MasterPage
         protected global::System.Web.UI.WebControls.LinkButton lnkMUbicaciones;
 
         /// <summary>
+        /// Control lnkMContacto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkMContacto;
+
+        /// <summary>
         /// Control lnkMKilometraje.
         /// </summary>
         /// <remarks>
