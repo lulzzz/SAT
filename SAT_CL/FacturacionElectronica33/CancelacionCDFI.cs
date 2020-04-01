@@ -2015,7 +2015,28 @@ namespace SAT_CL.FacturacionElectronica33
                                                 //Validando PAC's
                                                 if (pac.hablitar)
                                                 {
+                                                    decimal total_cfdi = 0.00M;
+                                                    if (!string.IsNullOrEmpty(cfdi.ruta_xml))
+                                                    {
+                                                        try
+                                                        {
+                                                            //Obteniendo Archivo
+                                                            byte[] xml = System.IO.File.ReadAllBytes(cfdi.ruta_xml);
 
+                                                            //Declarando Documento XML
+                                                            XmlDocument xmlDocument = new XmlDocument();
+                                                            
+                                                            //Obteniendo XML en cadena
+                                                            using (MemoryStream ms = new MemoryStream(xml))
+                                                                //Cargando Documento XML
+                                                                xmlDocument.Load(ms);
+
+                                                            if (xmlDocument != null)
+                                                                //Obteniendo Total
+                                                                total_cfdi = Convert.ToDecimal(xmlDocument.DocumentElement.Attributes["Total"].Value);
+                                                        }
+                                                        catch { total_cfdi = Math.Truncate(100 * cfdi.total_captura) / 100; }
+                                                    }
 
                                                     //Obtención de Datos del Certificado
                                                     retorno = obtieneDatosCertificado(emisor.id_compania_emisor_receptor, out llaveBase64, out certificadoBase64);
@@ -2037,8 +2058,7 @@ namespace SAT_CL.FacturacionElectronica33
                                                                             </soapenv:Envelope>";
 
                                                         //Creando Solicitud de Consulta
-                                                        decimal value = Math.Truncate(100 * cfdi.total_captura) / 100;
-                                                        string solicitud = string.Format(@"<ConsultaCfdi rfcEmisor=""{0}"" rfcReceptor=""{1}"" UUID=""{2}"" total=""{3}"" certificado=""{4}"" llaveCertificado=""{5}"" />", emisor.rfc, rfc_receptor, tfd.UUID, value, certificadoBase64, llaveBase64);
+                                                        string solicitud = string.Format(@"<ConsultaCfdi rfcEmisor=""{0}"" rfcReceptor=""{1}"" UUID=""{2}"" total=""{3}"" certificado=""{4}"" llaveCertificado=""{5}"" />", emisor.rfc, rfc_receptor, tfd.UUID, total_cfdi, certificadoBase64, llaveBase64);
                                                         XDocument soapSolicitud = XDocument.Parse(solicitud);
                                                         soapSolicitud.Declaration = new XDeclaration("1.0", "utf-8", null);
 

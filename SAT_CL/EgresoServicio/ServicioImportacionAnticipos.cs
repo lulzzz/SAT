@@ -325,8 +325,8 @@ namespace SAT_CL.EgresoServicio
                             _id_tipo_scc = Convert.ToByte(dr["IdTipoSCC"]),
                             _monto_cc = Convert.ToDecimal(dr["MontoCC"]),
                             _monto_sc = Convert.ToDecimal(dr["MontoSC"]),
-                            _id_anticipo_finiquito_cc = Convert.ToInt32(dr["IdAnticipoFiniquito"]),
-                            _id_anticipo_finiquito_sc = Convert.ToByte(dr["IdTipoSCCFiniquito"]),
+                            _id_anticipo_finiquito_cc = Convert.ToInt32(dr["IdAnticipoFiniquitoCC"]),
+                            _id_anticipo_finiquito_sc = Convert.ToInt32(dr["IdAnticipoFiniquitoSC"]),
                             _id_factura_cxp = Convert.ToInt32(dr["IdFacturaCXP"]),
                             _habilitar = Convert.ToBoolean(dr["Habilitar"])
                         });
@@ -359,8 +359,8 @@ namespace SAT_CL.EgresoServicio
                             _id_tipo_scc = Convert.ToByte(dr["IdTipoSCC"]),
                             _monto_cc = Convert.ToDecimal(dr["MontoCC"]),
                             _monto_sc = Convert.ToDecimal(dr["MontoSC"]),
-                            _id_anticipo_finiquito_cc = Convert.ToInt32(dr["IdAnticipoFiniquito"]),
-                            _id_anticipo_finiquito_sc = Convert.ToByte(dr["IdTipoSCCFiniquito"]),
+                            _id_anticipo_finiquito_cc = Convert.ToInt32(dr["IdAnticipoFiniquitoCC"]),
+                            _id_anticipo_finiquito_sc = Convert.ToInt32(dr["IdAnticipoFiniquitoSC"]),
                             _id_factura_cxp = Convert.ToInt32(dr["IdFacturaCXP"]),
                             _habilitar = Convert.ToBoolean(dr["Habilitar"])
                         });
