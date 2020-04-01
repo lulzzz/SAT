@@ -783,7 +783,7 @@ namespace SAT.General
                         {
                             //Enviamos Notificación
                             resultado = SAT_CL.Notificaciones.Notificacion.EnviaCorreo(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
-                                ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario,Convert.ToInt32(gvGestionTokens.SelectedDataKey["IdContacto"]), "ACCESO A PLATAFORMA DE REPORTES", 
+                                Convert.ToInt32(gvGestionTokens.SelectedDataKey["IdContacto"]), ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario, "ACCESO A PLATAFORMA DE REPORTES", 
                                 "ARI TECTOS S.A DE C.V", "Bienvenido A La Plataforma de Reportes TECTOS.", "Te enviamos la dirección de Acceso a la Plataforma de Reportes TECTOS.", URLacortada, "Cuerpo", "No es necesario responder este correo.");
                             break;
                         }
