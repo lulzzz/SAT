@@ -109,6 +109,11 @@ namespace SAT_CL.Notificaciones
         /// Direccion del la Api del servicio Altiria
         /// </summary>
         public string url { get => _url; }
+        private string _email;
+        /// <summary>
+        /// Direccion del la Api del servicio Altiria
+        /// </summary>
+        public string email { get => _email; }
         private string _xml_errores;
         #endregion
 
@@ -119,7 +124,7 @@ namespace SAT_CL.Notificaciones
             this._url = ConfigurationManager.AppSettings["AltiraURL"].ToString();
             this._dominio = ConfigurationManager.AppSettings["domainID"].ToString();
             this._usuario = ConfigurationManager.AppSettings["user"].ToString();
-            this._password = ConfigurationManager.AppSettings["password"].ToString();
+            this._password = ConfigurationManager.AppSettings["password"].ToString();            
             this._xml_errores = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../TECTOS_GMAO_CL/Notificacion/ErrorSMS.xml");//@"~/Notificacion/ErrorSMS.xml";
         }
         #endregion
@@ -787,7 +792,7 @@ namespace SAT_CL.Notificaciones
             string estrellasCalificar = Convert.ToBase64String(File.ReadAllBytes(CapaNegocio.m_capaNegocio.RegresaVariableCatalogoBD("Directorio Raíz Imagenes Generales SAT", 0) + ("Estrella5.png")));
 
             //Declarando objeto de retorno
-            return formato.Replace("{0}", encabezado).Replace("{1}", titulo).Replace("{2}", subtitulo).Replace("{3}", tituloCuerpo).Replace("{4}", cuerpo).Replace("{5}", pie);
+            return formato.Replace("{0}", encabezado).Replace("{1}", titulo).Replace("{2}", subtitulo).Replace("{3}", tituloCuerpo).Replace("{4}", cuerpo).Replace("{5}", pie).Replace("{7}", estrellasCalificar);
 
         }
         #endregion
@@ -917,7 +922,7 @@ namespace SAT_CL.Notificaciones
         /// <param name="sinRealizarBase64">Imagen que muestra los Eventos, Paaradas sin realizar</param>
         ///<param name="queryStringCalificar">Enviamos por query string la URL de Calificar</param>
         /// <returns></returns>
-        public static RetornoOperacion EnviaCorreo(int id_compania_emisor, int id_contacto, string asunto, string encabezado, string titulo, string subtitulo, string tituloCuerpo, string cuerpo, 
+        public static RetornoOperacion EnviaCorreo(int id_compania_emisor, int id_contacto, int id_usuario, string asunto, string encabezado, string titulo, string subtitulo, string tituloCuerpo, string cuerpo, 
                                        string mensaje)
         {
             //Declaramos Variables 
@@ -935,11 +940,12 @@ namespace SAT_CL.Notificaciones
             //            foreach (DataRow r in mitNotificaciones.Rows)
             //            {
             using (SAT_CL.Global.Contacto c = new Global.Contacto(id_contacto))
+            using (SAT_CL.Seguridad.Usuario u = new Seguridad.Usuario(id_usuario))
             {
                 //Declaramos Variable Destinatario
                 string[] destinatario = new string[] { c.email };
                 //Enviamos E-mail
-                resultado = EnviaArchivosEmail(id_compania_emisor, destinatario[0], asunto, encabezado, titulo, subtitulo, tituloCuerpo, cuerpo, mensaje, destinatario);
+                resultado = EnviaArchivosEmail(id_compania_emisor, u.email, asunto, encabezado, titulo, subtitulo, tituloCuerpo, cuerpo, mensaje, destinatario);
             }
             //            }
             //        }

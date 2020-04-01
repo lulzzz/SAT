@@ -7,9 +7,11 @@ using System.Transactions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 using TSDK.ASP;
 using TSDK.Base;
 using TSDK.Datos;
+using TSDK.Google;
 
 namespace SAT.General
 {
@@ -633,7 +635,7 @@ namespace SAT.General
             using (DataTable mit = SAT_CL.Global.Contacto.CargaTokensUsuarioContacto(IdContacto))
             {
                 //Cargando Gridview
-                Controles.CargaGridView(gvGestionTokens, mit, "IdContacto-IdUsuarioCompania-IdClienteProveedor-IdUsuarioToken-IdUsuarioSistema", lblCriterioGridViewGestionTokens.Text, true, 3);
+                Controles.CargaGridView(gvGestionTokens, mit, "IdContacto-IdUsuarioCompania-IdClienteProveedor-IdUsuarioToken-IdUsuarioSistema-Token", lblCriterioGridViewGestionTokens.Text, true, 3);
 
                 //Si no hay registros
                 if (mit == null)
@@ -731,14 +733,16 @@ namespace SAT.General
             {
                 //Seleccionando fila actual
                 Controles.SeleccionaFila(gvGestionTokens, sender, "imb", false);
+                string URLacortada = Firebase.AcortarUrl(ConfigurationManager.AppSettings["SystemURI"].ToString() + "Externa/Login.aspx?ustk=" + gvGestionTokens.SelectedDataKey["Token"].ToString());
                 //Validando estatus de Página
                 switch (((ImageButton)sender).CommandName)
                 {
                     case "Correo":
                         {
                             //Enviamos Notificación
-                            resultado = SAT_CL.Notificaciones.Notificacion.EnviaCorreo(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor, 
-                                Convert.ToInt32(gvGestionTokens.SelectedDataKey["IdContacto"]), "ACCESO A PLATAFORMA DE REPORTES", "Encabezado.", "Titulo", "Subtitulo", "TituloCuerpo ", "Cuerpo", "idS=");
+                            resultado = SAT_CL.Notificaciones.Notificacion.EnviaCorreo(((SAT_CL.Seguridad.UsuarioSesion)Session["usuario_sesion"]).id_compania_emisor_receptor,
+                                ((SAT_CL.Seguridad.Usuario)Session["usuario"]).id_usuario,Convert.ToInt32(gvGestionTokens.SelectedDataKey["IdContacto"]), "ACCESO A PLATAFORMA DE REPORTES", 
+                                "ARI TECTOS S.A DE C.V", "Bienvenido A La Plataforma de Reportes TECTOS.", "Te enviamos la dirección de Acceso a la Plataforma de Reportes TECTOS.", URLacortada, "Cuerpo", "No es necesario responder este correo.");
                             break;
                         }
                     case "Mensaje":
